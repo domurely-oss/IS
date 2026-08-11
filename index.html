@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504 詳細整理＋450題題庫整合版</title>
+<title>資安職能訓練｜資通安全概論 11504｜iPhone版面修正版 v4</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -146,6 +146,168 @@ body.is-iphone .iosModalPanel{border-radius:22px 22px 0 0;width:100%;max-height:
   body.is-ipad .quizGrid{grid-template-columns:300px 1fr}
 }
 
+
+/* ===== v4 iPhone 版面修正：以 viewport 為主，UA 為輔 ===== */
+html,body{max-width:100%;overflow-x:hidden}
+.shell{width:100%;min-width:0}
+img,svg,canvas,video{max-width:100%;height:auto}
+.tableWrap{
+  width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain
+}
+table{max-width:none}
+th,td,.studyBody,.detailBody,.question,.feedback,.reviewItem{
+  overflow-wrap:anywhere;word-break:normal
+}
+input,select,textarea{font-size:16px} /* 防止 iPhone Safari 聚焦自動放大 */
+
+@media (max-width:680px){
+  html{scroll-padding-bottom:84px}
+  body{
+    padding-left:env(safe-area-inset-left);
+    padding-right:env(safe-area-inset-right);
+    padding-bottom:calc(78px + env(safe-area-inset-bottom));
+    overflow-x:hidden
+  }
+  .shell{padding:8px;max-width:100%}
+
+  /* 頂部 */
+  .hero{padding:18px 16px;border-radius:14px;margin:0;box-shadow:none}
+  .hero:after{display:none}
+  .hero h1{font-size:24px;line-height:1.25}
+  .hero p{font-size:13px;line-height:1.55}
+  .badge{display:block;width:100%;font-size:11px;line-height:1.45;white-space:normal;overflow-wrap:anywhere}
+  .deviceStrip{margin:9px 0 10px;padding:10px;border-radius:12px;display:block}
+  .deviceStripBtns{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+  .deviceStripBtns .miniBtn{width:100%;padding:8px 6px;font-size:11px}
+  .topNav{display:none!important}
+  .mobileBottomNav{display:flex!important}
+
+  /* 整理頁：固定改成單欄，避免 iPhone 上出現窄雙欄 */
+  .studyGrid,.quizGrid{display:block!important}
+  .studySide,.quizSide{
+    position:static!important;top:auto!important;width:100%!important;
+    max-width:100%!important;margin:0 0 10px;padding:11px;border-radius:13px;box-shadow:none
+  }
+  .studyMain,.quizMain{
+    width:100%!important;min-width:0!important;max-width:100%!important;
+    padding:10px;border-radius:13px;box-shadow:none
+  }
+
+  /* 單元導覽改成橫向卡片，不再把 iPhone 首頁拉得過長 */
+  #unitNavList{
+    display:flex;gap:7px;overflow-x:auto;overflow-y:hidden;
+    padding:2px 0 7px;scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch
+  }
+  #unitNavList .unitNav{
+    flex:0 0 150px;width:150px;min-height:52px;padding:8px;
+    scroll-snap-align:start;border:1px solid var(--line);background:#fff
+  }
+  #unitNavList .unitNav>span{min-width:30px}
+  #unitNavList .unitNav b{font-size:12px}
+  #unitNavList .unitNav small{font-size:10px;white-space:normal}
+
+  .collapseBtns{grid-template-columns:1fr 1fr}
+  .courseIntro{padding:11px}
+  .courseIntro h2{font-size:20px}
+  .courseIntro .tableWrap{margin-left:0;margin-right:0}
+
+  /* 單元標題及按鈕 */
+  .studyUnit{border-radius:12px;margin-bottom:11px;max-width:100%}
+  .unitHead{display:block;padding:12px}
+  .unitHead h2{font-size:18px;line-height:1.4;margin:4px 0 9px}
+  .unitActions{
+    display:grid!important;grid-template-columns:1fr 1fr;
+    gap:6px;width:100%
+  }
+  .unitActions .miniBtn{
+    width:100%;min-width:0;min-height:42px;padding:7px 5px;
+    font-size:11px;white-space:normal;line-height:1.25
+  }
+  .studyBody{padding:10px}
+  .goal,.examTip,.flow{padding:9px 10px;border-radius:10px;font-size:13px}
+  .studyDetail{margin:9px 0;border-radius:11px}
+  .studyDetail>summary{
+    padding:12px 10px;font-size:13px;line-height:1.4;
+    align-items:flex-start;overflow-wrap:anywhere
+  }
+  .studyDetail>summary:before{flex:0 0 22px}
+  .detailBody{padding:10px;font-size:14px}
+  .detailBody ul{padding-left:20px}
+  .detailBody li{margin:6px 0}
+  .examGrid{grid-template-columns:1fr 1fr;gap:6px}
+  .examGrid>div{padding:8px}
+  .examGrid b{font-size:14px}
+
+  /* 表格只在表格框內橫向捲動，頁面本身不橫移 */
+  .tableWrap{border-radius:9px;margin:8px 0 11px}
+  .tableWrap table{min-width:640px;width:640px;font-size:12px}
+  .tableWrap th,.tableWrap td{padding:7px 8px;line-height:1.45}
+  .quickCard{padding:12px}
+  .quickCard .tableWrap table{min-width:620px;width:620px}
+
+  /* 題庫 */
+  .quizSide label{margin-top:10px}
+  .row{grid-template-columns:1fr!important;gap:0}
+  .quizMain{min-height:auto}
+  .start{min-height:420px;padding:8px}
+  .start .icon{font-size:45px}
+  .question{font-size:18px;line-height:1.55;margin:8px 0 13px}
+  .qmeta{gap:5px}
+  .pill{font-size:10px;padding:5px 7px}
+  .options{gap:8px}
+  .opt{
+    width:100%;min-height:54px;padding:12px 10px;
+    border-radius:11px;font-size:15px;line-height:1.45
+  }
+  .letter{min-width:28px;flex:0 0 28px}
+  .feedback{font-size:14px;padding:11px}
+  .nav{
+    position:sticky;z-index:50;
+    bottom:calc(66px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.97);
+    margin:14px -2px 0;padding:8px 2px 7px;
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)
+  }
+  .nav .group{gap:5px}
+  .nav .btn{padding:9px 10px;font-size:12px;min-height:42px}
+
+  /* 結果頁 */
+  .scoreRing{width:130px;height:130px}
+  .scoreInner{width:100px;height:100px}
+  .scoreInner b{font-size:28px}
+  #result .row{display:grid;grid-template-columns:1fr!important;gap:7px}
+
+  /* iOS 說明用 bottom sheet */
+  .iosModal{align-items:end;padding:0}
+  .iosModalPanel{
+    width:100%;max-width:none;max-height:86dvh;
+    border-radius:20px 20px 0 0;
+    padding:20px 14px calc(18px + env(safe-area-inset-bottom))
+  }
+  .iosSteps>div{grid-template-columns:34px 1fr;padding:8px}
+}
+
+/* iPhone 橫向：仍維持單欄，避免導覽列與題目互相擠壓 */
+@media (max-height:500px) and (orientation:landscape) and (max-width:950px){
+  .hero{padding:12px 14px}
+  .hero h1{font-size:20px}
+  .hero p,.hero .badge{display:none}
+  .deviceStrip{display:none}
+  .studySide,.quizSide{margin-bottom:7px}
+  .mobileBottomNav button{min-height:44px}
+  .mobileBottomNav button span{font-size:16px}
+  .mobileBottomNav button small{font-size:9px}
+}
+
+/* iPad 小尺寸與 Split View：若實際 viewport 變窄，也自動退回單欄 */
+@media (min-width:681px) and (max-width:820px){
+  .studyGrid{grid-template-columns:210px minmax(0,1fr)}
+  .quizGrid{grid-template-columns:250px minmax(0,1fr)}
+  .studyMain,.quizMain{min-width:0}
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -160,9 +322,21 @@ body.is-iphone .iosModalPanel{border-radius:22px 22px 0 0;width:100%;max-height:
 <div class="shell">
 <section class="hero">
 <h1>資安職能訓練｜資通安全概論</h1>
-<p>11504 詳細整理版＋450題練習題庫｜iPad / iPhone 自動適應版｜單選279題＋複選171題</p>
+<p>11504 詳細整理版＋450題練習題庫｜iPhone版面修正版 v4｜iPad / iPhone 自動適應｜單選279題＋複選171題</p>
 <span class="badge">完全離線單一HTML｜詳細整理依數位發展部資通安全署11504三日教材｜題庫為模擬題，非官方考古題</span>
 </section>
+
+<div id="deviceStrip" class="deviceStrip">
+  <div>
+    <b id="deviceModeLabel">裝置模式：自動偵測</b>
+    <span id="deviceModeDesc">依螢幕寬度與裝置類型自動調整 iPhone / iPad / 桌機版面。</span>
+  </div>
+  <div class="deviceStripBtns">
+    <button id="iosHelpBtn" class="miniBtn">iPhone / iPad 開啟說明</button>
+    <button id="layoutToggleBtn" class="miniBtn">切換行動版面</button>
+  </div>
+</div>
+
 <nav aria-label="網站主選單" class="topNav">
 <button class="active" data-view="study">📘 完整整理</button>
 <button data-view="quick">⚡ 考前速查</button>
@@ -1256,6 +1430,39 @@ function toggleUnitDetails(u, openState){
       });
     });
   });
+})();
+</script>
+
+
+<script>
+(function(){
+  function applyResponsiveFallback(){
+    const w = Math.min(window.innerWidth || 9999, document.documentElement.clientWidth || 9999);
+    const narrow = w <= 680;
+    document.body.classList.toggle("viewport-phone", narrow);
+
+    const label = document.getElementById("deviceModeLabel");
+    const desc = document.getElementById("deviceModeDesc");
+    const ua = navigator.userAgent || "";
+    const isiPhone = /iPhone|iPod/i.test(ua);
+    const isiPad = /iPad/i.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    if(label && desc){
+      if(narrow){
+        label.textContent = "裝置模式：iPhone / 窄螢幕";
+        desc.textContent = "已使用單欄觸控版面；表格會在表格區塊內左右滑動，頁面本身不會橫向跑版。";
+      }else if(isiPad){
+        label.textContent = "裝置模式：iPad";
+        desc.textContent = "已依 iPad 直向、橫向或 Split View 寬度自動調整。";
+      }else if(isiPhone){
+        label.textContent = "裝置模式：iPhone";
+        desc.textContent = "已啟用 iPhone 觸控版面。";
+      }
+    }
+  }
+  window.addEventListener("DOMContentLoaded", applyResponsiveFallback);
+  window.addEventListener("resize", applyResponsiveFallback);
+  window.addEventListener("orientationchange", ()=>setTimeout(applyResponsiveFallback, 180));
 })();
 </script>
 
