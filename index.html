@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504｜原始教材可註記版</title>
+<title>資安職能訓練｜資通安全概論 11504｜GitHub原始教材整潔版</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -914,6 +914,271 @@ body.ann-red-eraser #annStatus{
   .sourceAnnoToolbar,.sourceAnnoCanvas{display:none!important}
 }
 
+
+/* ===== v13 原始教材版面整理 ===== */
+#view-source{padding-top:2px}
+.sourceViewGrid{
+  grid-template-columns:260px minmax(0,1fr)!important;
+  gap:14px!important;
+  align-items:start
+}
+.sourceSidebar{
+  position:sticky!important;
+  top:10px!important;
+  max-height:calc(100vh - 20px)!important;
+  padding:13px!important;
+  border-radius:14px!important;
+  box-shadow:0 5px 16px rgba(25,42,70,.06)!important
+}
+.sourceSideHead{
+  padding:2px 2px 9px;
+  border-bottom:1px solid #eaecf0
+}
+.sourceSideHead h2{font-size:19px!important;line-height:1.25}
+.sourceSideHead p{font-size:11px!important;line-height:1.45;margin:4px 0 0!important}
+.sourceGroup{margin-top:12px!important}
+.sourceGroup h3{
+  margin:0 0 6px!important;
+  padding:0 3px;
+  font-size:11px!important;
+  color:#667085!important;
+  font-weight:900!important;
+  letter-spacing:.02em
+}
+.sourceItem{
+  min-height:48px!important;
+  margin:4px 0!important;
+  padding:7px 8px!important;
+  border-radius:10px!important;
+  grid-template-columns:30px minmax(0,1fr) 16px!important
+}
+.sourceIcon{width:29px!important;height:29px!important;border-radius:8px!important;font-size:14px!important}
+.sourceItemText b{font-size:11px!important;line-height:1.3!important}
+.sourceItemText small{font-size:9px!important;line-height:1.25!important}
+.sourceItem.active{
+  background:#eef2ff!important;
+  border-color:#b6c2ef!important;
+  box-shadow:inset 3px 0 0 #3156d3
+}
+
+.sourceViewerCard{
+  padding:14px!important;
+  border-radius:14px!important;
+  box-shadow:0 5px 18px rgba(25,42,70,.06)!important
+}
+.sourceViewerHeadClean{
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  margin:0 0 10px!important;
+  padding:2px 2px 11px!important;
+  border-bottom:1px solid #eaecf0
+}
+.sourceTitleBlock{min-width:0}
+.sourceTitleLine{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.sourceModeTag{
+  display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;
+  border-radius:999px;background:#f2f4f7;color:#475467;font-size:10px;font-weight:800
+}
+.sourceViewerHeadClean h2{
+  margin:6px 0 2px!important;
+  font-size:22px!important;
+  line-height:1.3!important;
+  color:#172033
+}
+.sourceViewerMeta{font-size:11px!important;color:#667085!important}
+.sourcePdfBtn{
+  flex:0 0 auto!important;
+  min-height:40px!important;
+  padding:8px 11px!important;
+  background:#fff!important;
+  border:1px solid #cfd5df!important;
+  border-radius:9px!important;
+  font-size:11px!important;
+  font-weight:800!important
+}
+
+.sourceNavPanel{
+  margin:0 0 10px;
+  padding:10px;
+  border:1px solid #dfe4ee;
+  border-radius:12px;
+  background:#f8faff
+}
+.sourceNavMain{
+  display:grid;
+  grid-template-columns:auto auto minmax(230px,1fr) auto auto;
+  gap:6px;
+  align-items:end
+}
+.sourceNavMain .miniBtn{min-height:40px;padding:7px 10px;font-size:11px;white-space:nowrap}
+.sourceNavPrimary{font-weight:900!important}
+.sourceNavMinor{color:#667085!important}
+.sourcePageJumpBox{
+  display:grid;
+  grid-template-columns:auto 72px auto auto;
+  align-items:end;
+  justify-content:center;
+  gap:5px;
+  min-width:0
+}
+.sourcePageJumpBox label{font-size:10px;font-weight:800;color:#667085;padding-bottom:12px}
+.sourcePageJumpBox input{
+  width:72px;min-height:40px;padding:7px 8px;border:1px solid #cfd5df;border-radius:8px;
+  background:#fff;font-size:16px;text-align:center
+}
+.sourcePageJumpBox .sourcePageTotal{align-self:center;padding-top:14px;margin:0!important;font-size:11px!important}
+.sourcePageJumpBox .miniBtn{min-height:40px}
+.sourceNavTools{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:8px;
+  padding-top:8px;
+  border-top:1px dashed #d9dfeb
+}
+.sourceZoomLabel{font-size:10px!important}
+.sourceZoomLabel select{min-height:36px!important;margin-top:2px!important;padding:5px 8px!important;font-size:11px!important}
+.sourceNavTip{font-size:10px;color:#667085;line-height:1.35;text-align:right}
+
+.sourceMobileHintClean{margin:0 0 10px!important}
+.sourceAnnoToolbarClean{
+  margin:0 0 10px!important;
+  padding:9px 10px!important;
+  border:1px solid #e4e7ec!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  box-shadow:none!important
+}
+.sourceAnnoHead{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-bottom:7px;padding-bottom:6px;border-bottom:1px solid #f0f1f3
+}
+.sourceAnnoHead b{font-size:12px;color:#344054}
+.sourceAnnoHead span{font-size:9px;color:#98a2b3;text-align:right}
+.sourceAnnoTools{gap:5px!important}
+.sourceAnnoTools .miniBtn{min-height:38px!important;padding:6px 9px!important;font-size:10px!important}
+.sourceAnnoStatus{margin-top:6px!important;font-size:10px!important;color:#667085!important}
+
+.sourceImageStage{
+  height:calc(100vh - 330px)!important;
+  min-height:520px!important;
+  padding:12px!important;
+  border-radius:12px!important;
+  background:#484b50!important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)
+}
+.sourcePageWrap{max-width:100%!important}
+.sourcePageImage{box-shadow:0 8px 28px rgba(0,0,0,.30)!important}
+.sourcePageFooter{display:none!important}
+.sourceFallback{margin-top:7px!important;font-size:9px!important;color:#98a2b3!important}
+
+@media(max-width:1024px){
+  .sourceViewGrid{grid-template-columns:220px minmax(0,1fr)!important;gap:10px!important}
+  .sourceSidebar{padding:10px!important}
+  .sourceViewerCard{padding:11px!important}
+  .sourceNavMain{grid-template-columns:auto auto minmax(190px,1fr) auto auto}
+  .sourceNavMain .miniBtn{padding:6px 8px;font-size:10px}
+  .sourceImageStage{height:calc(100vh - 350px)!important;min-height:470px!important}
+}
+
+@media(max-width:680px){
+  #view-source{padding-bottom:70px}
+  .sourceViewGrid{display:block!important}
+  .sourceSidebar{
+    position:static!important;
+    max-height:none!important;
+    margin-bottom:9px!important;
+    padding:10px!important
+  }
+  .sourceSideHead{padding-bottom:7px}
+  .sourceSideHead h2{font-size:18px!important}
+  .sourceSideHead p{font-size:10px!important}
+  .sourceGroup{margin-top:9px!important}
+  .sourceGroup h3{font-size:10px!important;margin-bottom:5px!important}
+  .sourceGroup:not(:last-child){padding-bottom:2px}
+  .sourceGroup .sourceItem{
+    display:inline-grid!important;
+    vertical-align:top;
+    width:160px!important;
+    min-height:50px!important;
+    margin:0 5px 5px 0!important;
+    grid-template-columns:28px minmax(0,1fr)!important
+  }
+  .sourceGroup .sourceArrow{display:none!important}
+  .sourceGroup{
+    white-space:nowrap;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:4px
+  }
+  .sourceGroup h3{position:sticky;left:0;background:#fff;z-index:1;width:max-content;padding-right:8px}
+  .sourceItemText{white-space:normal}
+
+  .sourceViewerCard{padding:9px!important;border-radius:12px!important}
+  .sourceViewerHeadClean{display:flex!important;align-items:flex-start!important;padding:1px 1px 8px!important}
+  .sourceViewerHeadClean h2{font-size:18px!important;margin-top:4px!important}
+  .sourceViewerMeta{font-size:10px!important}
+  .sourcePdfBtn{min-height:36px!important;padding:6px 8px!important;font-size:9px!important;max-width:104px;text-align:center}
+  .sourceModeTag{font-size:9px;min-height:21px;padding:2px 6px}
+
+  .sourceNavPanel{padding:8px!important;margin-bottom:8px!important}
+  .sourceNavMain{
+    grid-template-columns:1fr minmax(120px,1.15fr) 1fr!important;
+    gap:5px!important
+  }
+  .sourceNavMain #sourceFirstBtn,.sourceNavMain #sourceLastBtn{display:none!important}
+  .sourceNavMain #sourcePrevBtn{grid-column:1}
+  .sourceNavMain .sourcePageJumpBox{grid-column:2}
+  .sourceNavMain #sourceNextBtn{grid-column:3}
+  .sourcePageJumpBox{
+    grid-template-columns:1fr auto!important;
+    gap:3px!important;
+    align-items:center!important
+  }
+  .sourcePageJumpBox label{display:none!important}
+  .sourcePageJumpBox input{width:100%!important;min-width:0!important;min-height:40px!important;font-size:15px!important;padding:6px!important}
+  .sourcePageJumpBox .sourcePageTotal{padding:0!important;align-self:center!important;font-size:10px!important}
+  .sourcePageJumpBox #sourceGoPageBtn{grid-column:1 / 3!important;min-height:34px!important;padding:5px!important;font-size:10px!important}
+  .sourceNavMain .miniBtn{min-height:40px!important;padding:6px 5px!important;font-size:10px!important;white-space:normal!important;line-height:1.2}
+  .sourceNavTools{margin-top:6px!important;padding-top:6px!important;align-items:center!important}
+  .sourceZoomLabel{width:132px!important;flex:0 0 132px!important}
+  .sourceZoomLabel select{width:100%!important;min-height:34px!important}
+  .sourceNavTip{font-size:9px!important;text-align:left!important}
+
+  .sourceAnnoToolbarClean{padding:8px!important;margin-bottom:8px!important}
+  .sourceAnnoHead{margin-bottom:6px!important;padding-bottom:5px!important}
+  .sourceAnnoHead span{display:none!important}
+  .sourceAnnoTools{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:5px!important}
+  .sourceAnnoTools .miniBtn{width:100%!important;min-height:38px!important;padding:5px!important;font-size:10px!important}
+  .sourceAnnoTools #sourceAnnoUndoBtn{grid-column:auto!important}
+  .sourceAnnoTools #sourceAnnoClearBtn{grid-column:2 / 4!important}
+  .sourceAnnoStatus{font-size:9px!important;line-height:1.35!important}
+
+  .sourceImageStage{
+    height:60vh!important;
+    min-height:390px!important;
+    padding:6px!important;
+    border-radius:9px!important
+  }
+  .sourcePageFooter{display:grid!important;position:sticky!important;bottom:calc(66px + env(safe-area-inset-bottom))!important;z-index:70!important;margin-top:7px!important;padding:5px 6px!important}
+  .sourcePageFooter .btn{min-height:40px!important;font-size:10px!important;padding:6px 8px!important}
+  .sourcePageFooter b{font-size:11px!important}.sourcePageFooter small{font-size:9px!important}
+  .sourceFallback{display:none!important}
+}
+
+@media(max-height:500px) and (orientation:landscape) and (max-width:950px){
+  .sourceSidebar{display:none!important}
+  .sourceViewerHeadClean{margin-bottom:6px!important}
+  .sourceNavPanel{padding:6px!important}
+  .sourceAnnoToolbarClean{padding:6px!important}
+  .sourceAnnoStatus,.sourceMobileHintClean{display:none!important}
+  .sourceImageStage{height:68vh!important;min-height:300px!important}
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -923,12 +1188,13 @@ body.ann-red-eraser #annStatus{
 <meta name="format-detection" content="telephone=no">
 <meta name="theme-color" content="#243f9f">
 
+<script src="config.js"></script>
 </head>
 <body>
 <div class="shell">
 <section class="hero">
 <h1>資安職能訓練｜資通安全概論</h1>
-<p>11504 詳細整理＋450題題庫｜後端Firebase同步｜原檔逐頁影像可註記｜iPhone / iPad 自動適應</p>
+<p>11504 詳細整理＋450題題庫｜GitHub Pages＋Firebase後端同步｜原始教材整潔檢視版｜iPhone / iPad 自動適應</p>
 <span class="badge">完全離線單一HTML｜詳細整理依數位發展部資通安全署11504三日教材｜題庫為模擬題，非官方考古題</span>
 </section>
 
@@ -1842,24 +2108,33 @@ body.ann-red-eraser #annStatus{
     </aside>
 
     <main class="card sourceViewerCard">
-      <div class="sourceViewerHead">
-        <div>
-          <span class="dayTag">逐頁影像</span>
+      <div class="sourceViewerHead sourceViewerHeadClean">
+        <div class="sourceTitleBlock">
+          <div class="sourceTitleLine">
+            <span class="dayTag">原始教材</span>
+            <span class="sourceModeTag">逐頁檢視</span>
+          </div>
           <h2 id="sourceViewerTitle">第1天主要教材</h2>
           <div id="sourceViewerMeta" class="sourceViewerMeta">第1～4單元 · 共126頁</div>
         </div>
+        <a id="sourceOpenBtn" class="miniBtn sourceOpenBtn sourcePdfBtn" href="original/day1.pdf" target="_blank" rel="noopener">↗ 開啟 PDF 原檔</a>
+      </div>
 
-        <div class="sourceViewerActions sourceImageActions">
-          <button id="sourceFirstBtn" class="miniBtn" type="button">|‹ 第一頁</button>
-          <button id="sourcePrevBtn" class="miniBtn" type="button">‹ 上一頁</button>
-          <label class="pageJumpLabel">頁碼
+      <div class="sourceNavPanel" aria-label="原始教材換頁控制">
+        <div class="sourceNavMain">
+          <button id="sourceFirstBtn" class="miniBtn sourceNavMinor" type="button">|‹ 第一頁</button>
+          <button id="sourcePrevBtn" class="miniBtn sourceNavPrimary" type="button">‹ 上一頁</button>
+          <div class="sourcePageJumpBox">
+            <label for="sourcePageInput">頁碼</label>
             <input id="sourcePageInput" type="number" min="1" value="1" inputmode="numeric">
-          </label>
-          <span id="sourcePageTotal" class="sourcePageTotal">/ 126</span>
-          <button id="sourceGoPageBtn" class="miniBtn primary" type="button">前往</button>
-          <button id="sourceNextBtn" class="miniBtn" type="button">下一頁 ›</button>
-          <button id="sourceLastBtn" class="miniBtn" type="button">末頁 ›|</button>
-          <label class="sourceZoomLabel">縮放
+            <span id="sourcePageTotal" class="sourcePageTotal">/ 126</span>
+            <button id="sourceGoPageBtn" class="miniBtn primary" type="button">前往</button>
+          </div>
+          <button id="sourceNextBtn" class="miniBtn sourceNavPrimary" type="button">下一頁 ›</button>
+          <button id="sourceLastBtn" class="miniBtn sourceNavMinor" type="button">末頁 ›|</button>
+        </div>
+        <div class="sourceNavTools">
+          <label class="sourceZoomLabel">顯示比例
             <select id="sourceZoomSelect">
               <option value="fit">適合寬度</option>
               <option value="1">100%</option>
@@ -1868,15 +2143,16 @@ body.ann-red-eraser #annStatus{
               <option value="2">200%</option>
             </select>
           </label>
-          <a id="sourceOpenBtn" class="miniBtn sourceOpenBtn" href="original/day1.pdf" target="_blank" rel="noopener">↗ PDF原檔</a>
+          <span class="sourceNavTip">可用 ← → 鍵換頁；iPhone / iPad 可左右滑動</span>
         </div>
       </div>
 
-      <div class="sourceMobileHint">
-        已改為系統逐頁換頁，不再依賴瀏覽器 PDF 換頁功能。iPhone / iPad 可左右滑動圖片切換上一頁、下一頁。
+      <div class="sourceMobileHint sourceMobileHintClean">
+        <b>行動裝置提示：</b>教材已改為逐頁影像，iPhone / iPad 可直接左右滑動換頁；需要放大時可使用上方「顯示比例」。
       </div>
 
-      <div id="sourceAnnoToolbar" class="sourceAnnoToolbar">
+      <div id="sourceAnnoToolbar" class="sourceAnnoToolbar sourceAnnoToolbarClean">
+        <div class="sourceAnnoHead"><b>✏️ 本頁註記</b><span>註記會依教材與頁碼分開保存</span></div>
         <div class="sourceAnnoTools">
           <button id="sourceAnnoBrowseBtn" class="miniBtn active" type="button">👆 瀏覽</button>
           <button id="sourceAnnoHighlightBtn" class="miniBtn sourceAnnoHighlight" type="button">🖍 螢光筆</button>
@@ -2800,7 +3076,10 @@ function toggleUnitDetails(u, openState){
 
 
 <script>
-/* ===== v9 後端同步：前端不含 Firebase 設定 ===== */
+/* ===== v12 GitHub Pages + Firebase Functions 後端同步 =====
+   前端不含 Firebase apiKey / projectId。
+   GitHub Pages 只負責靜態網站；登入與 Firestore 同步由 Firebase Functions 處理。
+*/
 (function(){
   const SYNC_PREFIXES=[
     "sec11504_ann_v5_",
@@ -2810,13 +3089,25 @@ function toggleUnitDetails(u, openState){
     "secquiz11504wrong_v2",
     "secquiz11504fav_v2"
   ];
+  const AUTH_KEY="sec11504_backend_auth_v2";
+  const cfg=(window.APP_CONFIG||{});
+  const API_BASE=String(cfg.API_BASE||"").replace(/\/+$/,"");
+
   const nativeSet=localStorage.setItem.bind(localStorage);
   const nativeRemove=localStorage.removeItem.bind(localStorage);
-  let loggedIn=false, applyingRemote=false, timer=null, pending=new Set();
+
+  let loggedIn=false;
+  let applyingRemote=false;
+  let timer=null;
+  let pending=new Set();
+  let auth=loadAuth();
 
   const $b=id=>document.getElementById(id);
   const isSyncKey=k=>SYNC_PREFIXES.some(p=>k===p||k.startsWith(p));
 
+  function backendReady(){
+    return !!API_BASE && !/YOUR_|你的|PROJECT_ID/i.test(API_BASE);
+  }
   function setState(state,msg){
     const d=$b("backendSyncDot"),s=$b("backendSyncStatus");
     if(d)d.className="backendSyncDot "+state;
@@ -2830,18 +3121,66 @@ function toggleUnitDetails(u, openState){
   }
   function msg(t,ok=false){
     const e=$b("backendLoginMsg");if(!e)return;
-    e.textContent=t;e.className="small backendLoginMsg "+(ok?"ok":"err");
+    e.textContent=t;
+    e.className="small backendLoginMsg "+(ok?"ok":"err");
   }
-  async function api(path,opts={}){
-    const res=await fetch(path,{
-      credentials:"include",
-      headers:{"Content-Type":"application/json",...(opts.headers||{})},
+  function loadAuth(){
+    try{return JSON.parse(localStorage.getItem(AUTH_KEY)||"null")||null}catch(e){return null}
+  }
+  function saveAuth(v){
+    auth=v||null;
+    if(auth)nativeSet(AUTH_KEY,JSON.stringify(auth));
+    else nativeRemove(AUTH_KEY);
+  }
+  function authHeaders(){
+    return auth?.idToken ? {"Authorization":"Bearer "+auth.idToken} : {};
+  }
+
+  async function rawApi(path,opts={},useAuth=true){
+    if(!backendReady()) throw new Error("尚未設定後端 API 網址，請先修改 public/config.js 的 API_BASE。");
+    const res=await fetch(API_BASE+path,{
+      mode:"cors",
+      cache:"no-store",
+      headers:{
+        "Content-Type":"application/json",
+        ...(useAuth?authHeaders():{}),
+        ...(opts.headers||{})
+      },
       ...opts
     });
-    const data=await res.json().catch(()=>({}));
-    if(!res.ok)throw new Error(data.error||"伺服器錯誤");
+    let data={};
+    try{data=await res.json()}catch(e){}
+    return {res,data};
+  }
+
+  async function refreshAuth(){
+    if(!auth?.refreshToken) throw new Error("登入已逾時，請重新登入。");
+    const {res,data}=await rawApi("/refresh",{
+      method:"POST",
+      body:JSON.stringify({refreshToken:auth.refreshToken})
+    },false);
+    if(!res.ok){
+      saveAuth(null);
+      throw new Error(data.error||"登入已逾時，請重新登入。");
+    }
+    saveAuth({
+      idToken:data.idToken,
+      refreshToken:data.refreshToken||auth.refreshToken,
+      email:data.email||auth.email||"",
+      expiresAt:Date.now()+(Number(data.expiresIn||3600)*1000)
+    });
+  }
+
+  async function api(path,opts={},allowRefresh=true){
+    let {res,data}=await rawApi(path,opts,true);
+    if(res.status===401 && allowRefresh && auth?.refreshToken){
+      await refreshAuth();
+      ({res,data}=await rawApi(path,opts,true));
+    }
+    if(!res.ok) throw new Error(data.error||("後端錯誤 "+res.status));
     return data;
   }
+
   function localItems(){
     const out={};
     for(let i=0;i<localStorage.length;i++){
@@ -2850,39 +3189,66 @@ function toggleUnitDetails(u, openState){
     }
     return out;
   }
+
   async function checkSession(){
+    if(!backendReady()){
+      loggedIn=false;
+      setState("error","GitHub Pages 已就緒，但尚未設定 Firebase Functions API 網址。");
+      return;
+    }
+    if(!auth?.idToken){
+      loggedIn=false;
+      $b("backendLogoutBtn")?.classList.add("hidden");
+      $b("backendLoginOpenBtn")?.classList.remove("hidden");
+      setState("offline","尚未登入同步帳號。");
+      return;
+    }
     try{
-      const d=await api("/api/me");
+      const d=await api("/me");
       loggedIn=!!d.authenticated;
       $b("backendLogoutBtn")?.classList.toggle("hidden",!loggedIn);
       $b("backendLoginOpenBtn")?.classList.toggle("hidden",loggedIn);
       if(loggedIn){
-        setState("online",`已登入 ${d.email||"同步帳號"}｜後端同步已啟用`);
-        await downloadCloud(false);
-      }else setState("offline","尚未登入同步帳號。");
+        if(d.email && auth) {
+          auth.email=d.email;
+          saveAuth(auth);
+        }
+        setState("online",`已登入 ${d.email||auth?.email||"同步帳號"}｜GitHub Pages 跨裝置同步已啟用`);
+        await downloadCloud(false,true);
+      }else{
+        saveAuth(null);
+        setState("offline","尚未登入同步帳號。");
+      }
     }catch(e){
       loggedIn=false;
-      setState("error","無法連線同步後端。");
+      setState("error","無法連線同步後端："+e.message);
     }
   }
+
   async function uploadItems(keys){
     if(!loggedIn||applyingRemote)return;
     const items={};
     keys.forEach(k=>items[k]=localStorage.getItem(k));
     if(!Object.keys(items).length)return;
     setState("syncing","正在同步最新學習資料…");
-    await api("/api/sync/push",{method:"POST",body:JSON.stringify({items})});
+    await api("/sync/push",{method:"POST",body:JSON.stringify({items})});
     setState("online","已完成雲端同步。");
   }
+
   function queue(k){
     if(!loggedIn||!isSyncKey(k)||applyingRemote)return;
     pending.add(k);
     clearTimeout(timer);
     timer=setTimeout(async()=>{
       const keys=[...pending];pending.clear();
-      try{await uploadItems(keys)}catch(e){setState("error","自動同步失敗，稍後會再同步。");}
-    },800);
+      try{await uploadItems(keys)}
+      catch(e){
+        keys.forEach(k=>pending.add(k));
+        setState("error","自動同步失敗："+e.message);
+      }
+    },850);
   }
+
   localStorage.setItem=function(k,v){
     nativeSet(k,v);
     if(isSyncKey(k))queue(k);
@@ -2892,12 +3258,14 @@ function toggleUnitDetails(u, openState){
     if(isSyncKey(k))queue(k);
   };
 
-  async function downloadCloud(reload=true){
+  async function downloadCloud(reload=true,uploadLocalOnly=false){
     if(!loggedIn)return;
     setState("syncing","正在下載雲端學習資料…");
-    const d=await api("/api/sync/pull");
+    const d=await api("/sync/pull");
     const items=d.items||{};
+    const remoteKeys=new Set(Object.keys(items));
     let changed=false;
+
     applyingRemote=true;
     try{
       for(const [k,v] of Object.entries(items)){
@@ -2908,40 +3276,82 @@ function toggleUnitDetails(u, openState){
           nativeSet(k,String(v));changed=true;
         }
       }
-    }finally{applyingRemote=false}
+    }finally{
+      applyingRemote=false;
+    }
+
+    // 第一次登入：雲端資料優先，但本機獨有資料也補上傳。
+    if(uploadLocalOnly){
+      const localOnly=[];
+      for(let i=0;i<localStorage.length;i++){
+        const k=localStorage.key(i);
+        if(k&&isSyncKey(k)&&!remoteKeys.has(k))localOnly.push(k);
+      }
+      if(localOnly.length) await uploadItems(localOnly);
+    }
+
     setState("online","雲端資料已同步。");
-    if(changed&&reload)setTimeout(()=>location.reload(),300);
+    if(changed&&reload)setTimeout(()=>location.reload(),350);
+    return changed;
+  }
+
+  async function doLogin(register){
+    const email=$b("backendEmail")?.value.trim()||"";
+    const password=$b("backendPassword")?.value||"";
+    if(!email||!password)throw new Error("請輸入 Email 與密碼。");
+
+    const {res,data}=await rawApi(register?"/register":"/login",{
+      method:"POST",
+      body:JSON.stringify({email,password})
+    },false);
+    if(!res.ok)throw new Error(data.error||(register?"建立帳號失敗":"登入失敗"));
+
+    saveAuth({
+      idToken:data.idToken,
+      refreshToken:data.refreshToken,
+      email:data.email||email,
+      expiresAt:Date.now()+(Number(data.expiresIn||3600)*1000)
+    });
+    loggedIn=true;
+    await downloadCloud(false,true);
+    return data;
   }
 
   window.addEventListener("DOMContentLoaded",()=>{
-    $b("backendLoginOpenBtn")?.addEventListener("click",()=>openLogin(true));
+    if(!backendReady()){
+      setState("error","請先設定 public/config.js 的 API_BASE，再使用跨裝置同步。");
+    }
+
+    $b("backendLoginOpenBtn")?.addEventListener("click",()=>{
+      if(!backendReady()){
+        alert("尚未設定後端 API 網址。請先修改 GitHub 專案 public/config.js 的 API_BASE。");
+        return;
+      }
+      openLogin(true);
+    });
     $b("backendLoginClose")?.addEventListener("click",()=>openLogin(false));
     document.querySelector("[data-backend-close]")?.addEventListener("click",()=>openLogin(false));
 
     $b("backendLoginBtn")?.addEventListener("click",async()=>{
       try{
-        const email=$b("backendEmail")?.value.trim()||"";
-        const password=$b("backendPassword")?.value||"";
-        const d=await api("/api/login",{method:"POST",body:JSON.stringify({email,password})});
-        msg("登入成功。",true); loggedIn=true; openLogin(false);
-        await api("/api/sync/push",{method:"POST",body:JSON.stringify({items:localItems()})});
+        await doLogin(false);
+        msg("登入成功，正在同步。",true);
+        openLogin(false);
         await checkSession();
       }catch(e){msg(e.message,false)}
     });
 
     $b("backendRegisterBtn")?.addEventListener("click",async()=>{
       try{
-        const email=$b("backendEmail")?.value.trim()||"";
-        const password=$b("backendPassword")?.value||"";
-        await api("/api/register",{method:"POST",body:JSON.stringify({email,password})});
-        msg("帳號建立成功，已登入。",true); loggedIn=true; openLogin(false);
-        await api("/api/sync/push",{method:"POST",body:JSON.stringify({items:localItems()})});
+        await doLogin(true);
+        msg("帳號建立成功，正在同步。",true);
+        openLogin(false);
         await checkSession();
       }catch(e){msg(e.message,false)}
     });
 
-    $b("backendLogoutBtn")?.addEventListener("click",async()=>{
-      try{await api("/api/logout",{method:"POST",body:"{}"});}catch(e){}
+    $b("backendLogoutBtn")?.addEventListener("click",()=>{
+      saveAuth(null);
       loggedIn=false;
       setState("offline","已登出同步帳號。");
       $b("backendLogoutBtn")?.classList.add("hidden");
@@ -2949,7 +3359,9 @@ function toggleUnitDetails(u, openState){
     });
 
     checkSession();
-    setInterval(()=>{if(loggedIn)downloadCloud(false).catch(()=>{})},30000);
+    setInterval(()=>{
+      if(loggedIn)downloadCloud(false,false).catch(e=>setState("error","同步暫時失敗："+e.message));
+    },30000);
   });
 })();
 </script>
