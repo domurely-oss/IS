@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504｜Firebase同步＋原始教材檢視</title>
+<title>資安職能訓練｜資通安全概論 11504｜原始教材可註記版</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -482,68 +482,6 @@ body.ann-red-eraser #annStatus{
 }
 
 
-/* ===== v6 Firebase 跨裝置同步 ===== */
-.firebaseSyncBar{
-  margin:8px 0 12px;
-  padding:10px 12px;
-  border:1px solid #d7deeb;
-  border-radius:14px;
-  background:linear-gradient(180deg,#ffffff,#f8faff);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  box-shadow:0 5px 18px rgba(25,42,70,.06)
-}
-.firebaseSyncLeft{display:flex;align-items:center;gap:9px;min-width:0}
-.firebaseSyncLeft b{display:block;font-size:13px;color:#243f9f}
-.firebaseSyncLeft span:not(.firebaseCloudDot){display:block;font-size:11px;color:#667085;line-height:1.4;margin-top:2px}
-.firebaseCloudDot{width:10px;height:10px;border-radius:50%;flex:0 0 10px;background:#98a2b3;box-shadow:0 0 0 3px rgba(152,162,179,.12)}
-.firebaseCloudDot.online{background:#12b76a;box-shadow:0 0 0 3px rgba(18,183,106,.12)}
-.firebaseCloudDot.syncing{background:#f79009;box-shadow:0 0 0 3px rgba(247,144,9,.12)}
-.firebaseCloudDot.offline{background:#98a2b3}
-.firebaseCloudDot.error{background:#d92d20;box-shadow:0 0 0 3px rgba(217,45,32,.12)}
-.firebaseSyncActions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.firebaseSyncActions .miniBtn{white-space:nowrap}
-
-.firebaseModal{position:fixed;inset:0;z-index:10050;display:grid;place-items:center;padding:18px}
-.firebaseModal.hidden{display:none}
-.firebaseModalBackdrop{position:absolute;inset:0;background:rgba(18,24,38,.56);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
-.firebaseModalPanel{
-  position:relative;z-index:1;width:min(820px,100%);max-height:min(90vh,900px);overflow:auto;
-  background:#fff;border-radius:20px;padding:24px;box-shadow:0 24px 90px rgba(0,0,0,.25)
-}
-.firebaseStep{margin-top:15px;border:1px solid var(--line);border-radius:14px;padding:14px;background:#fbfcff}
-.firebaseStep h3{margin:0 0 8px;color:#2e4f9f;font-size:16px}
-.firebaseConfigGrid,.firebaseLoginGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.firebaseConfigGrid label,.firebaseLoginGrid label{margin:0;font-size:11px}
-.firebaseConfigGrid input,.firebaseLoginGrid input{
-  width:100%;margin-top:4px;border:1px solid #cfd5df;border-radius:9px;padding:9px 10px;background:#fff;color:#172033
-}
-.firebaseRowBtns{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
-.firebaseRowBtns .btn{min-height:40px;padding:8px 12px;font-size:12px}
-.firebaseMsg{margin-top:8px;min-height:18px}
-.firebaseMsg.ok{color:#067647;font-weight:700}
-.firebaseMsg.err{color:#b42318;font-weight:700}
-.firebaseMsg.warn{color:#b54708;font-weight:700}
-.firebaseChecklist{padding-left:20px;margin-bottom:0}
-.firebaseChecklist li{margin:5px 0}
-
-@media(max-width:680px){
-  .firebaseSyncBar{padding:9px 10px;align-items:flex-start;flex-direction:column;border-radius:12px}
-  .firebaseSyncActions{width:100%}
-  .firebaseSyncActions .miniBtn{flex:1}
-  .firebaseModal{align-items:end;padding:0}
-  .firebaseModalPanel{
-    width:100%;max-width:none;max-height:89dvh;border-radius:20px 20px 0 0;
-    padding:20px 13px calc(18px + env(safe-area-inset-bottom))
-  }
-  .firebaseConfigGrid,.firebaseLoginGrid{grid-template-columns:1fr}
-  .firebaseRowBtns{display:grid;grid-template-columns:1fr}
-  .firebaseRowBtns .btn{width:100%}
-}
-
-
 /* ===== v7.1 註記工具「不浮動」版本 ===== */
 .annotationBar{
   position:static!important;
@@ -787,6 +725,195 @@ body.ann-red-eraser #annStatus{
   .sourceMobileHint{display:block}
 }
 
+
+/* ===== v9 Firebase 設定後端化 ===== */
+.backendSyncBar{
+  margin:8px 0 12px;
+  padding:10px 12px;
+  border:1px solid #d7deeb;
+  border-radius:14px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  box-shadow:0 4px 14px rgba(25,42,70,.06)
+}
+.backendSyncLeft{display:flex;align-items:center;gap:9px;min-width:0}
+.backendSyncLeft b{display:block;font-size:13px;color:#243f9f}
+.backendSyncLeft span:not(.backendSyncDot){display:block;font-size:11px;color:#667085;margin-top:2px;line-height:1.4}
+.backendSyncDot{width:10px;height:10px;border-radius:50%;flex:0 0 10px;background:#98a2b3}
+.backendSyncDot.online{background:#12b76a}
+.backendSyncDot.syncing{background:#f79009}
+.backendSyncDot.error{background:#d92d20}
+.backendSyncActions{display:flex;gap:6px;flex-wrap:wrap}
+
+.backendLoginModal{position:fixed;inset:0;z-index:10060;display:grid;place-items:center;padding:18px}
+.backendLoginModal.hidden{display:none}
+.backendLoginBackdrop{position:absolute;inset:0;background:rgba(18,24,38,.56);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.backendLoginPanel{
+  position:relative;z-index:1;width:min(460px,100%);background:#fff;border-radius:18px;
+  padding:22px;box-shadow:0 24px 80px rgba(0,0,0,.24)
+}
+.backendLoginPanel label{display:block;margin:10px 0 0;font-size:12px;font-weight:700;color:#475467}
+.backendLoginPanel input{
+  width:100%;margin-top:4px;padding:10px 11px;border:1px solid #cfd5df;border-radius:9px;
+  font-size:16px;background:#fff;color:#172033
+}
+.backendLoginBtns{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+.backendLoginMsg{margin-top:9px;min-height:18px}
+.backendLoginMsg.ok{color:#067647;font-weight:700}
+.backendLoginMsg.err{color:#b42318;font-weight:700}
+
+@media(max-width:680px){
+  .backendSyncBar{padding:9px 10px;align-items:flex-start;flex-direction:column;border-radius:12px}
+  .backendSyncActions{width:100%}
+  .backendSyncActions .miniBtn{flex:1}
+  .backendLoginModal{align-items:end;padding:0}
+  .backendLoginPanel{
+    width:100%;max-width:none;border-radius:20px 20px 0 0;
+    padding:20px 14px calc(20px + env(safe-area-inset-bottom))
+  }
+  .backendLoginBtns{display:grid;grid-template-columns:1fr}
+}
+
+
+/* ===== v10 原檔逐頁影像檢視：不依賴 PDF iframe 換頁 ===== */
+.sourceFrameWrap,.sourcePdfFrame{display:none!important}
+.sourceImageActions{align-items:center}
+.sourcePageTotal{
+  color:#667085;font-size:11px;font-weight:800;white-space:nowrap;margin:0 2px 4px -2px
+}
+.sourceZoomLabel{
+  margin:0;color:#667085;font-size:10px;font-weight:700
+}
+.sourceZoomLabel select{
+  display:block;min-height:40px;margin-top:2px;padding:6px 8px;
+  border:1px solid #cfd5df;border-radius:8px;background:#fff;color:#344054;font-size:12px
+}
+.sourceImageStage{
+  position:relative;width:100%;height:calc(100vh - 235px);min-height:560px;
+  overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  border:1px solid #d0d5dd;border-radius:12px;background:#3f4246;
+  display:block;text-align:center;padding:18px;scrollbar-gutter:stable
+}
+.sourcePageImage{
+  display:block;width:100%;height:auto;max-width:100%;margin:0 auto;
+  background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.3);
+  user-select:none;-webkit-user-select:none;transition:opacity .12s ease
+}
+.sourcePageImage.loading{opacity:.28}
+.sourceImageStage.zoomed .sourcePageImage{max-width:none;margin-left:auto;margin-right:auto}
+.sourceLoading{
+  position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);
+  display:none;padding:9px 12px;border-radius:10px;background:rgba(17,24,39,.82);
+  color:#fff;font-size:12px;font-weight:800;pointer-events:none
+}
+.sourceImageStage.is-loading .sourceLoading{display:block}
+.sourcePageFooter{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;
+  margin-top:9px;padding:8px 10px;border:1px solid #e4e7ec;border-radius:11px;background:#f8f9fc
+}
+.sourcePageFooter>div{text-align:center;line-height:1.2}
+.sourcePageFooter b{display:block;font-size:13px;color:#344054}
+.sourcePageFooter small{display:block;margin-top:2px;font-size:10px;color:#667085}
+.sourcePageFooter .btn{min-height:42px;padding:8px 14px;font-size:12px}
+.sourcePageFooter button:disabled,.sourceViewerActions button:disabled{opacity:.42;cursor:not-allowed}
+
+@media(max-width:1024px){
+  .sourceImageStage{height:calc(100vh - 265px);min-height:500px;padding:12px}
+}
+@media(max-width:680px){
+  .sourceViewerActions.sourceImageActions{
+    display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px
+  }
+  .sourceImageActions .miniBtn,.sourceImageActions .sourceOpenBtn{
+    width:100%;min-height:40px;padding:6px 4px;font-size:9px
+  }
+  .sourceImageActions .pageJumpLabel{grid-row:auto;grid-column:1}
+  .sourceImageActions .pageJumpLabel input{height:40px;min-height:40px;width:100%;padding:5px}
+  .sourceImageActions .sourcePageTotal{align-self:end;padding-bottom:12px;text-align:center;margin:0;font-size:10px}
+  .sourceImageActions #sourceGoPageBtn{grid-column:auto}
+  .sourceImageActions #sourceOpenBtn{grid-column:auto}
+  .sourceZoomLabel{grid-column:span 2}
+  .sourceZoomLabel select{width:100%;min-height:40px}
+  .sourceImageStage{
+    height:61vh;min-height:390px;padding:8px;border-radius:9px;touch-action:pan-y pan-x
+  }
+  .sourcePageFooter{position:sticky;bottom:calc(66px + env(safe-area-inset-bottom));z-index:80;padding:6px;background:rgba(248,249,252,.96);backdrop-filter:blur(8px)}
+  .sourcePageFooter .btn{min-height:44px;padding:7px 10px;font-size:11px}
+  .sourceMobileHint{display:block}
+}
+@media(max-height:500px) and (orientation:landscape) and (max-width:950px){
+  .sourceImageStage{height:70vh;min-height:300px}
+  .sourcePageFooter{bottom:calc(54px + env(safe-area-inset-bottom))}
+}
+
+
+/* ===== v11 原始教材可註記（螢光筆 / 紅筆） ===== */
+.sourceAnnoToolbar{
+  margin:0 0 10px;
+  padding:9px 10px;
+  border:1px solid #d7deeb;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 3px 12px rgba(25,42,70,.05)
+}
+.sourceAnnoTools{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  align-items:center
+}
+.sourceAnnoTools .miniBtn{min-height:40px}
+.sourceAnnoTools .miniBtn.active{background:#eef2ff;border-color:#98a2b3}
+.sourceAnnoHighlight{border-bottom:4px solid #f4d03f}
+.sourceAnnoRed{border-bottom:4px solid #d92d20}
+.sourceAnnoStatus{
+  margin-top:7px;
+  color:#667085;
+  font-size:11px;
+  line-height:1.4
+}
+.sourcePageWrap{
+  position:relative;
+  display:inline-block;
+  margin:0 auto;
+  max-width:100%
+}
+.sourceAnnoCanvas{
+  position:absolute;
+  left:0; top:0;
+  width:100%; height:100%;
+  z-index:8;
+  pointer-events:none;
+  touch-action:none;
+}
+.sourceImageStage.source-drawing .sourceAnnoCanvas{
+  pointer-events:auto;
+}
+.sourceImageStage.source-highlighting{
+  cursor:crosshair;
+}
+.sourceImageStage.source-redpen{
+  cursor:crosshair;
+}
+@media(max-width:680px){
+  .sourceAnnoToolbar{padding:8px 9px;border-radius:10px}
+  .sourceAnnoTools{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:6px
+  }
+  .sourceAnnoTools .miniBtn{width:100%;min-height:40px;padding:7px 6px;font-size:11px;line-height:1.25}
+  .sourceAnnoTools #sourceAnnoUndoBtn{grid-column:1/2}
+  .sourceAnnoTools #sourceAnnoClearBtn{grid-column:2/4}
+  .sourceAnnoStatus{font-size:10px}
+}
+@media print{
+  .sourceAnnoToolbar,.sourceAnnoCanvas{display:none!important}
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -801,7 +928,7 @@ body.ann-red-eraser #annStatus{
 <div class="shell">
 <section class="hero">
 <h1>資安職能訓練｜資通安全概論</h1>
-<p>11504 詳細整理＋450題題庫｜Firebase同步＋原始教材檢視｜iPhone / iPad 自動適應</p>
+<p>11504 詳細整理＋450題題庫｜後端Firebase同步｜原檔逐頁影像可註記｜iPhone / iPad 自動適應</p>
 <span class="badge">完全離線單一HTML｜詳細整理依數位發展部資通安全署11504三日教材｜題庫為模擬題，非官方考古題</span>
 </section>
 
@@ -836,18 +963,17 @@ body.ann-red-eraser #annStatus{
     <span id="annStatus" class="annStatus">螢光筆：先選取文字後按「螢光筆」。紅筆：按「紅筆」後可直接書寫。</span>
   </div>
 </div>
-
-<div id="firebaseSyncBar" class="firebaseSyncBar">
-  <div class="firebaseSyncLeft">
-    <span id="firebaseCloudDot" class="firebaseCloudDot offline"></span>
+<div id="backendSyncBar" class="backendSyncBar">
+  <div class="backendSyncLeft">
+    <span id="backendSyncDot" class="backendSyncDot offline"></span>
     <div>
-      <b id="firebaseSyncTitle">☁️ Firebase 跨裝置同步</b>
-      <span id="firebaseSyncStatus">尚未設定。設定後可同步螢光筆、紅筆、閱讀進度、收藏、錯題與成績。</span>
+      <b>☁️ 跨裝置同步</b>
+      <span id="backendSyncStatus">尚未登入同步帳號。</span>
     </div>
   </div>
-  <div class="firebaseSyncActions">
-    <button id="firebaseSetupBtn" class="miniBtn" type="button">⚙️ Firebase 設定</button>
-    <button id="firebaseApplyRemoteBtn" class="miniBtn primary hidden" type="button">↻ 套用雲端更新</button>
+  <div class="backendSyncActions">
+    <button id="backendLoginOpenBtn" class="miniBtn" type="button">登入同步</button>
+    <button id="backendLogoutBtn" class="miniBtn hidden" type="button">登出</button>
   </div>
 </div>
 
@@ -1652,7 +1778,7 @@ body.ann-red-eraser #annStatus{
   <span class="sourceIcon">📄</span>
   <span class="sourceItemText">
     <b>附表一｜A級公務機關</b>
-    <small>責任等級A · PDF</small>
+    <small>責任等級A · 3頁</small>
   </span>
   <span class="sourceArrow">›</span>
 </button>
@@ -1660,7 +1786,7 @@ body.ann-red-eraser #annStatus{
   <span class="sourceIcon">📄</span>
   <span class="sourceItemText">
     <b>附表二｜A級特定非公務機關</b>
-    <small>責任等級A · PDF</small>
+    <small>責任等級A · 3頁</small>
   </span>
   <span class="sourceArrow">›</span>
 </button>
@@ -1668,7 +1794,7 @@ body.ann-red-eraser #annStatus{
   <span class="sourceIcon">📄</span>
   <span class="sourceItemText">
     <b>附表三｜B級公務機關</b>
-    <small>責任等級B · PDF</small>
+    <small>責任等級B · 3頁</small>
   </span>
   <span class="sourceArrow">›</span>
 </button>
@@ -1676,7 +1802,7 @@ body.ann-red-eraser #annStatus{
   <span class="sourceIcon">📄</span>
   <span class="sourceItemText">
     <b>附表四｜B級特定非公務機關</b>
-    <small>責任等級B · PDF</small>
+    <small>責任等級B · 3頁</small>
   </span>
   <span class="sourceArrow">›</span>
 </button>
@@ -1684,7 +1810,7 @@ body.ann-red-eraser #annStatus{
   <span class="sourceIcon">📄</span>
   <span class="sourceItemText">
     <b>附表五｜C級公務機關</b>
-    <small>責任等級C · PDF</small>
+    <small>責任等級C · 2頁</small>
   </span>
   <span class="sourceArrow">›</span>
 </button>
@@ -1692,7 +1818,7 @@ body.ann-red-eraser #annStatus{
   <span class="sourceIcon">📄</span>
   <span class="sourceItemText">
     <b>附表六｜C級特定非公務機關</b>
-    <small>責任等級C · PDF</small>
+    <small>責任等級C · 2頁</small>
   </span>
   <span class="sourceArrow">›</span>
 </button>
@@ -1700,7 +1826,7 @@ body.ann-red-eraser #annStatus{
   <span class="sourceIcon">📄</span>
   <span class="sourceItemText">
     <b>附表七｜D級各機關</b>
-    <small>責任等級D · PDF</small>
+    <small>責任等級D · 1頁</small>
   </span>
   <span class="sourceArrow">›</span>
 </button>
@@ -1708,7 +1834,7 @@ body.ann-red-eraser #annStatus{
   <span class="sourceIcon">📄</span>
   <span class="sourceItemText">
     <b>附表八｜E級各機關</b>
-    <small>責任等級E · PDF</small>
+    <small>責任等級E · 1頁</small>
   </span>
   <span class="sourceArrow">›</span>
 </button>
@@ -1718,36 +1844,68 @@ body.ann-red-eraser #annStatus{
     <main class="card sourceViewerCard">
       <div class="sourceViewerHead">
         <div>
-          <span class="dayTag">原始檔案</span>
+          <span class="dayTag">逐頁影像</span>
           <h2 id="sourceViewerTitle">第1天主要教材</h2>
-          <div id="sourceViewerMeta" class="sourceViewerMeta">第1～4單元 · 126頁</div>
+          <div id="sourceViewerMeta" class="sourceViewerMeta">第1～4單元 · 共126頁</div>
         </div>
 
-        <div class="sourceViewerActions">
+        <div class="sourceViewerActions sourceImageActions">
+          <button id="sourceFirstBtn" class="miniBtn" type="button">|‹ 第一頁</button>
+          <button id="sourcePrevBtn" class="miniBtn" type="button">‹ 上一頁</button>
           <label class="pageJumpLabel">頁碼
             <input id="sourcePageInput" type="number" min="1" value="1" inputmode="numeric">
           </label>
-          <button id="sourcePrevBtn" class="miniBtn" type="button">‹ 上一頁</button>
+          <span id="sourcePageTotal" class="sourcePageTotal">/ 126</span>
+          <button id="sourceGoPageBtn" class="miniBtn primary" type="button">前往</button>
           <button id="sourceNextBtn" class="miniBtn" type="button">下一頁 ›</button>
-          <button id="sourceGoPageBtn" class="miniBtn primary" type="button">前往頁面</button>
-          <a id="sourceOpenBtn" class="miniBtn sourceOpenBtn" href="original/day1.pdf" target="_blank" rel="noopener">↗ 開啟 PDF 原檔</a>
+          <button id="sourceLastBtn" class="miniBtn" type="button">末頁 ›|</button>
+          <label class="sourceZoomLabel">縮放
+            <select id="sourceZoomSelect">
+              <option value="fit">適合寬度</option>
+              <option value="1">100%</option>
+              <option value="1.25">125%</option>
+              <option value="1.5">150%</option>
+              <option value="2">200%</option>
+            </select>
+          </label>
+          <a id="sourceOpenBtn" class="miniBtn sourceOpenBtn" href="original/day1.pdf" target="_blank" rel="noopener">↗ PDF原檔</a>
         </div>
       </div>
 
       <div class="sourceMobileHint">
-        <b>iPhone / iPad：</b>若內嵌 PDF 顯示不完整，可使用右上方「開啟 PDF 原檔」，由 Safari 原生 PDF 檢視器開啟。
+        已改為系統逐頁換頁，不再依賴瀏覽器 PDF 換頁功能。iPhone / iPad 可左右滑動圖片切換上一頁、下一頁。
       </div>
 
-      <div class="sourceFrameWrap">
-        <iframe id="sourcePdfFrame" class="sourcePdfFrame"
-          src="original/day1.pdf#page=1&view=FitH"
-          title="原始教材 PDF"
-          loading="lazy"></iframe>
+      <div id="sourceAnnoToolbar" class="sourceAnnoToolbar">
+        <div class="sourceAnnoTools">
+          <button id="sourceAnnoBrowseBtn" class="miniBtn active" type="button">👆 瀏覽</button>
+          <button id="sourceAnnoHighlightBtn" class="miniBtn sourceAnnoHighlight" type="button">🖍 螢光筆</button>
+          <button id="sourceAnnoRedBtn" class="miniBtn sourceAnnoRed" type="button">✍ 紅筆</button>
+          <button id="sourceAnnoUndoBtn" class="miniBtn" type="button">↶ 撤銷</button>
+          <button id="sourceAnnoClearBtn" class="miniBtn" type="button">🧹 清除此頁</button>
+        </div>
+        <div id="sourceAnnoStatus" class="sourceAnnoStatus">原始教材註記：按「螢光筆」或「紅筆」即可直接在目前頁面上書寫；按「瀏覽」可恢復正常滑動與換頁。</div>
+      </div>
+
+      <div id="sourceImageStage" class="sourceImageStage" tabindex="0" aria-label="原始教材逐頁檢視">
+        <div id="sourceLoading" class="sourceLoading">正在載入第 1 頁…</div>
+        <div id="sourcePageWrap" class="sourcePageWrap">
+          <img id="sourcePageImage" class="sourcePageImage"
+               src="source_pages/day1/001.webp"
+               alt="第1天主要教材 第1頁"
+               draggable="false">
+          <canvas id="sourceAnnoCanvas" class="sourceAnnoCanvas" aria-label="原始教材註記畫布"></canvas>
+        </div>
+      </div>
+
+      <div class="sourcePageFooter">
+        <button id="sourceFooterPrev" class="btn outline" type="button">‹ 上一頁</button>
+        <div><b id="sourceFooterPage">第 1 頁</b><small id="sourceFooterCount">共 126 頁</small></div>
+        <button id="sourceFooterNext" class="btn primary" type="button">下一頁 ›</button>
       </div>
 
       <div class="sourceFallback">
-        若瀏覽器未顯示 PDF，請使用
-        <a id="sourceFallbackLink" href="original/day1.pdf" target="_blank" rel="noopener">開啟原始 PDF</a>。
+        系統逐頁影像由原始 PDF 預先切分建立；如需完整 PDF，仍可使用上方「PDF原檔」。
       </div>
     </main>
   </div>
@@ -2501,570 +2659,518 @@ function toggleUnitDetails(u, openState){
 </script>
 
 
-<div id="firebaseModal" class="firebaseModal hidden" aria-hidden="true">
-  <div class="firebaseModalBackdrop" data-firebase-close="1"></div>
-  <div class="firebaseModalPanel" role="dialog" aria-modal="true" aria-labelledby="firebaseModalTitle">
-    <button id="firebaseModalClose" class="iosClose" type="button" aria-label="關閉">×</button>
 
-    <h2 id="firebaseModalTitle">☁️ Firebase 跨裝置同步設定</h2>
-    <p class="small">
-      本功能會把「使用者學習資料」同步到您自己的 Firebase 專案。
-      <b>教材本體與450題題庫不會上傳</b>；同步內容包含螢光筆、紅筆、已讀進度、收藏題、錯題與作答統計。
-    </p>
-
-    <section class="firebaseStep">
-      <h3>① Firebase 專案設定</h3>
-      <p class="small">在 Firebase Console 建立 Web App 後，把「firebaseConfig」中的欄位貼到下面。Firebase Web API Key 本來就是前端設定值，真正的資料保護請依本包附的 Firestore Rules。</p>
-      <div class="firebaseConfigGrid">
-        <label>apiKey<input id="fbApiKey" autocomplete="off" placeholder="AIza..."></label>
-        <label>authDomain<input id="fbAuthDomain" autocomplete="off" placeholder="your-project.firebaseapp.com"></label>
-        <label>projectId<input id="fbProjectId" autocomplete="off" placeholder="your-project-id"></label>
-        <label>storageBucket<input id="fbStorageBucket" autocomplete="off" placeholder="your-project.appspot.com（可留空）"></label>
-        <label>messagingSenderId<input id="fbMessagingSenderId" autocomplete="off" placeholder="1234567890（可留空）"></label>
-        <label>appId<input id="fbAppId" autocomplete="off" placeholder="1:1234567890:web:..."></label>
-      </div>
-      <div class="firebaseRowBtns">
-        <button id="fbSaveConfigBtn" class="btn primary" type="button">儲存設定並連線</button>
-        <button id="fbClearConfigBtn" class="btn outline" type="button">清除本機 Firebase 設定</button>
-      </div>
-      <div id="fbConfigMsg" class="small firebaseMsg"></div>
-    </section>
-
-    <section class="firebaseStep">
-      <h3>② 同步帳號</h3>
-      <p class="small">請在 Firebase Authentication 啟用「Email/Password」。不同裝置登入同一帳號，即會共用同一份學習資料。</p>
-      <div class="firebaseLoginGrid">
-        <label>Email<input id="fbEmail" type="email" autocomplete="username" placeholder="name@example.com"></label>
-        <label>密碼<input id="fbPassword" type="password" autocomplete="current-password" placeholder="至少6字元"></label>
-      </div>
-      <div class="firebaseRowBtns">
-        <button id="fbLoginBtn" class="btn primary" type="button">登入</button>
-        <button id="fbRegisterBtn" class="btn outline" type="button">建立同步帳號</button>
-        <button id="fbLogoutBtn" class="btn ghost hidden" type="button">登出</button>
-      </div>
-      <div id="fbAuthMsg" class="small firebaseMsg">目前未登入。</div>
-    </section>
-
-    <section class="firebaseStep">
-      <h3>③ 同步控制</h3>
-      <div class="firebaseRowBtns">
-        <button id="fbUploadBtn" class="btn outline" type="button" disabled>⬆ 上傳本機學習資料</button>
-        <button id="fbDownloadBtn" class="btn outline" type="button" disabled>⬇ 下載雲端學習資料</button>
-      </div>
-      <div class="notice">
-        <b>自動同步規則：</b>登入後，本機每次新增或修改螢光筆、紅筆、已讀進度、收藏、錯題或成績時會自動上傳。
-        開啟另一台裝置時會自動下載雲端資料。若兩台裝置同時修改同一個「註記區塊」，最後寫入者會覆蓋該區塊。
-      </div>
-      <div id="fbSyncMsg" class="small firebaseMsg"></div>
-    </section>
-
-    <section class="firebaseStep">
-      <h3>Firebase Console 必要設定</h3>
-      <ol class="small firebaseChecklist">
-        <li>Authentication → Sign-in method → 啟用 <b>Email/Password</b>。</li>
-        <li>Firestore Database → 建立資料庫。</li>
-        <li>套用 ZIP 內的 <b>firestore.rules</b>，只允許本人讀寫自己的同步資料。</li>
-        <li>建議將本包部署到 Firebase Hosting，以 HTTPS 網址開啟；iPhone/iPad 會比直接用「檔案」App 開本機 HTML 更穩定。</li>
-      </ol>
-    </section>
-  </div>
-</div>
-
-
-<script type="module">
-/* ===== v6 Firebase Cloud Sync =====
-   Firebase SDK is loaded from gstatic. This feature requires Internet access.
-   Sync scope: annotations + reading progress + quiz favorites/wrongs/stats.
-*/
-const FB_SDK_VERSION = "10.12.5";
-const CONFIG_KEY = "sec11504_firebase_config_v1";
-const DEVICE_KEY = "sec11504_firebase_device_v1";
-const RELOAD_FLAG = "sec11504_firebase_reload_once";
-const SYNC_PREFIXES = [
-  "sec11504_ann_v5_",
-  "secstudy11504read_v1",
-  "secquiz11504stats_v2",
-  "secquiz11504wrong_v2",
-  "secquiz11504fav_v2"
-];
-
-const f$ = id => document.getElementById(id);
-let fb = {
-  app:null, auth:null, db:null, user:null, modules:null,
-  ready:false, listenerUnsub:null, initialSyncDone:false,
-  pending:new Set(), timer:null, applyingRemote:false
-};
-const nativeSetItem = localStorage.setItem.bind(localStorage);
-const nativeRemoveItem = localStorage.removeItem.bind(localStorage);
-
-function isSyncKey(k){
-  return SYNC_PREFIXES.some(p => k === p || k.startsWith(p));
-}
-function deviceId(){
-  let id=localStorage.getItem(DEVICE_KEY);
-  if(!id){
-    id=(crypto.randomUUID ? crypto.randomUUID() : "dev-"+Date.now()+"-"+Math.random().toString(36).slice(2));
-    nativeSetItem(DEVICE_KEY,id);
-  }
-  return id;
-}
-function docIdForKey(k){
-  const bytes = new TextEncoder().encode(k);
-  let bin=""; bytes.forEach(b=>bin+=String.fromCharCode(b));
-  return btoa(bin).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
-}
-function localSyncKeys(){
-  const arr=[];
-  for(let i=0;i<localStorage.length;i++){
-    const k=localStorage.key(i);
-    if(k && isSyncKey(k)) arr.push(k);
-  }
-  return arr;
-}
-function setCloudState(state,msg){
-  const dot=f$("firebaseCloudDot"), status=f$("firebaseSyncStatus");
-  if(dot){dot.className="firebaseCloudDot "+state;}
-  if(status && msg)status.textContent=msg;
-}
-function msg(id,text,cls=""){
-  const el=f$(id); if(!el)return;
-  el.textContent=text; el.className="small firebaseMsg "+cls;
-}
-function openModal(show){
-  const m=f$("firebaseModal"); if(!m)return;
-  m.classList.toggle("hidden",!show);
-  m.setAttribute("aria-hidden",show?"false":"true");
-  document.body.style.overflow=show?"hidden":"";
-}
-function getSavedConfig(){
-  try{return JSON.parse(localStorage.getItem(CONFIG_KEY)||"null")}catch{return null}
-}
-function fillConfigForm(cfg){
-  cfg=cfg||{};
-  const map={
-    fbApiKey:"apiKey",fbAuthDomain:"authDomain",fbProjectId:"projectId",
-    fbStorageBucket:"storageBucket",fbMessagingSenderId:"messagingSenderId",fbAppId:"appId"
-  };
-  Object.entries(map).forEach(([id,key])=>{const e=f$(id);if(e)e.value=cfg[key]||"";});
-}
-function readConfigForm(){
-  return {
-    apiKey:f$("fbApiKey")?.value.trim()||"",
-    authDomain:f$("fbAuthDomain")?.value.trim()||"",
-    projectId:f$("fbProjectId")?.value.trim()||"",
-    storageBucket:f$("fbStorageBucket")?.value.trim()||"",
-    messagingSenderId:f$("fbMessagingSenderId")?.value.trim()||"",
-    appId:f$("fbAppId")?.value.trim()||""
-  };
-}
-function validConfig(c){
-  return !!(c && c.apiKey && c.authDomain && c.projectId && c.appId);
-}
-
-async function loadFirebaseModules(){
-  if(fb.modules)return fb.modules;
-  const base=`https://www.gstatic.com/firebasejs/${FB_SDK_VERSION}`;
-  try{
-    const [appMod,authMod,fireMod]=await Promise.all([
-      import(`${base}/firebase-app.js`),
-      import(`${base}/firebase-auth.js`),
-      import(`${base}/firebase-firestore.js`)
-    ]);
-    fb.modules={...appMod,...authMod,...fireMod};
-    return fb.modules;
-  }catch(e){
-    throw new Error("無法載入 Firebase SDK。請確認裝置可連外至 www.gstatic.com / firebase.googleapis.com。");
-  }
-}
-
-async function connectFirebase(cfg){
-  if(!validConfig(cfg)) throw new Error("Firebase 設定不完整：至少需要 apiKey、authDomain、projectId、appId。");
-  setCloudState("syncing","正在連線 Firebase…");
-  const m=await loadFirebaseModules();
-
-  // 單頁只初始化一次；若設定變更，請重整頁面
-  if(!fb.app){
-    fb.app=m.initializeApp(cfg);
-    fb.auth=m.getAuth(fb.app);
-    fb.db=m.getFirestore(fb.app);
-    try{await m.setPersistence(fb.auth,m.browserLocalPersistence);}catch(e){}
-    m.onAuthStateChanged(fb.auth,async user=>{
-      fb.user=user||null;
-      updateAuthUI();
-      if(user){
-        setCloudState("syncing",`已登入 ${user.email||"Firebase帳號"}，正在同步…`);
-        try{
-          await initialCloudSync();
-          attachRemoteListener();
-          setCloudState("online",`已登入 ${user.email||"Firebase帳號"}｜跨裝置同步已啟用`);
-        }catch(e){
-          console.error(e);
-          setCloudState("error","Firebase 已登入，但同步失敗。請檢查 Firestore Rules 或網路。");
-          msg("fbSyncMsg",friendlyError(e),"err");
-        }
-      }else{
-        fb.initialSyncDone=false;
-        if(fb.listenerUnsub){fb.listenerUnsub();fb.listenerUnsub=null;}
-        setCloudState("offline","Firebase 已設定，請登入同步帳號。");
-      }
-    });
-  }
-  fb.ready=true;
-  msg("fbConfigMsg","Firebase 設定已載入。","ok");
-  return true;
-}
-
-function userCollection(){
-  const m=fb.modules;
-  return m.collection(fb.db,"users",fb.user.uid,"studyState");
-}
-function keyDocRef(k){
-  const m=fb.modules;
-  return m.doc(fb.db,"users",fb.user.uid,"studyState",docIdForKey(k));
-}
-
-async function uploadKey(k){
-  if(!fb.user || !fb.db || !isSyncKey(k) || fb.applyingRemote)return;
-  const m=fb.modules;
-  const value=localStorage.getItem(k);
-  await m.setDoc(keyDocRef(k),{
-    key:k,
-    value:value===null?null:value,
-    deleted:value===null,
-    deviceId:deviceId(),
-    updatedAt:m.serverTimestamp(),
-    schema:1,
-    appVersion:"11504-v6"
-  },{merge:true});
-}
-function queueUpload(k){
-  if(!fb.user || !isSyncKey(k) || fb.applyingRemote)return;
-  fb.pending.add(k);
-  clearTimeout(fb.timer);
-  fb.timer=setTimeout(flushUploads,900);
-}
-async function flushUploads(){
-  if(!fb.user || !fb.pending.size)return;
-  const keys=[...fb.pending]; fb.pending.clear();
-  setCloudState("syncing","正在上傳最新學習資料…");
-  try{
-    await Promise.all(keys.map(uploadKey));
-    setCloudState("online",`已登入 ${fb.user.email||"Firebase帳號"}｜最新變更已同步`);
-  }catch(e){
-    console.error(e);
-    keys.forEach(k=>fb.pending.add(k));
-    setCloudState("error","自動同步失敗；稍後可按「Firebase設定」重新連線。");
-  }
-}
-
-// 攔截既有網站的 localStorage 寫入，自動同步使用者學習資料
-localStorage.setItem=function(k,v){
-  nativeSetItem(k,v);
-  if(isSyncKey(k))queueUpload(k);
-};
-localStorage.removeItem=function(k){
-  nativeRemoveItem(k);
-  if(isSyncKey(k))queueUpload(k);
-};
-
-async function uploadAllLocal(){
-  if(!fb.user)throw new Error("請先登入。");
-  const keys=localSyncKeys();
-  if(!keys.length){msg("fbSyncMsg","本機目前沒有可同步的學習資料。","warn");return;}
-  setCloudState("syncing",`正在上傳 ${keys.length} 筆學習資料…`);
-  for(let i=0;i<keys.length;i+=20){
-    await Promise.all(keys.slice(i,i+20).map(uploadKey));
-  }
-  setCloudState("online",`已上傳 ${keys.length} 筆學習資料。`);
-  msg("fbSyncMsg",`完成：已上傳 ${keys.length} 筆本機資料。`,"ok");
-}
-
-async function fetchRemoteDocs(){
-  const m=fb.modules;
-  const snap=await m.getDocs(userCollection());
-  return snap.docs.map(d=>d.data()).filter(x=>x && x.key);
-}
-function applyRemoteItems(items){
-  let changed=false;
-  fb.applyingRemote=true;
-  try{
-    for(const data of items){
-      const k=data.key;
-      if(!isSyncKey(k))continue;
-      if(data.deleted || data.value===null){
-        if(localStorage.getItem(k)!==null){nativeRemoveItem(k);changed=true;}
-      }else{
-        const v=String(data.value);
-        if(localStorage.getItem(k)!==v){nativeSetItem(k,v);changed=true;}
-      }
-    }
-  }finally{
-    fb.applyingRemote=false;
-  }
-  return changed;
-}
-
-async function downloadAllCloud(forceReload=true){
-  if(!fb.user)throw new Error("請先登入。");
-  setCloudState("syncing","正在下載雲端學習資料…");
-  const items=await fetchRemoteDocs();
-  if(!items.length){
-    msg("fbSyncMsg","雲端目前沒有學習資料。","warn");
-    setCloudState("online",`已登入 ${fb.user.email||"Firebase帳號"}｜雲端尚無資料`);
-    return false;
-  }
-  const changed=applyRemoteItems(items);
-  msg("fbSyncMsg",changed?`已下載 ${items.length} 筆資料，正在套用。`:`本機已是最新版本。`,"ok");
-  setCloudState("online",`已登入 ${fb.user.email||"Firebase帳號"}｜雲端資料已同步`);
-  if(changed && forceReload){
-    sessionStorage.setItem(RELOAD_FLAG,"1");
-    setTimeout(()=>location.reload(),500);
-  }
-  return changed;
-}
-
-async function initialCloudSync(){
-  if(!fb.user || fb.initialSyncDone)return;
-  const items=await fetchRemoteDocs();
-  const remoteKeys=new Set(items.map(x=>x.key));
-  if(items.length){
-    const changed=applyRemoteItems(items);
-
-    // 本機有、雲端沒有的資料補上傳，保留第一次登入前已做的註記
-    const localOnly=localSyncKeys().filter(k=>!remoteKeys.has(k));
-    if(localOnly.length){
-      for(let i=0;i<localOnly.length;i+=20){
-        await Promise.all(localOnly.slice(i,i+20).map(uploadKey));
-      }
-    }
-    fb.initialSyncDone=true;
-
-    if(changed && !sessionStorage.getItem(RELOAD_FLAG)){
-      sessionStorage.setItem(RELOAD_FLAG,"1");
-      setTimeout(()=>location.reload(),450);
-      return;
-    }
-  }else{
-    // 雲端是空的：將目前裝置既有資料建立為第一份雲端資料
-    await uploadAllLocal();
-    fb.initialSyncDone=true;
-  }
-  sessionStorage.removeItem(RELOAD_FLAG);
-}
-
-function attachRemoteListener(){
-  if(fb.listenerUnsub)fb.listenerUnsub();
-  const m=fb.modules;
-  let first=true;
-  fb.listenerUnsub=m.onSnapshot(userCollection(),snap=>{
-    if(first){first=false;return;}
-    const foreign=[];
-    snap.docChanges().forEach(ch=>{
-      if(ch.type==="removed")return;
-      const data=ch.doc.data();
-      if(data && data.key && data.deviceId!==deviceId())foreign.push(data);
-    });
-    if(!foreign.length)return;
-
-    const changed=applyRemoteItems(foreign);
-    if(changed){
-      setCloudState("syncing","收到另一台裝置的雲端更新。");
-      const btn=f$("firebaseApplyRemoteBtn");
-      if(btn)btn.classList.remove("hidden");
-      const status=f$("firebaseSyncStatus");
-      if(status)status.textContent="收到另一台裝置更新；按「套用雲端更新」重新整理即可顯示最新註記。";
-    }
-  },err=>{
-    console.error(err);
-    setCloudState("error","無法持續監聽雲端資料。請檢查網路或 Firestore Rules。");
-  });
-}
-
-function updateAuthUI(){
-  const logged=!!fb.user;
-  const logout=f$("fbLogoutBtn"), up=f$("fbUploadBtn"), down=f$("fbDownloadBtn");
-  if(logout)logout.classList.toggle("hidden",!logged);
-  if(up)up.disabled=!logged;
-  if(down)down.disabled=!logged;
-  msg("fbAuthMsg",logged?`已登入：${fb.user.email||fb.user.uid}`:"目前未登入。",logged?"ok":"");
-}
-
-function friendlyError(e){
-  const code=e && e.code ? e.code : "";
-  const map={
-    "auth/invalid-credential":"Email 或密碼不正確。",
-    "auth/user-not-found":"找不到此帳號。",
-    "auth/wrong-password":"密碼不正確。",
-    "auth/email-already-in-use":"此 Email 已建立過帳號。",
-    "auth/weak-password":"密碼強度不足，請至少使用6個字元。",
-    "auth/invalid-email":"Email 格式不正確。",
-    "auth/network-request-failed":"網路連線失敗，請確認可連線至 Firebase。",
-    "permission-denied":"Firestore 權限被拒絕，請套用本包的 firestore.rules。"
-  };
-  return map[code] || (e && e.message ? e.message : "發生未知錯誤。");
-}
-
-window.addEventListener("DOMContentLoaded",()=>{
-  // Modal events
-  f$("firebaseSetupBtn")?.addEventListener("click",()=>openModal(true));
-  f$("firebaseModalClose")?.addEventListener("click",()=>openModal(false));
-  document.querySelector("[data-firebase-close]")?.addEventListener("click",()=>openModal(false));
-
-  const cfg=getSavedConfig();
-  fillConfigForm(cfg);
-
-  f$("fbSaveConfigBtn")?.addEventListener("click",async()=>{
-    const c=readConfigForm();
-    if(!validConfig(c)){msg("fbConfigMsg","請填入 apiKey、authDomain、projectId、appId。","err");return;}
-    nativeSetItem(CONFIG_KEY,JSON.stringify(c));
-    msg("fbConfigMsg","設定已儲存，正在連線…","ok");
-    try{
-      await connectFirebase(c);
-      msg("fbConfigMsg","已連線 Firebase。若尚未登入，請在下方登入同步帳號。","ok");
-    }catch(e){
-      msg("fbConfigMsg",friendlyError(e),"err");
-      setCloudState("error","Firebase 連線失敗。");
-    }
-  });
-
-  f$("fbClearConfigBtn")?.addEventListener("click",()=>{
-    if(!confirm("確定清除這台裝置儲存的 Firebase 專案設定嗎？學習註記本身不會被刪除。"))return;
-    nativeRemoveItem(CONFIG_KEY);
-    fillConfigForm(null);
-    msg("fbConfigMsg","已清除本機 Firebase 設定。重新載入頁面後生效。","warn");
-  });
-
-  f$("fbLoginBtn")?.addEventListener("click",async()=>{
-    if(!fb.auth){msg("fbAuthMsg","請先完成① Firebase 專案設定。","err");return;}
-    const email=f$("fbEmail")?.value.trim(), pass=f$("fbPassword")?.value||"";
-    try{
-      await fb.modules.signInWithEmailAndPassword(fb.auth,email,pass);
-      msg("fbAuthMsg","登入成功，正在同步…","ok");
-    }catch(e){msg("fbAuthMsg",friendlyError(e),"err");}
-  });
-
-  f$("fbRegisterBtn")?.addEventListener("click",async()=>{
-    if(!fb.auth){msg("fbAuthMsg","請先完成① Firebase 專案設定。","err");return;}
-    const email=f$("fbEmail")?.value.trim(), pass=f$("fbPassword")?.value||"";
-    try{
-      await fb.modules.createUserWithEmailAndPassword(fb.auth,email,pass);
-      msg("fbAuthMsg","帳號建立成功，正在建立第一份雲端學習資料…","ok");
-    }catch(e){msg("fbAuthMsg",friendlyError(e),"err");}
-  });
-
-  f$("fbLogoutBtn")?.addEventListener("click",async()=>{
-    try{await fb.modules.signOut(fb.auth);msg("fbAuthMsg","已登出。","ok");}
-    catch(e){msg("fbAuthMsg",friendlyError(e),"err");}
-  });
-
-  f$("fbUploadBtn")?.addEventListener("click",async()=>{
-    if(!confirm("要以目前裝置的學習資料上傳至雲端嗎？相同註記區塊將以本機版本覆蓋雲端版本。"))return;
-    try{await uploadAllLocal();}catch(e){msg("fbSyncMsg",friendlyError(e),"err");}
-  });
-  f$("fbDownloadBtn")?.addEventListener("click",async()=>{
-    if(!confirm("要下載雲端學習資料並套用到目前裝置嗎？雲端已有的項目會覆蓋本機相同項目。"))return;
-    try{await downloadAllCloud(true);}catch(e){msg("fbSyncMsg",friendlyError(e),"err");}
-  });
-  f$("firebaseApplyRemoteBtn")?.addEventListener("click",()=>location.reload());
-
-  // 若已保存設定，自動連線
-  if(validConfig(cfg)){
-    connectFirebase(cfg).catch(e=>{
-      console.error(e);
-      setCloudState("error","Firebase 自動連線失敗。按「Firebase設定」檢查設定。");
-    });
-  }
-});
-</script>
 
 
 <script>
-/* ===== v8 原始教材 PDF 檢視 ===== */
+/* ===== v10 原始教材逐頁影像檢視 ===== */
 (function(){
-  const SOURCES={"day1":{"title":"第1天主要教材","file":"original/day1.pdf","pages":126,"meta":"第1～4單元 · 126頁"},"day2":{"title":"第2天主要教材","file":"original/day2.pdf","pages":125,"meta":"第5～6單元 · 125頁"},"day3":{"title":"第3天主要教材","file":"original/day3.pdf","pages":152,"meta":"第7～9單元 · 152頁"},"a_public":{"title":"附表一｜A級公務機關","file":"original/a_public.pdf","pages":1,"meta":"資通安全責任等級A級之公務機關應辦事項"},"a_private":{"title":"附表二｜A級特定非公務機關","file":"original/a_private.pdf","pages":1,"meta":"資通安全責任等級A級之特定非公務機關應辦事項"},"b_public":{"title":"附表三｜B級公務機關","file":"original/b_public.pdf","pages":1,"meta":"資通安全責任等級B級之公務機關應辦事項"},"b_private":{"title":"附表四｜B級特定非公務機關","file":"original/b_private.pdf","pages":1,"meta":"資通安全責任等級B級之特定非公務機關應辦事項"},"c_public":{"title":"附表五｜C級公務機關","file":"original/c_public.pdf","pages":1,"meta":"資通安全責任等級C級之公務機關應辦事項"},"c_private":{"title":"附表六｜C級特定非公務機關","file":"original/c_private.pdf","pages":1,"meta":"資通安全責任等級C級之特定非公務機關應辦事項"},"d_all":{"title":"附表七｜D級各機關","file":"original/d_all.pdf","pages":1,"meta":"資通安全責任等級D級之各機關應辦事項"},"e_all":{"title":"附表八｜E級各機關","file":"original/e_all.pdf","pages":1,"meta":"資通安全責任等級E級之各機關應辦事項"}};
+  const SOURCES={"day1":{"title":"第1天主要教材","scope":"第1～4單元","pages":126,"pdf":"original/day1.pdf"},"day2":{"title":"第2天主要教材","scope":"第5～6單元","pages":125,"pdf":"original/day2.pdf"},"day3":{"title":"第3天主要教材","scope":"第7～9單元","pages":152,"pdf":"original/day3.pdf"},"a_public":{"title":"附表一｜A級公務機關","scope":"責任等級A","pages":3,"pdf":"original/a_public.pdf"},"a_private":{"title":"附表二｜A級特定非公務機關","scope":"責任等級A","pages":3,"pdf":"original/a_private.pdf"},"b_public":{"title":"附表三｜B級公務機關","scope":"責任等級B","pages":3,"pdf":"original/b_public.pdf"},"b_private":{"title":"附表四｜B級特定非公務機關","scope":"責任等級B","pages":3,"pdf":"original/b_private.pdf"},"c_public":{"title":"附表五｜C級公務機關","scope":"責任等級C","pages":2,"pdf":"original/c_public.pdf"},"c_private":{"title":"附表六｜C級特定非公務機關","scope":"責任等級C","pages":2,"pdf":"original/c_private.pdf"},"d_all":{"title":"附表七｜D級各機關","scope":"責任等級D","pages":1,"pdf":"original/d_all.pdf"},"e_all":{"title":"附表八｜E級各機關","scope":"責任等級E","pages":1,"pdf":"original/e_all.pdf"}};
   let currentId="day1";
   let currentPage=1;
-
+  let zoomMode="fit";
+  let touchStart=null;
   const g=id=>document.getElementById(id);
+  const pad=n=>String(n).padStart(3,"0");
+  const imageUrl=(id,page)=>`source_pages/${id}/${pad(page)}.webp`;
 
   function clampPage(v){
     const s=SOURCES[currentId];
     const n=parseInt(v,10)||1;
-    return Math.max(1,Math.min(n,s.pages||1));
+    return Math.max(1,Math.min(n,s.pages));
   }
-
-  function pdfUrl(file,page){
-    return `${file}#page=${page}&view=FitH`;
-  }
-
-  function updateViewer(reload=true){
+  function preload(page){
     const s=SOURCES[currentId];
-    if(!s)return;
+    if(page<1||page>s.pages)return;
+    const im=new Image(); im.src=imageUrl(currentId,page);
+  }
+  function applyZoom(){
+    const img=g("sourcePageImage"),stage=g("sourceImageStage");
+    if(!img||!stage)return;
+    if(zoomMode==="fit"){
+      img.style.width="100%";img.style.maxWidth="100%";stage.classList.remove("zoomed");
+    }else{
+      const z=parseFloat(zoomMode)||1;
+      img.style.width=(z*100)+"%";img.style.maxWidth="none";stage.classList.add("zoomed");
+    }
+  }
+  function updateViewer(load=true,resetScroll=true){
+    const s=SOURCES[currentId]; if(!s)return;
     currentPage=clampPage(currentPage);
+    const title=s.title;
+    if(g("sourceViewerTitle"))g("sourceViewerTitle").textContent=title;
+    if(g("sourceViewerMeta"))g("sourceViewerMeta").textContent=`${s.scope} · 共${s.pages}頁 · 系統逐頁影像`;
+    if(g("sourcePageInput")){g("sourcePageInput").value=currentPage;g("sourcePageInput").max=s.pages;}
+    if(g("sourcePageTotal"))g("sourcePageTotal").textContent=`/ ${s.pages}`;
+    if(g("sourceFooterPage"))g("sourceFooterPage").textContent=`第 ${currentPage} 頁`;
+    if(g("sourceFooterCount"))g("sourceFooterCount").textContent=`共 ${s.pages} 頁`;
+    if(g("sourceOpenBtn"))g("sourceOpenBtn").href=s.pdf;
 
-    if(g("sourceViewerTitle"))g("sourceViewerTitle").textContent=s.title;
-    if(g("sourceViewerMeta"))g("sourceViewerMeta").textContent=s.meta;
-    if(g("sourcePageInput")){
-      g("sourcePageInput").value=currentPage;
-      g("sourcePageInput").max=s.pages||1;
-      g("sourcePageInput").disabled=(s.pages||1)<=1;
+    const atFirst=currentPage<=1,atLast=currentPage>=s.pages;
+    ["sourceFirstBtn","sourcePrevBtn","sourceFooterPrev"].forEach(id=>{if(g(id))g(id).disabled=atFirst;});
+    ["sourceLastBtn","sourceNextBtn","sourceFooterNext"].forEach(id=>{if(g(id))g(id).disabled=atLast;});
+
+    document.querySelectorAll(".sourceItem").forEach(b=>b.classList.toggle("active",b.dataset.sourceId===currentId));
+    if(load){
+      const img=g("sourcePageImage"),stage=g("sourceImageStage"),loading=g("sourceLoading");
+      if(img&&stage){
+        stage.classList.add("is-loading");img.classList.add("loading");
+        if(loading)loading.textContent=`正在載入第 ${currentPage} 頁…`;
+        img.alt=`${title} 第${currentPage}頁`;
+        img.src=imageUrl(currentId,currentPage);
+        img.onload=()=>{stage.classList.remove("is-loading");img.classList.remove("loading");applyZoom();if(resetScroll){stage.scrollTop=0;stage.scrollLeft=0;}};
+        img.onerror=()=>{stage.classList.remove("is-loading");img.classList.remove("loading");if(loading){loading.style.display="block";loading.textContent="此頁影像載入失敗，請重新整理頁面。";}};
+      }
+      preload(currentPage-1);preload(currentPage+1);
     }
-    if(g("sourcePrevBtn"))g("sourcePrevBtn").disabled=currentPage<=1 || (s.pages||1)<=1;
-    if(g("sourceNextBtn"))g("sourceNextBtn").disabled=currentPage>=(s.pages||1) || (s.pages||1)<=1;
-    if(g("sourceGoPageBtn"))g("sourceGoPageBtn").disabled=(s.pages||1)<=1;
-
-    if(g("sourceOpenBtn"))g("sourceOpenBtn").href=s.file;
-    if(g("sourceFallbackLink"))g("sourceFallbackLink").href=s.file;
-    if(reload && g("sourcePdfFrame"))g("sourcePdfFrame").src=pdfUrl(s.file,currentPage);
-
-    document.querySelectorAll(".sourceItem").forEach(b=>{
-      b.classList.toggle("active",b.dataset.sourceId===currentId);
-    });
   }
-
+  function go(page){currentPage=clampPage(page);updateViewer(true,true);}
   function chooseSource(id){
-    if(!SOURCES[id])return;
-    currentId=id;
-    currentPage=1;
-    updateViewer(true);
-    if(window.matchMedia("(max-width:680px)").matches){
-      g("sourceViewerTitle")?.scrollIntoView({behavior:"smooth",block:"start"});
-    }
+    if(!SOURCES[id])return;currentId=id;currentPage=1;zoomMode="fit";
+    if(g("sourceZoomSelect"))g("sourceZoomSelect").value="fit";
+    updateViewer(true,true);
+    if(window.matchMedia("(max-width:680px)").matches)g("sourceViewerTitle")?.scrollIntoView({behavior:"smooth",block:"start"});
   }
+  function nav(delta){go(currentPage+delta);}
 
   window.addEventListener("DOMContentLoaded",()=>{
-    document.querySelectorAll(".sourceItem").forEach(b=>{
-      b.addEventListener("click",()=>chooseSource(b.dataset.sourceId));
+    document.querySelectorAll(".sourceItem").forEach(b=>b.addEventListener("click",()=>chooseSource(b.dataset.sourceId)));
+    g("sourceFirstBtn")?.addEventListener("click",()=>go(1));
+    g("sourceLastBtn")?.addEventListener("click",()=>go(SOURCES[currentId].pages));
+    g("sourcePrevBtn")?.addEventListener("click",()=>nav(-1));
+    g("sourceNextBtn")?.addEventListener("click",()=>nav(1));
+    g("sourceFooterPrev")?.addEventListener("click",()=>nav(-1));
+    g("sourceFooterNext")?.addEventListener("click",()=>nav(1));
+    g("sourceGoPageBtn")?.addEventListener("click",()=>go(g("sourcePageInput")?.value));
+    g("sourcePageInput")?.addEventListener("keydown",e=>{if(e.key==="Enter")go(e.currentTarget.value);});
+    g("sourceZoomSelect")?.addEventListener("change",e=>{zoomMode=e.currentTarget.value;applyZoom();});
+
+    // 鍵盤：左右/PageUp/PageDown 換頁，Home/End 跳第一/末頁
+    g("sourceImageStage")?.addEventListener("keydown",e=>{
+      if(["ArrowLeft","PageUp"].includes(e.key)){e.preventDefault();nav(-1);}
+      else if(["ArrowRight","PageDown"," "].includes(e.key)){e.preventDefault();nav(1);}
+      else if(e.key==="Home"){e.preventDefault();go(1);}
+      else if(e.key==="End"){e.preventDefault();go(SOURCES[currentId].pages);}
     });
 
-    g("sourcePrevBtn")?.addEventListener("click",()=>{
-      currentPage=clampPage(currentPage-1);updateViewer(true);
-    });
-    g("sourceNextBtn")?.addEventListener("click",()=>{
-      currentPage=clampPage(currentPage+1);updateViewer(true);
-    });
-    g("sourceGoPageBtn")?.addEventListener("click",()=>{
-      currentPage=clampPage(g("sourcePageInput")?.value);updateViewer(true);
-    });
-    g("sourcePageInput")?.addEventListener("keydown",e=>{
-      if(e.key==="Enter"){
-        currentPage=clampPage(e.currentTarget.value);updateViewer(true);
-      }
-    });
+    // iPhone/iPad 左右滑動換頁；直向滑動仍保留頁面/圖片捲動
+    const stage=g("sourceImageStage");
+    stage?.addEventListener("touchstart",e=>{
+      if(e.touches.length!==1)return;touchStart={x:e.touches[0].clientX,y:e.touches[0].clientY,time:Date.now()};
+    },{passive:true});
+    stage?.addEventListener("touchend",e=>{
+      if(!touchStart||!e.changedTouches.length)return;
+      const dx=e.changedTouches[0].clientX-touchStart.x,dy=e.changedTouches[0].clientY-touchStart.y,dt=Date.now()-touchStart.time;touchStart=null;
+      if(dt<900&&Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.25){if(dx<0)nav(1);else nav(-1);}
+    },{passive:true});
 
-    // 原始教材頁不顯示註記工具，避免遮住 PDF；回整理/速查時恢復
+    // 原始教材頁不顯示註記工具，避免遮住教材頁面。
     const syncAuxBars=()=>{
       const sourceActive=g("view-source")?.classList.contains("active");
       const quizActive=g("view-quiz")?.classList.contains("active");
-      const ann=g("annotationBar");
-      if(ann)ann.classList.toggle("hidden",!!(sourceActive||quizActive));
+      const ann=g("annotationBar");if(ann)ann.classList.toggle("hidden",!!(sourceActive||quizActive));
     };
-    document.querySelectorAll(".topNav button[data-view],#mobileBottomNav button[data-view]").forEach(btn=>{
-      btn.addEventListener("click",()=>setTimeout(syncAuxBars,0));
+    document.querySelectorAll(".topNav button[data-view],#mobileBottomNav button[data-view]").forEach(btn=>btn.addEventListener("click",()=>setTimeout(syncAuxBars,0)));
+
+    updateViewer(true,true);syncAuxBars();
+  });
+})();
+</script>
+
+
+<div id="backendLoginModal" class="backendLoginModal hidden" aria-hidden="true">
+  <div class="backendLoginBackdrop" data-backend-close="1"></div>
+  <div class="backendLoginPanel">
+    <button id="backendLoginClose" class="iosClose" type="button" aria-label="關閉">×</button>
+    <h2>☁️ 跨裝置同步登入</h2>
+    <p class="small">Firebase 設定已移至後端，使用者不需看到或輸入任何 Firebase 專案設定。</p>
+    <label>Email
+      <input id="backendEmail" type="email" autocomplete="username" placeholder="name@example.com">
+    </label>
+    <label>密碼
+      <input id="backendPassword" type="password" autocomplete="current-password" placeholder="至少6字元">
+    </label>
+    <div class="backendLoginBtns">
+      <button id="backendLoginBtn" class="btn primary" type="button">登入</button>
+      <button id="backendRegisterBtn" class="btn outline" type="button">建立同步帳號</button>
+    </div>
+    <div id="backendLoginMsg" class="small backendLoginMsg"></div>
+  </div>
+</div>
+
+
+<script>
+/* ===== v9 後端同步：前端不含 Firebase 設定 ===== */
+(function(){
+  const SYNC_PREFIXES=[
+    "sec11504_ann_v5_",
+    "sec11504_sourceanno_v1_",
+    "secstudy11504read_v1",
+    "secquiz11504stats_v2",
+    "secquiz11504wrong_v2",
+    "secquiz11504fav_v2"
+  ];
+  const nativeSet=localStorage.setItem.bind(localStorage);
+  const nativeRemove=localStorage.removeItem.bind(localStorage);
+  let loggedIn=false, applyingRemote=false, timer=null, pending=new Set();
+
+  const $b=id=>document.getElementById(id);
+  const isSyncKey=k=>SYNC_PREFIXES.some(p=>k===p||k.startsWith(p));
+
+  function setState(state,msg){
+    const d=$b("backendSyncDot"),s=$b("backendSyncStatus");
+    if(d)d.className="backendSyncDot "+state;
+    if(s&&msg)s.textContent=msg;
+  }
+  function openLogin(show){
+    const m=$b("backendLoginModal");if(!m)return;
+    m.classList.toggle("hidden",!show);
+    m.setAttribute("aria-hidden",show?"false":"true");
+    document.body.style.overflow=show?"hidden":"";
+  }
+  function msg(t,ok=false){
+    const e=$b("backendLoginMsg");if(!e)return;
+    e.textContent=t;e.className="small backendLoginMsg "+(ok?"ok":"err");
+  }
+  async function api(path,opts={}){
+    const res=await fetch(path,{
+      credentials:"include",
+      headers:{"Content-Type":"application/json",...(opts.headers||{})},
+      ...opts
+    });
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok)throw new Error(data.error||"伺服器錯誤");
+    return data;
+  }
+  function localItems(){
+    const out={};
+    for(let i=0;i<localStorage.length;i++){
+      const k=localStorage.key(i);
+      if(k&&isSyncKey(k))out[k]=localStorage.getItem(k);
+    }
+    return out;
+  }
+  async function checkSession(){
+    try{
+      const d=await api("/api/me");
+      loggedIn=!!d.authenticated;
+      $b("backendLogoutBtn")?.classList.toggle("hidden",!loggedIn);
+      $b("backendLoginOpenBtn")?.classList.toggle("hidden",loggedIn);
+      if(loggedIn){
+        setState("online",`已登入 ${d.email||"同步帳號"}｜後端同步已啟用`);
+        await downloadCloud(false);
+      }else setState("offline","尚未登入同步帳號。");
+    }catch(e){
+      loggedIn=false;
+      setState("error","無法連線同步後端。");
+    }
+  }
+  async function uploadItems(keys){
+    if(!loggedIn||applyingRemote)return;
+    const items={};
+    keys.forEach(k=>items[k]=localStorage.getItem(k));
+    if(!Object.keys(items).length)return;
+    setState("syncing","正在同步最新學習資料…");
+    await api("/api/sync/push",{method:"POST",body:JSON.stringify({items})});
+    setState("online","已完成雲端同步。");
+  }
+  function queue(k){
+    if(!loggedIn||!isSyncKey(k)||applyingRemote)return;
+    pending.add(k);
+    clearTimeout(timer);
+    timer=setTimeout(async()=>{
+      const keys=[...pending];pending.clear();
+      try{await uploadItems(keys)}catch(e){setState("error","自動同步失敗，稍後會再同步。");}
+    },800);
+  }
+  localStorage.setItem=function(k,v){
+    nativeSet(k,v);
+    if(isSyncKey(k))queue(k);
+  };
+  localStorage.removeItem=function(k){
+    nativeRemove(k);
+    if(isSyncKey(k))queue(k);
+  };
+
+  async function downloadCloud(reload=true){
+    if(!loggedIn)return;
+    setState("syncing","正在下載雲端學習資料…");
+    const d=await api("/api/sync/pull");
+    const items=d.items||{};
+    let changed=false;
+    applyingRemote=true;
+    try{
+      for(const [k,v] of Object.entries(items)){
+        if(!isSyncKey(k))continue;
+        if(v===null){
+          if(localStorage.getItem(k)!==null){nativeRemove(k);changed=true;}
+        }else if(localStorage.getItem(k)!==String(v)){
+          nativeSet(k,String(v));changed=true;
+        }
+      }
+    }finally{applyingRemote=false}
+    setState("online","雲端資料已同步。");
+    if(changed&&reload)setTimeout(()=>location.reload(),300);
+  }
+
+  window.addEventListener("DOMContentLoaded",()=>{
+    $b("backendLoginOpenBtn")?.addEventListener("click",()=>openLogin(true));
+    $b("backendLoginClose")?.addEventListener("click",()=>openLogin(false));
+    document.querySelector("[data-backend-close]")?.addEventListener("click",()=>openLogin(false));
+
+    $b("backendLoginBtn")?.addEventListener("click",async()=>{
+      try{
+        const email=$b("backendEmail")?.value.trim()||"";
+        const password=$b("backendPassword")?.value||"";
+        const d=await api("/api/login",{method:"POST",body:JSON.stringify({email,password})});
+        msg("登入成功。",true); loggedIn=true; openLogin(false);
+        await api("/api/sync/push",{method:"POST",body:JSON.stringify({items:localItems()})});
+        await checkSession();
+      }catch(e){msg(e.message,false)}
     });
 
-    updateViewer(true);
-    syncAuxBars();
+    $b("backendRegisterBtn")?.addEventListener("click",async()=>{
+      try{
+        const email=$b("backendEmail")?.value.trim()||"";
+        const password=$b("backendPassword")?.value||"";
+        await api("/api/register",{method:"POST",body:JSON.stringify({email,password})});
+        msg("帳號建立成功，已登入。",true); loggedIn=true; openLogin(false);
+        await api("/api/sync/push",{method:"POST",body:JSON.stringify({items:localItems()})});
+        await checkSession();
+      }catch(e){msg(e.message,false)}
+    });
+
+    $b("backendLogoutBtn")?.addEventListener("click",async()=>{
+      try{await api("/api/logout",{method:"POST",body:"{}"});}catch(e){}
+      loggedIn=false;
+      setState("offline","已登出同步帳號。");
+      $b("backendLogoutBtn")?.classList.add("hidden");
+      $b("backendLoginOpenBtn")?.classList.remove("hidden");
+    });
+
+    checkSession();
+    setInterval(()=>{if(loggedIn)downloadCloud(false).catch(()=>{})},30000);
+  });
+})();
+</script>
+
+
+<script>
+/* ===== v11 原始教材註記（螢光筆 / 紅筆） ===== */
+(function(){
+  const PREFIX="sec11504_sourceanno_v1_";
+  const g=id=>document.getElementById(id);
+  let mode="browse"; // browse | highlight | red
+  let drawing=false;
+  let currentStroke=null;
+  let strokes=[];
+  let dpr=Math.max(1,window.devicePixelRatio||1);
+
+  function activeSourceId(){
+    return document.querySelector(".sourceItem.active")?.dataset?.sourceId || "day1";
+  }
+  function activePage(){
+    const n=parseInt(g("sourcePageInput")?.value||"1",10)||1;
+    return n;
+  }
+  function storageKey(){
+    return `${PREFIX}${activeSourceId()}_${String(activePage()).padStart(3,"0")}`;
+  }
+  function save(){
+    try{localStorage.setItem(storageKey(),JSON.stringify(strokes));}catch(e){}
+  }
+  function load(){
+    try{
+      const raw=localStorage.getItem(storageKey());
+      const data=raw?JSON.parse(raw):[];
+      strokes=Array.isArray(data)?data:[];
+    }catch(e){strokes=[];}
+  }
+  function setStatus(msg){
+    const el=g("sourceAnnoStatus");
+    if(el)el.textContent=msg;
+  }
+  function setMode(next){
+    mode=next;
+    const stage=g("sourceImageStage");
+    if(stage){
+      stage.classList.toggle("source-drawing", next!=="browse");
+      stage.classList.toggle("source-highlighting", next==="highlight");
+      stage.classList.toggle("source-redpen", next==="red");
+    }
+    [["sourceAnnoBrowseBtn","browse"],["sourceAnnoHighlightBtn","highlight"],["sourceAnnoRedBtn","red"]].forEach(([id,m])=>{
+      g(id)?.classList.toggle("active",mode===m);
+    });
+    if(mode==="browse") setStatus("原始教材註記：按「螢光筆」或「紅筆」即可直接在目前頁面上書寫；按「瀏覽」可恢復正常滑動與換頁。");
+    if(mode==="highlight") setStatus("螢光筆模式：可直接在教材頁面上畫重點。完成後按「瀏覽」恢復滑動/換頁。");
+    if(mode==="red") setStatus("紅筆模式：可直接在教材頁面上手寫註記。完成後按「瀏覽」恢復滑動/換頁。");
+  }
+  function ensureCanvasSize(){
+    const img=g("sourcePageImage"), canvas=g("sourceAnnoCanvas"), wrap=g("sourcePageWrap");
+    if(!img || !canvas || !wrap) return;
+    const w=img.getBoundingClientRect().width, h=img.getBoundingClientRect().height;
+    if(!w || !h) return;
+    canvas.style.width=w+"px";
+    canvas.style.height=h+"px";
+    canvas.width=Math.round(w*dpr);
+    canvas.height=Math.round(h*dpr);
+    canvas.style.left=(img.offsetLeft||0)+"px";
+    canvas.style.top=(img.offsetTop||0)+"px";
+    render();
+  }
+  function ctx2d(){
+    const canvas=g("sourceAnnoCanvas");
+    if(!canvas) return null;
+    const ctx=canvas.getContext("2d");
+    const w=canvas.getBoundingClientRect().width, h=canvas.getBoundingClientRect().height;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+    return ctx;
+  }
+  function render(){
+    const canvas=g("sourceAnnoCanvas"), img=g("sourcePageImage");
+    if(!canvas || !img) return;
+    const ctx=ctx2d();
+    if(!ctx) return;
+    const w=canvas.getBoundingClientRect().width, h=canvas.getBoundingClientRect().height;
+    strokes.forEach(s=>{
+      if(!s || !Array.isArray(s.points) || !s.points.length) return;
+      ctx.save();
+      if(s.tool==="highlight"){
+        ctx.globalCompositeOperation="multiply";
+        ctx.strokeStyle="rgba(255,235,59,0.38)";
+        ctx.lineWidth=Math.max(16, w*0.018);
+      }else{
+        ctx.globalCompositeOperation="source-over";
+        ctx.strokeStyle="rgba(217,45,32,0.95)";
+        ctx.lineWidth=Math.max(2.6, w*0.0032);
+      }
+      ctx.lineCap="round";
+      ctx.lineJoin="round";
+      ctx.beginPath();
+      s.points.forEach((p,i)=>{
+        const x=p.x*w, y=p.y*h;
+        if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      });
+      if(s.points.length===1){
+        const p=s.points[0];
+        ctx.lineTo(p.x*w+0.1,p.y*h+0.1);
+      }
+      ctx.stroke();
+      ctx.restore();
+    });
+  }
+  function pointerPoint(ev){
+    const img=g("sourcePageImage");
+    const r=img.getBoundingClientRect();
+    const x=(ev.clientX-r.left)/r.width;
+    const y=(ev.clientY-r.top)/r.height;
+    return {
+      x: Math.max(0,Math.min(1,x)),
+      y: Math.max(0,Math.min(1,y))
+    };
+  }
+  function onPointerDown(ev){
+    if(mode==="browse") return;
+    const canvas=g("sourceAnnoCanvas");
+    if(!canvas) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    drawing=true;
+    currentStroke={tool:mode, points:[pointerPoint(ev)]};
+    try{canvas.setPointerCapture(ev.pointerId);}catch(e){}
+  }
+  function onPointerMove(ev){
+    if(!drawing || !currentStroke) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    const pt=pointerPoint(ev);
+    const last=currentStroke.points[currentStroke.points.length-1];
+    const dx=pt.x-last.x, dy=pt.y-last.y;
+    if(dx*dx+dy*dy < 0.000002) return;
+    currentStroke.points.push(pt);
+    const temp = strokes.concat([currentStroke]);
+    const old = strokes;
+    strokes = temp;
+    render();
+    strokes = old;
+  }
+  function finishStroke(ev){
+    if(!drawing || !currentStroke) return;
+    ev?.preventDefault?.();
+    ev?.stopPropagation?.();
+    if(currentStroke.points.length===1){
+      currentStroke.points.push({...currentStroke.points[0]});
+    }
+    strokes.push(currentStroke);
+    currentStroke=null;
+    drawing=false;
+    save();
+    render();
+  }
+  function stopTouchBubble(e){
+    if(mode!=="browse"){
+      e.stopPropagation();
+      if(e.cancelable) e.preventDefault();
+    }
+  }
+  function reloadCurrentPage(){
+    load();
+    setTimeout(ensureCanvasSize, 60);
+    setTimeout(ensureCanvasSize, 220);
+  }
+  function undo(){
+    if(!strokes.length){setStatus("目前頁面沒有可撤銷的註記。");return;}
+    strokes.pop();
+    save();
+    render();
+    setStatus("已撤銷目前頁面最後一筆註記。");
+  }
+  function clearPage(){
+    if(!confirm("確定要清除目前原始教材頁面的所有螢光筆與紅筆註記嗎？")) return;
+    strokes=[];
+    try{localStorage.removeItem(storageKey());}catch(e){}
+    render();
+    setStatus("已清除目前頁面的所有註記。");
+  }
+
+  window.addEventListener("DOMContentLoaded",()=>{
+    const canvas=g("sourceAnnoCanvas"), img=g("sourcePageImage"), stage=g("sourceImageStage");
+    if(!canvas || !img || !stage) return;
+
+    g("sourceAnnoBrowseBtn")?.addEventListener("click",()=>setMode("browse"));
+    g("sourceAnnoHighlightBtn")?.addEventListener("click",()=>setMode(mode==="highlight"?"browse":"highlight"));
+    g("sourceAnnoRedBtn")?.addEventListener("click",()=>setMode(mode==="red"?"browse":"red"));
+    g("sourceAnnoUndoBtn")?.addEventListener("click",undo);
+    g("sourceAnnoClearBtn")?.addEventListener("click",clearPage);
+
+    canvas.addEventListener("pointerdown", onPointerDown);
+    canvas.addEventListener("pointermove", onPointerMove);
+    canvas.addEventListener("pointerup", finishStroke);
+    canvas.addEventListener("pointercancel", finishStroke);
+    ["touchstart","touchmove","touchend"].forEach(evt=>canvas.addEventListener(evt, stopTouchBubble, {passive:false}));
+
+    img.addEventListener("load", reloadCurrentPage);
+    if(window.ResizeObserver){
+      const ro=new ResizeObserver(()=>ensureCanvasSize());
+      ro.observe(img);
+      ro.observe(stage);
+    }
+    window.addEventListener("resize", ()=>setTimeout(ensureCanvasSize, 100));
+    window.addEventListener("orientationchange", ()=>setTimeout(ensureCanvasSize, 180));
+    g("sourceZoomSelect")?.addEventListener("change", ()=>setTimeout(ensureCanvasSize, 120));
+
+    document.querySelectorAll(".sourceItem,#sourceFirstBtn,#sourcePrevBtn,#sourceNextBtn,#sourceLastBtn,#sourceGoPageBtn,#sourceFooterPrev,#sourceFooterNext").forEach(el=>{
+      el.addEventListener("click", ()=>setTimeout(reloadCurrentPage, 140));
+    });
+    g("sourcePageInput")?.addEventListener("keydown", e=>{
+      if(e.key==="Enter") setTimeout(reloadCurrentPage, 140);
+    });
+
+    // page open
+    load();
+    setMode("browse");
+    setTimeout(ensureCanvasSize, 120);
   });
 })();
 </script>
