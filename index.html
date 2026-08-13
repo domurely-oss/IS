@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504｜iPhone測驗自動跳題版</title>
+<title>資安職能訓練｜資通安全概論 11504｜跨裝置同步修正版 v18</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -1423,6 +1423,26 @@ body.sourcePseudoFullscreen .mobileBottomNav{
   }
 }
 
+
+/* ===== v18 跨裝置同步狀態 ===== */
+.backendSyncStatusHint{
+  font-size:10px;
+  color:#667085
+}
+@media(max-width:680px){
+  .backendSyncActions{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important
+  }
+  .backendSyncActions .miniBtn{
+    width:100%!important;
+    min-height:40px!important
+  }
+  #backendSyncNowBtn{
+    grid-column:1/2
+  }
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1482,6 +1502,7 @@ body.sourcePseudoFullscreen .mobileBottomNav{
     </div>
   </div>
   <div class="backendSyncActions">
+    <button id="backendSyncNowBtn" class="miniBtn hidden" type="button">↻ 立即同步</button>
     <button id="backendLoginOpenBtn" class="miniBtn" type="button">登入同步</button>
     <button id="backendLogoutBtn" class="miniBtn hidden" type="button">登出</button>
   </div>
@@ -3340,10 +3361,13 @@ function toggleUnitDetails(u, openState){
 
 
 <script type="module">
-/* ===== v14 共用 Firebase 同步（參考政府採購題庫） =====
-   - 使用同一個 Firebase Project / Authentication
-   - Firestore：users/{uid}/studyState/{docId}
-   - 不在畫面顯示 Firebase 設定
+/* ===== v18 共用 Firebase 跨裝置同步修正版 =====
+   修正重點：
+   1. 不再依賴覆寫 localStorage.setItem（iPhone Safari 可能不穩定）。
+   2. 改用本機資料快照差異掃描，任何既有功能寫入 localStorage 都能被偵測。
+   3. Firestore onSnapshot 即時接收其他裝置變更。
+   4. 登入時採「雲端先讀取、本機獨有資料補上傳」，避免新裝置空資料覆蓋雲端。
+   5. 新增「立即同步」與 UID 顯示，方便確認兩台裝置是否登入同一帳號。
 */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import {
@@ -3383,13 +3407,19 @@ const SYNC_PREFIXES = [
   "secquiz11504fav_v2"
 ];
 
-const DEVICE_KEY = "sec11504_firebase_device_v1";
-const RELOAD_KEY = "sec11504_cloud_reload_once_v1";
-const nativeSet = localStorage.setItem.bind(localStorage);
-const nativeRemove = localStorage.removeItem.bind(localStorage);
+const DEVICE_KEY = "sec11504_firebase_device_v2";
+const RELOAD_KEY = "sec11504_cloud_reload_once_v2";
+const POLL_MS = 900;
 
 let app=null, auth=null, db=null, currentUser=null;
-let applyingRemote=false, pending=new Set(), timer=null, remoteUnsub=null, firstSnapshot=true;
+let applyingRemote=false;
+let pending=new Set();
+let flushTimer=null;
+let remoteUnsub=null;
+let pollTimer=null;
+let localBaseline=new Map();
+let firstRealtimeSnapshot=true;
+let syncBusy=false;
 
 const $b=id=>document.getElementById(id);
 const isSyncKey=k=>SYNC_PREFIXES.some(p=>k===p || k.startsWith(p));
@@ -3398,9 +3428,18 @@ function deviceId(){
   let id=localStorage.getItem(DEVICE_KEY);
   if(!id){
     id=(crypto.randomUUID?.() || ("dev-"+Date.now()+"-"+Math.random().toString(36).slice(2)));
-    nativeSet(DEVICE_KEY,id);
+    localStorage.setItem(DEVICE_KEY,id);
   }
   return id;
+}
+
+function uidShort(){
+  return currentUser?.uid ? currentUser.uid.slice(0,8) : "";
+}
+
+function accountLabel(){
+  if(!currentUser)return "";
+  return currentUser.displayName || currentUser.email || "同步帳號";
 }
 
 function docIdForKey(k){
@@ -3414,6 +3453,12 @@ function setState(state,msg){
   const d=$b("backendSyncDot"),s=$b("backendSyncStatus");
   if(d)d.className="backendSyncDot "+state;
   if(s&&msg)s.textContent=msg;
+}
+
+function setLoggedUi(logged){
+  $b("backendLogoutBtn")?.classList.toggle("hidden",!logged);
+  $b("backendSyncNowBtn")?.classList.toggle("hidden",!logged);
+  $b("backendLoginOpenBtn")?.classList.toggle("hidden",logged);
 }
 
 function openLogin(show){
@@ -3441,7 +3486,9 @@ function friendly(error){
     "auth/popup-closed-by-user":"登入視窗已關閉。",
     "auth/popup-blocked":"瀏覽器阻擋登入視窗，將改用重新導向登入。",
     "auth/network-request-failed":"網路連線失敗，請確認目前可連線網際網路。",
-    "permission-denied":"同步權限不足，請確認 Firestore Rules。"
+    "permission-denied":"同步權限不足，請確認 Firestore 規則已發布。",
+    "failed-precondition":"Firestore 尚未建立，或目前專案設定未完成。",
+    "unavailable":"Firebase 暫時無法連線，請稍後再試。"
   };
   return map[code] || error?.message || "同步時發生錯誤。";
 }
@@ -3454,13 +3501,41 @@ function keyRef(k){
   return doc(db,"users",currentUser.uid,"studyState",docIdForKey(k));
 }
 
-function localSyncKeys(){
-  const out=[];
+function snapshotLocal(){
+  const map=new Map();
   for(let i=0;i<localStorage.length;i++){
     const k=localStorage.key(i);
-    if(k&&isSyncKey(k))out.push(k);
+    if(k && isSyncKey(k)) map.set(k,localStorage.getItem(k));
   }
-  return out;
+  return map;
+}
+
+function setBaselineFromLocal(){
+  localBaseline=snapshotLocal();
+}
+
+function scanLocalChanges(){
+  if(!currentUser || applyingRemote || syncBusy)return;
+  const now=snapshotLocal();
+  const keys=new Set([...localBaseline.keys(),...now.keys()]);
+  let found=false;
+
+  for(const k of keys){
+    const had=localBaseline.has(k);
+    const has=now.has(k);
+    const before=had?localBaseline.get(k):null;
+    const after=has?now.get(k):null;
+
+    if(had!==has || before!==after){
+      pending.add(k);
+      found=true;
+    }
+  }
+
+  if(found){
+    clearTimeout(flushTimer);
+    flushTimer=setTimeout(()=>flushUploads(false),350);
+  }
 }
 
 async function uploadKey(k){
@@ -3472,48 +3547,38 @@ async function uploadKey(k){
     deleted:value===null,
     deviceId:deviceId(),
     updatedAt:serverTimestamp(),
-    schema:1,
-    appVersion:"sec11504-github-v14"
+    schema:2,
+    appVersion:"sec11504-github-v18"
   },{merge:true});
+
+  if(value===null)localBaseline.delete(k);
+  else localBaseline.set(k,value);
 }
 
-function queueUpload(k){
-  if(!currentUser || applyingRemote || !isSyncKey(k))return;
-  pending.add(k);
-  clearTimeout(timer);
-  timer=setTimeout(flushUploads,800);
-}
-
-async function flushUploads(){
-  if(!currentUser || !pending.size)return;
+async function flushUploads(showWorking=true){
+  if(!currentUser || !pending.size || syncBusy)return;
   const keys=[...pending];
   pending.clear();
-  setState("syncing","正在同步最新學習資料…");
+  syncBusy=true;
+  if(showWorking)setState("syncing","正在上傳本機最新學習資料…");
+
   try{
-    for(let i=0;i<keys.length;i+=20){
-      await Promise.all(keys.slice(i,i+20).map(uploadKey));
+    for(let i=0;i<keys.length;i+=12){
+      await Promise.all(keys.slice(i,i+12).map(uploadKey));
     }
-    setState("online",`已登入 ${currentUser.displayName||currentUser.email||"同步帳號"}｜最新資料已同步`);
+    setState("online",`已同步 ${accountLabel()} · UID ${uidShort()} · ${new Date().toLocaleTimeString("zh-TW",{hour:"2-digit",minute:"2-digit"})}`);
   }catch(e){
     console.error(e);
     keys.forEach(k=>pending.add(k));
-    setState("error","同步暫時失敗："+friendly(e));
+    setState("error","上傳同步失敗："+friendly(e));
+  }finally{
+    syncBusy=false;
   }
 }
 
-// 監聽既有網站的 localStorage 寫入
-localStorage.setItem=function(k,v){
-  nativeSet(k,v);
-  if(isSyncKey(k))queueUpload(k);
-};
-localStorage.removeItem=function(k){
-  nativeRemove(k);
-  if(isSyncKey(k))queueUpload(k);
-};
-
 async function fetchRemote(){
   const snap=await getDocs(userCollection());
-  return snap.docs.map(d=>d.data()).filter(x=>x&&x.key);
+  return snap.docs.map(d=>d.data()).filter(x=>x&&typeof x.key==="string");
 }
 
 function applyRemote(items){
@@ -3523,11 +3588,20 @@ function applyRemote(items){
     for(const data of items){
       const k=data.key;
       if(!isSyncKey(k))continue;
+
       if(data.deleted || data.value===null){
-        if(localStorage.getItem(k)!==null){nativeRemove(k);changed=true;}
+        if(localStorage.getItem(k)!==null){
+          localStorage.removeItem(k);
+          changed=true;
+        }
+        localBaseline.delete(k);
       }else{
         const v=String(data.value);
-        if(localStorage.getItem(k)!==v){nativeSet(k,v);changed=true;}
+        if(localStorage.getItem(k)!==v){
+          localStorage.setItem(k,v);
+          changed=true;
+        }
+        localBaseline.set(k,v);
       }
     }
   }finally{
@@ -3537,44 +3611,64 @@ function applyRemote(items){
 }
 
 async function initialSync(){
-  if(!currentUser)return;
+  if(!currentUser || syncBusy)return;
+  syncBusy=true;
   setState("syncing","正在讀取雲端學習資料…");
-  const remote=await fetchRemote();
-  const remoteKeys=new Set(remote.map(x=>x.key));
-  const changed=applyRemote(remote);
 
-  // 本機有、雲端沒有的項目補上傳；雲端既有資料優先避免第一次登入誤蓋。
-  const localOnly=localSyncKeys().filter(k=>!remoteKeys.has(k));
-  for(let i=0;i<localOnly.length;i+=20){
-    await Promise.all(localOnly.slice(i,i+20).map(uploadKey));
-  }
+  try{
+    const localBefore=snapshotLocal();
+    const remote=await fetchRemote();
+    const remoteKeys=new Set(remote.map(x=>x.key));
 
-  setState("online",`已登入 ${currentUser.displayName||currentUser.email||"同步帳號"}｜跨裝置同步已啟用`);
+    // 雲端既有資料優先套用
+    const changed=applyRemote(remote);
 
-  if(changed && !sessionStorage.getItem(RELOAD_KEY)){
-    sessionStorage.setItem(RELOAD_KEY,"1");
-    setTimeout(()=>location.reload(),350);
-  }else{
-    sessionStorage.removeItem(RELOAD_KEY);
+    // 本機獨有資料補上傳，避免舊裝置資料遺失
+    setBaselineFromLocal();
+    const localOnly=[...localBefore.keys()].filter(k=>!remoteKeys.has(k));
+    for(const k of localOnly) pending.add(k);
+
+    syncBusy=false;
+    if(pending.size) await flushUploads(false);
+
+    setState("online",`已登入 ${accountLabel()} · UID ${uidShort()} · 跨裝置同步已啟用`);
+
+    if(changed && !sessionStorage.getItem(RELOAD_KEY)){
+      sessionStorage.setItem(RELOAD_KEY,"1");
+      setTimeout(()=>location.reload(),450);
+    }else{
+      sessionStorage.removeItem(RELOAD_KEY);
+    }
+  }catch(e){
+    syncBusy=false;
+    console.error(e);
+    setState("error","登入成功，但同步失敗："+friendly(e));
   }
 }
 
 function attachRealtime(){
   if(remoteUnsub){remoteUnsub();remoteUnsub=null;}
-  firstSnapshot=true;
+  firstRealtimeSnapshot=true;
+
   remoteUnsub=onSnapshot(userCollection(),snap=>{
-    if(firstSnapshot){firstSnapshot=false;return;}
-    const foreign=[];
+    if(firstRealtimeSnapshot){
+      firstRealtimeSnapshot=false;
+      return;
+    }
+
+    const incoming=[];
     snap.docChanges().forEach(ch=>{
       if(ch.type==="removed")return;
       const data=ch.doc.data();
-      if(data?.key && data.deviceId!==deviceId())foreign.push(data);
+      if(data?.key && data.deviceId!==deviceId()) incoming.push(data);
     });
-    if(!foreign.length)return;
-    const changed=applyRemote(foreign);
+    if(!incoming.length)return;
+
+    const changed=applyRemote(incoming);
     if(changed){
-      setState("online","已收到另一台裝置的最新資料。");
-      setTimeout(()=>location.reload(),500);
+      setState("online",`已收到另一台裝置資料 · UID ${uidShort()} · 正在更新畫面`);
+      sessionStorage.setItem(RELOAD_KEY,"1");
+      setTimeout(()=>location.reload(),650);
     }
   },e=>{
     console.error(e);
@@ -3582,12 +3676,45 @@ function attachRealtime(){
   });
 }
 
+function startPolling(){
+  clearInterval(pollTimer);
+  pollTimer=setInterval(scanLocalChanges,POLL_MS);
+}
+
+function stopPolling(){
+  clearInterval(pollTimer);
+  pollTimer=null;
+}
+
+async function manualSync(){
+  if(!currentUser){
+    openLogin(true);
+    return;
+  }
+  setState("syncing","正在執行雙向同步…");
+
+  // 先掃描並上傳目前本機變更
+  scanLocalChanges();
+  if(pending.size)await flushUploads(false);
+
+  try{
+    // 再拉取雲端最新資料
+    const remote=await fetchRemote();
+    const changed=applyRemote(remote);
+    setBaselineFromLocal();
+    setState("online",`同步完成 ${accountLabel()} · UID ${uidShort()} · ${new Date().toLocaleTimeString("zh-TW",{hour:"2-digit",minute:"2-digit"})}`);
+    if(changed)setTimeout(()=>location.reload(),500);
+  }catch(e){
+    console.error(e);
+    setState("error","立即同步失敗："+friendly(e));
+  }
+}
+
 function updateAuthUi(user){
   const logged=!!user;
-  $b("backendLogoutBtn")?.classList.toggle("hidden",!logged);
-  $b("backendLoginOpenBtn")?.classList.toggle("hidden",logged);
+  setLoggedUi(logged);
   if(logged){
-    setState("online",`已登入 ${user.displayName||user.email||"同步帳號"}`);
+    setState("online",`已登入 ${user.displayName||user.email||"同步帳號"} · UID ${user.uid.slice(0,8)}`);
   }else{
     setState("offline","尚未登入同步帳號。");
   }
@@ -3598,6 +3725,7 @@ async function initFirebase(){
     setState("error","同步設定未完成。");
     return;
   }
+
   app=initializeApp(config);
   auth=getAuth(app);
   db=getFirestore(app);
@@ -3614,15 +3742,15 @@ async function initFirebase(){
   onAuthStateChanged(auth,async user=>{
     currentUser=user||null;
     updateAuthUi(currentUser);
+
     if(currentUser){
-      try{
-        await initialSync();
-        attachRealtime();
-      }catch(e){
-        console.error(e);
-        setState("error","登入成功，但同步失敗："+friendly(e));
-      }
+      setBaselineFromLocal();
+      await initialSync();
+      attachRealtime();
+      startPolling();
     }else{
+      stopPolling();
+      pending.clear();
       if(remoteUnsub){remoteUnsub();remoteUnsub=null;}
     }
   });
@@ -3632,6 +3760,7 @@ window.addEventListener("DOMContentLoaded",()=>{
   $b("backendLoginOpenBtn")?.addEventListener("click",()=>openLogin(true));
   $b("backendLoginClose")?.addEventListener("click",()=>openLogin(false));
   document.querySelector("[data-backend-close]")?.addEventListener("click",()=>openLogin(false));
+  $b("backendSyncNowBtn")?.addEventListener("click",manualSync);
 
   $b("backendGoogleBtn")?.addEventListener("click",async()=>{
     if(!auth)return showMsg("同步服務尚未初始化。",false);
@@ -3654,11 +3783,14 @@ window.addEventListener("DOMContentLoaded",()=>{
     const email=$b("backendEmail")?.value.trim()||"";
     const password=$b("backendPassword")?.value||"";
     if(!email||!password)return showMsg("請輸入 Email 與密碼。",false);
+
     try{
       await signInWithEmailAndPassword(auth,email,password);
       showMsg("登入成功。",true);
       openLogin(false);
-    }catch(e){showMsg(friendly(e),false);}
+    }catch(e){
+      showMsg(friendly(e),false);
+    }
   });
 
   $b("backendRegisterBtn")?.addEventListener("click",async()=>{
@@ -3666,33 +3798,50 @@ window.addEventListener("DOMContentLoaded",()=>{
     const email=$b("backendEmail")?.value.trim()||"";
     const password=$b("backendPassword")?.value||"";
     if(!email||password.length<6)return showMsg("請輸入有效 Email，密碼至少6個字元。",false);
+
     try{
       await createUserWithEmailAndPassword(auth,email,password);
       showMsg("帳號建立成功。",true);
       openLogin(false);
-    }catch(e){showMsg(friendly(e),false);}
+    }catch(e){
+      showMsg(friendly(e),false);
+    }
   });
 
   $b("backendResetBtn")?.addEventListener("click",async()=>{
     if(!auth)return showMsg("同步服務尚未初始化。",false);
     const email=$b("backendEmail")?.value.trim()||"";
     if(!email)return showMsg("請先輸入要重設密碼的 Email。",false);
+
     try{
       await sendPasswordResetEmail(auth,email);
       showMsg("密碼重設信已寄出。",true);
-    }catch(e){showMsg(friendly(e),false);}
+    }catch(e){
+      showMsg(friendly(e),false);
+    }
   });
 
   $b("backendLogoutBtn")?.addEventListener("click",async()=>{
+    try{
+      scanLocalChanges();
+      if(pending.size)await flushUploads(false);
+    }catch(e){}
     try{await signOut(auth);}catch(e){}
     setState("offline","已登出同步帳號。");
   });
 
   window.addEventListener("online",()=>{
-    if(currentUser)initialSync().catch(()=>{});
+    if(currentUser)manualSync().catch(()=>{});
   });
+
   document.addEventListener("visibilitychange",()=>{
-    if(!document.hidden && currentUser)initialSync().catch(()=>{});
+    if(!document.hidden && currentUser)manualSync().catch(()=>{});
+  });
+
+  window.addEventListener("pagehide",()=>{
+    // pagehide 時 Firebase 寫入不一定來得及完成，
+    // 但下一次開啟 / 回到前景會由差異掃描補同步。
+    scanLocalChanges();
   });
 
   initFirebase().catch(e=>{
