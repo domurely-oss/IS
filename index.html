@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504｜GitHub原始教材整潔版</title>
+<title>資安職能訓練｜資通安全概論 11504｜iPhone測驗自動跳題版</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -1179,6 +1179,250 @@ body.ann-red-eraser #annStatus{
   .sourceImageStage{height:68vh!important;min-height:300px!important}
 }
 
+
+/* ===== v16 原始教材全螢幕模式 ===== */
+.sourceHeadActions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+  flex:0 0 auto
+}
+.sourceFullscreenBtn{
+  min-height:40px!important;
+  padding:8px 11px!important;
+  border:1px solid #8098e8!important;
+  border-radius:9px!important;
+  background:#eef2ff!important;
+  color:#243f9f!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  white-space:nowrap
+}
+.sourceFullscreenBtn:hover{background:#e3e9ff!important}
+
+/* Fullscreen API 與 iOS / 不支援瀏覽器的 fixed 備援共用版面 */
+#sourceViewerCard:fullscreen,
+#sourceViewerCard:-webkit-full-screen,
+body.sourcePseudoFullscreen #sourceViewerCard{
+  width:100vw!important;
+  height:100vh!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:10px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:#f8f9fc!important;
+  box-shadow:none!important;
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important
+}
+
+/* iPhone/iPad Safari 若不支援元素 Fullscreen API，使用此備援 */
+body.sourcePseudoFullscreen{
+  overflow:hidden!important
+}
+body.sourcePseudoFullscreen #sourceViewerCard{
+  position:fixed!important;
+  inset:0!important;
+  z-index:20000!important;
+  padding-top:max(8px,env(safe-area-inset-top))!important;
+  padding-right:max(8px,env(safe-area-inset-right))!important;
+  padding-bottom:max(8px,env(safe-area-inset-bottom))!important;
+  padding-left:max(8px,env(safe-area-inset-left))!important
+}
+
+/* 全螢幕時只保留必要控制列與教材 */
+#sourceViewerCard:fullscreen .sourceViewerHeadClean,
+#sourceViewerCard:-webkit-full-screen .sourceViewerHeadClean,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceViewerHeadClean{
+  flex:0 0 auto!important;
+  margin:0 0 6px!important;
+  padding:0 2px 7px!important
+}
+#sourceViewerCard:fullscreen .sourceNavPanel,
+#sourceViewerCard:-webkit-full-screen .sourceNavPanel,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceNavPanel{
+  flex:0 0 auto!important;
+  margin-bottom:6px!important;
+  padding:7px!important
+}
+#sourceViewerCard:fullscreen .sourceAnnoToolbarClean,
+#sourceViewerCard:-webkit-full-screen .sourceAnnoToolbarClean,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
+  flex:0 0 auto!important;
+  margin-bottom:6px!important;
+  padding:7px 8px!important
+}
+#sourceViewerCard:fullscreen .sourceImageStage,
+#sourceViewerCard:-webkit-full-screen .sourceImageStage,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceImageStage{
+  flex:1 1 auto!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0!important;
+  border-radius:9px!important
+}
+#sourceViewerCard:fullscreen .sourceMobileHintClean,
+#sourceViewerCard:-webkit-full-screen .sourceMobileHintClean,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceMobileHintClean,
+#sourceViewerCard:fullscreen .sourceFallback,
+#sourceViewerCard:-webkit-full-screen .sourceFallback,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceFallback,
+#sourceViewerCard:fullscreen .sourcePageFooter,
+#sourceViewerCard:-webkit-full-screen .sourcePageFooter,
+body.sourcePseudoFullscreen #sourceViewerCard .sourcePageFooter{
+  display:none!important
+}
+
+#sourceViewerCard:fullscreen .sourceFullscreenBtn,
+#sourceViewerCard:-webkit-full-screen .sourceFullscreenBtn,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceFullscreenBtn{
+  background:#fff1f0!important;
+  border-color:#f4aaa4!important;
+  color:#b42318!important
+}
+
+/* iPad */
+@media(max-width:1024px){
+  .sourceHeadActions{gap:5px}
+  .sourceFullscreenBtn,.sourcePdfBtn{padding:7px 9px!important;font-size:10px!important}
+}
+
+/* iPhone 全螢幕：簡化控制區，盡量把空間留給教材 */
+@media(max-width:680px){
+  .sourceViewerHeadClean{
+    align-items:center!important
+  }
+  .sourceHeadActions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    width:100%;
+    margin-top:7px
+  }
+  .sourceFullscreenBtn,.sourcePdfBtn{
+    width:100%!important;
+    min-height:40px!important
+  }
+
+  #sourceViewerCard:fullscreen,
+  #sourceViewerCard:-webkit-full-screen,
+  body.sourcePseudoFullscreen #sourceViewerCard{
+    padding:6px!important;
+    padding-top:max(6px,env(safe-area-inset-top))!important;
+    padding-bottom:max(6px,env(safe-area-inset-bottom))!important
+  }
+  #sourceViewerCard:fullscreen .sourceViewerHeadClean,
+  #sourceViewerCard:-webkit-full-screen .sourceViewerHeadClean,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceViewerHeadClean{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:5px!important
+  }
+  #sourceViewerCard:fullscreen .sourceTitleLine,
+  #sourceViewerCard:-webkit-full-screen .sourceTitleLine,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceTitleLine{
+    display:none!important
+  }
+  #sourceViewerCard:fullscreen .sourceViewerHeadClean h2,
+  #sourceViewerCard:-webkit-full-screen .sourceViewerHeadClean h2,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceViewerHeadClean h2{
+    margin:0!important;
+    font-size:15px!important;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis
+  }
+  #sourceViewerCard:fullscreen .sourceViewerMeta,
+  #sourceViewerCard:-webkit-full-screen .sourceViewerMeta,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceViewerMeta{
+    font-size:9px!important
+  }
+  #sourceViewerCard:fullscreen .sourceHeadActions,
+  #sourceViewerCard:-webkit-full-screen .sourceHeadActions,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceHeadActions{
+    display:block!important;
+    width:auto!important;
+    margin:0!important
+  }
+  #sourceViewerCard:fullscreen .sourcePdfBtn,
+  #sourceViewerCard:-webkit-full-screen .sourcePdfBtn,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourcePdfBtn{
+    display:none!important
+  }
+  #sourceViewerCard:fullscreen .sourceFullscreenBtn,
+  #sourceViewerCard:-webkit-full-screen .sourceFullscreenBtn,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceFullscreenBtn{
+    width:auto!important;
+    min-height:36px!important;
+    padding:6px 9px!important
+  }
+  #sourceViewerCard:fullscreen .sourceNavPanel,
+  #sourceViewerCard:-webkit-full-screen .sourceNavPanel,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceNavPanel{
+    padding:5px!important;
+    margin-bottom:5px!important
+  }
+  #sourceViewerCard:fullscreen .sourceNavTools,
+  #sourceViewerCard:-webkit-full-screen .sourceNavTools,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceNavTools{
+    display:none!important
+  }
+  #sourceViewerCard:fullscreen .sourceAnnoHead,
+  #sourceViewerCard:-webkit-full-screen .sourceAnnoHead,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoHead,
+  #sourceViewerCard:fullscreen .sourceAnnoStatus,
+  #sourceViewerCard:-webkit-full-screen .sourceAnnoStatus,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoStatus{
+    display:none!important
+  }
+  #sourceViewerCard:fullscreen .sourceAnnoToolbarClean,
+  #sourceViewerCard:-webkit-full-screen .sourceAnnoToolbarClean,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
+    padding:5px!important;
+    margin-bottom:5px!important
+  }
+  #sourceViewerCard:fullscreen .sourceAnnoTools,
+  #sourceViewerCard:-webkit-full-screen .sourceAnnoTools,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoTools{
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    overflow-x:auto!important;
+    gap:4px!important
+  }
+  #sourceViewerCard:fullscreen .sourceAnnoTools .miniBtn,
+  #sourceViewerCard:-webkit-full-screen .sourceAnnoTools .miniBtn,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoTools .miniBtn{
+    flex:0 0 auto!important;
+    min-height:36px!important;
+    width:auto!important;
+    padding:5px 7px!important;
+    font-size:9px!important
+  }
+}
+
+/* 進入模擬全螢幕時不顯示 iPhone 底部網站導覽 */
+body.sourcePseudoFullscreen .mobileBottomNav{
+  display:none!important
+}
+
+@media print{
+  .sourceFullscreenBtn{display:none!important}
+}
+
+
+/* ===== v17 iPhone 開始測驗自動移至題目區 ===== */
+@media(max-width:680px){
+  #quizMain{
+    scroll-margin-top:6px;
+  }
+  #quiz:not(.hidden){
+    min-height:calc(100dvh - 88px);
+  }
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1194,7 +1438,7 @@ body.ann-red-eraser #annStatus{
 <div class="shell">
 <section class="hero">
 <h1>資安職能訓練｜資通安全概論</h1>
-<p>11504 詳細整理＋450題題庫｜GitHub Pages＋跨裝置同步｜原始教材整潔檢視版｜iPhone / iPad 自動適應</p>
+<p>11504 詳細整理＋450題題庫｜GitHub Pages＋跨裝置同步｜原始教材全螢幕＋iPhone測驗自動跳題版｜iPhone / iPad 自動適應</p>
 <span class="badge">完全離線單一HTML｜詳細整理依數位發展部資通安全署11504三日教材｜題庫為模擬題，非官方考古題</span>
 </section>
 
@@ -2107,7 +2351,7 @@ body.ann-red-eraser #annStatus{
       </div>
     </aside>
 
-    <main class="card sourceViewerCard">
+    <main id="sourceViewerCard" class="card sourceViewerCard">
       <div class="sourceViewerHead sourceViewerHeadClean">
         <div class="sourceTitleBlock">
           <div class="sourceTitleLine">
@@ -2117,7 +2361,10 @@ body.ann-red-eraser #annStatus{
           <h2 id="sourceViewerTitle">第1天主要教材</h2>
           <div id="sourceViewerMeta" class="sourceViewerMeta">第1～4單元 · 共126頁</div>
         </div>
-        <a id="sourceOpenBtn" class="miniBtn sourceOpenBtn sourcePdfBtn" href="original/day1.pdf" target="_blank" rel="noopener">↗ 開啟 PDF 原檔</a>
+        <div class="sourceHeadActions">
+          <button id="sourceFullscreenBtn" class="miniBtn sourceFullscreenBtn" type="button" title="以全螢幕檢視目前教材">⛶ 全螢幕</button>
+          <a id="sourceOpenBtn" class="miniBtn sourceOpenBtn sourcePdfBtn" href="original/day1.pdf" target="_blank" rel="noopener">↗ 開啟 PDF 原檔</a>
+        </div>
       </div>
 
       <div class="sourceNavPanel" aria-label="原始教材換頁控制">
@@ -2148,7 +2395,7 @@ body.ann-red-eraser #annStatus{
       </div>
 
       <div class="sourceMobileHint sourceMobileHintClean">
-        <b>行動裝置提示：</b>教材已改為逐頁影像，iPhone / iPad 可直接左右滑動換頁；需要放大時可使用上方「顯示比例」。
+        <b>行動裝置提示：</b>教材已改為逐頁影像，iPhone / iPad 可直接左右滑動換頁；需要較大畫面可按「全螢幕」。
       </div>
 
       <div id="sourceAnnoToolbar" class="sourceAnnoToolbar sourceAnnoToolbarClean">
@@ -2326,7 +2573,22 @@ function start(pool=null){
  state={questions:arr.slice(0,n),idx:0,answers:{},confirmed:{},mode:$('mode').value,finished:false};
  $('welcome').classList.add('hidden');$('result').classList.add('hidden');$('quiz').classList.remove('hidden');render();
 }
-$('startBtn').onclick=()=>start();
+function scrollToQuizOnIPhone(){
+  // iPhone / 窄螢幕版：開始新測驗後，自動移到下方題目區。
+  // 使用 responsive viewport 判斷，包含 iPhone Safari 與加入主畫面模式。
+  if(!window.matchMedia('(max-width:680px)').matches)return;
+  const quiz=$('quiz'),target=$('quizMain');
+  if(!quiz||!target||quiz.classList.contains('hidden'))return;
+  setTimeout(()=>{
+    const y=target.getBoundingClientRect().top+window.scrollY-6;
+    try{
+      window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+    }catch(e){
+      window.scrollTo(0,Math.max(0,y));
+    }
+  },90);
+}
+$('startBtn').onclick=()=>{start();scrollToQuizOnIPhone()};
 $('exam50Btn').onclick=()=>{$('mode').value='exam';$('day').value='all';$('unit').value='all';$('difficulty').value='all';$('qtype').value='all';$('count').value='50';start()};
 $('wrongBtn').onclick=()=>{let a=loadJSON(wrongKey,[]);if(!a.length)return alert('目前沒有錯題。');start(a)};
 $('favBtn').onclick=()=>{let a=loadJSON(favKey,[]);if(!a.length)return alert('目前沒有收藏題。');start(a)};
@@ -3657,6 +3919,126 @@ window.addEventListener("DOMContentLoaded",()=>{
     load();
     setMode("browse");
     setTimeout(ensureCanvasSize, 120);
+  });
+})();
+</script>
+
+
+<script>
+/* ===== v16 原始教材全螢幕控制 ===== */
+(function(){
+  const g=id=>document.getElementById(id);
+  let pseudo=false;
+
+  function card(){ return g("sourceViewerCard"); }
+
+  function nativeFullscreenElement(){
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+
+  function isFullscreen(){
+    return !!nativeFullscreenElement() || pseudo || document.body.classList.contains("sourcePseudoFullscreen");
+  }
+
+  function updateButton(){
+    const btn=g("sourceFullscreenBtn");
+    if(!btn)return;
+    const on=isFullscreen();
+    btn.textContent=on ? "✕ 離開全螢幕" : "⛶ 全螢幕";
+    btn.title=on ? "離開原始教材全螢幕模式" : "以全螢幕檢視目前教材";
+    btn.setAttribute("aria-pressed",on?"true":"false");
+  }
+
+  function notifyLayout(){
+    // 原始教材註記 Canvas 使用 ResizeObserver；額外送 resize 讓圖片/畫布立即重算。
+    setTimeout(()=>window.dispatchEvent(new Event("resize")),80);
+    setTimeout(()=>window.dispatchEvent(new Event("resize")),260);
+  }
+
+  function enterPseudo(){
+    pseudo=true;
+    document.body.classList.add("sourcePseudoFullscreen");
+    updateButton();
+    notifyLayout();
+  }
+
+  function exitPseudo(){
+    pseudo=false;
+    document.body.classList.remove("sourcePseudoFullscreen");
+    updateButton();
+    notifyLayout();
+  }
+
+  async function enterFullscreen(){
+    const el=card();
+    if(!el)return;
+
+    // 桌機 / Android / 支援的 Safari：優先使用瀏覽器原生 Fullscreen API
+    try{
+      if(el.requestFullscreen){
+        await el.requestFullscreen({navigationUI:"hide"}).catch(()=>el.requestFullscreen());
+        updateButton();
+        notifyLayout();
+        return;
+      }
+      if(el.webkitRequestFullscreen){
+        el.webkitRequestFullscreen();
+        updateButton();
+        notifyLayout();
+        return;
+      }
+    }catch(e){
+      console.warn("Native fullscreen unavailable, using fallback.",e);
+    }
+
+    // iPhone Safari 或瀏覽器不支援元素全螢幕時
+    enterPseudo();
+  }
+
+  async function exitFullscreen(){
+    try{
+      if(document.fullscreenElement && document.exitFullscreen){
+        await document.exitFullscreen();
+        return;
+      }
+      if(document.webkitFullscreenElement && document.webkitExitFullscreen){
+        document.webkitExitFullscreen();
+        return;
+      }
+    }catch(e){
+      console.warn(e);
+    }
+    exitPseudo();
+  }
+
+  async function toggle(){
+    if(isFullscreen()) await exitFullscreen();
+    else await enterFullscreen();
+  }
+
+  window.addEventListener("DOMContentLoaded",()=>{
+    g("sourceFullscreenBtn")?.addEventListener("click",toggle);
+
+    document.addEventListener("fullscreenchange",()=>{
+      if(!document.fullscreenElement) pseudo=false;
+      updateButton();
+      notifyLayout();
+    });
+    document.addEventListener("webkitfullscreenchange",()=>{
+      if(!document.webkitFullscreenElement) pseudo=false;
+      updateButton();
+      notifyLayout();
+    });
+
+    // 模擬全螢幕支援 Esc
+    document.addEventListener("keydown",e=>{
+      if(e.key==="Escape" && document.body.classList.contains("sourcePseudoFullscreen")){
+        e.preventDefault();
+        exitPseudo();
+      }
+    });
+
+    updateButton();
   });
 })();
 </script>
