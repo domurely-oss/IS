@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504｜章節練習紀錄修正版 v26</title>
+<title>資安職能訓練｜資通安全概論 11504｜版面寬度一致修正版 v27</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -2647,6 +2647,89 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
   .unitHistoryTable{min-width:460px}
   .unitHistoryTable th,.unitHistoryTable td{padding:8px 7px;font-size:10px}
   .historySection{margin-top:14px;padding-top:11px}
+}
+
+
+/* ===== v27 桌機版面寬度一致性修正 ===== */
+/*
+  v24 左側固定註記工具曾替「完整整理／考前速查」加上左側 padding，
+  造成這兩個頁面的主內容比上方 Hero、裝置列、主選單、同步列窄。
+  桌機版改回與 .shell 相同的完整寬度；註記工具仍固定於畫面左側。
+*/
+@media(min-width:1101px){
+  #view-study,
+  #view-quick{
+    width:100%!important;
+    max-width:100%!important;
+    padding-left:0!important;
+    padding-right:0!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    box-sizing:border-box!important;
+  }
+
+  #view-study .studyGrid,
+  #view-quick .quickGrid{
+    width:100%!important;
+    max-width:100%!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+
+  /* 將左側固定註記工具盡量放到主版面左側外緣，
+     避免蓋到左側單元選單。 */
+  .annotationBar{
+    left:max(8px,calc((100vw - 1240px)/2 - 122px))!important;
+  }
+}
+
+/* 一般桌機／小筆電若外側空間不足，主內容仍保持滿寬，
+   工具列縮窄貼齊畫面左側，不再壓縮整個內容區。 */
+@media(min-width:681px) and (max-width:1100px){
+  #view-study,
+  #view-quick{
+    width:100%!important;
+    max-width:100%!important;
+    padding-left:0!important;
+    padding-right:0!important;
+    margin:0!important;
+  }
+
+  .annotationBar{
+    left:4px!important;
+    width:82px!important;
+    max-width:82px!important;
+  }
+
+  .annotationBar .annBtn{
+    font-size:8px!important;
+    padding:5px 3px!important;
+  }
+
+  /* 只有左側欄位本身微量避讓，不再縮減整個主內容寬度 */
+  #view-study .studySide{
+    padding-left:88px!important;
+  }
+}
+
+/* iPhone 仍保留左側註記工具所需安全空間，
+   避免工具列直接蓋住文字。 */
+@media(max-width:680px){
+  #view-study,
+  #view-quick{
+    width:100%!important;
+    max-width:100%!important;
+  }
+}
+
+/* 上方各區塊統一以 shell 可用寬度呈現 */
+.hero,
+.deviceStrip,
+.topNav,
+#backendSyncBar,
+.view.active{
+  max-width:100%!important;
+  box-sizing:border-box!important;
 }
 
 </style>
