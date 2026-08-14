@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504｜題庫練習紀錄版 v25</title>
+<title>資安職能訓練｜資通安全概論 11504｜章節練習紀錄修正版 v26</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -2542,6 +2542,113 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
   .historyScore strong{font-size:20px}
 }
 
+
+/* ===== v26 練習紀錄一致性＋各章節紀錄 ===== */
+.historySection{
+  margin-top:18px;
+  padding-top:14px;
+  border-top:1px solid var(--line)
+}
+.historySectionHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom:9px
+}
+.historySectionHead h3{margin:0 0 3px}
+.historySectionHead p{margin:0}
+.unitHistoryTableWrap{
+  width:100%;
+  overflow-x:auto;
+  border:1px solid #e4e7ec;
+  border-radius:12px
+}
+.unitHistoryTable{
+  width:100%;
+  border-collapse:collapse;
+  min-width:520px
+}
+.unitHistoryTable th,
+.unitHistoryTable td{
+  padding:10px 11px;
+  border-bottom:1px solid #eef1f5;
+  text-align:left;
+  font-size:11px
+}
+.unitHistoryTable th{
+  background:#f8f9fc;
+  color:#475467;
+  font-weight:900
+}
+.unitHistoryTable tbody tr:last-child td{border-bottom:0}
+.unitHistoryTable .rateCell{
+  min-width:130px
+}
+.unitRateBar{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:7px;
+  align-items:center
+}
+.unitRateBar .bar{
+  height:7px;
+  background:#edf0f5;
+  border-radius:999px;
+  overflow:hidden
+}
+.unitRateBar .bar i{
+  display:block;
+  height:100%;
+  background:#3156d3;
+  border-radius:999px
+}
+.historyLegacyNote{
+  margin:0 0 10px;
+  padding:9px 11px;
+  border:1px solid #d7e0f4;
+  border-radius:11px;
+  background:#f7f9ff;
+  color:#475467;
+  font-size:10px;
+  line-height:1.5
+}
+.historyDelete{
+  border:1px solid #f0b5af!important;
+  background:#fff6f5!important;
+  color:#b42318!important;
+  border-radius:8px!important;
+  padding:5px 8px!important;
+  font-size:10px!important;
+  cursor:pointer!important;
+  text-decoration:none!important
+}
+.historyDelete:hover{background:#ffebe9!important}
+.historyLegacyItem{
+  border-style:dashed!important;
+  background:#fbfcff!important
+}
+.historyUnitChips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  margin-top:5px
+}
+.historyUnitChip{
+  display:inline-flex;
+  padding:3px 6px;
+  border-radius:999px;
+  background:#f2f4f7;
+  color:#475467;
+  font-size:9px;
+  font-weight:800
+}
+@media(max-width:680px){
+  .unitHistoryTable{min-width:460px}
+  .unitHistoryTable th,.unitHistoryTable td{padding:8px 7px;font-size:10px}
+  .historySection{margin-top:14px;padding-top:11px}
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -3607,11 +3714,35 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
     </div>
     <div class="quizHistoryActions">
       <button class="btn outline" id="historyBackBtn" type="button">返回題庫</button>
-      <button class="btn ghost" id="historyClearBtn" type="button">清除全部紀錄</button>
+      <button class="btn ghost" id="historyClearBtn" type="button">清除全部練習紀錄</button>
     </div>
   </div>
   <div class="historyStats" id="historyStats"></div>
-  <div class="historyList" id="historyList"></div>
+
+  <div class="historySection">
+    <div class="historySectionHead">
+      <div>
+        <h3>各章節練習紀錄</h3>
+        <p class="small">自本版本起，會依每次實際作答累計各單元的作答數、答對數與正確率。</p>
+      </div>
+    </div>
+    <div class="unitHistoryTableWrap">
+      <table class="unitHistoryTable">
+        <thead><tr><th>章節</th><th>作答數</th><th>答對</th><th>正確率</th></tr></thead>
+        <tbody id="unitHistoryBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="historySection">
+    <div class="historySectionHead">
+      <div>
+        <h3>測驗場次紀錄</h3>
+        <p class="small">新版本完成交卷後會保存單次場次，並可逐筆刪除。</p>
+      </div>
+    </div>
+    <div class="historyList" id="historyList"></div>
+  </div>
 </section>
 </main>
 </div>
@@ -3690,8 +3821,15 @@ for(let u=1;u<=9;u++){
  o.textContent=`第${u}單元（${n}題）`;
  $('unit').appendChild(o);
 }
-let state={questions:[],idx:0,answers:{},confirmed:{},mode:'practice',finished:false,startAt:0,historyType:'一般練習',historyScope:''};
-const statKey='secquiz11504stats_v2', wrongKey='secquiz11504wrong_v2', favKey='secquiz11504fav_v2', historyKey='secquiz11504history_v1';
+let state={questions:[],idx:0,answers:{},confirmed:{},mode:'practice',finished:false,startAt:0,historyType:'一般練習',historyScope:'',sessionId:''};
+const statKey='secquiz11504stats_v2',
+      wrongKey='secquiz11504wrong_v2',
+      favKey='secquiz11504fav_v2',
+      historyKey='secquiz11504history_v1',
+      attemptLogKey='secquiz11504attemptlog_v1',
+      unitStatKey='secquiz11504unitstats_v1',
+      legacyKey='secquiz11504legacy_v1',
+      migrationKey='secquiz11504migration_v26';
 function sameAnswer(q,a){
  if(q.type==='multiple'){
    if(!Array.isArray(a))return false;
@@ -3703,7 +3841,55 @@ function sameAnswer(q,a){
 function hasAnswer(q){let a=state.answers[q.id];return q.type==='multiple'?Array.isArray(a)&&a.length>0:a!==undefined}
 function isAnsweredForProgress(q){return state.mode==='practice'&&q.type==='multiple'?!!state.confirmed[q.id]:hasAnswer(q)}
 function answerText(q,a){if(a===undefined||a===null||(Array.isArray(a)&&!a.length))return '未作答';let arr=Array.isArray(a)?[...a].sort((x,y)=>x-y):[a];return arr.map(i=>optionLabel(i)).join('、')}
-function refreshStats(){let s=loadJSON(statKey,{done:0,correct:0});$('doneStat').textContent=s.done;$('accStat').textContent=s.done?Math.round(s.correct/s.done*100)+'%':'—';$('wrongStat').textContent=loadJSON(wrongKey,[]).length}
+function rebuildStatsFromLedger(){
+ const legacy=loadJSON(legacyKey,{done:0,correct:0})||{done:0,correct:0};
+ let log=loadJSON(attemptLogKey,[]);
+ if(!Array.isArray(log))log=[];
+ const done=(Number(legacy.done)||0)+log.length;
+ const correct=(Number(legacy.correct)||0)+log.reduce((a,x)=>a+(x.correct?1:0),0);
+ saveJSON(statKey,{done,correct});
+
+ const units={};
+ for(let u=1;u<=9;u++)units[u]={done:0,correct:0};
+ log.forEach(x=>{
+   const u=Number(x.unit);
+   if(!units[u])return;
+   units[u].done++;
+   if(x.correct)units[u].correct++;
+ });
+ saveJSON(unitStatKey,units);
+}
+function ensureHistoryMigration(){
+ if(localStorage.getItem(migrationKey))return;
+
+ const oldStats=loadJSON(statKey,{done:0,correct:0})||{done:0,correct:0};
+ let oldHistory=loadJSON(historyKey,[]);
+ if(!Array.isArray(oldHistory))oldHistory=[];
+
+ // 舊版只有「總作答／總答對」，無法準確回推到各章節。
+ // 將升級前累計保留成 legacy baseline，避免畫面出現 35 vs 0 之類的不一致。
+ saveJSON(legacyKey,{
+   done:Number(oldStats.done)||0,
+   correct:Number(oldStats.correct)||0,
+   migratedAt:Date.now()
+ });
+
+ // 舊版如果已有場次明細，保留明細但標記為舊版資料；
+ // 其總數已包含在 legacy baseline 中，不重複計算。
+ oldHistory=oldHistory.map(x=>({...x,legacyDetail:true}));
+ saveJSON(historyKey,oldHistory);
+ saveJSON(attemptLogKey,[]);
+ saveJSON(unitStatKey,{});
+ localStorage.setItem(migrationKey,'1');
+ rebuildStatsFromLedger();
+}
+function refreshStats(){
+ let s=loadJSON(statKey,{done:0,correct:0});
+ $('doneStat').textContent=s.done;
+ $('accStat').textContent=s.done?Math.round(s.correct/s.done*100)+'%':'—';
+ $('wrongStat').textContent=loadJSON(wrongKey,[]).length;
+}
+ensureHistoryMigration();
 refreshStats();
 function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function filtered(){return BANK.filter(q=>($('day').value==='all'||q.day==$('day').value)&&($('unit').value==='all'||q.unit==$('unit').value)&&($('difficulty').value==='all'||q.difficulty===$('difficulty').value)&&($('qtype').value==='all'||q.type===$('qtype').value))}
@@ -3719,7 +3905,7 @@ function start(pool=null,historyType='一般練習'){
  let arr=pool?pool.map(id=>BANK.find(q=>q.id===id)).filter(Boolean):filtered();
  if(!arr.length){alert('目前篩選條件沒有題目。');return}
  arr=shuffle(arr);let n=$('count').value==='all'?arr.length:Math.min(+$('count').value,arr.length);
- state={questions:arr.slice(0,n),idx:0,answers:{},confirmed:{},mode:$('mode').value,finished:false,startAt:Date.now(),historyType,historyScope:currentScopeText()};
+ state={questions:arr.slice(0,n),idx:0,answers:{},confirmed:{},mode:$('mode').value,finished:false,startAt:Date.now(),historyType,historyScope:currentScopeText(),sessionId:`s-${Date.now()}-${Math.random().toString(36).slice(2,8)}`};
  $('welcome').classList.add('hidden');$('result').classList.add('hidden');$('quizHistory')?.classList.add('hidden');$('quiz').classList.remove('hidden');render();
 }
 function scrollToQuizOnIPhone(){
@@ -3744,8 +3930,13 @@ $('favBtn').onclick=()=>{let a=loadJSON(favKey,[]);if(!a.length)return alert('�
 $('historyBtn').onclick=()=>showHistory();
 $('historyBackBtn').onclick=()=>showQuizWelcome();
 $('historyClearBtn').onclick=()=>{
- if(!confirm('確定要清除全部題庫練習紀錄嗎？此動作會同步到其他裝置。'))return;
+ if(!confirm('確定要清除全部練習紀錄嗎？將清除：累計作答、累計正確率、各章節練習統計與測驗場次；錯題庫與收藏題不會刪除。此動作也會同步到其他裝置。'))return;
  saveJSON(historyKey,[]);
+ saveJSON(attemptLogKey,[]);
+ saveJSON(unitStatKey,{});
+ saveJSON(legacyKey,{done:0,correct:0,migratedAt:Date.now()});
+ saveJSON(statKey,{done:0,correct:0});
+ refreshStats();
  renderHistory();
 };
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
@@ -3790,10 +3981,25 @@ $('confirmMultiBtn').onclick=()=>{
  state.confirmed[q.id]=true;record(q,a);updateWrong(q,a);render();
 };
 function record(q,a){
- let seenKey='secquiz11504seen_v2_'+q.id;
+ const sid=state.sessionId||`adhoc-${Date.now()}`;
+ const seenKey=`secquiz11504seen_v3_${sid}_${q.id}`;
  if(sessionStorage.getItem(seenKey))return;
  sessionStorage.setItem(seenKey,'1');
- let s=loadJSON(statKey,{done:0,correct:0});s.done++;if(sameAnswer(q,a))s.correct++;saveJSON(statKey,s);refreshStats();
+
+ let log=loadJSON(attemptLogKey,[]);
+ if(!Array.isArray(log))log=[];
+ log.push({
+   id:`a-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,
+   sessionId:sid,
+   qid:q.id,
+   unit:q.unit,
+   correct:sameAnswer(q,a),
+   ts:Date.now()
+ });
+ if(log.length>5000)log=log.slice(-5000);
+ saveJSON(attemptLogKey,log);
+ rebuildStatsFromLedger();
+ refreshStats();
 }
 function updateWrong(q,a){
  let w=loadJSON(wrongKey,[]);
@@ -3826,13 +4032,28 @@ function formatDuration(ms){
  const m=Math.floor(sec/60),s=sec%60;
  return m?`${m}分${s}秒`:`${s}秒`;
 }
+function calcUnitBreakdown(){
+ const by={};
+ for(const q of state.questions){
+   const a=state.answers[q.id];
+   const considered=state.mode==='practice'&&q.type==='multiple'?!!state.confirmed[q.id]:hasAnswer(q);
+   if(!by[q.unit])by[q.unit]={total:0,answered:0,correct:0};
+   by[q.unit].total++;
+   if(considered){
+     by[q.unit].answered++;
+     if(sameAnswer(q,a))by[q.unit].correct++;
+   }
+ }
+ return by;
+}
 function saveQuizHistory(){
  const s=calcQuizSummary();
  const end=Date.now();
  let h=loadJSON(historyKey,[]);
  if(!Array.isArray(h))h=[];
  h.unshift({
-   id:`${end}-${Math.random().toString(36).slice(2,7)}`,
+   id:`h-${end}-${Math.random().toString(36).slice(2,7)}`,
+   sessionId:state.sessionId||'',
    endedAt:end,
    startedAt:state.startAt||end,
    durationMs:Math.max(0,end-(state.startAt||end)),
@@ -3842,7 +4063,9 @@ function saveQuizHistory(){
    total:s.total,
    answered:s.answered,
    correct:s.correct,
-   pct:s.pct
+   pct:s.pct,
+   byUnit:calcUnitBreakdown(),
+   schema:2
  });
  h=h.slice(0,100);
  saveJSON(historyKey,h);
@@ -3866,37 +4089,107 @@ function showHistory(){
 function historyDate(ts){
  try{return new Intl.DateTimeFormat('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(ts))}catch{return new Date(ts).toLocaleString()}
 }
+function deleteHistoryRecord(id){
+ let h=loadJSON(historyKey,[]);
+ if(!Array.isArray(h))h=[];
+ const rec=h.find(x=>x.id===id);
+ if(!rec)return;
+
+ if(rec.sessionId && !rec.legacyDetail){
+   if(!confirm('確定刪除這筆練習紀錄嗎？此筆場次的累計作答與章節統計也會一起扣除。'))return;
+   let log=loadJSON(attemptLogKey,[]);
+   if(!Array.isArray(log))log=[];
+   log=log.filter(x=>x.sessionId!==rec.sessionId);
+   saveJSON(attemptLogKey,log);
+   h=h.filter(x=>x.id!==id);
+   saveJSON(historyKey,h);
+   rebuildStatsFromLedger();
+   refreshStats();
+   renderHistory();
+   return;
+ }
+
+ if(!confirm('這是舊版場次明細，無法安全回推舊版章節統計。確定只刪除這筆明細嗎？'))return;
+ h=h.filter(x=>x.id!==id);
+ saveJSON(historyKey,h);
+ renderHistory();
+}
+function clearLegacyBaseline(){
+ const legacy=loadJSON(legacyKey,{done:0,correct:0})||{done:0,correct:0};
+ if(!(Number(legacy.done)||0))return;
+ if(!confirm(`確定刪除升級前累計的 ${legacy.done} 題紀錄嗎？此動作會讓總累計重新只計算新版紀錄。`))return;
+ saveJSON(legacyKey,{done:0,correct:0,migratedAt:legacy.migratedAt||Date.now()});
+ rebuildStatsFromLedger();
+ refreshStats();
+ renderHistory();
+}
 function renderHistory(){
  let h=loadJSON(historyKey,[]);
  if(!Array.isArray(h))h=[];
- const list=$('historyList'),stats=$('historyStats');
- const tests=h.length;
- const totalQ=h.reduce((a,x)=>a+(+x.total||0),0);
- const avg=tests?Math.round(h.reduce((a,x)=>a+(+x.pct||0),0)/tests):0;
- const best=tests?Math.max(...h.map(x=>+x.pct||0)):0;
- stats.innerHTML=`<div class="historyStat"><b>${tests}</b><span>測驗次數</span></div><div class="historyStat"><b>${totalQ}</b><span>累計題數</span></div><div class="historyStat"><b>${tests?avg+'%':'—'}</b><span>平均正確率</span></div><div class="historyStat"><b>${tests?best+'%':'—'}</b><span>最高正確率</span></div>`;
- if(!tests){
-   list.innerHTML='<div class="historyEmpty">目前尚無練習紀錄。完成並交卷一次測驗後，紀錄會自動出現在這裡。</div>';
-   return;
+ const list=$('historyList'),stats=$('historyStats'),unitBody=$('unitHistoryBody');
+
+ const s=loadJSON(statKey,{done:0,correct:0})||{done:0,correct:0};
+ const tests=h.filter(x=>!x.legacyDetail).length;
+ const done=Number(s.done)||0;
+ const correct=Number(s.correct)||0;
+ const pct=done?Math.round(correct/done*100):null;
+ const wrongCount=(loadJSON(wrongKey,[])||[]).length;
+
+ // 摘要與左側統計使用同一個 statKey / wrongKey，確保不再出現數字不一致。
+ stats.innerHTML=`<div class="historyStat"><b>${tests}</b><span>已保存場次</span></div><div class="historyStat"><b>${done}</b><span>累計作答</span></div><div class="historyStat"><b>${pct===null?'—':pct+'%'}</b><span>累計正確率</span></div><div class="historyStat"><b>${wrongCount}</b><span>錯題庫</span></div>`;
+
+ // 各章節累計：只統計新版 attempt ledger，因舊版沒有保存題目對應章節。
+ let units=loadJSON(unitStatKey,{});
+ if(!units||typeof units!=='object')units={};
+ unitBody.innerHTML=Array.from({length:9},(_,i)=>i+1).map(u=>{
+   const v=units[u]||{done:0,correct:0};
+   const ud=Number(v.done)||0,uc=Number(v.correct)||0,up=ud?Math.round(uc/ud*100):0;
+   return `<tr><td><b>第${u}單元</b><br><span class="small">${esc(unitNames[u])}</span></td><td>${ud}</td><td>${uc}</td><td class="rateCell"><div class="unitRateBar"><div class="bar"><i style="width:${up}%"></i></div><b>${ud?up+'%':'—'}</b></div></td></tr>`;
+ }).join('');
+
+ const legacy=loadJSON(legacyKey,{done:0,correct:0})||{done:0,correct:0};
+ const legacyDone=Number(legacy.done)||0;
+ const legacyCorrect=Number(legacy.correct)||0;
+
+ let html='';
+ if(legacyDone){
+   const lp=Math.round(legacyCorrect/legacyDone*100);
+   html+=`<div class="historyLegacyNote">為了修正舊版「左側累計」與「練習紀錄」不一致，已將升級前的累計 <b>${legacyDone}</b> 題（答對 ${legacyCorrect} 題，${lp}%）保留為「既有累計」。舊版沒有保存每題章節，因此無法正確拆分到下方第1～9單元。<br><button class="historyDelete" type="button" id="deleteLegacyBtn" style="margin-top:7px">刪除既有累計</button></div>`;
  }
- list.innerHTML=h.map(x=>`<div class="historyItem">
-   <div class="historyWhen"><b>${esc(historyDate(x.endedAt))}</b><span>${esc(x.type||'一般練習')}｜${x.mode==='exam'?'模擬考':'練習模式'}</span></div>
-   <div class="historyMeta"><div class="historyBadges"><span class="historyBadge">${x.correct}/${x.total} 題</span><span class="historyBadge">已答 ${x.answered}/${x.total}</span><span class="historyBadge">${esc(formatDuration(x.durationMs))}</span></div><div class="historyScope">${esc(x.scope||'全部範圍')}</div><button class="historyDelete" type="button" data-history-delete="${esc(x.id)}">刪除此筆紀錄</button></div>
-   <div class="historyScore"><strong>${x.pct}%</strong><small>正確率</small></div>
- </div>`).join('');
- list.querySelectorAll('[data-history-delete]').forEach(btn=>btn.addEventListener('click',()=>{
-   let cur=loadJSON(historyKey,[]);
-   cur=Array.isArray(cur)?cur.filter(x=>x.id!==btn.dataset.historyDelete):[];
-   saveJSON(historyKey,cur);
-   renderHistory();
- }));
+
+ if(!h.length){
+   html+='<div class="historyEmpty">目前尚無新版「單次測驗場次」紀錄。完成並交卷後，會自動建立場次與各章節統計。</div>';
+ }else{
+   html+=h.map(x=>{
+     const unitChips=x.byUnit?Object.entries(x.byUnit).filter(([,v])=>v&&v.total).map(([u,v])=>{
+       const a=Number(v.answered)||0,c=Number(v.correct)||0;
+       return `<span class="historyUnitChip">第${u}單元 ${c}/${a||v.total}</span>`;
+     }).join(''):'';
+     return `<div class="historyItem ${x.legacyDetail?'historyLegacyItem':''}">
+       <div class="historyWhen"><b>${esc(historyDate(x.endedAt))}</b><span>${esc(x.type||'一般練習')}｜${x.mode==='exam'?'模擬考':'練習模式'}${x.legacyDetail?'｜舊版明細':''}</span></div>
+       <div class="historyMeta">
+         <div class="historyBadges"><span class="historyBadge">${x.correct}/${x.total} 題</span><span class="historyBadge">已答 ${x.answered}/${x.total}</span><span class="historyBadge">${esc(formatDuration(x.durationMs))}</span></div>
+         <div class="historyScope">${esc(x.scope||'全部範圍')}</div>
+         ${unitChips?`<div class="historyUnitChips">${unitChips}</div>`:''}
+         <button class="historyDelete" type="button" data-history-delete="${esc(x.id)}">${x.legacyDetail?'刪除此筆舊版明細':'刪除此筆紀錄'}</button>
+       </div>
+       <div class="historyScore"><strong>${x.pct}%</strong><small>本次正確率</small></div>
+     </div>`;
+   }).join('');
+ }
+ list.innerHTML=html;
+
+ $('deleteLegacyBtn')?.addEventListener('click',clearLegacyBaseline);
+ list.querySelectorAll('[data-history-delete]').forEach(btn=>{
+   btn.addEventListener('click',()=>deleteHistoryRecord(btn.dataset.historyDelete));
+ });
 }
 
 function finish(){
  let unanswered=state.questions.filter(q=>state.mode==='practice'&&q.type==='multiple'?!state.confirmed[q.id]:!hasAnswer(q)).length;
  if(unanswered&&!confirm(`尚有 ${unanswered} 題未作答或未確認，仍要交卷嗎？`))return;
  if(state.mode==='exam'){for(let q of state.questions){let a=state.answers[q.id];if(hasAnswer(q)){record(q,a);updateWrong(q,a)}}}
- state.finished=true;saveQuizHistory();$('quiz').classList.add('hidden');showResult();
+ state.finished=true;saveQuizHistory();rebuildStatsFromLedger();refreshStats();$('quiz').classList.add('hidden');showResult();
 }
 function showResult(){
  let total=state.questions.length,answered=0,correct=0,by={},byType={single:{total:0,correct:0},multiple:{total:0,correct:0}};
@@ -4629,7 +4922,11 @@ const SYNC_PREFIXES = [
   "secquiz11504stats_v2",
   "secquiz11504wrong_v2",
   "secquiz11504fav_v2",
-  "secquiz11504history_v1"
+  "secquiz11504history_v1",
+  "secquiz11504attemptlog_v1",
+  "secquiz11504unitstats_v1",
+  "secquiz11504legacy_v1",
+  "secquiz11504migration_v26"
 ];
 
 const DEVICE_KEY = "sec11504_firebase_device_v2";
