@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504｜</title>
+<title>資安職能訓練｜資通安全概論 11504｜刪除紀錄同步清除錯題庫 v28</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -2747,7 +2747,7 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
 <div class="shell">
 <section class="hero">
 <h1>資安職能訓練｜資通安全概論</h1>
-<p>11504 詳細整理＋450題題庫｜</p>
+<p>11504 詳細整理＋450題題庫｜GitHub Pages＋跨裝置同步｜原始教材全螢幕＋iPhone測驗自動跳題版｜iPhone / iPad 自動適應</p>
 <span class="badge">完全離線單一HTML｜詳細整理依數位發展部資通安全署11504三日教材｜題庫為模擬題，非官方考古題</span>
 </section>
 
@@ -3797,7 +3797,7 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
     </div>
     <div class="quizHistoryActions">
       <button class="btn outline" id="historyBackBtn" type="button">返回題庫</button>
-      <button class="btn ghost" id="historyClearBtn" type="button">清除全部練習紀錄</button>
+      <button class="btn ghost" id="historyClearBtn" type="button">清除全部紀錄＋錯題庫</button>
     </div>
   </div>
   <div class="historyStats" id="historyStats"></div>
@@ -3821,7 +3821,7 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
     <div class="historySectionHead">
       <div>
         <h3>測驗場次紀錄</h3>
-        <p class="small">新版本完成交卷後會保存單次場次，並可逐筆刪除。</p>
+        <p class="small">新版本完成交卷後會保存單次場次；刪除單筆場次時會同步調整該場次造成的錯題庫與統計。</p>
       </div>
     </div>
     <div class="historyList" id="historyList"></div>
@@ -4013,12 +4013,13 @@ $('favBtn').onclick=()=>{let a=loadJSON(favKey,[]);if(!a.length)return alert('�
 $('historyBtn').onclick=()=>showHistory();
 $('historyBackBtn').onclick=()=>showQuizWelcome();
 $('historyClearBtn').onclick=()=>{
- if(!confirm('確定要清除全部練習紀錄嗎？將清除：累計作答、累計正確率、各章節練習統計與測驗場次；錯題庫與收藏題不會刪除。此動作也會同步到其他裝置。'))return;
+ if(!confirm('確定要清除全部練習紀錄嗎？將一併清除：累計作答、累計正確率、各章節練習統計、測驗場次與錯題庫；收藏題會保留。此動作也會同步到其他裝置。'))return;
  saveJSON(historyKey,[]);
  saveJSON(attemptLogKey,[]);
  saveJSON(unitStatKey,{});
  saveJSON(legacyKey,{done:0,correct:0,migratedAt:Date.now()});
  saveJSON(statKey,{done:0,correct:0});
+ saveJSON(wrongKey,[]);
  refreshStats();
  renderHistory();
 };
@@ -4172,6 +4173,30 @@ function showHistory(){
 function historyDate(ts){
  try{return new Intl.DateTimeFormat('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(ts))}catch{return new Date(ts).toLocaleString()}
 }
+function reconcileWrongAfterSessionDelete(removedSessionId,removedQids=[]){
+ let wrong=loadJSON(wrongKey,[]);
+ if(!Array.isArray(wrong))wrong=[];
+ let log=loadJSON(attemptLogKey,[]);
+ if(!Array.isArray(log))log=[];
+
+ const affected=[...new Set((removedQids||[]).map(Number).filter(Number.isFinite))];
+ affected.forEach(qid=>{
+   const remain=log.filter(x=>Number(x.qid)===qid).sort((a,b)=>(Number(a.ts)||0)-(Number(b.ts)||0));
+   const latest=remain.length?remain[remain.length-1]:null;
+   if(latest){
+     if(latest.correct){
+       wrong=wrong.filter(x=>Number(x)!==qid);
+     }else if(!wrong.some(x=>Number(x)===qid)){
+       wrong.push(qid);
+     }
+   }else{
+     // 該題已沒有任何保留的新版練習紀錄，從錯題庫移除。
+     wrong=wrong.filter(x=>Number(x)!==qid);
+   }
+ });
+ saveJSON(wrongKey,wrong);
+}
+
 function deleteHistoryRecord(id){
  let h=loadJSON(historyKey,[]);
  if(!Array.isArray(h))h=[];
@@ -4182,10 +4207,13 @@ function deleteHistoryRecord(id){
    if(!confirm('確定刪除這筆練習紀錄嗎？此筆場次的累計作答與章節統計也會一起扣除。'))return;
    let log=loadJSON(attemptLogKey,[]);
    if(!Array.isArray(log))log=[];
+   const removed=log.filter(x=>x.sessionId===rec.sessionId);
+   const removedQids=[...new Set(removed.map(x=>x.qid))];
    log=log.filter(x=>x.sessionId!==rec.sessionId);
    saveJSON(attemptLogKey,log);
    h=h.filter(x=>x.id!==id);
    saveJSON(historyKey,h);
+   reconcileWrongAfterSessionDelete(rec.sessionId,removedQids);
    rebuildStatsFromLedger();
    refreshStats();
    renderHistory();
