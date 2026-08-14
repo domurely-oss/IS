@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜新資通安全概論練習題庫｜</title>
+<title>資安職能訓練｜資通安全概論 11504｜固定註記工具版 v23</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -2149,6 +2149,110 @@ body.sourcePseudoFullscreen .mobileBottomNav{
   }
 }
 
+
+/* ===== v23 註記工具固定於畫面 ===== */
+/* 完整整理 / 考前速查：固定在畫面下方，滾動時仍可操作 */
+.annotationBar{
+  position:fixed!important;
+  top:auto!important;
+  right:auto!important;
+  left:50%!important;
+  bottom:12px!important;
+  width:min(1280px,calc(100vw - 24px))!important;
+  max-width:none!important;
+  margin:0!important;
+  transform:translateX(-50%)!important;
+  z-index:9050!important;
+  background:rgba(255,255,255,.97)!important;
+  border:1px solid #d0d5dd!important;
+  border-radius:14px!important;
+  box-shadow:0 10px 34px rgba(25,42,70,.18)!important;
+  backdrop-filter:blur(14px)!important;
+  -webkit-backdrop-filter:blur(14px)!important;
+}
+.annotationBar.hidden{display:none!important}
+.annotationBarInner{
+  min-height:54px!important;
+  padding:7px 9px!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:6px!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+#view-study,#view-quick{
+  padding-bottom:92px!important;
+}
+
+/* 原始教材的「本頁註記」也固定在可視區頂端；
+   全螢幕模式仍交由既有精簡版面控制。 */
+#view-source .sourceAnnoToolbarClean{
+  position:sticky!important;
+  top:6px!important;
+  z-index:8400!important;
+}
+#sourceViewerCard:fullscreen .sourceAnnoToolbarClean,
+#sourceViewerCard:-webkit-full-screen .sourceAnnoToolbarClean,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
+  position:static!important;
+  top:auto!important;
+}
+
+/* iPhone：固定在底部導覽列上方，按鈕可左右滑動 */
+@media(max-width:680px){
+  .annotationBar{
+    left:6px!important;
+    right:6px!important;
+    bottom:calc(72px + env(safe-area-inset-bottom))!important;
+    width:auto!important;
+    max-width:none!important;
+    transform:none!important;
+    border-radius:12px!important;
+  }
+  .annotationBarInner{
+    min-height:48px!important;
+    padding:5px!important;
+    gap:4px!important;
+  }
+  .annotationBar .annTitle,
+  .annotationBar .annStatus{
+    display:none!important;
+  }
+  .annotationBar .annBtn{
+    min-height:38px!important;
+    padding:5px 8px!important;
+    font-size:10px!important;
+  }
+  #view-study,#view-quick{
+    padding-bottom:calc(150px + env(safe-area-inset-bottom))!important;
+  }
+
+  #view-source .sourceAnnoToolbarClean{
+    top:4px!important;
+  }
+}
+
+/* iPhone 橫向：再縮短工具列高度 */
+@media(max-height:500px) and (orientation:landscape) and (max-width:950px){
+  .annotationBar{
+    bottom:calc(58px + env(safe-area-inset-bottom))!important;
+  }
+  .annotationBarInner{
+    min-height:42px!important;
+    padding:3px 4px!important;
+  }
+  .annotationBar .annBtn{
+    min-height:34px!important;
+    padding:4px 7px!important;
+    font-size:9px!important;
+  }
+}
+
+@media print{
+  .annotationBar{display:none!important}
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -2164,8 +2268,8 @@ body.sourcePseudoFullscreen .mobileBottomNav{
 <div class="shell">
 <section class="hero">
 <h1>資安職能訓練｜資通安全概論</h1>
-<p>11504 詳細整理＋450題題庫｜</p>
-<span class="badge">詳細整理依數位發展部資通安全署11504三日教材｜題庫為模擬題，非官方考古題</span>
+<p>11504 詳細整理＋450題題庫｜GitHub Pages＋跨裝置同步｜原始教材全螢幕＋iPhone測驗自動跳題版｜iPhone / iPad 自動適應</p>
+<span class="badge">完全離線單一HTML｜詳細整理依數位發展部資通安全署11504三日教材｜題庫為模擬題，非官方考古題</span>
 </section>
 
 <div id="deviceStrip" class="deviceStrip">
