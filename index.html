@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論</title>
+<title>資安職能訓練｜資通安全概論 11504｜題庫練習紀錄版 v25</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -2253,6 +2253,295 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
   .annotationBar{display:none!important}
 }
 
+
+/* ===== v24 註記工具：左側固定直列式 ===== */
+/* 完整整理 / 考前速查使用左側固定工具列 */
+.annotationBar{
+  position:fixed!important;
+  top:50%!important;
+  left:10px!important;
+  right:auto!important;
+  bottom:auto!important;
+  width:112px!important;
+  max-width:112px!important;
+  max-height:calc(100dvh - 24px)!important;
+  margin:0!important;
+  transform:translateY(-50%)!important;
+  z-index:9050!important;
+  border-radius:14px!important;
+  overflow:hidden!important;
+}
+
+.annotationBarInner{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+  width:100%!important;
+  min-height:0!important;
+  max-height:calc(100dvh - 24px)!important;
+  padding:7px!important;
+  gap:5px!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+
+.annotationBar .annTitle{
+  display:block!important;
+  width:100%!important;
+  padding:4px 2px 6px!important;
+  text-align:center!important;
+  font-size:11px!important;
+  line-height:1.2!important;
+  white-space:normal!important;
+}
+
+.annotationBar .annBtn{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  min-width:0!important;
+  min-height:42px!important;
+  height:auto!important;
+  padding:6px 5px!important;
+  margin:0!important;
+  font-size:10px!important;
+  line-height:1.2!important;
+  text-align:center!important;
+  white-space:normal!important;
+  word-break:keep-all!important;
+}
+
+.annotationBar .annStatus{
+  display:none!important;
+}
+
+/* 留出左側工具列空間，避免覆蓋整理內容 */
+#view-study,
+#view-quick{
+  padding-left:124px!important;
+  padding-bottom:20px!important;
+}
+
+/* iPad / 窄桌機：稍微縮小左側工具列 */
+@media(min-width:681px) and (max-width:1100px){
+  .annotationBar{
+    left:6px!important;
+    width:96px!important;
+    max-width:96px!important;
+  }
+  .annotationBar .annBtn{
+    min-height:40px!important;
+    padding:5px 4px!important;
+    font-size:9px!important;
+  }
+  #view-study,
+  #view-quick{
+    padding-left:104px!important;
+  }
+}
+
+/* iPhone：固定左側窄版直列，避開底部導覽與 safe area */
+@media(max-width:680px){
+  .annotationBar{
+    top:8px!important;
+    left:4px!important;
+    right:auto!important;
+    bottom:calc(76px + env(safe-area-inset-bottom))!important;
+    width:76px!important;
+    max-width:76px!important;
+    max-height:none!important;
+    height:auto!important;
+    transform:none!important;
+    border-radius:11px!important;
+  }
+
+  .annotationBarInner{
+    width:100%!important;
+    max-height:calc(100dvh - 92px - env(safe-area-inset-bottom))!important;
+    padding:5px!important;
+    gap:4px!important;
+  }
+
+  .annotationBar .annTitle{
+    display:block!important;
+    padding:3px 1px 5px!important;
+    font-size:9px!important;
+  }
+
+  .annotationBar .annBtn{
+    min-height:38px!important;
+    padding:5px 3px!important;
+    font-size:9px!important;
+    line-height:1.15!important;
+  }
+
+  #view-study,
+  #view-quick{
+    padding-left:84px!important;
+    padding-bottom:calc(92px + env(safe-area-inset-bottom))!important;
+  }
+}
+
+/* iPhone 橫向：工具列更窄，必要時可上下滑動 */
+@media(max-height:500px) and (orientation:landscape) and (max-width:950px){
+  .annotationBar{
+    top:4px!important;
+    left:4px!important;
+    bottom:calc(58px + env(safe-area-inset-bottom))!important;
+    width:70px!important;
+    max-width:70px!important;
+  }
+  .annotationBarInner{
+    max-height:calc(100dvh - 68px - env(safe-area-inset-bottom))!important;
+    padding:3px!important;
+    gap:3px!important;
+  }
+  .annotationBar .annTitle{display:none!important}
+  .annotationBar .annBtn{
+    min-height:33px!important;
+    padding:4px 2px!important;
+    font-size:8px!important;
+  }
+  #view-study,
+  #view-quick{
+    padding-left:76px!important;
+  }
+}
+
+/* 原始教材仍使用自己的本頁註記列，不套用左側全站工具列 */
+#view-source .sourceAnnoToolbarClean{
+  position:sticky!important;
+  top:6px!important;
+}
+
+@media print{
+  .annotationBar{display:none!important}
+  #view-study,#view-quick{padding-left:0!important}
+}
+
+
+/* ===== v25 題庫練習紀錄 ===== */
+.quizHistory{padding:2px 0 8px}
+.quizHistoryHead{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:14px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--line)
+}
+.quizHistoryHead h2{margin:0 0 4px}
+.quizHistoryHead p{margin:0}
+.quizHistoryActions{display:flex;gap:7px;flex-wrap:wrap}
+.historyStats{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:9px;
+  margin:12px 0 16px
+}
+.historyStat{
+  background:#f8f9fc;
+  border:1px solid #e4e7ec;
+  border-radius:13px;
+  padding:12px;
+  text-align:center
+}
+.historyStat b{display:block;font-size:20px;color:#243f9f;line-height:1.2}
+.historyStat span{display:block;margin-top:3px;font-size:10px;color:#667085}
+.historyEmpty{
+  padding:32px 16px;
+  text-align:center;
+  border:1px dashed #cfd5df;
+  border-radius:14px;
+  color:#667085;
+  background:#fafbfc
+}
+.historyList{display:grid;gap:9px}
+.historyItem{
+  display:grid;
+  grid-template-columns:minmax(170px,.9fr) minmax(260px,1.6fr) auto;
+  gap:12px;
+  align-items:center;
+  padding:12px 13px;
+  border:1px solid #e4e7ec;
+  border-radius:13px;
+  background:#fff
+}
+.historyWhen b{display:block;font-size:13px}
+.historyWhen span{font-size:10px;color:#667085}
+.historyMeta{min-width:0}
+.historyMeta .historyBadges{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:5px}
+.historyBadge{
+  display:inline-flex;
+  align-items:center;
+  padding:3px 7px;
+  border-radius:999px;
+  background:#eef2ff;
+  color:#243f9f;
+  font-size:10px;
+  font-weight:800
+}
+.historyScope{
+  font-size:11px;
+  color:#475467;
+  line-height:1.4;
+  overflow-wrap:anywhere
+}
+.historyScore{
+  display:grid;
+  grid-template-columns:auto auto;
+  gap:5px 10px;
+  align-items:center;
+  text-align:right;
+  white-space:nowrap
+}
+.historyScore strong{font-size:22px;color:#243f9f}
+.historyScore small{font-size:10px;color:#667085}
+.historyDelete{
+  grid-column:1 / 3;
+  justify-self:end;
+  border:0;
+  background:transparent;
+  color:#b42318;
+  font-size:10px;
+  cursor:pointer;
+  padding:2px 0
+}
+.historyDelete:hover{text-decoration:underline}
+
+@media(max-width:820px){
+  .historyStats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .historyItem{grid-template-columns:1fr auto}
+  .historyMeta{grid-column:1}
+  .historyScore{grid-column:2;grid-row:1 / span 2}
+  .historyDelete{grid-column:1;justify-self:start}
+}
+@media(max-width:680px){
+  .quizHistoryHead{display:block}
+  .quizHistoryActions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    margin-top:10px
+  }
+  .quizHistoryActions .btn{width:100%;padding:9px 8px;font-size:10px}
+  .historyStats{gap:6px}
+  .historyStat{padding:9px 6px}
+  .historyStat b{font-size:17px}
+  .historyItem{
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:7px;
+    padding:10px
+  }
+  .historyWhen b{font-size:12px}
+  .historyScope{font-size:10px}
+  .historyScore strong{font-size:20px}
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -2268,7 +2557,7 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
 <div class="shell">
 <section class="hero">
 <h1>資安職能訓練｜資通安全概論</h1>
-<p>11504 詳細整理＋450題題庫｜</p>
+<p>11504 詳細整理＋450題題庫｜GitHub Pages＋跨裝置同步｜原始教材全螢幕＋iPhone測驗自動跳題版｜iPhone / iPad 自動適應</p>
 <span class="badge">完全離線單一HTML｜詳細整理依數位發展部資通安全署11504三日教材｜題庫為模擬題，非官方考古題</span>
 </section>
 
@@ -3291,6 +3580,7 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
 <button class="btn outline full" id="exam50Btn">50題模擬考</button>
 <button class="btn outline full" id="wrongBtn">錯題重練</button>
 <button class="btn outline full" id="favBtn">收藏題練習</button>
+<button class="btn outline full" id="historyBtn">📊 練習紀錄</button>
 <div class="stats"><div class="stat"><b id="doneStat">0</b><span>累計作答</span></div><div class="stat"><b id="accStat">—</b><span>累計正確率</span></div><div class="stat"><b id="wrongStat">0</b><span>錯題庫</span></div></div>
 <div class="notice">複選題必須「所有正確選項都選到，且不能多選錯誤答案」才算答對。題庫為依教材改寫的模擬題。</div>
 <div class="small">快捷鍵：<span class="kbd">1</span>～<span class="kbd">7</span> 選／取消答案；複選練習模式按 <span class="kbd">Enter</span> 確認。</div>
@@ -3309,6 +3599,20 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
 <div class="nav"><div class="group"><button class="btn ghost" id="prevBtn">上一題</button></div><div class="group"><button class="btn outline" id="finishBtn">交卷</button><button class="btn primary" id="nextBtn">下一題</button></div></div>
 </section>
 <section class="result hidden" id="result"></section>
+<section class="quizHistory hidden" id="quizHistory">
+  <div class="quizHistoryHead">
+    <div>
+      <h2>📊 題庫練習紀錄</h2>
+      <p class="small">保留最近 100 次交卷紀錄；登入同步帳號後會跟著 Firebase 跨裝置同步。</p>
+    </div>
+    <div class="quizHistoryActions">
+      <button class="btn outline" id="historyBackBtn" type="button">返回題庫</button>
+      <button class="btn ghost" id="historyClearBtn" type="button">清除全部紀錄</button>
+    </div>
+  </div>
+  <div class="historyStats" id="historyStats"></div>
+  <div class="historyList" id="historyList"></div>
+</section>
 </main>
 </div>
 </section>
@@ -3386,8 +3690,8 @@ for(let u=1;u<=9;u++){
  o.textContent=`第${u}單元（${n}題）`;
  $('unit').appendChild(o);
 }
-let state={questions:[],idx:0,answers:{},confirmed:{},mode:'practice',finished:false};
-const statKey='secquiz11504stats_v2', wrongKey='secquiz11504wrong_v2', favKey='secquiz11504fav_v2';
+let state={questions:[],idx:0,answers:{},confirmed:{},mode:'practice',finished:false,startAt:0,historyType:'一般練習',historyScope:''};
+const statKey='secquiz11504stats_v2', wrongKey='secquiz11504wrong_v2', favKey='secquiz11504fav_v2', historyKey='secquiz11504history_v1';
 function sameAnswer(q,a){
  if(q.type==='multiple'){
    if(!Array.isArray(a))return false;
@@ -3403,12 +3707,20 @@ function refreshStats(){let s=loadJSON(statKey,{done:0,correct:0});$('doneStat')
 refreshStats();
 function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function filtered(){return BANK.filter(q=>($('day').value==='all'||q.day==$('day').value)&&($('unit').value==='all'||q.unit==$('unit').value)&&($('difficulty').value==='all'||q.difficulty===$('difficulty').value)&&($('qtype').value==='all'||q.type===$('qtype').value))}
-function start(pool=null){
+function currentScopeText(){
+ const parts=[];
+ if($('day').value!=='all')parts.push(`第${$('day').value}天`);
+ if($('unit').value!=='all')parts.push(`第${$('unit').value}單元 ${unitNames[$('unit').value]||''}`.trim());
+ if($('difficulty').value!=='all')parts.push($('difficulty').value);
+ if($('qtype').value!=='all')parts.push($('qtype').value==='single'?'單選題':'複選題');
+ return parts.length?parts.join('｜'):'全部範圍';
+}
+function start(pool=null,historyType='一般練習'){
  let arr=pool?pool.map(id=>BANK.find(q=>q.id===id)).filter(Boolean):filtered();
  if(!arr.length){alert('目前篩選條件沒有題目。');return}
  arr=shuffle(arr);let n=$('count').value==='all'?arr.length:Math.min(+$('count').value,arr.length);
- state={questions:arr.slice(0,n),idx:0,answers:{},confirmed:{},mode:$('mode').value,finished:false};
- $('welcome').classList.add('hidden');$('result').classList.add('hidden');$('quiz').classList.remove('hidden');render();
+ state={questions:arr.slice(0,n),idx:0,answers:{},confirmed:{},mode:$('mode').value,finished:false,startAt:Date.now(),historyType,historyScope:currentScopeText()};
+ $('welcome').classList.add('hidden');$('result').classList.add('hidden');$('quizHistory')?.classList.add('hidden');$('quiz').classList.remove('hidden');render();
 }
 function scrollToQuizOnIPhone(){
   // iPhone / 窄螢幕版：開始新測驗後，自動移到下方題目區。
@@ -3425,10 +3737,17 @@ function scrollToQuizOnIPhone(){
     }
   },90);
 }
-$('startBtn').onclick=()=>{start();scrollToQuizOnIPhone()};
-$('exam50Btn').onclick=()=>{$('mode').value='exam';$('day').value='all';$('unit').value='all';$('difficulty').value='all';$('qtype').value='all';$('count').value='50';start()};
-$('wrongBtn').onclick=()=>{let a=loadJSON(wrongKey,[]);if(!a.length)return alert('目前沒有錯題。');start(a)};
-$('favBtn').onclick=()=>{let a=loadJSON(favKey,[]);if(!a.length)return alert('目前沒有收藏題。');start(a)};
+$('startBtn').onclick=()=>{start(null,'一般練習');scrollToQuizOnIPhone()};
+$('exam50Btn').onclick=()=>{$('mode').value='exam';$('day').value='all';$('unit').value='all';$('difficulty').value='all';$('qtype').value='all';$('count').value='50';start(null,'50題模擬考')};
+$('wrongBtn').onclick=()=>{let a=loadJSON(wrongKey,[]);if(!a.length)return alert('目前沒有錯題。');start(a,'錯題重練')};
+$('favBtn').onclick=()=>{let a=loadJSON(favKey,[]);if(!a.length)return alert('目前沒有收藏題。');start(a,'收藏題練習')};
+$('historyBtn').onclick=()=>showHistory();
+$('historyBackBtn').onclick=()=>showQuizWelcome();
+$('historyClearBtn').onclick=()=>{
+ if(!confirm('確定要清除全部題庫練習紀錄嗎？此動作會同步到其他裝置。'))return;
+ saveJSON(historyKey,[]);
+ renderHistory();
+};
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function render(){
  let q=state.questions[state.idx],sel=state.answers[q.id],done=state.confirmed[q.id];
@@ -3492,11 +3811,92 @@ $('nextBtn').onclick=()=>{
  if(state.idx===state.questions.length-1)finish();else{state.idx++;render()}
 };
 $('finishBtn').onclick=finish;
+
+function calcQuizSummary(){
+ let total=state.questions.length,answered=0,correct=0;
+ for(const q of state.questions){
+   const a=state.answers[q.id];
+   const considered=state.mode==='practice'&&q.type==='multiple'?!!state.confirmed[q.id]:hasAnswer(q);
+   if(considered){answered++;if(sameAnswer(q,a))correct++}
+ }
+ return {total,answered,correct,pct:total?Math.round(correct/total*100):0};
+}
+function formatDuration(ms){
+ const sec=Math.max(0,Math.round((ms||0)/1000));
+ const m=Math.floor(sec/60),s=sec%60;
+ return m?`${m}分${s}秒`:`${s}秒`;
+}
+function saveQuizHistory(){
+ const s=calcQuizSummary();
+ const end=Date.now();
+ let h=loadJSON(historyKey,[]);
+ if(!Array.isArray(h))h=[];
+ h.unshift({
+   id:`${end}-${Math.random().toString(36).slice(2,7)}`,
+   endedAt:end,
+   startedAt:state.startAt||end,
+   durationMs:Math.max(0,end-(state.startAt||end)),
+   type:state.historyType||'一般練習',
+   mode:state.mode,
+   scope:state.historyScope||'全部範圍',
+   total:s.total,
+   answered:s.answered,
+   correct:s.correct,
+   pct:s.pct
+ });
+ h=h.slice(0,100);
+ saveJSON(historyKey,h);
+}
+function showQuizWelcome(){
+ $('quiz').classList.add('hidden');
+ $('result').classList.add('hidden');
+ $('quizHistory').classList.add('hidden');
+ $('welcome').classList.remove('hidden');
+}
+function showHistory(){
+ $('welcome').classList.add('hidden');
+ $('quiz').classList.add('hidden');
+ $('result').classList.add('hidden');
+ $('quizHistory').classList.remove('hidden');
+ renderHistory();
+ if(window.matchMedia('(max-width:680px)').matches){
+   setTimeout(()=>$('quizMain').scrollIntoView({behavior:'smooth',block:'start'}),60);
+ }
+}
+function historyDate(ts){
+ try{return new Intl.DateTimeFormat('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(ts))}catch{return new Date(ts).toLocaleString()}
+}
+function renderHistory(){
+ let h=loadJSON(historyKey,[]);
+ if(!Array.isArray(h))h=[];
+ const list=$('historyList'),stats=$('historyStats');
+ const tests=h.length;
+ const totalQ=h.reduce((a,x)=>a+(+x.total||0),0);
+ const avg=tests?Math.round(h.reduce((a,x)=>a+(+x.pct||0),0)/tests):0;
+ const best=tests?Math.max(...h.map(x=>+x.pct||0)):0;
+ stats.innerHTML=`<div class="historyStat"><b>${tests}</b><span>測驗次數</span></div><div class="historyStat"><b>${totalQ}</b><span>累計題數</span></div><div class="historyStat"><b>${tests?avg+'%':'—'}</b><span>平均正確率</span></div><div class="historyStat"><b>${tests?best+'%':'—'}</b><span>最高正確率</span></div>`;
+ if(!tests){
+   list.innerHTML='<div class="historyEmpty">目前尚無練習紀錄。完成並交卷一次測驗後，紀錄會自動出現在這裡。</div>';
+   return;
+ }
+ list.innerHTML=h.map(x=>`<div class="historyItem">
+   <div class="historyWhen"><b>${esc(historyDate(x.endedAt))}</b><span>${esc(x.type||'一般練習')}｜${x.mode==='exam'?'模擬考':'練習模式'}</span></div>
+   <div class="historyMeta"><div class="historyBadges"><span class="historyBadge">${x.correct}/${x.total} 題</span><span class="historyBadge">已答 ${x.answered}/${x.total}</span><span class="historyBadge">${esc(formatDuration(x.durationMs))}</span></div><div class="historyScope">${esc(x.scope||'全部範圍')}</div><button class="historyDelete" type="button" data-history-delete="${esc(x.id)}">刪除此筆紀錄</button></div>
+   <div class="historyScore"><strong>${x.pct}%</strong><small>正確率</small></div>
+ </div>`).join('');
+ list.querySelectorAll('[data-history-delete]').forEach(btn=>btn.addEventListener('click',()=>{
+   let cur=loadJSON(historyKey,[]);
+   cur=Array.isArray(cur)?cur.filter(x=>x.id!==btn.dataset.historyDelete):[];
+   saveJSON(historyKey,cur);
+   renderHistory();
+ }));
+}
+
 function finish(){
  let unanswered=state.questions.filter(q=>state.mode==='practice'&&q.type==='multiple'?!state.confirmed[q.id]:!hasAnswer(q)).length;
  if(unanswered&&!confirm(`尚有 ${unanswered} 題未作答或未確認，仍要交卷嗎？`))return;
  if(state.mode==='exam'){for(let q of state.questions){let a=state.answers[q.id];if(hasAnswer(q)){record(q,a);updateWrong(q,a)}}}
- state.finished=true;$('quiz').classList.add('hidden');showResult();
+ state.finished=true;saveQuizHistory();$('quiz').classList.add('hidden');showResult();
 }
 function showResult(){
  let total=state.questions.length,answered=0,correct=0,by={},byType={single:{total:0,correct:0},multiple:{total:0,correct:0}};
@@ -3509,7 +3909,7 @@ function showResult(){
  let rows=Object.entries(by).map(([u,v])=>`<tr><td>第${u}單元 ${unitNames[u]}</td><td>${v.correct}/${v.total}</td><td><div class="bar"><i style="width:${Math.round(v.correct/v.total*100)}%"></i></div></td></tr>`).join('');
  let typeRows=`<tr><td>單選題</td><td>${byType.single.correct}/${byType.single.total}</td><td><div class="bar"><i style="width:${byType.single.total?Math.round(byType.single.correct/byType.single.total*100):0}%"></i></div></td></tr><tr><td>複選題</td><td>${byType.multiple.correct}/${byType.multiple.total}</td><td><div class="bar"><i style="width:${byType.multiple.total?Math.round(byType.multiple.correct/byType.multiple.total*100):0}%"></i></div></td></tr>`;
  let wrongs=state.questions.filter(q=>{let considered=state.mode==='practice'&&q.type==='multiple'?!!state.confirmed[q.id]:hasAnswer(q);return !considered||!sameAnswer(q,state.answers[q.id])}).slice(0,40).map(q=>`<div class="reviewItem"><b>第${q.unit}單元｜${q.type==='multiple'?'【複選】':''}${esc(q.question)}</b><span class="danger">你的答案：${answerText(q,state.answers[q.id])}</span>　<span class="success">正解：${answerText(q,q.answer)}</span><div class="small" style="margin-top:5px">${esc(q.explanation)}｜${esc(q.source)}</div></div>`).join('');
- $('result').innerHTML=`<div class="scoreRing" style="--pct:${pct}%"><div class="scoreInner"><div><b>${pct}%</b><small>${correct}/${total} 題</small></div></div></div><h2>${pct>=80?'達到80分目標':'建議先回整理頁複習錯題單元'}</h2><p class="small">已作答／確認 ${answered} 題；未作答 ${total-answered} 題。複選題須完全正確才計分。</p><div class="row" style="max-width:620px;margin:16px auto"><button class="btn primary" onclick="document.getElementById('wrongBtn').click()">錯題重練</button><button class="btn outline" onclick="showView('study')">回完整整理</button></div><h3 style="text-align:left">依題型統計</h3><table><thead><tr><th>題型</th><th>答對</th><th>正確率</th></tr></thead><tbody>${typeRows}</tbody></table><h3 style="text-align:left;margin-top:24px">依單元統計</h3><table><thead><tr><th>單元</th><th>答對</th><th>正確率</th></tr></thead><tbody>${rows}</tbody></table>${wrongs?`<h3 style="text-align:left;margin-top:24px">本次錯題／未答檢討</h3><div class="reviewList">${wrongs}</div>`:''}`;
+ $('result').innerHTML=`<div class="scoreRing" style="--pct:${pct}%"><div class="scoreInner"><div><b>${pct}%</b><small>${correct}/${total} 題</small></div></div></div><h2>${pct>=80?'達到80分目標':'建議先回整理頁複習錯題單元'}</h2><p class="small">已作答／確認 ${answered} 題；未作答 ${total-answered} 題。複選題須完全正確才計分。</p><div class="row" style="max-width:620px;margin:16px auto"><button class="btn primary" onclick="document.getElementById('wrongBtn').click()">錯題重練</button><button class="btn outline" onclick="showHistory()">查看練習紀錄</button></div><div style="text-align:center;margin-top:-8px;margin-bottom:14px"><button class="btn ghost" onclick="showView('study')">回完整整理</button></div><h3 style="text-align:left">依題型統計</h3><table><thead><tr><th>題型</th><th>答對</th><th>正確率</th></tr></thead><tbody>${typeRows}</tbody></table><h3 style="text-align:left;margin-top:24px">依單元統計</h3><table><thead><tr><th>單元</th><th>答對</th><th>正確率</th></tr></thead><tbody>${rows}</tbody></table>${wrongs?`<h3 style="text-align:left;margin-top:24px">本次錯題／未答檢討</h3><div class="reviewList">${wrongs}</div>`:''}`;
  $('result').classList.remove('hidden');
 }
 window.addEventListener('keydown',e=>{
@@ -4228,7 +4628,8 @@ const SYNC_PREFIXES = [
   "secstudy11504read_v1",
   "secquiz11504stats_v2",
   "secquiz11504wrong_v2",
-  "secquiz11504fav_v2"
+  "secquiz11504fav_v2",
+  "secquiz11504history_v1"
 ];
 
 const DEVICE_KEY = "sec11504_firebase_device_v2";
