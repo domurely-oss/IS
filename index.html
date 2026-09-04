@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504｜附表十側邊連結版 v32</title>
+<title>資安職能訓練｜資通安全概論 11504｜原始教材進階註記工具版 v33</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -3018,6 +3018,124 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
   .annexNavBtn small{font-size:10px}
 }
 
+
+/* ===== v33 原始教材進階註記工具 ===== */
+.sourceAnnoHighlightErase{border-bottom:4px solid #e8c437!important}
+.sourceAnnoRedErase{border-bottom:4px solid #d92d20!important}
+.sourceAnnoColor{
+  --source-pen-color:#2563eb;
+  border-bottom:4px solid var(--source-pen-color)!important
+}
+.sourceAnnoColorErase{border-bottom:4px solid #667085!important}
+.sourceColorPicker{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  min-height:38px;
+  padding:5px 7px;
+  border:1px solid #cfd5df;
+  border-radius:8px;
+  background:#fff;
+  color:#475467;
+  font-size:9px;
+  font-weight:800;
+  white-space:nowrap
+}
+.sourceColorPicker input[type="color"]{
+  width:28px;
+  height:28px;
+  min-width:28px;
+  padding:1px;
+  border:1px solid #cfd5df;
+  border-radius:7px;
+  background:#fff;
+  cursor:pointer
+}
+.sourceAnnoTools .miniBtn.active,
+.sourceColorPicker.active{
+  background:#eef2ff!important;
+  border-color:#8098e8!important;
+  box-shadow:0 0 0 2px rgba(49,86,211,.08)!important
+}
+.sourceImageStage.source-erasing{cursor:cell!important}
+.sourceImageStage.source-colorpen{cursor:crosshair!important}
+
+/* 工具變多後，桌機允許自然換行，不擠壓教材 */
+.sourceAnnoTools{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  gap:5px!important
+}
+
+/* iPhone / iPad：兩欄工具＋色盤，避免按鈕文字擠壓 */
+@media(max-width:680px){
+  #view-source .sourceAnnoTools{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:5px!important;
+    overflow:visible!important
+  }
+  #view-source .sourceAnnoTools .miniBtn{
+    width:100%!important;
+    min-width:0!important;
+    min-height:39px!important;
+    padding:5px 4px!important;
+    font-size:9px!important;
+    line-height:1.15!important;
+    white-space:normal!important
+  }
+  #view-source .sourceColorPicker{
+    width:100%!important;
+    min-width:0!important;
+    min-height:39px!important;
+    justify-content:center!important;
+    padding:4px 5px!important
+  }
+  #view-source .sourceColorPicker input[type="color"]{
+    width:30px!important;
+    height:30px!important
+  }
+}
+
+/* 全螢幕仍維持精簡，工具可橫向滑動 */
+#sourceViewerCard:fullscreen .sourceAnnoTools,
+#sourceViewerCard:-webkit-full-screen .sourceAnnoTools,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoTools{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  gap:4px!important;
+  -webkit-overflow-scrolling:touch!important
+}
+#sourceViewerCard:fullscreen .sourceAnnoTools .miniBtn,
+#sourceViewerCard:-webkit-full-screen .sourceAnnoTools .miniBtn,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoTools .miniBtn{
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-height:34px!important;
+  height:34px!important;
+  padding:4px 7px!important;
+  font-size:8px!important;
+  white-space:nowrap!important
+}
+#sourceViewerCard:fullscreen .sourceColorPicker,
+#sourceViewerCard:-webkit-full-screen .sourceColorPicker,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceColorPicker{
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-height:34px!important;
+  height:34px!important;
+  padding:3px 5px!important
+}
+#sourceViewerCard:fullscreen .sourceColorPicker input[type="color"],
+#sourceViewerCard:-webkit-full-screen .sourceColorPicker input[type="color"],
+body.sourcePseudoFullscreen #sourceViewerCard .sourceColorPicker input[type="color"]{
+  width:26px!important;
+  height:26px!important
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -4301,11 +4419,19 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
         <div class="sourceAnnoTools">
           <button id="sourceAnnoBrowseBtn" class="miniBtn active" type="button">👆 瀏覽</button>
           <button id="sourceAnnoHighlightBtn" class="miniBtn sourceAnnoHighlight" type="button">🖍 螢光筆</button>
+          <button id="sourceAnnoHighlightEraseBtn" class="miniBtn sourceAnnoHighlightErase" type="button">🧽 取消螢光</button>
           <button id="sourceAnnoRedBtn" class="miniBtn sourceAnnoRed" type="button">✍ 紅筆</button>
+          <button id="sourceAnnoRedEraseBtn" class="miniBtn sourceAnnoRedErase" type="button">⌫ 紅筆橡皮擦</button>
+          <button id="sourceAnnoColorBtn" class="miniBtn sourceAnnoColor" type="button">🖊 彩色筆</button>
+          <label class="sourceColorPicker" title="選擇彩色筆顏色">
+            <span>筆色</span>
+            <input id="sourceAnnoColorInput" type="color" value="#2563eb" aria-label="彩色筆顏色">
+          </label>
+          <button id="sourceAnnoColorEraseBtn" class="miniBtn sourceAnnoColorErase" type="button">⌫ 彩色筆橡皮擦</button>
           <button id="sourceAnnoUndoBtn" class="miniBtn" type="button">↶ 撤銷</button>
           <button id="sourceAnnoClearBtn" class="miniBtn" type="button">🧹 清除此頁</button>
         </div>
-        <div id="sourceAnnoStatus" class="sourceAnnoStatus">原始教材註記：按「螢光筆」或「紅筆」即可直接在目前頁面上書寫；按「瀏覽」可恢復正常滑動與換頁。</div>
+        <div id="sourceAnnoStatus" class="sourceAnnoStatus">原始教材註記：可使用螢光筆、紅筆或自選顏色彩色筆；三種筆跡皆有對應的取消／橡皮擦工具。</div>
       </div>
 
       <div id="sourceImageStage" class="sourceImageStage" tabindex="0" aria-label="原始教材逐頁檢視">
@@ -6069,15 +6195,19 @@ window.addEventListener("DOMContentLoaded",()=>{
 
 
 <script>
-/* ===== v11 原始教材註記（螢光筆 / 紅筆） ===== */
+/* ===== v33 原始教材註記：取消螢光／紅筆橡皮擦／彩色筆／彩色筆橡皮擦 ===== */
 (function(){
   const PREFIX="sec11504_sourceanno_v1_";
+  const COLOR_KEY=PREFIX+"pen_color";
   const g=id=>document.getElementById(id);
-  let mode="browse"; // browse | highlight | red
+
+  // browse | highlight | highlightEraser | red | redEraser | color | colorEraser
+  let mode="browse";
   let drawing=false;
   let currentStroke=null;
   let strokes=[];
   let dpr=Math.max(1,window.devicePixelRatio||1);
+  let penColor="#2563eb";
 
   function activeSourceId(){
     return document.querySelector(".sourceItem.active")?.dataset?.sourceId || "day1";
@@ -6099,9 +6229,30 @@ window.addEventListener("DOMContentLoaded",()=>{
       strokes=Array.isArray(data)?data:[];
     }catch(e){strokes=[];}
   }
+  function loadPenColor(){
+    try{
+      const saved=localStorage.getItem(COLOR_KEY);
+      if(saved && /^#[0-9a-f]{6}$/i.test(saved))penColor=saved;
+    }catch(e){}
+    const input=g("sourceAnnoColorInput");
+    if(input)input.value=penColor;
+    updateColorUI();
+  }
+  function savePenColor(color){
+    if(!/^#[0-9a-f]{6}$/i.test(color||""))return;
+    penColor=color;
+    try{localStorage.setItem(COLOR_KEY,color);}catch(e){}
+    updateColorUI();
+  }
+  function updateColorUI(){
+    g("sourceAnnoColorBtn")?.style.setProperty("--source-pen-color",penColor);
+  }
   function setStatus(msg){
     const el=g("sourceAnnoStatus");
     if(el)el.textContent=msg;
+  }
+  function isEraser(m=mode){
+    return m==="highlightEraser" || m==="redEraser" || m==="colorEraser";
   }
   function setMode(next){
     mode=next;
@@ -6110,19 +6261,36 @@ window.addEventListener("DOMContentLoaded",()=>{
       stage.classList.toggle("source-drawing", next!=="browse");
       stage.classList.toggle("source-highlighting", next==="highlight");
       stage.classList.toggle("source-redpen", next==="red");
+      stage.classList.toggle("source-colorpen", next==="color");
+      stage.classList.toggle("source-erasing", isEraser(next));
     }
-    [["sourceAnnoBrowseBtn","browse"],["sourceAnnoHighlightBtn","highlight"],["sourceAnnoRedBtn","red"]].forEach(([id,m])=>{
-      g(id)?.classList.toggle("active",mode===m);
-    });
-    if(mode==="browse") setStatus("原始教材註記：按「螢光筆」或「紅筆」即可直接在目前頁面上書寫；按「瀏覽」可恢復正常滑動與換頁。");
-    if(mode==="highlight") setStatus("螢光筆模式：可直接在教材頁面上畫重點。完成後按「瀏覽」恢復滑動/換頁。");
-    if(mode==="red") setStatus("紅筆模式：可直接在教材頁面上手寫註記。完成後按「瀏覽」恢復滑動/換頁。");
+
+    const map=[
+      ["sourceAnnoBrowseBtn","browse"],
+      ["sourceAnnoHighlightBtn","highlight"],
+      ["sourceAnnoHighlightEraseBtn","highlightEraser"],
+      ["sourceAnnoRedBtn","red"],
+      ["sourceAnnoRedEraseBtn","redEraser"],
+      ["sourceAnnoColorBtn","color"],
+      ["sourceAnnoColorEraseBtn","colorEraser"]
+    ];
+    map.forEach(([id,m])=>g(id)?.classList.toggle("active",mode===m));
+    g("sourceAnnoColorInput")?.closest(".sourceColorPicker")?.classList.toggle("active",mode==="color");
+
+    if(mode==="browse")setStatus("瀏覽模式：可正常滑動、縮放與換頁。");
+    if(mode==="highlight")setStatus("螢光筆：直接在教材頁面畫重點；完成後按「瀏覽」。");
+    if(mode==="highlightEraser")setStatus("取消螢光：點一下或拖曳碰到黃色螢光筆跡，即可移除該筆螢光。");
+    if(mode==="red")setStatus("紅筆：可直接手寫註記；完成後按「瀏覽」。");
+    if(mode==="redEraser")setStatus("紅筆橡皮擦：點一下或拖曳碰到紅色筆跡，即可移除該筆紅筆。");
+    if(mode==="color")setStatus(`彩色筆：目前顏色 ${penColor.toUpperCase()}；可用旁邊色盤隨時換色。`);
+    if(mode==="colorEraser")setStatus("彩色筆橡皮擦：點一下或拖曳碰到彩色筆跡，即可移除該筆彩色筆。");
   }
+
   function ensureCanvasSize(){
     const img=g("sourcePageImage"), canvas=g("sourceAnnoCanvas"), wrap=g("sourcePageWrap");
-    if(!img || !canvas || !wrap) return;
+    if(!img || !canvas || !wrap)return;
     const w=img.getBoundingClientRect().width, h=img.getBoundingClientRect().height;
-    if(!w || !h) return;
+    if(!w || !h)return;
     canvas.style.width=w+"px";
     canvas.style.height=h+"px";
     canvas.width=Math.round(w*dpr);
@@ -6133,114 +6301,213 @@ window.addEventListener("DOMContentLoaded",()=>{
   }
   function ctx2d(){
     const canvas=g("sourceAnnoCanvas");
-    if(!canvas) return null;
+    if(!canvas)return null;
     const ctx=canvas.getContext("2d");
     const w=canvas.getBoundingClientRect().width, h=canvas.getBoundingClientRect().height;
     ctx.setTransform(dpr,0,0,dpr,0,0);
     ctx.clearRect(0,0,w,h);
     return ctx;
   }
-  function render(){
-    const canvas=g("sourceAnnoCanvas"), img=g("sourcePageImage");
-    if(!canvas || !img) return;
-    const ctx=ctx2d();
-    if(!ctx) return;
-    const w=canvas.getBoundingClientRect().width, h=canvas.getBoundingClientRect().height;
-    strokes.forEach(s=>{
-      if(!s || !Array.isArray(s.points) || !s.points.length) return;
-      ctx.save();
-      if(s.tool==="highlight"){
-        ctx.globalCompositeOperation="multiply";
-        ctx.strokeStyle="rgba(255,235,59,0.38)";
-        ctx.lineWidth=Math.max(16, w*0.018);
-      }else{
-        ctx.globalCompositeOperation="source-over";
-        ctx.strokeStyle="rgba(217,45,32,0.95)";
-        ctx.lineWidth=Math.max(2.6, w*0.0032);
-      }
-      ctx.lineCap="round";
-      ctx.lineJoin="round";
-      ctx.beginPath();
-      s.points.forEach((p,i)=>{
-        const x=p.x*w, y=p.y*h;
-        if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
-      });
-      if(s.points.length===1){
-        const p=s.points[0];
-        ctx.lineTo(p.x*w+0.1,p.y*h+0.1);
-      }
-      ctx.stroke();
-      ctx.restore();
+  function strokeStyle(s,w){
+    if(s.tool==="highlight"){
+      return {
+        composite:"multiply",
+        color:"rgba(255,235,59,0.38)",
+        width:Math.max(16,w*0.018)
+      };
+    }
+    if(s.tool==="color"){
+      return {
+        composite:"source-over",
+        color:/^#[0-9a-f]{6}$/i.test(s.color||"")?s.color:penColor,
+        width:Math.max(2.6,w*0.0032)
+      };
+    }
+    // 舊資料凡非 highlight 皆視為紅筆，確保向下相容
+    return {
+      composite:"source-over",
+      color:"rgba(217,45,32,0.95)",
+      width:Math.max(2.6,w*0.0032)
+    };
+  }
+  function drawStroke(ctx,s,w,h){
+    if(!s || !Array.isArray(s.points) || !s.points.length)return;
+    const sty=strokeStyle(s,w);
+    ctx.save();
+    ctx.globalCompositeOperation=sty.composite;
+    ctx.strokeStyle=sty.color;
+    ctx.lineWidth=sty.width;
+    ctx.lineCap="round";
+    ctx.lineJoin="round";
+    ctx.beginPath();
+    s.points.forEach((p,i)=>{
+      const x=p.x*w,y=p.y*h;
+      if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
     });
+    if(s.points.length===1){
+      const p=s.points[0];
+      ctx.lineTo(p.x*w+0.1,p.y*h+0.1);
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+  function render(){
+    const canvas=g("sourceAnnoCanvas"),img=g("sourcePageImage");
+    if(!canvas || !img)return;
+    const ctx=ctx2d();
+    if(!ctx)return;
+    const w=canvas.getBoundingClientRect().width,h=canvas.getBoundingClientRect().height;
+    strokes.forEach(s=>drawStroke(ctx,s,w,h));
+  }
+  function renderWithCurrent(){
+    const canvas=g("sourceAnnoCanvas"),img=g("sourcePageImage");
+    if(!canvas || !img)return;
+    const ctx=ctx2d();
+    if(!ctx)return;
+    const w=canvas.getBoundingClientRect().width,h=canvas.getBoundingClientRect().height;
+    strokes.forEach(s=>drawStroke(ctx,s,w,h));
+    if(currentStroke)drawStroke(ctx,currentStroke,w,h);
   }
   function pointerPoint(ev){
     const img=g("sourcePageImage");
     const r=img.getBoundingClientRect();
-    const x=(ev.clientX-r.left)/r.width;
-    const y=(ev.clientY-r.top)/r.height;
     return {
-      x: Math.max(0,Math.min(1,x)),
-      y: Math.max(0,Math.min(1,y))
+      x:Math.max(0,Math.min(1,(ev.clientX-r.left)/Math.max(1,r.width))),
+      y:Math.max(0,Math.min(1,(ev.clientY-r.top)/Math.max(1,r.height)))
     };
   }
-  function onPointerDown(ev){
-    if(mode==="browse") return;
+
+  function segDist(px,py,ax,ay,bx,by){
+    const abx=bx-ax,aby=by-ay;
+    const ab2=abx*abx+aby*aby;
+    if(ab2<=0.000001)return Math.hypot(px-ax,py-ay);
+    let t=((px-ax)*abx+(py-ay)*aby)/ab2;
+    t=Math.max(0,Math.min(1,t));
+    return Math.hypot(px-(ax+t*abx),py-(ay+t*aby));
+  }
+  function strokeHit(s,pt,w,h,radius){
+    if(!s?.points?.length)return false;
+    const px=pt.x*w,py=pt.y*h;
+    const pts=s.points;
+    if(pts.length===1)return Math.hypot(px-pts[0].x*w,py-pts[0].y*h)<=radius;
+    for(let i=1;i<pts.length;i++){
+      if(segDist(px,py,pts[i-1].x*w,pts[i-1].y*h,pts[i].x*w,pts[i].y*h)<=radius)return true;
+    }
+    return false;
+  }
+  function targetToolForEraser(){
+    if(mode==="highlightEraser")return "highlight";
+    if(mode==="redEraser")return "red";
+    if(mode==="colorEraser")return "color";
+    return null;
+  }
+  function eraseAt(ev){
+    const target=targetToolForEraser();
+    if(!target)return false;
     const canvas=g("sourceAnnoCanvas");
-    if(!canvas) return;
+    if(!canvas)return false;
+    const w=canvas.getBoundingClientRect().width,h=canvas.getBoundingClientRect().height;
+    const pt=pointerPoint(ev);
+    const radius=target==="highlight"?Math.max(18,w*0.022):Math.max(10,w*0.012);
+
+    // 從最上層（最後畫的）開始找
+    for(let i=strokes.length-1;i>=0;i--){
+      const s=strokes[i];
+      const actualTool=s.tool==="highlight"?"highlight":(s.tool==="color"?"color":"red");
+      if(actualTool!==target)continue;
+      if(strokeHit(s,pt,w,h,radius)){
+        strokes.splice(i,1);
+        save();
+        render();
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function onPointerDown(ev){
+    if(mode==="browse")return;
+    const canvas=g("sourceAnnoCanvas");
+    if(!canvas)return;
     ev.preventDefault();
     ev.stopPropagation();
+
     drawing=true;
-    currentStroke={tool:mode, points:[pointerPoint(ev)]};
     try{canvas.setPointerCapture(ev.pointerId);}catch(e){}
+
+    if(isEraser()){
+      eraseAt(ev);
+      return;
+    }
+
+    const tool=mode==="highlight"?"highlight":(mode==="red"?"red":"color");
+    currentStroke={
+      tool,
+      points:[pointerPoint(ev)]
+    };
+    if(tool==="color")currentStroke.color=penColor;
   }
   function onPointerMove(ev){
-    if(!drawing || !currentStroke) return;
+    if(!drawing)return;
     ev.preventDefault();
     ev.stopPropagation();
+
+    if(isEraser()){
+      eraseAt(ev);
+      return;
+    }
+
+    if(!currentStroke)return;
     const pt=pointerPoint(ev);
     const last=currentStroke.points[currentStroke.points.length-1];
-    const dx=pt.x-last.x, dy=pt.y-last.y;
-    if(dx*dx+dy*dy < 0.000002) return;
+    const dx=pt.x-last.x,dy=pt.y-last.y;
+    if(dx*dx+dy*dy<0.000002)return;
     currentStroke.points.push(pt);
-    const temp = strokes.concat([currentStroke]);
-    const old = strokes;
-    strokes = temp;
-    render();
-    strokes = old;
+    renderWithCurrent();
   }
   function finishStroke(ev){
-    if(!drawing || !currentStroke) return;
+    if(!drawing)return;
     ev?.preventDefault?.();
     ev?.stopPropagation?.();
-    if(currentStroke.points.length===1){
-      currentStroke.points.push({...currentStroke.points[0]});
+
+    if(isEraser()){
+      drawing=false;
+      currentStroke=null;
+      try{g("sourceAnnoCanvas")?.releasePointerCapture(ev.pointerId);}catch(e){}
+      return;
     }
-    strokes.push(currentStroke);
-    currentStroke=null;
+
+    if(currentStroke){
+      if(currentStroke.points.length===1)currentStroke.points.push({...currentStroke.points[0]});
+      strokes.push(currentStroke);
+      currentStroke=null;
+      save();
+      render();
+    }
     drawing=false;
-    save();
-    render();
+    try{g("sourceAnnoCanvas")?.releasePointerCapture(ev.pointerId);}catch(e){}
   }
   function stopTouchBubble(e){
     if(mode!=="browse"){
       e.stopPropagation();
-      if(e.cancelable) e.preventDefault();
+      if(e.cancelable)e.preventDefault();
     }
   }
   function reloadCurrentPage(){
     load();
-    setTimeout(ensureCanvasSize, 60);
-    setTimeout(ensureCanvasSize, 220);
+    setTimeout(ensureCanvasSize,60);
+    setTimeout(ensureCanvasSize,220);
   }
   function undo(){
     if(!strokes.length){setStatus("目前頁面沒有可撤銷的註記。");return;}
-    strokes.pop();
+    const removed=strokes.pop();
     save();
     render();
-    setStatus("已撤銷目前頁面最後一筆註記。");
+    const label=removed?.tool==="highlight"?"螢光筆":removed?.tool==="color"?"彩色筆":"紅筆";
+    setStatus(`已撤銷目前頁面最後一筆${label}註記。`);
   }
   function clearPage(){
-    if(!confirm("確定要清除目前原始教材頁面的所有螢光筆與紅筆註記嗎？")) return;
+    if(!confirm("確定要清除目前原始教材頁面的所有螢光筆、紅筆與彩色筆註記嗎？"))return;
     strokes=[];
     try{localStorage.removeItem(storageKey());}catch(e){}
     render();
@@ -6248,42 +6515,54 @@ window.addEventListener("DOMContentLoaded",()=>{
   }
 
   window.addEventListener("DOMContentLoaded",()=>{
-    const canvas=g("sourceAnnoCanvas"), img=g("sourcePageImage"), stage=g("sourceImageStage");
-    if(!canvas || !img || !stage) return;
+    const canvas=g("sourceAnnoCanvas"),img=g("sourcePageImage"),stage=g("sourceImageStage");
+    if(!canvas || !img || !stage)return;
+
+    loadPenColor();
 
     g("sourceAnnoBrowseBtn")?.addEventListener("click",()=>setMode("browse"));
     g("sourceAnnoHighlightBtn")?.addEventListener("click",()=>setMode(mode==="highlight"?"browse":"highlight"));
+    g("sourceAnnoHighlightEraseBtn")?.addEventListener("click",()=>setMode(mode==="highlightEraser"?"browse":"highlightEraser"));
     g("sourceAnnoRedBtn")?.addEventListener("click",()=>setMode(mode==="red"?"browse":"red"));
+    g("sourceAnnoRedEraseBtn")?.addEventListener("click",()=>setMode(mode==="redEraser"?"browse":"redEraser"));
+    g("sourceAnnoColorBtn")?.addEventListener("click",()=>setMode(mode==="color"?"browse":"color"));
+    g("sourceAnnoColorEraseBtn")?.addEventListener("click",()=>setMode(mode==="colorEraser"?"browse":"colorEraser"));
+
+    g("sourceAnnoColorInput")?.addEventListener("input",e=>{
+      savePenColor(e.target.value);
+      if(mode!=="color")setMode("color");
+      else setStatus(`彩色筆：目前顏色 ${penColor.toUpperCase()}。`);
+    });
+
     g("sourceAnnoUndoBtn")?.addEventListener("click",undo);
     g("sourceAnnoClearBtn")?.addEventListener("click",clearPage);
 
-    canvas.addEventListener("pointerdown", onPointerDown);
-    canvas.addEventListener("pointermove", onPointerMove);
-    canvas.addEventListener("pointerup", finishStroke);
-    canvas.addEventListener("pointercancel", finishStroke);
-    ["touchstart","touchmove","touchend"].forEach(evt=>canvas.addEventListener(evt, stopTouchBubble, {passive:false}));
+    canvas.addEventListener("pointerdown",onPointerDown);
+    canvas.addEventListener("pointermove",onPointerMove);
+    canvas.addEventListener("pointerup",finishStroke);
+    canvas.addEventListener("pointercancel",finishStroke);
+    ["touchstart","touchmove","touchend"].forEach(evt=>canvas.addEventListener(evt,stopTouchBubble,{passive:false}));
 
-    img.addEventListener("load", reloadCurrentPage);
+    img.addEventListener("load",reloadCurrentPage);
     if(window.ResizeObserver){
       const ro=new ResizeObserver(()=>ensureCanvasSize());
       ro.observe(img);
       ro.observe(stage);
     }
-    window.addEventListener("resize", ()=>setTimeout(ensureCanvasSize, 100));
-    window.addEventListener("orientationchange", ()=>setTimeout(ensureCanvasSize, 180));
-    g("sourceZoomSelect")?.addEventListener("change", ()=>setTimeout(ensureCanvasSize, 120));
+    window.addEventListener("resize",()=>setTimeout(ensureCanvasSize,100));
+    window.addEventListener("orientationchange",()=>setTimeout(ensureCanvasSize,180));
+    g("sourceZoomSelect")?.addEventListener("change",()=>setTimeout(ensureCanvasSize,120));
 
     document.querySelectorAll(".sourceItem,#sourceFirstBtn,#sourcePrevBtn,#sourceNextBtn,#sourceLastBtn,#sourceGoPageBtn,#sourceFooterPrev,#sourceFooterNext").forEach(el=>{
-      el.addEventListener("click", ()=>setTimeout(reloadCurrentPage, 140));
+      el.addEventListener("click",()=>setTimeout(reloadCurrentPage,140));
     });
-    g("sourcePageInput")?.addEventListener("keydown", e=>{
-      if(e.key==="Enter") setTimeout(reloadCurrentPage, 140);
+    g("sourcePageInput")?.addEventListener("keydown",e=>{
+      if(e.key==="Enter")setTimeout(reloadCurrentPage,140);
     });
 
-    // page open
     load();
     setMode("browse");
-    setTimeout(ensureCanvasSize, 120);
+    setTimeout(ensureCanvasSize,120);
   });
 })();
 </script>
