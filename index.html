@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504｜附表九、附表十原始教材版 v30</title>
+<title>資安職能訓練｜資通安全概論 11504｜附表十完整整理與考前速查版 v31</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -3758,6 +3758,238 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
 </details>
 </div>
 </article>
+
+<article class="studyUnit" data-search="附表十 資通系統防護基準 高中普 存取控制 事件日誌 備份 識別鑑別 弱點掃描 滲透測試" id="study-annex10">
+<div class="unitHead">
+<div><span class="dayTag">附表</span><h2>附表十｜資通系統防護基準（完整整理）</h2></div>
+<div class="unitActions">
+<button class="miniBtn" onclick="document.querySelectorAll('#study-annex10 details').forEach(d=>d.open=true)">展開附表十</button>
+<button class="miniBtn" onclick="document.querySelectorAll('#study-annex10 details').forEach(d=>d.open=false)">收合附表十</button>
+</div>
+</div>
+<div class="studyBody">
+<div class="goal"><b>附表十完整整理：</b>依「高／中／普」分級與 7 大構面、27 項控制措施整理，方便從原始教材延伸複習。</div>
+
+<details class="studyDetail" open="">
+<summary>附表十-1｜整體架構</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex10-1">
+<ul>
+<li><b>附表十名稱：</b>資通系統防護基準。</li>
+<li><b>分級方式：</b>依資通系統防護需求等級，分為<b>高／中／普</b>三級，普級為基本要求，中級再加強，高級再進一步強化。</li>
+<li><b>7 大構面：</b>（1）存取控制、（2）事件日誌與可歸責性、（3）營運持續計畫、（4）識別與鑑別、（5）系統與服務獲得、（6）系統與通訊保護、（7）系統與資訊完整性。</li>
+<li><b>27 項控制措施：</b>帳號管理、最小權限、遠端存取、記錄事件、日誌紀錄內容、日誌儲存容量、日誌處理失效之回應、時戳與校時、日誌資訊保護、資料備份、系統備援、使用者識別與鑑別、身分驗證管理、鑑別資訊保護、需求/設計/開發/測試/部署與維運/委外/獲得程序/文件、傳輸之機密性與完整性、資料儲存之安全、漏洞修復、資通系統監控、軟體及資訊完整性。</li>
+</ul>
+<div class="examTip"><b>總口訣：</b>「普級打底、中級加強、高級再加強」；複習時可先背 7 大構面，再記高頻數字與差異。</div>
+<div class="subSrc">來源：附表十 1～5 頁</div>
+</div>
+</details>
+
+<details class="studyDetail" open="">
+<summary>附表十-2｜存取控制</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex10-2">
+<h3>1. 帳號管理</h3>
+<ul>
+<li><b>普級：</b>建立帳號申請、建立、修改、啟用、停用、刪除程序；逾期臨時或緊急帳號應刪除或禁用；閒置帳號應禁用；定期審核帳號生命週期。</li>
+<li><b>中級：</b>除普級外，應定義系統閒置時間或可使用期限；逾越時系統應自動登出。</li>
+<li><b>高級：</b>除中級外，應依機關規定之情況與條件使用系統；監控帳號異常使用並回報管理者。</li>
+</ul>
+<h3>2. 最小權限</h3>
+<ul><li>高、中、普皆應依最小權限原則，只給完成工作所必要的最少權限。</li></ul>
+<h3>3. 遠端存取</h3>
+<ul>
+<li>遠端存取類型應先取得授權。</li>
+<li>應建立使用限制、組態/連線需求並文件化。</li>
+<li>權限檢查應在<b>伺服器端</b>完成，並監控遠端連入內部網段或後台。</li>
+<li>應採用加密機制，來源限於機關預先定義及管理的存取控制點。</li>
+</ul>
+<div class="examTip"><b>易考差異：</b>帳號管理差異最大——普級管生命週期；中級加自動登出；高級再加使用條件與異常監控。</div>
+<div class="subSrc">來源：附表十第 1 頁</div>
+</div>
+</details>
+
+<details class="studyDetail" open="">
+<summary>附表十-3｜事件日誌與可歸責性</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex10-3">
+<h3>1. 記錄事件</h3>
+<ul>
+<li>應訂定日誌記錄週期及留存政策。</li>
+<li><b>至少保留 6 個月</b>。</li>
+<li>系統應可記錄特定事件，並記錄系統管理者帳號執行之功能。</li>
+<li>高、中等級另要求定期審查留存的系統日誌。</li>
+</ul>
+<h3>2. 日誌紀錄內容</h3>
+<ul>
+<li>至少包含：<b>事件類型、發生時間、發生位置、使用者身分識別資訊</b>與其他依政策/法規要求之資訊。</li>
+<li>宜採單一日誌機制，以確保輸出格式一致。</li>
+</ul>
+<h3>3. 其他要求</h3>
+<ul>
+<li><b>日誌儲存容量：</b>應依需求配置足夠容量。</li>
+<li><b>日誌處理失效：</b>失效時應採取適當回應；高級對需即時通報之失效事件，應於規定時效內警告特定人員。</li>
+<li><b>時戳與校時：</b>時戳應可對應 UTC 或 GMT，系統時鐘應定期與基準時間源同步。</li>
+</ul>
+<h3>4. 日誌資訊保護</h3>
+<div class="tableWrap">
+<table>
+<thead><tr><th>等級</th><th>重點要求</th></tr></thead>
+<tbody>
+<tr><td>普級</td><td>日誌僅授權人員得存取</td></tr>
+<tr><td>中級</td><td>使用雜湊或其他機制保護完整性</td></tr>
+<tr><td>高級</td><td>定期將日誌備份到原系統外之其他實體系統</td></tr>
+</tbody>
+</table>
+</div>
+<div class="examTip"><b>必背數字：</b>日誌至少保留 6 個月。<b>保護層次</b>可記成：普權限 → 中完整性 → 高外部備份。</div>
+<div class="subSrc">來源：附表十第 1～2 頁</div>
+</div>
+</details>
+
+<details class="studyDetail" open="">
+<summary>附表十-4｜營運持續計畫</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex10-4">
+<h3>1. 資料備份</h3>
+<div class="tableWrap">
+<table>
+<thead><tr><th>等級</th><th>要求</th></tr></thead>
+<tbody>
+<tr><td>普級</td><td>訂定資料可容忍損失時間，並執行資料備份</td></tr>
+<tr><td>中級</td><td>定期測試備份資料，確認備份媒體可靠性與資料完整性</td></tr>
+<tr><td>高級</td><td>將備份還原納入營運持續演練，並建立異地備份</td></tr>
+</tbody>
+</table>
+</div>
+<h3>2. 系統備援</h3>
+<div class="tableWrap">
+<table>
+<thead><tr><th>等級</th><th>要求</th></tr></thead>
+<tbody>
+<tr><td>普級</td><td>訂定最大可容忍中斷時間</td></tr>
+<tr><td>中級</td><td>定期測試服務中斷時能否於最大可容忍中斷時間內由備援設備或其他方式接手</td></tr>
+<tr><td>高級</td><td>將備援啟動納入營運持續計畫演練</td></tr>
+</tbody>
+</table>
+</div>
+<div class="examTip"><b>記憶口訣：</b>備份＝普有備份、中測備份、高還原＋異地；備援＝普訂時間、中做測試、高納演練。</div>
+<div class="subSrc">來源：附表十第 2 頁</div>
+</div>
+</details>
+
+<details class="studyDetail" open="">
+<summary>附表十-5｜識別與鑑別</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex10-5">
+<h3>1. 使用者識別與鑑別</h3>
+<ul>
+<li><b>中／普：</b>系統應識別及鑑別使用者，且<b>不得使用共用帳號</b>。</li>
+<li><b>高級：</b>除上述外，應採用<b>多因子鑑別（MFA）</b>。</li>
+</ul>
+<h3>2. 身分驗證管理</h3>
+<ul>
+<li>預設密碼第一次登入後應立即變更。</li>
+<li>身分驗證資訊不得以明文傳輸。</li>
+<li>登入驗證失敗達 <b>5 次</b>，至少 <b>15 分鐘</b>不得繼續嘗試登入，或採機關自建失敗驗證機制。</li>
+<li>密碼應符合最低複雜度並依規定定期變更。</li>
+<li>新密碼至少不得與<b>前 3 次</b>使用過之密碼相同。</li>
+<li>較高等級並應防範自動化登入/密碼更換嘗試；密碼重設時須重新確認身分，並使用一次性且具時效性之符記。</li>
+</ul>
+<h3>3. 鑑別資訊保護</h3>
+<ul><li>應保護密碼、金鑰、憑證等鑑別資訊，避免未授權取得、揭露或竄改。</li></ul>
+<div class="examTip"><b>必背：</b>禁止共用帳號；高級 MFA；密碼口訣＝<b>5 次、15 分鐘、前 3 次不得重複</b>。</div>
+<div class="subSrc">來源：附表十第 2～3 頁</div>
+</div>
+</details>
+
+<details class="studyDetail" open="">
+<summary>附表十-6｜系統與服務獲得（SSDLC）</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex10-6">
+<h3>1. 需求階段</h3>
+<ul><li>應確認系統安全需求，至少包含<b>機密性、完整性、可用性</b>。</li></ul>
+<h3>2. 設計階段</h3>
+<ul>
+<li><b>高／中：</b>識別可能威脅、進行風險分析與評估，並將結果回饋修正安全需求。</li>
+<li><b>普級：</b>無額外要求。</li>
+</ul>
+<h3>3. 開發階段</h3>
+<ul>
+<li><b>高級：</b>執行<b>源碼掃描</b>，重大錯誤應有通知機制。</li>
+<li>並應依安全需求實作控制措施、避免常見漏洞，錯誤頁面僅顯示簡要訊息與代碼，避免洩漏細節。</li>
+</ul>
+<h3>4. 測試階段</h3>
+<ul>
+<li><b>中／普：</b>執行<b>弱點掃描</b>。</li>
+<li><b>高級：</b>執行<b>滲透測試</b>，並含中／普之要求。</li>
+</ul>
+<h3>5. 部署與維運</h3>
+<ul>
+<li><b>普級：</b>更新修補、關閉不必要服務與埠口、不使用預設密碼、執行系統源碼備份。</li>
+<li><b>較高等級：</b>再加上版本控制與變更管理。</li>
+</ul>
+<h3>6. 委外、獲得程序、文件</h3>
+<ul>
+<li>系統委外時，應於契約納入各階段安全需求。</li>
+<li><b>普級獲得程序：</b>識別第三方軟體、服務、函式庫或其他元件。</li>
+<li><b>中／高：</b>開發、測試、正式作業環境應區隔。</li>
+<li>應保存並管理 SSDLC 各階段相關文件。</li>
+</ul>
+<div class="examTip"><b>高頻差異：</b><b>弱點掃描</b>屬較基本要求；<b>滲透測試</b>屬較高要求。可記成「中普弱掃、高再滲測」。</div>
+<div class="subSrc">來源：附表十第 3～4 頁</div>
+</div>
+</details>
+
+<details class="studyDetail" open="">
+<summary>附表十-7｜系統與通訊保護、系統與資訊完整性</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex10-7">
+<h3>1. 傳輸之機密性與完整性</h3>
+<ul>
+<li><b>高級：</b>應採加密機制，使用公開、經國際機構驗證且尚未破解之演算法；金鑰或憑證應定期更換；伺服器端金鑰應有管理規範及安全防護。</li>
+<li><b>中／普：</b>附表十列示無額外要求。</li>
+</ul>
+<h3>2. 資料儲存之安全</h3>
+<ul>
+<li><b>高級：</b>重要組態設定檔及其他需保護資訊，應加密或以其他適當方式儲存。</li>
+</ul>
+<h3>3. 漏洞修復</h3>
+<ul>
+<li><b>普級：</b>漏洞修復前後應測試有效性及潛在影響，並定期更新。</li>
+<li><b>高／中：</b>另應定期確認系統相關漏洞修復狀態。</li>
+</ul>
+<h3>4. 資通系統監控</h3>
+<ul>
+<li><b>普級：</b>發現被入侵跡象時，通報機關特定人員。</li>
+<li><b>中級：</b>監控系統，以偵測攻擊、未授權連線與未授權使用。</li>
+<li><b>高級：</b>使用自動化工具監控進出通信流量，發現不尋常或未授權活動時進行分析。</li>
+</ul>
+<h3>5. 軟體及資訊完整性</h3>
+<ul>
+<li><b>普級：</b>使用者輸入資料合法性檢查應放在<b>應用系統伺服器端</b>。</li>
+<li><b>中級：</b>使用完整性驗證工具偵測未授權變更；發現違反時採指定保護措施。</li>
+<li><b>高級：</b>定期執行軟體及資訊完整性檢查。</li>
+</ul>
+<div class="examTip"><b>記法：</b>監控可記成「普通報 → 中偵測 → 高自動化分析」；加密明確要求主要集中在<b>高級</b>。</div>
+<div class="subSrc">來源：附表十第 4～5 頁</div>
+</div>
+</details>
+
+<details class="studyDetail" open="">
+<summary>附表十-8｜考試必背總整理</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex10-8">
+<ul>
+<li><b>帳號管理：</b>普管生命週期 → 中自動登出 → 高監控異常。</li>
+<li><b>日誌：</b>至少 <b>6 個月</b>；普權限 → 中完整性 → 高外部備份。</li>
+<li><b>備份：</b>普有備份 → 中測試備份 → 高還原演練＋異地備份。</li>
+<li><b>備援：</b>普訂最大可容忍中斷時間 → 中測試接手 → 高納入演練。</li>
+<li><b>識別鑑別：</b>禁止共用帳號；高級採 MFA。</li>
+<li><b>密碼：</b><b>5 次</b>失敗、至少鎖 <b>15 分鐘</b>、不得與<b>前 3 次</b>相同。</li>
+<li><b>SSDLC 測試：</b>中／普做<b>弱點掃描</b>，高級做<b>滲透測試</b>。</li>
+<li><b>監控：</b>普通報 → 中偵測 → 高自動化分析。</li>
+</ul>
+<div class="flow"><div>高頻數字：<b>6 個月</b></div><div><b>5 次</b>登入失敗</div><div><b>15 分鐘</b>鎖定</div><div>密碼不得與<b>前 3 次</b>相同</div></div>
+<div class="subSrc">來源：附表十 1～5 頁</div>
+</div>
+</details>
+
+</div>
+</article>
+
 </div>
 <div class="noMatch hidden" id="studyNoMatch">找不到符合搜尋條件的整理內容。</div>
 </main>
@@ -3777,6 +4009,44 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
 <section class="card quickCard annotatable" data-ann-id="quick-2"><h2>考前必背數字總表</h2><div class="tableWrap"><table><thead><tr><th>主題</th><th>數字/頻率</th><th>教材定位</th></tr></thead><tbody><tr><td>課程</td><td>18小時（3天）</td><td>第1天 1-2</td></tr><tr><td>國家資通安全會報</td><td>每半年召開1次</td><td>第1天 1-31</td></tr><tr><td>適任性查核申辯</td><td>15日內</td><td>第1天 1-48</td></tr><tr><td>重大事件調度支援</td><td>每次7日；必要時延長1次（最長7日）</td><td>第1天 1-48</td></tr><tr><td>A/B/C專職人員</td><td>4／2／1人以上</td><td>第1天 1-102</td></tr><tr><td>內部資安稽核</td><td>A每年2、B每年1、C每2年1</td><td>第1天 1-103</td></tr><tr><td>專職人員訓練</td><td>A/B/C每年12小時以上</td><td>第1天 1-125</td></tr><tr><td>非專職資訊人員</td><td>每2年至少3小時專業/職能＋每年3小時通識</td><td>第1天 1-125</td></tr><tr><td>一般使用者及主管</td><td>每年3小時以上通識</td><td>第1天 1-125</td></tr><tr><td>日誌留存</td><td>至少6個月</td><td>第2天 2-11</td></tr><tr><td>弱點掃描</td><td>A每年2、B每年1、C每2年1</td><td>第3天 3-4</td></tr><tr><td>滲透測試</td><td>A每年1、B每2年1、C每2年1</td><td>第3天 3-4</td></tr><tr><td>資安事件通報</td><td>知悉後1小時內</td><td>第3天 3-125</td></tr><tr><td>事件等級審核</td><td>1/2級8小時；3/4級2小時</td><td>第3天 3-125</td></tr><tr><td>審核結果通知主管機關</td><td>1小時內</td><td>第3天 3-125</td></tr><tr><td>調查處理改善報告</td><td>1個月內</td><td>第3天 3-126</td></tr><tr><td>社交工程演練</td><td>每半年1次</td><td>第3天 3-129</td></tr><tr><td>事件通報及應變演練</td><td>每年1次</td><td>第3天 3-129</td></tr><tr><td>演練成果報告</td><td>完成後1個月內</td><td>第3天 3-129</td></tr></tbody></table></div></section>
 <section class="card quickCard annotatable" data-ann-id="quick-3"><h2>常考易混淆對照</h2><div class="tableWrap"><table><thead><tr><th>A</th><th>B</th><th>差異重點</th></tr></thead><tbody><tr><td>風險識別</td><td>風險分析</td><td>識別威脅/脆弱性 vs 評估可能性與影響</td></tr><tr><td>風險分析</td><td>風險評估</td><td>分析結果 vs 與接受準則比較</td></tr><tr><td>弱點掃描</td><td>滲透測試</td><td>找已知弱點/主要非侵入式 vs 模擬攻擊/可能具侵入性</td></tr><tr><td>網路防火牆</td><td>WAF</td><td>網路連線規則 vs 網站應用層攻擊防護</td></tr><tr><td>IDS</td><td>IPS</td><td>偏偵測/記錄 vs 可主動封鎖</td></tr><tr><td>SOC</td><td>EDR</td><td>集中監控/事件處理 vs 端點偵測/應變</td></tr><tr><td>GCB</td><td>VANS</td><td>組態基準 vs 資產盤點＋弱點管理</td></tr><tr><td>公務機關證照</td><td>特定非公務機關證照</td><td>A～C專職人員：公務「及」；特定非公務「或」</td></tr><tr><td>事件分級</td><td>責任等級</td><td>事件是1～4級；機關責任等級是A～E級</td></tr><tr><td>CIA</td><td>法律遵循性</td><td>CIA＝機密/完整/可用；教材另強調法規遵循</td></tr></tbody></table></div></section>
 <section class="card quickCard annotatable" data-ann-id="quick-4"><h2>縮寫與名詞速查</h2><div class="tableWrap"><table><thead><tr><th>縮寫/名詞</th><th>全名/意義</th></tr></thead><tbody><tr><td>CIA</td><td>Confidentiality / Integrity / Availability</td></tr><tr><td>ISMS</td><td>Information Security Management System</td></tr><tr><td>NIST CSF</td><td>NIST Cybersecurity Framework</td></tr><tr><td>CNS 27005</td><td>資訊安全風險管理指引</td></tr><tr><td>SSDLC</td><td>Secure System Development Life Cycle</td></tr><tr><td>SOC</td><td>Security Operation Center</td></tr><tr><td>GCB</td><td>Government Configuration Baseline</td></tr><tr><td>VANS</td><td>Vulnerability Alert and Notification System</td></tr><tr><td>EDR</td><td>Endpoint Detection and Response</td></tr><tr><td>IDS</td><td>Intrusion Detection System</td></tr><tr><td>IPS</td><td>Intrusion Prevention System</td></tr><tr><td>WAF</td><td>Web Application Firewall</td></tr><tr><td>APT</td><td>Advanced Persistent Threat</td></tr><tr><td>CVE</td><td>Common Vulnerabilities and Exposures</td></tr><tr><td>OWASP</td><td>Open Worldwide Application Security Project</td></tr><tr><td>BIA</td><td>Business Impact Analysis</td></tr><tr><td>RTO</td><td>Recovery Time Objective</td></tr><tr><td>RPO</td><td>Recovery Point Objective</td></tr><tr><td>MTPD</td><td>Maximum Tolerable Period of Disruption</td></tr><tr><td>RFP</td><td>Request for Proposal</td></tr><tr><td>UTC</td><td>Coordinated Universal Time</td></tr><tr><td>GMT</td><td>Greenwich Mean Time</td></tr></tbody></table></div></section>
+
+<section class="card quickCard annotatable" data-ann-id="quick-annex10">
+<h2>附表十考前速查</h2>
+<div class="quickPills">
+<span class="quickPill">7大構面</span><span class="quickPill">高／中／普</span><span class="quickPill">日誌 6 個月</span><span class="quickPill">5 次／15 分鐘／前 3 次</span><span class="quickPill">弱掃 vs 滲測</span>
+</div>
+<div class="goal" style="margin-top:12px"><b>一頁速背：</b>先記等級差異，再背高頻數字與高頻比較。</div>
+
+<div class="tableWrap" style="margin-top:14px">
+<table>
+<thead><tr><th>主題</th><th>考前速記</th></tr></thead>
+<tbody>
+<tr><td>整體架構</td><td>7 大構面、27 項控制措施；普級打底，中級加強，高級再加強。</td></tr>
+<tr><td>帳號管理</td><td>普：生命週期；中：自動登出；高：使用條件＋異常監控。</td></tr>
+<tr><td>日誌</td><td>至少保留 <b>6 個月</b>；普權限 → 中完整性 → 高外部備份。</td></tr>
+<tr><td>備份/備援</td><td>備份：普有、中測、高還原＋異地。備援：普訂時間、中測試接手、高納演練。</td></tr>
+<tr><td>識別鑑別</td><td>禁止共用帳號；高級 MFA；密碼：<b>5 次</b>失敗、鎖 <b>15 分鐘</b>、不得與<b>前 3 次</b>相同。</td></tr>
+<tr><td>SSDLC</td><td>需求看 CIA；高／中設計要做風險分析；高級開發做源碼掃描。</td></tr>
+<tr><td>測試階段</td><td><b>中／普：弱點掃描；高：滲透測試。</b></td></tr>
+<tr><td>加密</td><td>傳輸與儲存之明確強化要求主要集中在<b>高級</b>。</td></tr>
+<tr><td>監控</td><td>普通報 → 中偵測 → 高自動化分析。</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="flow" style="margin-top:14px">
+<div>日誌 <b>6個月</b></div>
+<div>失敗 <b>5次</b></div>
+<div>鎖定 <b>15分鐘</b></div>
+<div>密碼禁用前 <b>3次</b></div>
+<div>中普 <b>弱掃</b></div>
+<div>高級 <b>滲測</b></div>
+</div>
+
+<div class="examTip" style="margin-top:14px"><b>最後衝刺：</b>如果題目在考「哪個等級多要求一層」，常見答案就是<b>高級</b>；若考「較基本、普遍要做的檢測」，多半是<b>弱點掃描</b>。</div>
+<div class="subSrc">整理自：附表十 1～5 頁</div>
+</section>
+
 </div>
 </section>
 
