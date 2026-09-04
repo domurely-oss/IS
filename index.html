@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11504｜附表十完整整理與考前速查版 v31</title>
+<title>資安職能訓練｜資通安全概論 11504｜附表十側邊連結版 v32</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -2958,6 +2958,66 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
   #view-study,#view-quick{padding-bottom:0!important}
 }
 
+
+/* ===== v32 完整整理左側新增附表十連結 ===== */
+.annexNavSection{
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid var(--line)
+}
+.annexNavLabel{
+  padding:0 8px 5px;
+  font-size:10px;
+  font-weight:900;
+  color:var(--muted)
+}
+.annexNavBtn{
+  width:100%;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  text-align:left;
+  border:0;
+  background:transparent;
+  padding:9px 8px;
+  border-radius:11px;
+  cursor:pointer;
+  color:var(--text)
+}
+.annexNavBtn:hover,
+.annexNavBtn:focus{
+  background:var(--soft);
+  outline:none
+}
+.annexNavBtn>span{
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  flex:0 0 30px;
+  border-radius:9px;
+  background:#fff4db;
+  color:#8a5b00;
+  font-weight:900
+}
+.annexNavBtn b{
+  display:block;
+  font-size:13px
+}
+.annexNavBtn small{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.3
+}
+@media(max-width:680px){
+  .annexNavSection{margin-top:7px;padding-top:7px}
+  .annexNavBtn{padding:8px 6px;gap:7px}
+  .annexNavBtn>span{width:28px;height:28px;flex-basis:28px}
+  .annexNavBtn b{font-size:12px}
+  .annexNavBtn small{font-size:10px}
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -3036,6 +3096,13 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
 </div>
 
 <div id="unitNavList"><button class="unitNav" data-unit="1"><span>1</span><div><b>第1單元</b><small>資通安全基本觀念</small></div></button><button class="unitNav" data-unit="2"><span>2</span><div><b>第2單元</b><small>資通安全相關法規</small></div></button><button class="unitNav" data-unit="3"><span>3</span><div><b>第3單元</b><small>資通安全風險管理</small></div></button><button class="unitNav" data-unit="4"><span>4</span><div><b>第4單元</b><small>資通安全管理面暨認知與訓練</small></div></button><button class="unitNav" data-unit="5"><span>5</span><div><b>第5單元</b><small>資通系統防護控制措施</small></div></button><button class="unitNav" data-unit="6"><span>6</span><div><b>第6單元</b><small>資通安全之防護及偵測</small></div></button><button class="unitNav" data-unit="7"><span>7</span><div><b>第7單元</b><small>安全性檢測及資通安全健診</small></div></button><button class="unitNav" data-unit="8"><span>8</span><div><b>第8單元</b><small>資訊委外安全管理</small></div></button><button class="unitNav" data-unit="9"><span>9</span><div><b>第9單元</b><small>資通安全事件通報應變及演練</small></div></button></div>
+<div class="annexNavSection">
+  <div class="annexNavLabel">附表補充</div>
+  <button class="annexNavBtn" id="annex10StudyNav" type="button" onclick="document.getElementById('study-annex10').scrollIntoView({behavior:'smooth',block:'start'})">
+    <span>10</span>
+    <div><b>附表十</b><small>資通系統防護基準｜完整整理</small></div>
+  </button>
+</div>
 </aside>
 <main class="card studyMain">
 <section class="courseIntro annotatable" data-ann-id="course-intro">
