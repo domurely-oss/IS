@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11508｜原始教材手寫筆記功能修正版 v38</title>
+<title>資安職能訓練｜資通安全概論 11508｜V38 iPad單元選單修正版</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -3253,6 +3253,356 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceHandNotePanel{
   -webkit-touch-callout:none!important;
 }
 
+
+/* ===== V38.1 全螢幕按鈕旁新增單元跳頁 ===== */
+.sourceUnitQuickJump{
+  display:inline-grid;
+  grid-template-columns:auto minmax(130px,220px);
+  align-items:center;
+  gap:5px;
+  min-height:40px;
+  padding:4px 6px;
+  border:1px solid #cfd5df;
+  border-radius:9px;
+  background:#fff;
+  color:#344054;
+  font-size:9px;
+  font-weight:900;
+  white-space:nowrap;
+  box-sizing:border-box
+}
+.sourceUnitQuickJump span{
+  font-size:9px;
+  font-weight:900;
+  color:#344054
+}
+.sourceUnitQuickJump select{
+  width:100%;
+  min-width:0;
+  height:30px;
+  padding:3px 6px;
+  border:1px solid #d0d5dd;
+  border-radius:7px;
+  background:#fff;
+  color:#182230;
+  font-size:9px;
+  box-sizing:border-box
+}
+.sourceUnitQuickJump select:disabled{
+  opacity:.55;
+  cursor:not-allowed
+}
+
+/* iPad：縮小單元跳頁，保持在全螢幕按鈕旁 */
+@media(min-width:681px) and (max-width:1180px){
+  .sourceUnitQuickJump{
+    grid-template-columns:auto minmax(110px,160px);
+    min-height:38px;
+    padding:3px 5px;
+    gap:4px
+  }
+  .sourceUnitQuickJump span{
+    font-size:8px
+  }
+  .sourceUnitQuickJump select{
+    height:28px;
+    font-size:8px;
+    padding:2px 4px
+  }
+}
+
+/* iPhone：動作列改為三欄，單元跳頁仍與全螢幕同區 */
+@media(max-width:680px){
+  .sourceHeadActions{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.25fr) minmax(0,.8fr) minmax(0,.95fr)!important;
+    width:100%!important;
+    gap:5px!important
+  }
+  .sourceUnitQuickJump{
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:40px!important;
+    padding:4px!important
+  }
+  .sourceUnitQuickJump span{
+    display:none!important
+  }
+  .sourceUnitQuickJump select{
+    width:100%!important;
+    height:30px!important;
+    font-size:8px!important
+  }
+  .sourceFullscreenBtn,
+  .sourcePdfBtn{
+    width:100%!important;
+    min-width:0!important;
+    padding:6px 5px!important;
+    font-size:8px!important
+  }
+}
+
+/* 全螢幕時也保留在離開全螢幕按鈕旁 */
+#sourceViewerCard:fullscreen .sourceUnitQuickJump,
+#sourceViewerCard:-webkit-full-screen .sourceUnitQuickJump,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump{
+  display:inline-grid!important;
+}
+
+
+/* ===== V38.2 iPad 單元跳頁選單顯示修正 ===== */
+/*
+  V38.1 在 iPad 全螢幕時沿用 v19 的 42px 標題列。
+  新增單元跳頁後，動作區高度/寬度不足，Safari 會把 select 擠到下一列並被截斷。
+  本修正版只調整 iPad 的標題/動作區，不變更 V38 其他介面。
+*/
+@media(min-width:681px) and (max-width:1180px){
+
+  /* 一般 iPad：標題第一列，單元跳頁＋全螢幕＋PDF 第二列 */
+  #view-source .sourceViewerHeadClean{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    align-items:stretch!important;
+    gap:7px!important;
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  #view-source .sourceTitleBlock{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  #view-source .sourceHeadActions{
+    grid-column:1!important;
+    grid-row:2!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto auto!important;
+    align-items:center!important;
+    gap:6px!important;
+    width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+  }
+
+  #view-source .sourceUnitQuickJump{
+    display:grid!important;
+    grid-template-columns:78px minmax(0,1fr)!important;
+    align-items:center!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:40px!important;
+    height:40px!important;
+    padding:4px 6px!important;
+    box-sizing:border-box!important;
+  }
+
+  #view-source .sourceUnitQuickJump span{
+    display:block!important;
+    width:auto!important;
+    font-size:9px!important;
+    white-space:nowrap!important;
+  }
+
+  #view-source .sourceUnitQuickJump select{
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:30px!important;
+    font-size:9px!important;
+    box-sizing:border-box!important;
+  }
+
+  #view-source .sourceFullscreenBtn,
+  #view-source .sourcePdfBtn{
+    flex:0 0 auto!important;
+    width:auto!important;
+    min-width:108px!important;
+    min-height:40px!important;
+    height:40px!important;
+    padding:6px 9px!important;
+    font-size:9px!important;
+    white-space:nowrap!important;
+  }
+
+  /* iPad 全螢幕：
+     v19 第一列由 42px 改為 84px，讓動作列完整顯示，不再被下方換頁列蓋住。 */
+  #sourceViewerCard:fullscreen,
+  #sourceViewerCard:-webkit-full-screen,
+  body.sourcePseudoFullscreen #sourceViewerCard{
+    grid-template-rows:84px 46px minmax(0,1fr)!important;
+  }
+
+  #sourceViewerCard:fullscreen .sourceViewerHeadClean,
+  #sourceViewerCard:-webkit-full-screen .sourceViewerHeadClean,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceViewerHeadClean{
+    grid-column:1 / -1!important;
+    grid-row:1!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:34px 40px!important;
+    align-items:center!important;
+    width:100%!important;
+    min-width:0!important;
+    height:84px!important;
+    min-height:84px!important;
+    gap:5px!important;
+    margin:0!important;
+    padding:0 2px 4px!important;
+    box-sizing:border-box!important;
+    overflow:visible!important;
+  }
+
+  #sourceViewerCard:fullscreen .sourceTitleBlock,
+  #sourceViewerCard:-webkit-full-screen .sourceTitleBlock,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceTitleBlock{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  #sourceViewerCard:fullscreen .sourceViewerHeadClean h2,
+  #sourceViewerCard:-webkit-full-screen .sourceViewerHeadClean h2,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceViewerHeadClean h2{
+    margin:0!important;
+    font-size:17px!important;
+    line-height:1.1!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+
+  #sourceViewerCard:fullscreen .sourceHeadActions,
+  #sourceViewerCard:-webkit-full-screen .sourceHeadActions,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceHeadActions{
+    grid-column:1!important;
+    grid-row:2!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto auto!important;
+    align-items:center!important;
+    gap:5px!important;
+    width:100%!important;
+    min-width:0!important;
+    height:40px!important;
+    margin:0!important;
+  }
+
+  #sourceViewerCard:fullscreen .sourceUnitQuickJump,
+  #sourceViewerCard:-webkit-full-screen .sourceUnitQuickJump,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump{
+    display:grid!important;
+    grid-template-columns:78px minmax(0,1fr)!important;
+    align-items:center!important;
+    width:100%!important;
+    min-width:0!important;
+    height:36px!important;
+    min-height:36px!important;
+    padding:3px 5px!important;
+    overflow:visible!important;
+  }
+
+  #sourceViewerCard:fullscreen .sourceUnitQuickJump span,
+  #sourceViewerCard:-webkit-full-screen .sourceUnitQuickJump span,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump span{
+    display:block!important;
+    font-size:8px!important;
+    white-space:nowrap!important;
+  }
+
+  #sourceViewerCard:fullscreen .sourceUnitQuickJump select,
+  #sourceViewerCard:-webkit-full-screen .sourceUnitQuickJump select,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump select{
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    height:28px!important;
+    min-height:28px!important;
+    margin:0!important;
+    padding:2px 5px!important;
+    font-size:8px!important;
+    line-height:1.2!important;
+    box-sizing:border-box!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+
+  #sourceViewerCard:fullscreen .sourceFullscreenBtn,
+  #sourceViewerCard:-webkit-full-screen .sourceFullscreenBtn,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceFullscreenBtn,
+  #sourceViewerCard:fullscreen .sourcePdfBtn,
+  #sourceViewerCard:-webkit-full-screen .sourcePdfBtn,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourcePdfBtn{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:auto!important;
+    min-width:112px!important;
+    height:36px!important;
+    min-height:36px!important;
+    padding:5px 8px!important;
+    font-size:9px!important;
+    white-space:nowrap!important;
+  }
+
+  /* 維持 v19 第二列換頁/註記配置 */
+  #sourceViewerCard:fullscreen .sourceNavPanel,
+  #sourceViewerCard:-webkit-full-screen .sourceNavPanel,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceNavPanel{
+    grid-row:2!important;
+  }
+
+  #sourceViewerCard:fullscreen .sourceAnnoToolbarClean,
+  #sourceViewerCard:-webkit-full-screen .sourceAnnoToolbarClean,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceAnnoToolbarClean{
+    grid-row:2!important;
+  }
+
+  #sourceViewerCard:fullscreen .sourceImageStage,
+  #sourceViewerCard:-webkit-full-screen .sourceImageStage,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceImageStage{
+    grid-row:3!important;
+  }
+}
+
+/* 11吋 iPad / 較窄直立尺寸：再縮短右側按鈕 */
+@media(min-width:681px) and (max-width:900px){
+  #view-source .sourceHeadActions,
+  #sourceViewerCard:fullscreen .sourceHeadActions,
+  #sourceViewerCard:-webkit-full-screen .sourceHeadActions,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceHeadActions{
+    grid-template-columns:minmax(0,1fr) auto auto!important;
+    gap:4px!important;
+  }
+
+  #view-source .sourceUnitQuickJump,
+  #sourceViewerCard:fullscreen .sourceUnitQuickJump,
+  #sourceViewerCard:-webkit-full-screen .sourceUnitQuickJump,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump{
+    grid-template-columns:64px minmax(0,1fr)!important;
+  }
+
+  #view-source .sourceFullscreenBtn,
+  #view-source .sourcePdfBtn,
+  #sourceViewerCard:fullscreen .sourceFullscreenBtn,
+  #sourceViewerCard:-webkit-full-screen .sourceFullscreenBtn,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourceFullscreenBtn,
+  #sourceViewerCard:fullscreen .sourcePdfBtn,
+  #sourceViewerCard:-webkit-full-screen .sourcePdfBtn,
+  body.sourcePseudoFullscreen #sourceViewerCard .sourcePdfBtn{
+    min-width:94px!important;
+    padding-left:6px!important;
+    padding-right:6px!important;
+    font-size:8px!important;
+  }
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -4503,6 +4853,27 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceHandNotePanel{
           <div id="sourceViewerMeta" class="sourceViewerMeta">第1～4單元 · 共126頁</div>
         </div>
         <div class="sourceHeadActions">
+          <label class="sourceUnitQuickJump" title="快速跳到第1～9單元">
+            <span>📚 單元跳頁</span>
+            <select id="sourceUnitQuickSelect" aria-label="原始教材單元跳頁">
+              <option value="">選擇單元</option>
+              <optgroup label="第1天">
+                <option value="1">第1單元｜資通安全基本觀念</option>
+                <option value="2">第2單元｜資通安全相關法規</option>
+                <option value="3">第3單元｜資通安全風險管理</option>
+                <option value="4">第4單元｜資通安全管理面暨認知與訓練應辦事項</option>
+              </optgroup>
+              <optgroup label="第2天">
+                <option value="5">第5單元｜資通系統防護控制措施</option>
+                <option value="6">第6單元｜資通安全之防護及偵測</option>
+              </optgroup>
+              <optgroup label="第3天">
+                <option value="7">第7單元｜安全性檢測及資通安全健診</option>
+                <option value="8">第8單元｜資訊委外安全管理</option>
+                <option value="9">第9單元｜資通安全事件通報應變及演練</option>
+              </optgroup>
+            </select>
+          </label>
           <button id="sourceFullscreenBtn" class="miniBtn sourceFullscreenBtn" type="button" title="以全螢幕檢視目前教材">⛶ 全螢幕</button>
           <a id="sourceOpenBtn" class="miniBtn sourceOpenBtn sourcePdfBtn" href="original/day1.pdf" target="_blank" rel="noopener">↗ 開啟 PDF 原檔</a>
         </div>
@@ -5703,6 +6074,17 @@ function toggleUnitDetails(u, openState){
 /* ===== v10 原始教材逐頁影像檢視 ===== */
 (function(){
   const SOURCES={"day1":{"title":"第1天主要教材（11508）","scope":"第1～4單元","pages":126,"pdf":"original/day1.pdf"},"day2":{"title":"第2天主要教材（11508）","scope":"第5～6單元","pages":125,"pdf":"original/day2.pdf"},"day3":{"title":"第3天主要教材（11508）","scope":"第7～9單元","pages":152,"pdf":"original/day3.pdf"},"a_public":{"title":"附表一｜A級公務機關","scope":"責任等級A","pages":3,"pdf":"original/a_public.pdf"},"a_private":{"title":"附表二｜A級特定非公務機關","scope":"責任等級A","pages":3,"pdf":"original/a_private.pdf"},"b_public":{"title":"附表三｜B級公務機關","scope":"責任等級B","pages":3,"pdf":"original/b_public.pdf"},"b_private":{"title":"附表四｜B級特定非公務機關","scope":"責任等級B","pages":3,"pdf":"original/b_private.pdf"},"c_public":{"title":"附表五｜C級公務機關","scope":"責任等級C","pages":2,"pdf":"original/c_public.pdf"},"c_private":{"title":"附表六｜C級特定非公務機關","scope":"責任等級C","pages":2,"pdf":"original/c_private.pdf"},"d_all":{"title":"附表七｜D級各機關","scope":"責任等級D","pages":1,"pdf":"original/d_all.pdf"},"e_all":{"title":"附表八｜E級各機關","scope":"責任等級E","pages":1,"pdf":"original/e_all.pdf"},"annex9":{"title":"附表九｜資通系統防護需求分級原則","scope":"機密性／完整性／可用性／法律遵循性","pages":1,"pdf":"original/annex9.pdf"},"annex10":{"title":"附表十｜資通系統防護基準","scope":"高／中／普系統防護控制措施","pages":5,"pdf":"original/annex10.pdf"}};
+  const UNIT_JUMPS={
+    1:{source:"day1",page:7,title:"第1單元｜資通安全基本觀念"},
+    2:{source:"day1",page:20,title:"第2單元｜資通安全相關法規"},
+    3:{source:"day1",page:60,title:"第3單元｜資通安全風險管理"},
+    4:{source:"day1",page:92,title:"第4單元｜資通安全管理面暨認知與訓練應辦事項"},
+    5:{source:"day2",page:2,title:"第5單元｜資通系統防護控制措施"},
+    6:{source:"day2",page:90,title:"第6單元｜資通安全之防護及偵測"},
+    7:{source:"day3",page:2,title:"第7單元｜安全性檢測及資通安全健診"},
+    8:{source:"day3",page:88,title:"第8單元｜資訊委外安全管理"},
+    9:{source:"day3",page:112,title:"第9單元｜資通安全事件通報應變及演練"}
+  };
   let currentId="day1";
   let currentPage=1;
   let zoomMode="fit";
@@ -5739,6 +6121,42 @@ function toggleUnitDetails(u, openState){
       stage.classList.toggle("zoomed",z>1);
     }
   }
+  function currentUnitForPage(){
+    const units=Object.entries(UNIT_JUMPS)
+      .filter(([,u])=>u.source===currentId)
+      .map(([n,u])=>({n:Number(n),...u}))
+      .sort((a,b)=>a.page-b.page);
+    let found=null;
+    units.forEach(u=>{if(currentPage>=u.page)found=u;});
+    return found;
+  }
+
+  function updateUnitQuickSelect(){
+    const sel=g("sourceUnitQuickSelect");
+    if(!sel)return;
+    const isMain=["day1","day2","day3"].includes(currentId);
+    sel.disabled=!isMain;
+    if(!isMain){
+      sel.value="";
+      return;
+    }
+    const u=currentUnitForPage();
+    sel.value=u?String(u.n):"";
+  }
+
+  function jumpToUnit(unitNo){
+    const u=UNIT_JUMPS[Number(unitNo)];
+    if(!u)return;
+    currentId=u.source;
+    currentPage=u.page;
+    zoomMode="fit";
+    if(g("sourceZoomSelect"))g("sourceZoomSelect").value="fit";
+    updateViewer(true,true);
+    if(window.matchMedia("(max-width:680px)").matches){
+      g("sourceViewerTitle")?.scrollIntoView({behavior:"smooth",block:"start"});
+    }
+  }
+
   function updateViewer(load=true,resetScroll=true){
     const s=SOURCES[currentId]; if(!s)return;
     currentPage=clampPage(currentPage);
@@ -5756,6 +6174,7 @@ function toggleUnitDetails(u, openState){
     ["sourceLastBtn","sourceNextBtn","sourceFooterNext"].forEach(id=>{if(g(id))g(id).disabled=atLast;});
 
     document.querySelectorAll(".sourceItem").forEach(b=>b.classList.toggle("active",b.dataset.sourceId===currentId));
+    updateUnitQuickSelect();
     if(load){
       const img=g("sourcePageImage"),stage=g("sourceImageStage"),loading=g("sourceLoading");
       if(img&&stage){
@@ -5789,6 +6208,9 @@ function toggleUnitDetails(u, openState){
     g("sourceGoPageBtn")?.addEventListener("click",()=>go(g("sourcePageInput")?.value));
     g("sourcePageInput")?.addEventListener("keydown",e=>{if(e.key==="Enter")go(e.currentTarget.value);});
     g("sourceZoomSelect")?.addEventListener("change",e=>{zoomMode=e.currentTarget.value;applyZoom();});
+    g("sourceUnitQuickSelect")?.addEventListener("change",e=>{
+      if(e.currentTarget.value)jumpToUnit(e.currentTarget.value);
+    });
 
     // 鍵盤：左右/PageUp/PageDown 換頁，Home/End 跳第一/末頁
     g("sourceImageStage")?.addEventListener("keydown",e=>{
