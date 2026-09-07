@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11508｜原始教材手寫筆記功能修正版 v38</title>
+<title>資安職能訓練｜資通安全概論 11508｜原始教材單元跳頁版 v39</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -3253,6 +3253,119 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceHandNotePanel{
   -webkit-touch-callout:none!important;
 }
 
+
+/* ===== v39 原始教材單元跳頁 ===== */
+.sourceUnitJumpBar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  width:100%;
+  margin-top:8px;
+  padding-top:8px;
+  border-top:1px solid #e4e7ec;
+  box-sizing:border-box
+}
+.sourceUnitJumpTitle{
+  flex:0 0 auto;
+  min-width:160px
+}
+.sourceUnitJumpTitle b{
+  display:block;
+  font-size:11px;
+  color:#182230
+}
+.sourceUnitJumpTitle span{
+  display:block;
+  margin-top:2px;
+  font-size:9px;
+  color:#667085
+}
+.sourceUnitJumpControls{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+  flex:1 1 auto;
+  min-width:0
+}
+.sourceUnitJumpControls select{
+  width:min(100%,460px);
+  min-width:220px;
+  height:38px;
+  padding:5px 8px;
+  border:1px solid #cfd5df;
+  border-radius:9px;
+  background:#fff;
+  color:#182230;
+  font-size:10px;
+  box-sizing:border-box
+}
+.sourceUnitJumpControls .miniBtn{
+  flex:0 0 auto;
+  min-height:38px
+}
+.sourceUnitJumpBar.disabled{
+  opacity:.55
+}
+.sourceUnitJumpBar.disabled select,
+.sourceUnitJumpBar.disabled button{
+  pointer-events:none
+}
+
+/* iPad */
+@media(min-width:681px) and (max-width:1180px){
+  .sourceUnitJumpBar{
+    align-items:flex-start;
+    gap:7px
+  }
+  .sourceUnitJumpTitle{
+    min-width:125px
+  }
+  .sourceUnitJumpControls select{
+    min-width:0;
+    width:100%;
+    font-size:9px
+  }
+}
+
+/* iPhone */
+@media(max-width:680px){
+  .sourceUnitJumpBar{
+    display:block;
+    margin-top:7px;
+    padding-top:7px
+  }
+  .sourceUnitJumpTitle{
+    min-width:0;
+    margin-bottom:6px
+  }
+  .sourceUnitJumpControls{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:5px
+  }
+  .sourceUnitJumpControls select{
+    width:100%;
+    min-width:0;
+    height:40px;
+    font-size:9px
+  }
+  .sourceUnitJumpControls .miniBtn{
+    min-height:40px;
+    padding:5px 8px;
+    font-size:9px
+  }
+}
+
+/* 全螢幕：保持在換頁控制區內，可橫向自適應 */
+#sourceViewerCard:fullscreen .sourceUnitJumpBar,
+#sourceViewerCard:-webkit-full-screen .sourceUnitJumpBar,
+body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitJumpBar{
+  margin-top:5px!important;
+  padding-top:5px!important
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -4538,6 +4651,34 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceHandNotePanel{
           </label>
           <span class="sourceNavTip">可用 ← → 鍵換頁；iPhone / iPad 可左右滑動</span>
         </div>
+
+        <div id="sourceUnitJumpBar" class="sourceUnitJumpBar" aria-label="原始教材單元跳頁">
+          <div class="sourceUnitJumpTitle">
+            <b>📚 單元跳頁</b>
+            <span id="sourceUnitJumpHint">可直接跳至第1～9單元首頁</span>
+          </div>
+          <div class="sourceUnitJumpControls">
+            <select id="sourceUnitJumpSelect" aria-label="選擇教材單元">
+              <option value="">選擇單元…</option>
+              <optgroup label="第1天">
+                <option value="1">第1單元｜資通安全基本觀念</option>
+                <option value="2">第2單元｜資通安全相關法規</option>
+                <option value="3">第3單元｜資通安全風險管理</option>
+                <option value="4">第4單元｜資通安全管理面暨認知與訓練應辦事項</option>
+              </optgroup>
+              <optgroup label="第2天">
+                <option value="5">第5單元｜資通系統防護控制措施</option>
+                <option value="6">第6單元｜資通安全之防護及偵測</option>
+              </optgroup>
+              <optgroup label="第3天">
+                <option value="7">第7單元｜安全性檢測及資通安全健診</option>
+                <option value="8">第8單元｜資訊委外安全管理</option>
+                <option value="9">第9單元｜資通安全事件通報應變及演練</option>
+              </optgroup>
+            </select>
+            <button id="sourceUnitJumpBtn" class="miniBtn primary" type="button">跳至單元</button>
+          </div>
+        </div>
       </div>
 
       <div class="sourceMobileHint sourceMobileHintClean">
@@ -5703,6 +5844,17 @@ function toggleUnitDetails(u, openState){
 /* ===== v10 原始教材逐頁影像檢視 ===== */
 (function(){
   const SOURCES={"day1":{"title":"第1天主要教材（11508）","scope":"第1～4單元","pages":126,"pdf":"original/day1.pdf"},"day2":{"title":"第2天主要教材（11508）","scope":"第5～6單元","pages":125,"pdf":"original/day2.pdf"},"day3":{"title":"第3天主要教材（11508）","scope":"第7～9單元","pages":152,"pdf":"original/day3.pdf"},"a_public":{"title":"附表一｜A級公務機關","scope":"責任等級A","pages":3,"pdf":"original/a_public.pdf"},"a_private":{"title":"附表二｜A級特定非公務機關","scope":"責任等級A","pages":3,"pdf":"original/a_private.pdf"},"b_public":{"title":"附表三｜B級公務機關","scope":"責任等級B","pages":3,"pdf":"original/b_public.pdf"},"b_private":{"title":"附表四｜B級特定非公務機關","scope":"責任等級B","pages":3,"pdf":"original/b_private.pdf"},"c_public":{"title":"附表五｜C級公務機關","scope":"責任等級C","pages":2,"pdf":"original/c_public.pdf"},"c_private":{"title":"附表六｜C級特定非公務機關","scope":"責任等級C","pages":2,"pdf":"original/c_private.pdf"},"d_all":{"title":"附表七｜D級各機關","scope":"責任等級D","pages":1,"pdf":"original/d_all.pdf"},"e_all":{"title":"附表八｜E級各機關","scope":"責任等級E","pages":1,"pdf":"original/e_all.pdf"},"annex9":{"title":"附表九｜資通系統防護需求分級原則","scope":"機密性／完整性／可用性／法律遵循性","pages":1,"pdf":"original/annex9.pdf"},"annex10":{"title":"附表十｜資通系統防護基準","scope":"高／中／普系統防護控制措施","pages":5,"pdf":"original/annex10.pdf"}};
+  const UNIT_JUMPS={
+    1:{source:"day1",page:7,title:"第1單元｜資通安全基本觀念"},
+    2:{source:"day1",page:20,title:"第2單元｜資通安全相關法規"},
+    3:{source:"day1",page:60,title:"第3單元｜資通安全風險管理"},
+    4:{source:"day1",page:92,title:"第4單元｜資通安全管理面暨認知與訓練應辦事項"},
+    5:{source:"day2",page:2,title:"第5單元｜資通系統防護控制措施"},
+    6:{source:"day2",page:90,title:"第6單元｜資通安全之防護及偵測"},
+    7:{source:"day3",page:2,title:"第7單元｜安全性檢測及資通安全健診"},
+    8:{source:"day3",page:88,title:"第8單元｜資訊委外安全管理"},
+    9:{source:"day3",page:112,title:"第9單元｜資通安全事件通報應變及演練"}
+  };
   let currentId="day1";
   let currentPage=1;
   let zoomMode="fit";
@@ -5739,6 +5891,48 @@ function toggleUnitDetails(u, openState){
       stage.classList.toggle("zoomed",z>1);
     }
   }
+  function currentUnitForPage(){
+    const units=Object.entries(UNIT_JUMPS)
+      .filter(([,u])=>u.source===currentId)
+      .map(([n,u])=>({n:Number(n),...u}))
+      .sort((a,b)=>a.page-b.page);
+    let found=null;
+    units.forEach(u=>{if(currentPage>=u.page)found=u;});
+    return found;
+  }
+
+  function updateUnitJumpUi(){
+    const bar=g("sourceUnitJumpBar"),sel=g("sourceUnitJumpSelect"),hint=g("sourceUnitJumpHint");
+    const isMain=["day1","day2","day3"].includes(currentId);
+    if(bar)bar.classList.toggle("disabled",!isMain);
+    if(sel){
+      sel.disabled=!isMain;
+      const u=isMain?currentUnitForPage():null;
+      sel.value=u?String(u.n):"";
+    }
+    if(g("sourceUnitJumpBtn"))g("sourceUnitJumpBtn").disabled=!isMain;
+    if(hint){
+      if(!isMain)hint.textContent="附表教材無單元跳頁";
+      else{
+        const u=currentUnitForPage();
+        hint.textContent=u?`目前：${u.title}（起始第 ${u.page} 頁）`:"目前為教材封面／課程大綱";
+      }
+    }
+  }
+
+  function jumpToUnit(unitNo){
+    const u=UNIT_JUMPS[Number(unitNo)];
+    if(!u)return;
+    currentId=u.source;
+    currentPage=u.page;
+    zoomMode="fit";
+    if(g("sourceZoomSelect"))g("sourceZoomSelect").value="fit";
+    updateViewer(true,true);
+    if(window.matchMedia("(max-width:680px)").matches){
+      g("sourceViewerTitle")?.scrollIntoView({behavior:"smooth",block:"start"});
+    }
+  }
+
   function updateViewer(load=true,resetScroll=true){
     const s=SOURCES[currentId]; if(!s)return;
     currentPage=clampPage(currentPage);
@@ -5756,6 +5950,7 @@ function toggleUnitDetails(u, openState){
     ["sourceLastBtn","sourceNextBtn","sourceFooterNext"].forEach(id=>{if(g(id))g(id).disabled=atLast;});
 
     document.querySelectorAll(".sourceItem").forEach(b=>b.classList.toggle("active",b.dataset.sourceId===currentId));
+    updateUnitJumpUi();
     if(load){
       const img=g("sourcePageImage"),stage=g("sourceImageStage"),loading=g("sourceLoading");
       if(img&&stage){
@@ -5789,6 +5984,10 @@ function toggleUnitDetails(u, openState){
     g("sourceGoPageBtn")?.addEventListener("click",()=>go(g("sourcePageInput")?.value));
     g("sourcePageInput")?.addEventListener("keydown",e=>{if(e.key==="Enter")go(e.currentTarget.value);});
     g("sourceZoomSelect")?.addEventListener("change",e=>{zoomMode=e.currentTarget.value;applyZoom();});
+    g("sourceUnitJumpBtn")?.addEventListener("click",()=>jumpToUnit(g("sourceUnitJumpSelect")?.value));
+    g("sourceUnitJumpSelect")?.addEventListener("change",e=>{
+      if(e.currentTarget.value)jumpToUnit(e.currentTarget.value);
+    });
 
     // 鍵盤：左右/PageUp/PageDown 換頁，Home/End 跳第一/末頁
     g("sourceImageStage")?.addEventListener("keydown",e=>{
