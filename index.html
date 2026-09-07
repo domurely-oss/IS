@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11508｜原始教材手寫筆記版 v37</title>
+<title>資安職能訓練｜資通安全概論 11508｜原始教材手寫筆記功能修正版 v38</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -3240,6 +3240,19 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceHandNotePanel{
   .sourceHandNotePanel{display:none!important}
 }
 
+
+/* ===== v38 手寫筆記功能初始化修正 ===== */
+#sourceHandPaper{
+  position:relative!important;
+}
+#sourceHandCanvas{
+  pointer-events:auto!important;
+  touch-action:none!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  -webkit-touch-callout:none!important;
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -4573,7 +4586,7 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceHandNotePanel{
             <button id="sourceHandClearBtn" class="miniBtn" type="button">🧹 清空筆記</button>
           </div>
         </div>
-        <div class="sourceHandPaper">
+        <div id="sourceHandPaper" class="sourceHandPaper">
           <canvas id="sourceHandCanvas" class="sourceHandCanvas" aria-label="本頁手寫筆記畫布"></canvas>
         </div>
         <div class="sourceHandNoteFoot">
@@ -6908,7 +6921,12 @@ window.addEventListener("DOMContentLoaded",()=>{
 
   window.addEventListener("DOMContentLoaded",()=>{
     const canvas=g("sourceHandCanvas"),paper=g("sourceHandPaper"),img=g("sourcePageImage");
-    if(!canvas||!paper||!img)return;
+    if(!canvas||!paper||!img){
+      console.error("[sourceHandNote] 初始化失敗：找不到必要元素",{
+        canvas:!!canvas,paper:!!paper,img:!!img
+      });
+      return;
+    }
 
     loadColor();
     g("sourceHandPenBtn")?.addEventListener("click",()=>setMode("pen"));
