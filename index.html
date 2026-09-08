@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11508｜V38 自我評量教材對應版</title>
+<title>資安職能訓練｜資通安全概論 11508｜V38 PPT對應新版教材版</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -4026,6 +4026,273 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump{
   }
 }
 
+
+/* ===== V38.7 原始教材 PPT ↔ 11508 新版教材逐頁對應 ===== */
+.sourceReferenceBar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  width:100%;
+  margin:8px 0 6px;
+  padding:9px 10px;
+  border:1px solid #b8c6ef;
+  border-radius:11px;
+  background:#f5f7ff;
+  box-sizing:border-box
+}
+.sourceReferenceInfo{
+  min-width:0
+}
+.sourceReferenceInfo b{
+  display:block;
+  color:#243f9f;
+  font-size:11px
+}
+.sourceReferenceInfo span{
+  display:block;
+  margin-top:2px;
+  color:#667085;
+  font-size:9px;
+  line-height:1.35
+}
+.sourceReferenceActions{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  flex:0 0 auto
+}
+.sourceReferenceActions a{
+  text-decoration:none;
+  color:#344054
+}
+.sourceReferenceBar.noReference{
+  border-color:#e4e7ec;
+  background:#f8f9fb
+}
+.sourceReferenceBar.noReference .sourceReferenceInfo b{
+  color:#667085
+}
+
+.referenceViewerModal{
+  position:fixed;
+  inset:0;
+  z-index:12050;
+  display:grid;
+  place-items:center;
+  padding:16px;
+  box-sizing:border-box
+}
+.referenceViewerModal.hidden{
+  display:none!important
+}
+.referenceViewerBackdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,.64);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px)
+}
+.referenceViewerPanel{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  width:min(930px,96vw);
+  max-height:94vh;
+  padding:12px;
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 24px 80px rgba(0,0,0,.28);
+  box-sizing:border-box
+}
+.referenceViewerHead{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  padding:2px 2px 8px
+}
+.referenceViewerHead b{
+  display:block;
+  font-size:16px;
+  color:#172033
+}
+.referenceViewerHead span{
+  display:block;
+  margin-top:3px;
+  font-size:10px;
+  color:#667085
+}
+.referenceViewerNav{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  padding:7px;
+  border:1px solid #e1e6ef;
+  border-radius:10px;
+  background:#f8faff
+}
+.referencePageJump{
+  display:flex;
+  align-items:center;
+  gap:4px
+}
+.referencePageJump input{
+  width:70px;
+  min-height:36px;
+  padding:5px 6px;
+  border:1px solid #cfd5df;
+  border-radius:8px;
+  text-align:center;
+  font-size:14px;
+  box-sizing:border-box
+}
+.referencePageJump span{
+  color:#667085;
+  font-size:10px;
+  white-space:nowrap
+}
+.referenceViewerNav a{
+  text-decoration:none;
+  color:#344054
+}
+.referenceImageStage{
+  position:relative;
+  flex:1 1 auto;
+  min-height:0;
+  margin-top:8px;
+  padding:8px;
+  overflow:auto;
+  border:1px solid #d0d5dd;
+  border-radius:11px;
+  background:#4b4f54;
+  box-sizing:border-box;
+  text-align:center
+}
+.referencePageImage{
+  display:block;
+  width:min(100%,760px);
+  height:auto;
+  margin:0 auto;
+  background:#fff;
+  box-shadow:0 2px 12px rgba(0,0,0,.22)
+}
+.referenceLoading{
+  position:absolute;
+  inset:0;
+  display:none;
+  place-items:center;
+  background:rgba(75,79,84,.68);
+  color:#fff;
+  font-weight:800;
+  z-index:2
+}
+.referenceImageStage.loading .referenceLoading{
+  display:grid
+}
+.referenceViewerFoot{
+  padding:7px 3px 1px;
+  color:#667085;
+  font-size:9px;
+  line-height:1.4
+}
+
+/* iPad */
+@media(min-width:681px) and (max-width:1180px){
+  .sourceReferenceBar{
+    margin-top:6px;
+    padding:8px 9px
+  }
+  .referenceViewerModal{
+    padding:10px
+  }
+  .referenceViewerPanel{
+    width:97vw;
+    max-height:96vh;
+    border-radius:13px
+  }
+  .referenceViewerNav{
+    flex-wrap:wrap
+  }
+  .referenceImageStage{
+    min-height:58vh
+  }
+}
+
+/* iPhone */
+@media(max-width:680px){
+  .sourceReferenceBar{
+    display:block;
+    margin-top:6px;
+    padding:8px
+  }
+  .sourceReferenceActions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    width:100%;
+    margin-top:7px
+  }
+  .sourceReferenceActions .miniBtn{
+    width:100%!important
+  }
+  .referenceViewerModal{
+    padding:0;
+    align-items:end
+  }
+  .referenceViewerPanel{
+    width:100vw;
+    height:96vh;
+    max-height:96vh;
+    border-radius:18px 18px 0 0;
+    padding:9px;
+    padding-bottom:max(9px,env(safe-area-inset-bottom))
+  }
+  .referenceViewerHead b{
+    font-size:14px
+  }
+  .referenceViewerNav{
+    display:grid;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    gap:4px
+  }
+  .referenceViewerNav #referenceOpenPdfBtn{
+    grid-column:1 / -1;
+    width:100%;
+    text-align:center
+  }
+  .referencePageJump{
+    justify-content:center;
+    min-width:0
+  }
+  .referencePageJump input{
+    width:62px
+  }
+  .referenceImageStage{
+    min-height:0;
+    margin-top:6px
+  }
+}
+
+/* sourceViewerCard 全螢幕時，Modal 仍在其子樹內，可正常顯示 */
+#sourceViewerCard:fullscreen .referenceViewerModal,
+#sourceViewerCard:-webkit-full-screen .referenceViewerModal,
+body.sourcePseudoFullscreen #sourceViewerCard .referenceViewerModal{
+  display:grid
+}
+#sourceViewerCard:fullscreen .referenceViewerModal.hidden,
+#sourceViewerCard:-webkit-full-screen .referenceViewerModal.hidden,
+body.sourcePseudoFullscreen #sourceViewerCard .referenceViewerModal.hidden{
+  display:none!important
+}
+@media print{
+  .sourceReferenceBar,
+  .referenceViewerModal{
+    display:none!important
+  }
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -4041,7 +4308,7 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump{
 <div class="shell">
 <section class="hero">
 <h1>資安職能訓練｜資通安全概論</h1>
-<p>11508 新版教材詳細整理＋450題題庫＋90題自我評量｜GitHub Pages＋跨裝置同步｜原始教材全螢幕＋iPhone測驗自動跳題版｜iPhone / iPad 自動適應</p>
+<p>11508 新版教材詳細整理＋450題題庫＋90題自我評量＋PPT逐頁教材對應｜GitHub Pages＋跨裝置同步｜原始教材全螢幕＋iPhone測驗自動跳題版｜iPhone / iPad 自動適應</p>
 <span class="badge">完全離線單一HTML｜詳細整理已依數位發展部資通安全署11508三日教材更新｜另收錄使用者提供之《資通安全概論》自我評量測驗90題｜450題題庫仍為依教材產生之模擬練習題，非官方考古題</span>
 </section>
 
@@ -5546,6 +5813,47 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump{
                draggable="false">
           <canvas id="sourceAnnoCanvas" class="sourceAnnoCanvas" aria-label="原始教材註記畫布"></canvas>
         </div>
+      </div>
+
+      <div id="sourceReferenceBar" class="sourceReferenceBar">
+        <div class="sourceReferenceInfo">
+          <b>📘 新版教材對應資料</b>
+          <span id="sourceReferenceText">正在比對本頁資料…</span>
+        </div>
+        <div class="sourceReferenceActions">
+          <button id="sourceReferenceOpenBtn" class="miniBtn primary" type="button">查看對應資料</button>
+          <a id="sourceReferencePdfBtn" class="miniBtn" href="original/reference_11508.pdf" target="_blank" rel="noopener">↗ 新版教材 PDF</a>
+        </div>
+      </div>
+
+      <div id="referenceViewerModal" class="referenceViewerModal hidden" aria-hidden="true">
+        <div class="referenceViewerBackdrop" data-ref-close="1"></div>
+        <section class="referenceViewerPanel" role="dialog" aria-modal="true" aria-label="新版教材對應資料">
+          <div class="referenceViewerHead">
+            <div>
+              <b>📘 新版教材對應資料</b>
+              <span id="referenceViewerMatch">PPT 對應教材頁面</span>
+            </div>
+            <button id="referenceViewerCloseBtn" class="miniBtn" type="button">✕ 關閉</button>
+          </div>
+          <div class="referenceViewerNav">
+            <button id="referencePrevBtn" class="miniBtn" type="button">‹ 上一頁</button>
+            <div class="referencePageJump">
+              <input id="referencePageInput" type="number" min="1" max="418" value="1" inputmode="numeric" aria-label="新版教材頁碼">
+              <span>/ 418</span>
+              <button id="referenceGoBtn" class="miniBtn primary" type="button">前往</button>
+            </div>
+            <button id="referenceNextBtn" class="miniBtn" type="button">下一頁 ›</button>
+            <a id="referenceOpenPdfBtn" class="miniBtn" href="original/reference_11508.pdf" target="_blank" rel="noopener">↗ PDF原檔</a>
+          </div>
+          <div class="referenceImageStage">
+            <div id="referenceLoading" class="referenceLoading">載入中…</div>
+            <img id="referencePageImage" src="reference_pages/001.webp" alt="新版教材第1頁" draggable="false">
+          </div>
+          <div class="referenceViewerFoot">
+            <span>本頁為《資通安全概論 新版教材 11508》之對應資料；可用上一頁／下一頁閱讀前後文。</span>
+          </div>
+        </section>
       </div>
 
       <section id="sourceHandNotePanel" class="sourceHandNotePanel" aria-label="本頁手寫筆記">
@@ -8362,6 +8670,147 @@ window.addEventListener("DOMContentLoaded",()=>{
     setMode("pen");
     reloadForCurrentPage();
   });
+})();
+</script>
+
+
+
+<script>
+/* ===== V38.7 PPT ↔ 新版教材逐頁對應 ===== */
+(function(){
+  const PPT_REFERENCE_MAP={"day1:1":{"bookPage":3,"unit":0,"score":1.0,"slideTitle":"資安職能訓練- 資通安全概論 (第1天) 數位發展部資通安全署編製","printedPageApprox":null},"day1:2":{"bookPage":4,"unit":0,"score":1.0,"slideTitle":"課程簡介 本課程時間為18小時(3天) 課程涵蓋資通安全策略面、管理面及技術面之 資安議題及防護措施。內容包含： 資通安全基本觀念 資通安全相關法規 資通安全風","printedPageApprox":null},"day1:3":{"bookPage":15,"unit":0,"score":1.0,"slideTitle":"課程學習目標 本課程的目標為幫助學員建立資通安全領域 的基礎背景，使其具備職務上所需要的資安 知識與技能，同時為其他的資安相關教育訓 練課程建立先備知識。 課程","printedPageApprox":null},"day1:4":{"bookPage":4,"unit":0,"score":1.0,"slideTitle":"第1天課程大綱 課程單元 時段 資通安全基本觀念 第1單元 上午 資通安全相關法規 第2單元 資通安全風險管理 第3單元 下午 資通安全管理面暨認知與訓練 應辦","printedPageApprox":null},"day1:5":{"bookPage":6,"unit":0,"score":1.0,"slideTitle":"第2天課程大綱 課程單元 時段 資通系統防護控制措施 第5單元 上午 資通安全技術面應辦事項- 資通安全防護及偵測 第6單元 下午","printedPageApprox":null},"day1:6":{"bookPage":7,"unit":0,"score":1.0,"slideTitle":"第3天課程大綱 課程單元 時段 資通安全技術面應辦事項- 安全性檢測及資通安全健診 第7單元 上午 資訊委外安全管理 第8單元 下午 資通安全事件通報應變及演練","printedPageApprox":null},"day1:7":{"bookPage":16,"unit":1,"score":0.2508,"slideTitle":"第1單元 資通安全基本觀念","printedPageApprox":null},"day1:8":{"bookPage":17,"unit":1,"score":0.128,"slideTitle":"第1單元學習目標 1-1 了解資通系統之組成 1-2 建立資通安全之危機意識 1-3 了解資通安全之防護目標","printedPageApprox":null},"day1:9":{"bookPage":18,"unit":1,"score":0.3863,"slideTitle":"資通系統：指用以蒐集、控制、傳輸、儲存、流通、 刪除資訊或對資訊為其他處理、使用或分享之系統 （資通安全管理法§3 I） 如考選部全球資訊網、eCPA人事服務網","printedPageApprox":16},"day1:10":{"bookPage":19,"unit":1,"score":0.1196,"slideTitle":"我們要保護的是什麼？ 資訊/資料(Information/data) 軟體(Software) 硬體(Hardware) 網路(Network) 人員(Peop","printedPageApprox":17},"day1:11":{"bookPage":20,"unit":1,"score":0.1546,"slideTitle":"資產(asset) 對組織具價值之任何事物 主要資產 資訊 營運過程 及活動 支援資產 硬體 軟體 網路 人員 場域 組織結構 CNS 27002：2023 資","printedPageApprox":18},"day1:12":{"bookPage":22,"unit":1,"score":0.0996,"slideTitle":"資安面臨的危害，可能產⽣超出⼀般⼈的想像 • 當資通系統遭到資安攻擊而停擺時，會造成重大影響 資安面臨的攻擊無孔不入，影響層面大 • 物聯網帶來了商機，是否也引","printedPageApprox":20},"day1:13":{"bookPage":22,"unit":1,"score":0.1321,"slideTitle":"1-3 資通安全之目標(1/7) 什麼是資通安全 資通安全： 指防止資通系統或資訊遭受未經授權之存取、使用、控 制、洩漏、破壞、竄改、銷毀，或其他情形影響其機密","printedPageApprox":20},"day1:14":{"bookPage":24,"unit":1,"score":0.1987,"slideTitle":"機密性 Confidentiality 完整性 Integrity 可用性 Availability 資料 與服務 C：防止非授權人員存取資訊，確保資訊秘密性 ","printedPageApprox":22},"day1:15":{"bookPage":24,"unit":1,"score":0.233,"slideTitle":"機密性(Confidentiality) 意涵：敏感資訊只能經由授權之人員或系統存取 目標：防止非授權人員存取資訊，確保資訊秘密性 解決方案：加密、存取控制、資","printedPageApprox":22},"day1:16":{"bookPage":25,"unit":1,"score":0.1736,"slideTitle":"完整性(Integrity) 意涵：資料在其⽣命週期中持續正確、具⼀致性且可被信任 目標：防止非授權人員竄改資訊，確保資訊正確性 解決方案：資料驗證、數位簽章、","printedPageApprox":23},"day1:17":{"bookPage":26,"unit":1,"score":0.2083,"slideTitle":"可用性(Availability) 意涵：資訊與資源在需要時，可被存取與使用 目標：防止系統故障或人為惡意阻斷服務，確保資訊與資 訊處理的可獲得性 解決方案：系","printedPageApprox":24},"day1:18":{"bookPage":27,"unit":1,"score":0.2485,"slideTitle":"法律遵循性(Legal compliance) 確保所欲保護的資訊內容，遵循法令法規要求。 重要相關法規 法規名稱：資通安全管理法 修正日期：114 年9月24","printedPageApprox":25},"day1:19":{"bookPage":29,"unit":1,"score":0.2241,"slideTitle":"機密性保護 • 資料加解密 • 存取控制 完整性保護 • 雜湊函數 • 數位簽章 • 存取控制 可用性保護 • 容量規劃 • 備份 • 容錯、備援及負載平衡 •","printedPageApprox":27},"day1:20":{"bookPage":30,"unit":2,"score":0.4629,"slideTitle":"第2單元 資通安全相關法規","printedPageApprox":28},"day1:21":{"bookPage":31,"unit":2,"score":0.0791,"slideTitle":"第2單元學習目標 2-1 了解資通安全管理法 2-2 了解資通安全管理法相關子法 2-3 了解其他相關法規","printedPageApprox":29},"day1:22":{"bookPage":31,"unit":2,"score":0.0876,"slideTitle":"2-1 資通安全管理法(1/9) 我國資通安全管理體系：§5","printedPageApprox":29},"day1:23":{"bookPage":33,"unit":2,"score":0.165,"slideTitle":"國家 資通安全會報 2-1 資通安全管理法(2/9) 第七期國家資通安全發展方案","printedPageApprox":31},"day1:24":{"bookPage":35,"unit":2,"score":0.1794,"slideTitle":"【註】所轄公務機關： • 在直轄市政府係指直轄市⼭地原住⺠區公所及直轄市⼭地原住⺠區⺠代表會； • 在縣(市)政府係指鄉（鎮、市）公所、鄉（鎮、市）⺠代表會 數","printedPageApprox":33},"day1:25":{"bookPage":38,"unit":2,"score":0.5771,"slideTitle":"資通安全管理法 1. 制定本法旨在推動國家資安政策。2. 目標為保障國家安全及維護公 共利益。 §1 1. 主管機關變更為數位發展部。2. 數位發展部指定資安專","printedPageApprox":36},"day1:26":{"bookPage":39,"unit":2,"score":0.5598,"slideTitle":"資通安全管理法 本條新增：1. 公務機關禁止使用危害國家資安產品。2. 例外專 案使⽤須經資安⻑核可並報主管機關核定。3. 相關辦法由主管 機關報請行政院核定。","printedPageApprox":37},"day1:27":{"bookPage":42,"unit":2,"score":0.2642,"slideTitle":"2-1 資通安全管理法(6/9) 法律 命令 行政規則 行政指導文件 資通安全管理法 資安法8部子法 1 2 機關內部控制及 資安相關規定 3 各式資安 參考指","printedPageApprox":40},"day1:28":{"bookPage":42,"unit":2,"score":0.1828,"slideTitle":"立法目的 為積極推動國家資通安全政策，加速建構國家資通安全環境，以 保障國家安全，維護社會公共利益 主管機關：數位發展部；資安專責機關：數位發展部資通安全署 適","printedPageApprox":40},"day1:29":{"bookPage":44,"unit":2,"score":0.4762,"slideTitle":"溝通協調各部會 2-1 資通安全管理法(8/9) 資安管理生命週期- 事前預防、事中應變、事後處理及改善 資通安全管理法 公務機關資通安全管理 特定非公務機關資","printedPageApprox":42},"day1:30":{"bookPage":46,"unit":2,"score":0.2967,"slideTitle":"機關角色及權責 2-1 資通安全管理法(9/9) 中央目的事業主管機關 特定非公務機關 •設置資安⻑、資安專職⼈員 •訂定及實施資安維護計畫 •訂定資安事件通報","printedPageApprox":44},"day1:31":{"bookPage":47,"unit":2,"score":0.0718,"slideTitle":"2-2 資通安全管理法相關子法(1/22) 國家資通安全會報設置辦法– 條文摘要 §1 法源依據 §2 會報任務 §3 委員組成 §4 幕僚作業與執行秘書 §5","printedPageApprox":45},"day1:32":{"bookPage":47,"unit":2,"score":0.2161,"slideTitle":"國家資通安全會報設置辦法 法源：為建構我國資通安全整體環境，協調各政府機關、中央及地 方間資通安全相關事務，健全我國整體資通安全管理，強化橫向溝 通聯繫機制，將","printedPageApprox":45},"day1:33":{"bookPage":50,"unit":2,"score":0.1284,"slideTitle":"資通安全管理法施行細則 2-2 資通安全管理法相關子法(3/22) §1：依據 §2：資通安全專責機關 §3：軍事及情報機關之定義 §4：受政府控制之事業、團體","printedPageApprox":48},"day1:34":{"bookPage":52,"unit":2,"score":0.4913,"slideTitle":"資通安全管理法施行細則- §7 委外機關之適任性查核 – 曾犯刑法妨害電腦使用罪章之罪，經有罪判決確定，或通 緝有案尚未結案 – 曾犯洩密罪，或於動員戡亂時期終","printedPageApprox":50},"day1:35":{"bookPage":53,"unit":2,"score":0.1321,"slideTitle":"資通安全維護計畫 8. 資通安全防護及控制措施 1. 核心業務及其重要性 9. 資通安全事件通報、應變及演練相關 機制 2. 資通安全政策及目標 10.資通安全","printedPageApprox":51},"day1:36":{"bookPage":53,"unit":2,"score":0.5584,"slideTitle":"- §10 核心業務及核心資通系統 資通安全管理法施行細則 內容 第10條 公務機關依其組織法，足認該業務為機關核心職責所在。 核心業務 範圍 公營事業及政府捐","printedPageApprox":51},"day1:37":{"bookPage":55,"unit":2,"score":0.2127,"slideTitle":"資通安全責任等級分級辦法 §11 §9、 §10 §11 實施 發布 防護 基準 依據 責任 等級 等級 核定 程序 分級 原則 應辦 事項 資通安全 責任等級","printedPageApprox":53},"day1:38":{"bookPage":56,"unit":2,"score":0.0456,"slideTitle":"資通安全責任等級分級辦法 準用防護基準-第11條第3項 – 公務機關經其上級機關或監督機關同意者，準用中央目的事 業主管機關依前項所定防護基準相關規定辦理，其他","printedPageApprox":54},"day1:39":{"bookPage":58,"unit":2,"score":0.1764,"slideTitle":"資通安全維護計畫實施情形稽核辦法 §1：依據 §2：維護計畫辦理與情形提出 §3：系統平臺提出實施情形 §4：收受實施情形之公務機關訂定稽 核計畫 §5：主管機","printedPageApprox":56},"day1:40":{"bookPage":58,"unit":2,"score":0.152,"slideTitle":"資通安全維護計畫實施情形稽核辦法 – 稽核依據 – 稽核目的 – 稽核範圍 – 作業期程 – 稽核小組組成方式 – 保密義務 – 受稽核機關遴選原則 – 稽核基","printedPageApprox":56},"day1:41":{"bookPage":58,"unit":2,"score":0.2169,"slideTitle":"交付 稽核報告 進行稽核 稽核前訪談 實地稽核 擬定稽核計畫 成立稽核小組 通知受稽機關 提交 改善報告 配合稽核 接到通知 有正當理由 可以調整 視","printedPageApprox":56},"day1:42":{"bookPage":61,"unit":2,"score":0.1042,"slideTitle":"資通安全事件通報應變及演練辦法 第⼀章總則(§1~§5) §1依據、§2資安事件分為4級、§3資安 事件通報內容、§4訂定通報作業規範 及內容、§5訂定應變作業","printedPageApprox":59},"day1:43":{"bookPage":61,"unit":2,"score":0.23,"slideTitle":"2-2 資通安全管理法相關子法(13/22) 資通安全事件通報應變及演練辦法- 修正重點 目的：配合資通安全管理法部分條文內容修正及因應實 務運作所需，修正本辦","printedPageApprox":59},"day1:44":{"bookPage":64,"unit":2,"score":0.1321,"slideTitle":"資通安全情資分享辦法 §1：依據 §2：資通安全情資內容之定義 §3：情資應互相分享及獎勵 §4：情資不得分享之情形 §5：情資分享前，應先分析整合及規劃 安全","printedPageApprox":62},"day1:45":{"bookPage":64,"unit":2,"score":0.3093,"slideTitle":"2-2 資通安全管理法相關子法(15/22) - 修正重點 資通安全情資分享辦法 目的：因應資通安全管理法增訂危害國家資通安全產品之情資分 享機制，將危害國家資","printedPageApprox":62},"day1:46":{"bookPage":64,"unit":2,"score":0.3314,"slideTitle":"2-2 資通安全管理法相關子法(16/22) - 修正重點 資通安全情資分享辦法 目的：分享之情資足以防止其他機關資通安全事件之發生 或降低其損害者，擴增獎勵範","printedPageApprox":62},"day1:47":{"bookPage":66,"unit":2,"score":0.1493,"slideTitle":"公務機關所屬人員辦理資通安全事項作業辦法 第⼀章總則 §1：依據 §2：資通安全人員及專職人員定義 第二章適任性查核 §3：資通安全專職人員情形及錄取人員定義 ","printedPageApprox":64},"day1:48":{"bookPage":66,"unit":2,"score":0.2728,"slideTitle":"⼈員定義與適任性查核 考核獎懲與附則 2-2 資通安全管理法相關子法(18/22) 職能訓練與證照 重⼤事件調度⽀援 適用對象：含「資安專職人員」及「實際從事資","printedPageApprox":64},"day1:49":{"bookPage":70,"unit":2,"score":0.1377,"slideTitle":"危害國家資通安全產品審查辦法 2-2 資通安全管理法相關子法(19/22) 114/12/1 施行 - 條文摘要 危害國家資通安全 產品審查辦法 提報之 資格及","printedPageApprox":68},"day1:50":{"bookPage":71,"unit":2,"score":0.2845,"slideTitle":"危害國家資通安全產品審查辦法 2-2 資通安全管理法相關子法(21/22) 法律授權 審查程序 限制使用 情資分享 提報機關提供情 資與佐證資料 形式審查 逕為","printedPageApprox":69},"day1:51":{"bookPage":72,"unit":2,"score":0.6367,"slideTitle":"危害國家資通安全產品審查辦法 2-2 資通安全管理法相關子法(22/22) 提報機關及提報表 提報機關：公務機關及特定非公務機關對於資通系統、服務或產品，認 有","printedPageApprox":70},"day1:52":{"bookPage":73,"unit":2,"score":0.4838,"slideTitle":"國家機密保護法(1/2) 國家機密之定義 – 為確保國家安全或利益而有保密之必要 – 對政府機關持有或保管之資訊，經依本法核定機密等級者 國家機密之範圍如下 –","printedPageApprox":71},"day1:53":{"bookPage":74,"unit":2,"score":0.4007,"slideTitle":"國家機密保護法(2/2) 國家機密等級區分為 – 「絕對機密」、「極機密」及「機密」三個等級 國家機密之核定原則 – 應在必要之「最小範圍內」為之 – 處理應屬","printedPageApprox":72},"day1:54":{"bookPage":74,"unit":2,"score":0.289,"slideTitle":"個人資料保護法 目的 – 為規範個人資料之蒐集、處理及利用，以避免人格權受侵害，並促進 個人資料之合理利用 個人資料(限定於「自然人」) – 屬性資料，例如：姓","printedPageApprox":72},"day1:55":{"bookPage":75,"unit":2,"score":0.5419,"slideTitle":"個人資料保護法 資通安全管理法 項目 個人資料保護委員會 數位發展部 主管機關 為規範個人資料之蒐集、處理及利用， 以避免人格權受侵害，並促進個人資 料之合理利","printedPageApprox":73},"day1:56":{"bookPage":76,"unit":2,"score":0.1669,"slideTitle":"2-3 其他相關法規(5/7) 人工智慧基本法 115/1/14公布及施行 基本原則與定義(§1~§4) – 主管機關：中央為國家科學及技術委員會；地方為直轄市","printedPageApprox":74},"day1:57":{"bookPage":77,"unit":2,"score":0.1163,"slideTitle":"2-3 其他相關法規(6/7) 人工智慧基本法 推動機制與激勵(續) (§6~§12) – 資源與激勵：財政支持；創新實驗；成效評估(§9~§11) – 國際連","printedPageApprox":75},"day1:58":{"bookPage":77,"unit":2,"score":0.0471,"slideTitle":"人工智慧基本法 2-3 其他相關法規(7/7) 法規調整與政府使用(§18~§20) – 法規檢討：各機關應於本法施行後2 年內，完成相關法規之制訂、修正或廢 ","printedPageApprox":75},"day1:59":{"bookPage":77,"unit":2,"score":0.0047,"slideTitle":"第2單元-分組討論 1. 機關如何將資通安全維護計畫內容具體落實於日常營運中？哪 些項目是實務上最容易推動的？哪些又是最困難的？如何提升 維護計畫的實用性？ 2","printedPageApprox":75},"day1:60":{"bookPage":78,"unit":3,"score":0.3702,"slideTitle":"第3單元 資通安全風險管理","printedPageApprox":76},"day1:61":{"bookPage":79,"unit":3,"score":0.1018,"slideTitle":"第3單元學習目標 3-1 了解風險管理的流程 3-2 了解風險管理的全景建立 3-3 了解風險評鑑的作法 3-4 了解風險處理的作法 3-5 了解風險","printedPageApprox":77},"day1:62":{"bookPage":80,"unit":3,"score":0.1941,"slideTitle":"風險的定義及目標 「風險」是指「威脅」利用其相對應「脆弱性」造成組織或政府機關 「資訊資產」受到「衝擊」的「可能性」 風險透過「衝擊」與其「可能性」兩個因素的結","printedPageApprox":78},"day1:63":{"bookPage":81,"unit":3,"score":0.2144,"slideTitle":"衝擊準則(Impact Criteria)：主要訂定當威脅與弱點結 合，破壞資訊及資通系統資產的機密性、完整性及可用 性，對組織衝擊的嚴重性，可能包含營運受損、","printedPageApprox":79},"day1:64":{"bookPage":82,"unit":3,"score":0.0354,"slideTitle":"3-1風險管理的流程(3/3)","printedPageApprox":80},"day1:65":{"bookPage":84,"unit":3,"score":0.3161,"slideTitle":"依相關法規進行資通安全風險評鑑，確定各項資訊作業安 全需求水準，採行適當與充足的資安措施，確保資訊蒐集、 處理、傳送、儲存及流通安全 機關資安政策中，明確聲明施","printedPageApprox":82},"day1:66":{"bookPage":85,"unit":3,"score":0.3926,"slideTitle":"進行風險評鑑與實作資安各項防護控制措施前，應： 規劃與定義風險管理基本準則 – 風險管理作法 – 風險評估準則 – 衝擊準則 – 風險接受準則 界定風險評鑑範圍","printedPageApprox":83},"day1:67":{"bookPage":87,"unit":3,"score":0.347,"slideTitle":"3-3 風險評鑑的作法(1/11) 可依據風險管理範圍與目標，採用不同作法，例如：高 階風險評鑑作法或詳細風險評鑑作法 在每⼀循環中，作法可能不同，故在不同階段","printedPageApprox":85},"day1:68":{"bookPage":87,"unit":3,"score":0.1394,"slideTitle":"風險評鑑組織 建議成立「跨部門」風險評鑑組織 除資訊人員或資安人員外，應考量各部門業務相關資訊 及資通系統資產風險與資產重要度 最熟悉者為各部門實際執行業務的承","printedPageApprox":85},"day1:69":{"bookPage":88,"unit":3,"score":0.2749,"slideTitle":"高階風險評鑑作法 直接依資通系統分級方式，進行風險評鑑 使用時機 – 實作風險管理的第1年、2年 優點 – ⼀開始採⽤較簡單作法，容易獲得風險評鑑參與⼈員接受 ","printedPageApprox":86},"day1:70":{"bookPage":89,"unit":3,"score":0.3826,"slideTitle":"– 由業務承辦人依機密性、完整性、可用性及法律 遵循性4大影響構面，分別考量資通系統於發生 資安事件時，可能造成的衝擊，即衡量資通系統 資料外洩、資料遭竄改、系","printedPageApprox":87},"day1:71":{"bookPage":89,"unit":3,"score":0.1579,"slideTitle":"影響構面「機密性」：資通系統發生資安事件時，可能造成系統資料 外洩或遭竄改等情事，導致資料機密性受到損害。 說明 定義 安全等級 ⼀般性資料：資料外洩不致影響機","printedPageApprox":87},"day1:72":{"bookPage":90,"unit":3,"score":0.3157,"slideTitle":"影響構面「完整性」：資通系統委外開發與營運時，若未有效執行資安防 護作為，可能會造成系統完整性遭受破壞。 說明 定義 安全等級 資料遭竄改不致影響機關權益，或僅","printedPageApprox":88},"day1:73":{"bookPage":91,"unit":3,"score":0.1673,"slideTitle":"影響構面「可用性」：資通系統目的在輔助機關提升業務效能與服務品質， 已成為機關業務運作不可或缺的⼀環，因此，系統故障(包含無法使用、異 常運作等情形)可能導致業","printedPageApprox":89},"day1:74":{"bookPage":93,"unit":3,"score":0.4282,"slideTitle":"影響構面「法律遵循性」：危害程度評估，基於機關負有遵守法律規章責 任與義務下，如發生違法情事時，機關將面臨衝擊，衝擊後果之嚴重程度， 取決於法令規定 說明 定義","printedPageApprox":91},"day1:75":{"bookPage":94,"unit":3,"score":0.2427,"slideTitle":"依「資通安全責任等級分級辦法」的安全等級評估方法， 以「全球資訊網」為範例 全球資訊網：官方網站，提供機關簡介與介紹政策措施 原因說明 安全等級 影響構面 網站","printedPageApprox":92},"day1:76":{"bookPage":94,"unit":3,"score":0.2761,"slideTitle":"詳細風險評鑑作法 對資產進行深度識別與鑑別作業，並對資產詳細列出可 能面臨威脅與可能存在的弱點，做為評鑑風險與風險處 理方法之依據 詳細步驟需考慮時間、耗費程度","printedPageApprox":92},"day1:77":{"bookPage":94,"unit":3,"score":0.1443,"slideTitle":"藉由系統化方式，找出資 通系統中，應該優先處理 的資訊及資通系統資產與 對應的風險，而施予適當 的防護控制措施，以維持 持續運作 5. 後果評鑑(含資訊及資通系","printedPageApprox":92},"day1:78":{"bookPage":95,"unit":3,"score":0.5971,"slideTitle":"風險接受準則(Risk Acceptance Criteria)：先決定風 險處理範圍 機關會因所負責任務的類別與性質、服務對象、內 部資源及經費預算等因素，影","printedPageApprox":93},"day1:79":{"bookPage":95,"unit":3,"score":0.4462,"slideTitle":"風險接受準則，因機關負責任務不同而考量重點 不同 可能影響風險接受準則項目 – 業務需求與目標 – 法律、法令、規章及合約方面要求 – 資源分配狀況 – 技術成","printedPageApprox":93},"day1:80":{"bookPage":96,"unit":3,"score":0.249,"slideTitle":"風險處理階段 風險處理活動，應 依據風險評鑑結果、 實作風險處理方案 之預期成本及預期 利益等，選擇適當 行動方案 ⼀般⽽⾔，宜使風 險不利後果合理的 降低 3","printedPageApprox":94},"day1:81":{"bookPage":97,"unit":3,"score":0.2615,"slideTitle":"風險修改 藉由施行、移除或改變安全控制措施，修訂或降低風 險等級，使殘餘風險被重新評定為可接受 控制措施可提供多種形式保護，包含：矯正、消弭、 預防、衝擊最小化","printedPageApprox":95},"day1:82":{"bookPage":98,"unit":3,"score":0.225,"slideTitle":"風險留存 依據風險評估結果，確認無進⼀步⾏動，⽽保留風險決 策。 若風險等級符合風險接受準則，則不需要實作額外控制 措施，風險將被保留，但需基於正式決策過程。 ","printedPageApprox":96},"day1:83":{"bookPage":98,"unit":3,"score":0.1519,"slideTitle":"風險避免 避免可能造成特定風險增加的活動或情況。 颱風淹水 發電機放置地下室 將發電機移置樓上 管制使用任何第三方未經嚴格安 全審核的開源函式庫 範例1 範例2","printedPageApprox":96},"day1:84":{"bookPage":99,"unit":3,"score":0.1245,"slideTitle":"風險分擔 依據風險評估結果，將部分風險分擔至能有效管理特 定風險的另⼀方。 採用方式 – 保險(用在硬體資產上較容易)。 – 於合約中增訂懲罰性違約金條款。 3","printedPageApprox":97},"day1:85":{"bookPage":101,"unit":3,"score":0.1494,"slideTitle":"風險處理計畫宜描述將如何處理評定之風險，以滿足 風險接受準則。 於某些情況中，殘餘風險之等級可能不符合風險接受 準則，因為該準則於適用時未考量當時之環境。 可能","printedPageApprox":99},"day1:86":{"bookPage":102,"unit":3,"score":0.3278,"slideTitle":"3-6 國際相關防護及管理標準(1/5) NIST CSF 2.0 : 2024 資通安全框架 1. 資通安全框架(CSF) 概述 2. CSF 核心介紹 3.","printedPageApprox":100},"day1:87":{"bookPage":103,"unit":3,"score":0.4009,"slideTitle":"NIST CSF 2.0 : 2024 資通安全防護框架 NIST 網路安全框架(Cybersecurity Framework, CSF) ：是⼀個⾃願 性的","printedPageApprox":101},"day1:88":{"bookPage":105,"unit":3,"score":0.111,"slideTitle":"CNS 27005 : 2024 管理資訊安全風險之指引 Information security, cybersecurity and privacy pro","printedPageApprox":103},"day1:89":{"bookPage":105,"unit":3,"score":0.1279,"slideTitle":"CNS 27005 : 2024 管理資訊安全風險之指引 CNS 27005:2024 提供組織建立、實施、維護及持續改進資訊安全風險管理 流程的指導方針。其核","printedPageApprox":103},"day1:90":{"bookPage":105,"unit":3,"score":0.1351,"slideTitle":"CNS 27005 : 2024 管理資訊安全風險之指引 風險評鑑過程：詳細說明風險評鑑的步驟 – 風險識別(Risk Identification): 識別可","printedPageApprox":103},"day1:91":{"bookPage":106,"unit":3,"score":0.0292,"slideTitle":"1. 機關如何依據機密性、完整性、可用性及法律遵循性四個構面 ，評估不同資安事件對組織造成「高」、「中」、「普」嚴重 程度？在實務上評估衝擊嚴重性時，常見的經驗","printedPageApprox":104},"day1:92":{"bookPage":108,"unit":4,"score":0.6643,"slideTitle":"第4單元 資通安全管理面暨 認知與訓練應辦事項","printedPageApprox":106},"day1:93":{"bookPage":109,"unit":4,"score":0.1626,"slideTitle":"第4單元學習目標 4-1 了解資通系統分級與防護基準 4-2 了解資訊安全管理系統 4-3 了解資通安全專職人員 4-4 了解內部資通安全稽核 4-5 了解營運","printedPageApprox":107},"day1:94":{"bookPage":110,"unit":4,"score":0.3999,"slideTitle":"4-1 資通系統分級與防護基準(1/3) 應辦事項 資通安全責任等級 特定 非公務機關 公務 機關 針對自行或委外開發之資通系統，依附表九完成 資通系統分級，並","printedPageApprox":108},"day1:95":{"bookPage":112,"unit":4,"score":0.7766,"slideTitle":"附表9 資通系統防護需求分級原則 普 中 高 防護需求 等級 構面 發生資通安全事件致資通系統 受影響時，可能造成未經授權 之資訊揭露，對機關之營運、 資產或信","printedPageApprox":110},"day1:96":{"bookPage":113,"unit":4,"score":0.4573,"slideTitle":"控制措施 構面 帳號管理、最小權限、遠端存取 1. 存取控制(3) 記錄事件、日誌紀錄內容、日誌儲存容量、 日誌處理失效之回應、時戳及校時、日誌 資訊之保護 2","printedPageApprox":111},"day1:97":{"bookPage":114,"unit":4,"score":0.6127,"slideTitle":"4-2 資訊安全管理系統(1/5) ISMS驗證要求 ISMS導入要求 資通安全 責任等級 特定 非公務機關 公務 機關 完成公正第三方驗 證，並持續維持其 驗","printedPageApprox":112},"day1:98":{"bookPage":115,"unit":4,"score":0.4829,"slideTitle":"標準名稱 年份 ISO/IEC 分類 資訊安全管理系統–概觀及詞彙 2018 27000 詞彙標準 資訊安全管理系統–要求 2022 27001 要求事項標準 ","printedPageApprox":113},"day1:99":{"bookPage":116,"unit":4,"score":0.4153,"slideTitle":"附錄A (規定) 參考控制目標及控制措施 --------------------------- A.5 組織控制措施（37） A.6 人員控制措施（8） A.","printedPageApprox":114},"day1:100":{"bookPage":117,"unit":4,"score":0.5917,"slideTitle":"頁次 CNS 27002：2023 節次及節名 章次及章名 8 1. 適用範圍 8 2. 引用標準 8-13 3.1 用語及定義3.2 縮寫 3. 用語、定義 ","printedPageApprox":115},"day1:101":{"bookPage":118,"unit":4,"score":0.6119,"slideTitle":"頁次 CNS 27002：2023 節次及節名 章次及章名 68-81 7.11 支援之公用服務事業 7.12 佈纜安全 7.13 設備維護 7.14 設備汰除","printedPageApprox":116},"day1:102":{"bookPage":120,"unit":4,"score":0.5588,"slideTitle":"4-3 資通安全專職人員 資通安全專職人員規定 資通安全管理面應辦事項 備註： 資通安全專職人員：指應全職執行資通安全業務者，亦即資通安全為其主要 核心業務，且","printedPageApprox":118},"day1:103":{"bookPage":121,"unit":4,"score":0.3189,"slideTitle":"4-4 內部資通安全稽核(1/2) 辦理內部稽核次數 資通安全責任等級 特定 非公務機關 公務 機關 每年辦理2次 A級 每年辦理1次 B級 每2年辦理1次 C","printedPageApprox":119},"day1:104":{"bookPage":122,"unit":4,"score":0.7916,"slideTitle":"第三方稽核 第二方稽核 第⼀⽅稽核 導入及通過公正 第三方ISMS驗證 上級機關稽核下級機關，或 機關稽核委外廠商 內部資通安全稽核 CNS 27001：202","printedPageApprox":120},"day1:105":{"bookPage":124,"unit":4,"score":0.3113,"slideTitle":"4-5 營運持續計畫演練(1/11) 辦理演練次數 資通安全責任等級 特定 非公務機關 公務 機關 全部核心資通系統 每年辦理1次。 A級 全部核心資通系統 每","printedPageApprox":122},"day1:106":{"bookPage":124,"unit":4,"score":0.1437,"slideTitle":"營運持續計畫時程： 4-5 營運持續計畫演練(2/11)","printedPageApprox":122},"day1:107":{"bookPage":129,"unit":4,"score":0.5987,"slideTitle":"核心資通系統 • 依資通安全責任等級分 級辦法規定為支持核心 業務運作必要之系統 • 依資通安全責任等級分 級辦法附表九資通系統 防護需求分級原則之規 定，判定","printedPageApprox":127},"day1:108":{"bookPage":129,"unit":4,"score":0.4409,"slideTitle":"營運持續之必要性 為使組織不會因突發事件造成業務運作中斷，需 要有專責人員去識別來自組織外部，包含全球大 環境的風險與威脅 因應資通安全管理法實施，機關需要透過","printedPageApprox":127},"day1:109":{"bookPage":130,"unit":4,"score":0.5097,"slideTitle":"標準名稱：安全與韌性-營運持續管理系統-要求事項(Security and Resilience-Business Continuity Management ","printedPageApprox":128},"day1:110":{"bookPage":131,"unit":4,"score":0.4548,"slideTitle":"名詞釋義：ISO 22301：2019 營運持續(Business Continuity, BC) – 組織在營運持續中斷期間，以預定容量在可接受的時間範圍內，","printedPageApprox":129},"day1:111":{"bookPage":132,"unit":4,"score":0.2926,"slideTitle":"最大可容忍中斷時間(Maximum Tolerable Period of Disruption, MTPD) – 組織於發⽣營運中斷⽽無法提供產品或服務時，可","printedPageApprox":130},"day1:112":{"bookPage":133,"unit":4,"score":0.0865,"slideTitle":"必須獲得高階管理人員「認同與支持」 必須是核心業務所有相關部門投入，並非是 資訊部門的責任 營運持續-管理程序 4-5 營運持續計畫演練(8/11) 建立營運 ","printedPageApprox":131},"day1:113":{"bookPage":134,"unit":4,"score":0.2927,"slideTitle":"營運持續-營運衝擊分析 營運衝擊分析(Business Impact Analysis)，簡稱BIA 用來了解當災害發生後的嚴重程度，以及需要多少時間 來處理 ","printedPageApprox":132},"day1:114":{"bookPage":136,"unit":4,"score":0.3897,"slideTitle":"演練目的 檢驗BCP的可行性並補強未考量之缺陷 確保在可容許中斷時間內可完成復原作業 使相關人員熟悉相關災害復原的作業 演練實務(1/2) 對全部核心資通系統訂","printedPageApprox":134},"day1:115":{"bookPage":136,"unit":4,"score":0.2399,"slideTitle":"演練實務(2/2) 1. 核心資通系統之RTO亦不宜大於非核心資通系統之RTO。 2. MTPD(最大可容忍中斷時間)=RTO+WRT • 了解機關RTO定義是","printedPageApprox":134},"day1:116":{"bookPage":138,"unit":4,"score":0.2277,"slideTitle":"辦理 資安治理成熟度評估 次數 資通安全責任等級 公務機關及關鍵基礎設施提供者 每年應辦理1次 A級 B級 無要求 C級、D 級、E 級 資安治理成熟度評估規定","printedPageApprox":136},"day1:117":{"bookPage":138,"unit":4,"score":0.2087,"slideTitle":"資安治理與資安管理 4-6 資安治理成熟度評估(2/9)","printedPageApprox":136},"day1:118":{"bookPage":140,"unit":4,"score":0.1584,"slideTitle":"資安治理架構與相關法規關聯 4-6 資安治理成熟度評估(3/9)","printedPageApprox":138},"day1:119":{"bookPage":141,"unit":4,"score":0.3976,"slideTitle":"流程構面與目標 目標範圍 流程構面 面向 - 資安相關法規遵循 - 資安政策建立 - 資安組織與管理審查 S1 資安政策與組織健全 策略 - 重要資安資訊揭露 ","printedPageApprox":139},"day1:120":{"bookPage":142,"unit":4,"score":0.6685,"slideTitle":"能力度等級定義 依據ISO/IEC33020：2015定義能力度(Capability)等級，檢討與調整 能力度等級，使應辦事項符合能力度等級要求 累進要求 能","printedPageApprox":140},"day1:121":{"bookPage":144,"unit":4,"score":0.6562,"slideTitle":"累進要求 成熟度定義 成熟度等級 Level 1至Level 5之流程 構面皆達能力度等級5 透過識別創新應用、技術、新機 會或潛在風險優化各流程構面 Leve","printedPageApprox":142},"day1:122":{"bookPage":146,"unit":4,"score":0.3102,"slideTitle":"成熟度等級與流程構面之對應關係 流程構面名稱 成熟度等級 S2資安治理架構 5 S4資安管理監督 4 S3資安資源管理 3 T3資安事件通報與處理 T4資通系統","printedPageApprox":144},"day1:123":{"bookPage":149,"unit":4,"score":0.6239,"slideTitle":"資安治理成熟度等級計算範例 成熟度等級1至等級3 對應之流程構面(S1、 M3、T2、M1、M2、 T1、S3、T3及T4)， 其能力度等級未全數 達能力度3(","printedPageApprox":147},"day1:124":{"bookPage":152,"unit":4,"score":0.2015,"slideTitle":"*TIR: Targeted Improvement Roadmap 資安治理評估推動方式 制定機關自評表 4-6 資安治理成熟度評估(9/9)","printedPageApprox":150},"day1:125":{"bookPage":154,"unit":4,"score":0.4453,"slideTitle":"4-7 認知與訓練 資通安全認知與訓練應辦事項 E級 機關 D級 機關 C級 機關 B級 機關 A級 機關 辦理內容 辦理項目 無要求 V 每人每年至少接受12","printedPageApprox":152},"day1:126":{"bookPage":156,"unit":4,"score":0.0056,"slideTitle":"1. 機關於識別與判斷資通系統的「機密性、完整性、可用性、 法律遵循性」受資安事件影響時，可能造成的衝擊等級（高/ 中/普）有哪些具體的挑戰？在資源有限的情況下","printedPageApprox":154},"day2:1":{"bookPage":158,"unit":0,"score":1.0,"slideTitle":"資安職能訓練- 資通安全概論 (第2天) 數位發展部資通安全署編製","printedPageApprox":156},"day2:2":{"bookPage":158,"unit":5,"score":0.4343,"slideTitle":"第5單元 資通系統防護控制措施","printedPageApprox":156},"day2:3":{"bookPage":159,"unit":5,"score":0.1484,"slideTitle":"5-1 了解「存取控制」安全控制措施 5-2 了解「事件日誌與可歸責性」安全控制措施 5-3 了解「營運持續計畫」安全控制措施 5-4 了解「識別與鑑別」安全控","printedPageApprox":157},"day2:4":{"bookPage":160,"unit":5,"score":0.3566,"slideTitle":"資通安全責任等級機關應辦事項 附表10 資通系統防護基準 資通系統分級與防護基準 7.系統與 資訊完整性 6.系統與 通訊保護 5.系統與 服務獲得 4.識別與","printedPageApprox":158},"day2:5":{"bookPage":162,"unit":5,"score":0.6203,"slideTitle":"5-1 存取控制(1/6) 普 中 高 措施 內容 ⼀、建立帳號管理機制，包 含帳號之申請、建立、修 改、啟用、停用及刪除之 程序。 二、已逾期之臨時或緊急帳 ","printedPageApprox":160},"day2:6":{"bookPage":163,"unit":5,"score":0.28,"slideTitle":"普 中 高 措施 內容 ⼀、對於每⼀種允許之遠端存取類型，均應先取得授權，建立使用限制、組態需求、 連線需求及文件化。 二、使用者之權限檢查作業應於伺服器端完成","printedPageApprox":161},"day2:7":{"bookPage":163,"unit":5,"score":0.3203,"slideTitle":"帳號管理： 建立帳號管理機制(高中普)：包含帳號之申請、建立、修改、啟用、 停用及刪除之程序 臨時與緊急帳號管理(高中普)：已逾期之臨時或緊急帳號應刪除或 禁用","printedPageApprox":161},"day2:8":{"bookPage":164,"unit":5,"score":0.3864,"slideTitle":"最小權限： 採最小權限原則(高中普)：僅允許使用者(或代表使用者行為之程序) 依機關任務及業務功能，完成指派任務所需之授權存取 遠端存取： 遠端存取授權(高中普","printedPageApprox":162},"day2:9":{"bookPage":165,"unit":5,"score":0.2913,"slideTitle":"存取控制-授權原則 業務僅知原則 – 只提供執行業務上所需知道的資訊 最小權限原則 – 權限開放時採用最小權限原則 職務區隔 – 避免某些衝突或監督⼯作職務由同","printedPageApprox":163},"day2:10":{"bookPage":165,"unit":5,"score":0.2689,"slideTitle":"實體類控制(Physical Controls) – 門、窗及圍牆 – 鎖 – 警衛 技術類控制(Technical Controls) – 通行碼鑑別 – 加","printedPageApprox":163},"day2:11":{"bookPage":166,"unit":5,"score":0.6399,"slideTitle":"普 中 高 措施內容 1. 訂定日誌之記錄時間週 期及留存政策，並保留 日誌至少六個月。 2. 確保資通系統有記錄特 定事件之功能，並決定 應記錄之特定資通系統","printedPageApprox":164},"day2:12":{"bookPage":166,"unit":5,"score":0.1196,"slideTitle":"普 中 高 措施內容 資通系統於日誌處理失效時，應採取適當 之行動。 1. 機關規定需要即時通報之日 誌處理失效事件發生時，資 通系統應於機關規定之時效 內，對","printedPageApprox":164},"day2:13":{"bookPage":166,"unit":5,"score":0.2867,"slideTitle":"記錄事件： 日誌留存(高中普)：訂定日誌之記錄時間週期及留存政策，並 保留日誌至少6個月 – 保存項目：作業系統日誌(OS event log)、網站日誌(we","printedPageApprox":164},"day2:14":{"bookPage":166,"unit":5,"score":0.3559,"slideTitle":"日誌紀錄內容： 內容與格式(高中普)：資通系統產生之日誌應包含事件類型、發 生時間、發生位置及任何與事件相關之使用者身分識別等資訊，採 用單⼀⽇誌機制，確保輸出","printedPageApprox":164},"day2:15":{"bookPage":168,"unit":5,"score":0.3986,"slideTitle":"時戳及校時： 時戳(高中普)：資通系統應使用系統內部時鐘產生日誌所需時戳， 並可以對應到世界協調時間(UTC)或格林威治標準時間(GMT) 校時(高中普)：系統","printedPageApprox":166},"day2:16":{"bookPage":169,"unit":5,"score":0.1708,"slideTitle":"什麼是雜湊? 雜湊是⼀種從任何資料中建立「數位指紋」的⽅法 若依據同⼀個雜湊函式(例如SHA-256)計算得到了兩個不相同的 雜湊值，則這兩個原始輸入也是不相同","printedPageApprox":167},"day2:17":{"bookPage":171,"unit":5,"score":0.591,"slideTitle":"目的：確保在突發事件或災難情況下，機關的關鍵業務能夠持續運作 普 中 高 措施內容 1. 訂定資料可容忍 損失之時間要求。 2. 執行資料備份。 1. 應定期測","printedPageApprox":169},"day2:18":{"bookPage":172,"unit":5,"score":0.4085,"slideTitle":"資料備份： 復原點目標(Recovery Point Objective, RPO) (高中普)：訂定資料 可容忍損失之時間要求。 資料備份(高中普)：執行資料","printedPageApprox":170},"day2:19":{"bookPage":172,"unit":5,"score":0.2628,"slideTitle":"系統備援： 最大可容忍中斷時間(Maximum Tolerable Period of Disruption, MTPD) (高中普)：訂定資通系統從中斷後至重","printedPageApprox":170},"day2:20":{"bookPage":174,"unit":5,"score":0.3739,"slideTitle":"意義 英文縮寫 英文 名詞 用來了解當災害發生後的嚴 重程度，以及所需之處理時 間 BIA Business Impact Analysis 營運衝擊分析 資料","printedPageApprox":172},"day2:21":{"bookPage":174,"unit":5,"score":0.3488,"slideTitle":"目的：為對抗資料毀損的威脅與抵抗勒索攻擊，以保護資料 的可用性 – 個人使用者可為自己的重要資料進行備份 – 機關應有系統⼈員對內部重要系統與檔案統⼀進⾏備份 ","printedPageApprox":172},"day2:22":{"bookPage":174,"unit":5,"score":0.0763,"slideTitle":"資料備份 備份方式 – 完整備份、差異備份及增量備份 備份模式 – 異地與本地兩種 備份週期 – 每日、每週、每月及每季 回復測試 – 應確認備份的資料回復之後","printedPageApprox":172},"day2:23":{"bookPage":174,"unit":5,"score":0.3397,"slideTitle":"完整備份：將要備份的檔案完整地複製⼀份保存在備份儲存媒體中 差異備份：備份上次完整備份後，內容有變更或新增的檔案 增量備份：備份上次完整備份或增量備份後，內容有","printedPageApprox":172},"day2:24":{"bookPage":175,"unit":5,"score":0.4286,"slideTitle":"完整備份與差異備份 資料備份-方式(2/3) 星期⼀進⾏完整備份，星期二至星期五進行差異備份，假設 星期五時資料毀損，需要復原星期⼀的完整備份與星期四的 差異備","printedPageApprox":173},"day2:25":{"bookPage":175,"unit":5,"score":0.3284,"slideTitle":"完整備份與增量備份 資料備份-方式(3/3) – 星期⼀進⾏完整備份，星期⼆⾄星期五進⾏增量備份，假設星期 五時資料毀損，需要復原星期⼀的完整備份與從星期⼆⾄星","printedPageApprox":173},"day2:26":{"bookPage":176,"unit":5,"score":0.4876,"slideTitle":"本地備份：將檔案儲存至備份媒體後，保存於原地點 資料備份-模式(1/2) – 如果使用的備份媒體存在於同⼀部電 腦的硬碟中，雖然備份的程序最簡便， 但是當電腦硬","printedPageApprox":174},"day2:27":{"bookPage":176,"unit":5,"score":0.4524,"slideTitle":"異地備份：將檔案儲存至備份媒體後，保存於不同地點 – 此模式的備份程序與成本較高，但可避免前例的安全問題 – 應考慮地震帶、颱風、土石流等因素，規避同時受災可能","printedPageApprox":174},"day2:28":{"bookPage":177,"unit":5,"score":0.3837,"slideTitle":"資料備份-注意事項 備份的範圍應該事先評估，避免該備份的沒有備份 備份媒體的問題 – 資訊設備變化甚快，應定期檢驗備份媒體是否仍有合適的存 取設備 檔案格式的問","printedPageApprox":175},"day2:29":{"bookPage":178,"unit":5,"score":0.6629,"slideTitle":"目的：確保只有經過授權的使用者才能存取系統，保障資通系統的安全 普 中 高 措施內容 資通系統應識別及鑑別使用者，並禁止使用者使用共用帳號。 1. 對資通系統之","printedPageApprox":176},"day2:30":{"bookPage":179,"unit":5,"score":0.2841,"slideTitle":"普 中 高 措施內容 資通系統應遮蔽鑑別過程中之資訊。 1. 資通系統如以密碼進行鑑別時， 該密碼應經雜湊或其他適當方式 處理後儲存。 2. 等級「普」之所有控","printedPageApprox":177},"day2:31":{"bookPage":180,"unit":5,"score":0.2814,"slideTitle":"使用者之識別與鑑別 識別及鑑別使用者(高中普)：資通系統應識別及鑑別使用者， 並禁止使用者使用共用帳號 多因子鑑別技術(高)：對資通系統之存取採取多因子鑑別技術","printedPageApprox":178},"day2:32":{"bookPage":180,"unit":5,"score":0.2755,"slideTitle":"身分驗證管理 管制相同密碼(高中普)：密碼變更時，至少不可以與前3次使 用過之密碼相同 規範外部使用者(高中普)：第四點及第五點所定措施，對外 部使用者，機關得","printedPageApprox":178},"day2:33":{"bookPage":180,"unit":5,"score":0.1523,"slideTitle":"鑑別資訊保護 遮蔽密碼(高中普)：資通系統應遮蔽鑑別過程中之資訊 密碼儲存安全(高中)：資通系統如以密碼進行鑑別時，該密 碼應加密或經雜湊或其他適當方式處理後儲","printedPageApprox":178},"day2:34":{"bookPage":181,"unit":5,"score":0.5349,"slideTitle":"使用者識別符(Identifier) 使用者識別符(名稱、代碼或帳號)的要求 – 必須唯⼀，以確保人員的可歸責性，不能有多人共用帳號的情形 – 與使用者真實身分","printedPageApprox":179},"day2:35":{"bookPage":182,"unit":5,"score":0.4595,"slideTitle":"使用者鑑別符(Authenticator) 鑑別符 – 用來驗證使用者身分的佐證資訊或物品，可能是通行碼、晶片卡、 數位憑證、動態通行碼產生器或指紋等 使用者鑑","printedPageApprox":180},"day2:36":{"bookPage":183,"unit":5,"score":0.3563,"slideTitle":"識別符及鑑別符之可歸責性 使所有存取行為都可歸責到使用者真實身分的機制，至少應滿 足下列條件 – ⾸先必須要具備唯⼀識別符可代表使用者真實⾝分 – 足夠強固的使","printedPageApprox":181},"day2:37":{"bookPage":184,"unit":5,"score":0.1859,"slideTitle":"身分鑑別技術-鑑別因子 基於所知(Something You Know) – 通行碼 基於所有(Something You Have) – 晶片卡 與生具備(S","printedPageApprox":182},"day2:38":{"bookPage":184,"unit":5,"score":0.2668,"slideTitle":"身分鑑別技術-強固鑑別技術 同時採用兩種鑑別因子的鑑別技術，即可稱為強固鑑別技術 例如： – 晶片卡(Have)配合PIN碼(Know) – 指紋(Are)配合","printedPageApprox":182},"day2:39":{"bookPage":184,"unit":5,"score":0.2724,"slideTitle":"身分鑑別技術-生物特徵鑑別 生物特徵鑑別 – 採用人類具備的屬性進行識別與鑑別 – 最昂貴、最複雜、也最能識別人員身分的鑑別技術 – 但人類社會中對這種技術的接","printedPageApprox":182},"day2:40":{"bookPage":184,"unit":5,"score":0.1861,"slideTitle":"身分鑑別技術-生物特徵登錄步驟 生物特徵登錄步驟(以指紋為例) 5-4 識別與鑑別(12/22)","printedPageApprox":182},"day2:41":{"bookPage":184,"unit":5,"score":0.1223,"slideTitle":"身分鑑別技術-生物特徵鑑別步驟 5-4 識別與鑑別(13/22)","printedPageApprox":182},"day2:42":{"bookPage":186,"unit":5,"score":0.3154,"slideTitle":"身分鑑別技術-通行碼身分鑑別技術 目前使用「最廣泛」也「最簡便」的身分鑑別技術 亦是最不安全的身分鑑別技術 – 使用者選用了「懶人通行碼」 – 共用通行碼 – ","printedPageApprox":184},"day2:43":{"bookPage":187,"unit":5,"score":0.3625,"slideTitle":"身分鑑別技術-通行碼身分鑑別技術 避免通行碼被破解的防護措施 – 系統強制要求⻑度⾄少8碼 包含文字、數字及符號、包含大小寫 在字典中查不到 – 系統強制要","printedPageApprox":185},"day2:44":{"bookPage":188,"unit":5,"score":0.3638,"slideTitle":"身分鑑別技術-⼀次性通⾏碼⾝分鑑別技術(1/3) ⼀次性通⾏碼(One-time Password)或稱動態通行碼的特質 – 由隨身攜帶的符記(Token)或軟","printedPageApprox":186},"day2:45":{"bookPage":188,"unit":5,"score":0.0784,"slideTitle":"身分鑑別技術-同步式⼀次性通⾏碼技術(2/3) ⼀次性通⾏碼產⽣符記與鑑別伺服器有同步機制 5-4 識別與鑑別(17/22)","printedPageApprox":186},"day2:46":{"bookPage":190,"unit":5,"score":0.1051,"slideTitle":"身分鑑別技術-非同步式⼀次性通⾏碼技術(3/3) ⼀次性通⾏碼產⽣符記與鑑別伺服器沒有同步機制 5-4 識別與鑑別(18/22)","printedPageApprox":188},"day2:47":{"bookPage":192,"unit":5,"score":0.2907,"slideTitle":"身分鑑別技術-詰問與回應身分鑑別技術 • 運用非對稱式加解密演算法 • 雙方不必分享共同的金鑰 • 不必輸入任何通行碼或回應訊息即可完成鑑別 採用加密機制 完成","printedPageApprox":190},"day2:48":{"bookPage":193,"unit":5,"score":0.3812,"slideTitle":"適合隨身攜帶的卡片或感應器，用來實作「基 於所有(Somethingyouhave)」身分鑑別技術 通常可分為下列幾種類型 – 記憶卡 – 智慧卡 依其感應或資","printedPageApprox":191},"day2:49":{"bookPage":193,"unit":5,"score":0.3361,"slideTitle":"記憶卡 沒有微處理器，甚至沒有積體電路，只有磁條 – 例如：信用卡與舊式金融卡 記憶空間中只存放身分鑑別時所需的資訊，例如：私密金鑰與 帳號 使用者至少需要輸入","printedPageApprox":191},"day2:50":{"bookPage":194,"unit":5,"score":0.603,"slideTitle":"智慧卡 智慧卡(Smart Card)的特質 – 具備微處理器與積體電路 – 可記憶也可運算 – 具備防拆解與竄改的保護機制 – 必須輸入PIN或通行碼啟動智慧","printedPageApprox":192},"day2:51":{"bookPage":195,"unit":5,"score":0.6439,"slideTitle":"目的：確保在系統的各個階段（需求、設計、開發、測試、部署與維運） 充分考慮安全性需求 普 中 高 措施內容 針對系統安全需求(含機密性、可用性、完整性)進行確認","printedPageApprox":193},"day2:52":{"bookPage":196,"unit":5,"score":0.5275,"slideTitle":"普 中 高 措施內容 執行「弱點掃描」安全檢測。 1. 執行「滲透測試」 安全檢測。 2. 等級「中」及「普」 之所有控制措施。 系統發展生命週期 測試階段 1","printedPageApprox":194},"day2:53":{"bookPage":196,"unit":5,"score":0.2023,"slideTitle":"安全系統發展生命週期(SSDLC) 需求階段 設計階段 開發階段 測試階段 部署與維運階段 SSDLC強調於專案各階段及早加入安全思維，以打造具備安全體質 的資","printedPageApprox":194},"day2:54":{"bookPage":197,"unit":5,"score":0.4467,"slideTitle":"需求階段-確認安全需求(高中普) 針對系統安全需求(含機密性、可用性、完整性)進行確認 – 系統安全需求可能來自於法規或業界標準要求、內部資安政策或業 務需求等","printedPageApprox":195},"day2:55":{"bookPage":197,"unit":5,"score":0.4483,"slideTitle":"開發階段-安全需求實作(高中普) 應針對安全需求實作必要控制措施 – 資通系統應訂定安全需求項目，包含機密性、完整性及可用性 等相關要求，並應確實實作 開發階段","printedPageApprox":195},"day2:56":{"bookPage":198,"unit":5,"score":0.4321,"slideTitle":"開發階段-嚴重錯誤通知機制(高) 系統應具備發生嚴重錯誤時之通知機制 – 系統應具備可靠且有效之系統錯誤通知機制，避免無人發覺與處理 測試階段-弱點掃描(高中普","printedPageApprox":196},"day2:57":{"bookPage":199,"unit":5,"score":0.2603,"slideTitle":"部署與維運階段-禁用預設密碼及執行系統源 碼備份(高中普) 資通系統不使用預設密碼 – 相關軟體(例如套裝軟體、資料庫、Web伺服器等)應避免使用預設密 碼，建","printedPageApprox":197},"day2:58":{"bookPage":200,"unit":5,"score":0.3034,"slideTitle":"獲得程序-作業環境區隔(高中) 開發、測試及正式作業環境應為區隔 – 開發環境、測試環境及正式作業環境應實作必要之存取控制，以 保護正式作業環境之系統與資料 系","printedPageApprox":198},"day2:59":{"bookPage":201,"unit":5,"score":0.5603,"slideTitle":"目的：確保資通系統及資料傳輸的機密性、完整性及可用性 普 中 高 措施內容 無要求 無要求 1. 資通系統應採用加密機制， 以防止未授權之資訊揭露或 偵測資訊之","printedPageApprox":199},"day2:60":{"bookPage":202,"unit":5,"score":0.4456,"slideTitle":"傳輸之機密性與完整性-傳輸加密(高) 資通系統應採用加密機制，以防止未授權之資訊揭露或偵測資訊之變更。 但傳輸過程中有替代之實體保護措施者，不在此限 資通系統應","printedPageApprox":200},"day2:61":{"bookPage":202,"unit":5,"score":0.4779,"slideTitle":"傳輸之機密性與完整性-金鑰憑證更換(高) 加密金鑰或憑證應定期更換 避免使用萬年憑證而增加被破解的風險，已過期憑證應儘速更換 對外服務站台應使用合法憑證中心核發","printedPageApprox":200},"day2:62":{"bookPage":203,"unit":5,"score":0.3994,"slideTitle":"加密與簽章技術 主要用途 – 確保資訊的「機密性」、「完整性」、「鑑別性」及「不可否認性」 經常運用在各種資通系統的安全防護機制中 – 資料通訊的安全(VPN、","printedPageApprox":201},"day2:63":{"bookPage":203,"unit":5,"score":0.3651,"slideTitle":"加密技術強度 加密技術強度指的是密碼破解所需花費的時間與資源 加密技術強度通常牽涉到下列的因素 – 演算法強度 – 金鑰保護機制 – ⾦鑰的⻑度 – 亂數產生器","printedPageApprox":201},"day2:64":{"bookPage":203,"unit":5,"score":0.0629,"slideTitle":"加密技術強度的相關法令 電子票證應用安全強度準則 – 明確要求金融服務業，對於電子票證相關服務必須採 用的加密或簽章之演算法強度 – 電子票證：指以電子、磁力或","printedPageApprox":201},"day2:65":{"bookPage":204,"unit":5,"score":0.4063,"slideTitle":"對稱式加密演算法(1/4) 對稱式密碼學(Symmetric Cryptography)又稱作「秘密 金鑰密碼學(SecretKey Cryptography)","printedPageApprox":202},"day2:66":{"bookPage":204,"unit":5,"score":0.3937,"slideTitle":"對稱式加密演算法(2/4) DES – 美國密碼演算法標準 – 有效⾦鑰⻑度56位元 Triple-DES – DES演算法重複使用 – 有效⾦鑰⻑度112/1","printedPageApprox":202},"day2:67":{"bookPage":205,"unit":5,"score":0.2787,"slideTitle":"對稱式加密演算法(3/4) 優點 • 加解密速度較非對稱式加解密演算法快 • 如果⾦鑰⻑度夠⻑，將難以被破解 缺點 • 當加密對象多時，金鑰的保護與交換變得很麻","printedPageApprox":203},"day2:68":{"bookPage":205,"unit":5,"score":0.3403,"slideTitle":"對稱式加密演算法(4/4) 當加密對象人數愈多時，就代表私密金鑰的個數也愈多 • N個使用者需要N(N-1)/2把金鑰 • 3個使用者需要3把金鑰 • 10個使","printedPageApprox":203},"day2:69":{"bookPage":206,"unit":5,"score":0.2571,"slideTitle":"非對稱式加解密演算法(2/4) 非對稱式加解密演算法的金鑰 –由公開金鑰加密只能用私密金鑰解密 –由私密金鑰加密只能用公開金鑰解密 5-6 系統與通訊保護(11","printedPageApprox":204},"day2:70":{"bookPage":206,"unit":5,"score":0.2983,"slideTitle":"非對稱式加解密演算法(3/4) RSA • 使用最廣泛，也是最有名的演算法 • 安全性導因於解因數分解的困難度 • 具有資料加密與數位簽章功能 ElGamal ","printedPageApprox":204},"day2:71":{"bookPage":206,"unit":5,"score":0.3541,"slideTitle":"非對稱式加解密演算法(4/4) 優點 – 金鑰管理較容易，每個人兩把金鑰，1,000個人也只要 2,000把金鑰 – 公開金鑰可以任意公開傳送，不需額外的保護機","printedPageApprox":204},"day2:72":{"bookPage":207,"unit":5,"score":0.3589,"slideTitle":"數位信封 結合對稱式與非對稱式加解密演算法的優點 如同將資料裝入信封，只有接收者才能拆開信封 5-6 系統與通訊保護(14/17)","printedPageApprox":205},"day2:73":{"bookPage":208,"unit":5,"score":0.3887,"slideTitle":"雜湊函數之特性與安全性分析 根據同⼀函式，將任何⻑度的資料轉成固定⻑度的訊息 摘要(MessageDigest)，也稱為「數位指紋」 (DigitalFinge","printedPageApprox":206},"day2:74":{"bookPage":209,"unit":5,"score":0.0999,"slideTitle":"數位簽章-目的 目的 – 證明電子檔案為簽章者所傳送 – 資料被竄改時可以發現 甲方要把電子檔案簽章後傳送給⼄⽅ – 甲方用自己的私密金鑰對電子檔案作簽章 – ","printedPageApprox":207},"day2:75":{"bookPage":209,"unit":5,"score":0.2434,"slideTitle":"數位簽章-流程 數位簽章技術同時提供了訊息的「完整性」、「鑑別性」及 「不可否認性」 發送方 接收方 5-6 系統與通訊保護(17/17)","printedPageApprox":207},"day2:76":{"bookPage":211,"unit":5,"score":0.7304,"slideTitle":"目的：確保資通系統及其儲存及處理的資訊不被非法篡改或破壞 普 中 高 措施內容 系統之漏洞修復應測試 有效性及潛在影響，並 定期更新。 1. 定期確認資通系統相","printedPageApprox":209},"day2:77":{"bookPage":212,"unit":5,"score":0.5991,"slideTitle":"漏洞修復-修復漏洞及定期更新(高中普) 系統之漏洞修復應測試有效性及潛在影響，並定期更新 定期進行軟體更新，先於測試用主機上完成更新可行性評估並通過 測試後，始","printedPageApprox":210},"day2:78":{"bookPage":213,"unit":5,"score":0.373,"slideTitle":"資通系統監控-監控通報(高中普) 發現資通系統有被入侵跡象時，應通報機關特定人員 資通系統監控-監控資通系統連線(高中) 監控資通系統，以偵測攻擊與未授權之連線","printedPageApprox":211},"day2:79":{"bookPage":213,"unit":5,"score":0.2527,"slideTitle":"軟體及資訊完整性-於伺服器端檢查(高中普) 使用者輸入資料合法性檢查應置放於應用系統伺服器端 – 輸入檢查應實作於伺服器端，不可依賴客戶端檢查(如 JavaSc","printedPageApprox":211},"day2:80":{"bookPage":214,"unit":5,"score":0.7112,"slideTitle":"資通系統防護基準-參考資源 以下文件可於國家資通安全研究院網站(www.nics.nat.gov.tw)自行下載 用途說明 參考文件 提供資通系統防護基準稽核驗","printedPageApprox":212},"day2:81":{"bookPage":215,"unit":5,"score":0.1795,"slideTitle":"媒體控管-目的及工作 媒體包含 – 磁碟、磁帶、光碟及紙張 媒體控管的目的 – 避免儲存在其中的機敏資料外洩 媒體控管的工作 – 標示 – 使用紀錄 – 完整性","printedPageApprox":213},"day2:82":{"bookPage":215,"unit":5,"score":0.3781,"slideTitle":"媒體控管-標示 媒體上應清楚標示 – 名稱與版本 – 機密等級 – 建立者 – 建立日期 – 保存期限 – 應銷毀日期 機密 等級 名稱與 版本 建立 者 建立","printedPageApprox":213},"day2:83":{"bookPage":216,"unit":5,"score":0.2881,"slideTitle":"媒體控管-重用 儲存媒體被轉移：當儲存媒體被轉移到不同安全等級之資通系 統使用時，應將其原來的資料安全地刪除，以避免資料殘存的問 題 刪除檔案或格式化是不夠安全","printedPageApprox":214},"day2:84":{"bookPage":216,"unit":5,"score":0.2563,"slideTitle":"媒體控管-安全丟棄 媒體要丟棄或銷毀前：應先安全的刪除資料或進行實體的破壞 儲存媒體破壞方法 – 磁碟機：消磁設備或碎裂(6mm) – 磁帶：消磁設備 – 光碟","printedPageApprox":214},"day2:85":{"bookPage":217,"unit":5,"score":0.201,"slideTitle":"可攜式設備-安全問題 公務家辦資料外洩 離職員工私自保留資料 普遍使用的USB硬碟成為病毒感染的主要途徑 5-8 媒體控管及可攜式設備(5/8)","printedPageApprox":215},"day2:86":{"bookPage":217,"unit":5,"score":0.3594,"slideTitle":"可攜式設備-存取控制與稽核 政策 – 應建立可攜式設備的使用限制與範圍 存取控制 – 可攜式設備對機關資通系統的存取，符合機關使用限制與範圍 – 關閉或避免觸發","printedPageApprox":215},"day2:87":{"bookPage":217,"unit":5,"score":0.222,"slideTitle":"可攜式設備-自動化安裝或啟用控管程式 安裝或啟用可攜式媒體控管程式，可「管制」、「偵測」及 「記錄」各種可攜式媒體與設備的存取行為 Palm WindowsMo","printedPageApprox":215},"day2:88":{"bookPage":218,"unit":5,"score":0.2937,"slideTitle":"可攜式設備-稽核紀錄內容 稽核紀錄應包含下列欄位 – 事件發生時間(2017-11-1211:34:12) – 電腦名稱或IP位址(例如：WIN-LAB-05或","printedPageApprox":216},"day2:89":{"bookPage":219,"unit":5,"score":0.01,"slideTitle":"1. 機關現行之資通系統日誌審查活動執行頻率與做 法 2. 機關現行之資料備份執行方式，包含備份頻率、 備份儲存媒體及是否進行異地備份等 3. 機關現行之系統備","printedPageApprox":217},"day2:90":{"bookPage":220,"unit":6,"score":0.7034,"slideTitle":"第6單元 資通安全技術面應辦事項- 資通安全之防護及偵測","printedPageApprox":218},"day2:91":{"bookPage":221,"unit":6,"score":0.1046,"slideTitle":"第6單元學習目標 6-1 了解「防毒軟體」安全防護 6-2 了解「網路防火牆」安全防護 6-3 了解「應用程式防火牆」安全防護 6-4 了解「電子郵件過濾機制」","printedPageApprox":219},"day2:92":{"bookPage":222,"unit":6,"score":0.2858,"slideTitle":"資通安全之防護及偵測 D級 機關 C級 機關 B級 機關 A級 機關 辦理細項 辦理 項目 制度 面向 防毒軟體 資 通 安 全 防 護 技 術 面 網路防火牆","printedPageApprox":220},"day2:93":{"bookPage":225,"unit":6,"score":0.1691,"slideTitle":"6-1 防毒軟體(1/2) 用途 防止病毒、蠕蟲、間諜、後門及木馬等惡意程式入侵電腦軟體或系 統 惡意程式來源 電子郵件 USB硬碟 網站瀏覽 即時通訊 檔案傳","printedPageApprox":223},"day2:94":{"bookPage":228,"unit":6,"score":0.3263,"slideTitle":"管理重點 應定期自動更新病毒碼 病毒感染的事件與趨勢應定期分析 避免未安裝防毒軟體的電腦上線(配合NAC設備) 防火牆控管未經防毒閘道過濾的連線行為 「個人電腦","printedPageApprox":226},"day2:95":{"bookPage":229,"unit":6,"score":0.2633,"slideTitle":"6-2 網路防火牆(1/3) 網路防火牆： 是⼀台專屬的硬體或是架設在⼀般硬體上的軟體，依照特定的規則 允許或限制傳輸的資料通過網路。 用途 區隔不同安全等級網","printedPageApprox":227},"day2:96":{"bookPage":231,"unit":6,"score":0.3438,"slideTitle":"6-2 網路防火牆(2/3) 部署方式 考量資安需求，妥善劃分IP網段與虛擬區域網路 建置2台防火牆並設定成高可靠度(High Availability)運作模","printedPageApprox":229},"day2:97":{"bookPage":233,"unit":6,"score":0.2362,"slideTitle":"6-2 網路防火牆(3/3) 管理重點 防火牆存取規則的變更應建立管理程序(變更申請、核准及記錄) 防火牆存取紀錄應即時匯出存檔，並保留足夠的時間 定期產出異常","printedPageApprox":231},"day2:98":{"bookPage":234,"unit":6,"score":0.3086,"slideTitle":"6-3 應用程式防火牆(1/4) 應用程式防火牆： 是針對應用層封包進行管制的防火牆機制，特別是針對網站應用的 防護，常見為網站應用程式防火牆(Web Appl","printedPageApprox":232},"day2:99":{"bookPage":235,"unit":6,"score":0.2708,"slideTitle":"6-3 應用程式防火牆(2/4) 網站應用程式防火牆(WAF)用途： 偵測與防禦針對網站應用程式之攻擊行為(例如：SQL Injection與Cross-Sit","printedPageApprox":233},"day2:100":{"bookPage":235,"unit":6,"score":0.0752,"slideTitle":"6-3 應用程式防火牆(3/4) 類型與部署方式 硬體式 軟體式","printedPageApprox":233},"day2:101":{"bookPage":237,"unit":6,"score":0.2527,"slideTitle":"6-3 應用程式防火牆(4/4) 管理重點 存取規則的變更應建立管理程序(變更申請、核准及記錄) 異常的網站應用程式攻擊事件應立即匯出，並保留足夠的時間 異常的","printedPageApprox":235},"day2:102":{"bookPage":238,"unit":6,"score":0.2426,"slideTitle":"6-4 電子郵件過濾機制(1/3) 電子郵件過濾機制： 指具有郵件伺服器者，應備電子郵件過濾機制 ⼀般指具垃圾郵件過濾之系統 用途 過濾垃圾與廣告郵件 避免電子","printedPageApprox":236},"day2:103":{"bookPage":239,"unit":6,"score":0.2156,"slideTitle":"6-4 電子郵件過濾機制(2/3) 部署方式 閘道模式(Mail Relay) – 不影響其他網路流量 – 設備故障時信件無法進出 – 安全性高(Fail Cl","printedPageApprox":237},"day2:104":{"bookPage":240,"unit":6,"score":0.2031,"slideTitle":"管理重點 應定期自動更新垃圾郵件辨識特徵碼 電子郵件過濾規則的變更應建立管理程序(變更申請、 核准及記錄) 選購考量 垃圾郵件判斷的精準度 處理效能可符合機關需","printedPageApprox":238},"day2:105":{"bookPage":243,"unit":6,"score":0.1657,"slideTitle":"6-5 IDS及IPS(1/4) 用途 – 識別網路的異常行為與攻擊行為(注意：加密連線的內容無法識別)， 特定之攻擊行為可以立即阻擋 技術類型 – 特徵碼比對","printedPageApprox":241},"day2:106":{"bookPage":244,"unit":6,"score":0.1241,"slideTitle":"6-5 IDS與IPS(2/4) 入侵偵測與防禦系統 反應方式 – 被動方式：只將異常事件記錄下來，供 日後稽核分析使用 – 主動方式：立即將攻擊事件或攻擊來源","printedPageApprox":242},"day2:107":{"bookPage":245,"unit":6,"score":0.1852,"slideTitle":"6-5 IDS與IPS(3/4) IDS與IPS的比較 IPS IDS 特性 主動 被動 監控方式 自動防禦 僅報告 反應能力 內聯於網路流量中 網路邊緣或主機","printedPageApprox":243},"day2:108":{"bookPage":247,"unit":6,"score":0.1987,"slideTitle":"6-5 IDS與IPS(4/4) 選購考量 精準之特徵碼資料庫 – 具有針對軟體弱點防護能力而非僅有針對特定攻擊撰寫之特徵 碼 – 預設特徵碼不會產生許多誤判與","printedPageApprox":245},"day2:109":{"bookPage":248,"unit":6,"score":0.2058,"slideTitle":"6-6 APT攻擊防禦措施(1/2) 進階持續性威脅(Advanced Persistent Threat, APT)攻擊 防禦措施 是⼀種針對特定組織的複雜且","printedPageApprox":246},"day2:110":{"bookPage":250,"unit":6,"score":0.2638,"slideTitle":"用途 增強組織抵禦APT攻擊的整體能力 降低APT攻擊造成的風險及損害 建立完善的APT防禦體系 部署方式 多層次安全防護：結合網路、端點及應用層面的安全控制措","printedPageApprox":248},"day2:111":{"bookPage":251,"unit":6,"score":0.2318,"slideTitle":"6-7 SOC管理機制(1/3) 資通安全監控管理機制(SOC) 資通安全監控管理機制(Security Operation Center, SOC)提供資通設","printedPageApprox":249},"day2:112":{"bookPage":252,"unit":6,"score":0.2044,"slideTitle":"6-7 SOC管理機制(2/3) SOC可以協助機關提升資安監控之有效性，包含 7x24全天候監控服務 即時告警 追蹤分析與應變處理 定期提供網路威脅分析統計報","printedPageApprox":250},"day2:113":{"bookPage":253,"unit":6,"score":0.1565,"slideTitle":"6-7 SOC管理機制(3/3) 資通安全監控管理聯防機制- 以CI提供者SOC為例","printedPageApprox":251},"day2:114":{"bookPage":255,"unit":6,"score":0.5169,"slideTitle":"6-8 GCB組態基準(1/6) 組態 – 為IT系統邏輯模型，包含：服務、軟體、硬體、設定、文件及IT人 員等組態項目(Configuration Item,","printedPageApprox":253},"day2:115":{"bookPage":255,"unit":6,"score":0.3793,"slideTitle":"6-8 GCB組態基準(2/6) 組態管理(2/2) 組態管理的目的 – IT資產管理 – 提供IT服務管理作業中所需的精確資訊 – 降低因變更對系統造成的各類","printedPageApprox":253},"day2:116":{"bookPage":256,"unit":6,"score":0.2959,"slideTitle":"6-8 GCB組態基準(3/6) 組態變更管理(1/2) 變更管理項目 – 記錄變更內容與過程 – 評估變更的衝擊、成本、效益、資源需求及風險 – 取得授權與核","printedPageApprox":254},"day2:117":{"bookPage":256,"unit":6,"score":0.2303,"slideTitle":"6-8 GCB組態基準(4/6) 組態變更管理(2/2) 當IT系統之組態變更時，應考量對系統營運的安全影響 – 可用性影響 變更前應釐清組態項目的關聯性 – ","printedPageApprox":254},"day2:118":{"bookPage":257,"unit":6,"score":0.3303,"slideTitle":"6-8 GCB組態基準(5/6) 政府組態基準導入 政府組態基準(Government Configuration Baseline，GCB)： 目的在於規範資","printedPageApprox":255},"day2:119":{"bookPage":257,"unit":6,"score":0.0649,"slideTitle":"6-8 GCB組態基準(6/6) 政府組態基準之類別及項目","printedPageApprox":255},"day2:120":{"bookPage":259,"unit":6,"score":0.1257,"slideTitle":"6-9 資通安全弱點管理(1/4) 資通安全弱點管理– 目的及適用對象 目的： 指結合資訊資產管理與弱點管理，掌握整體風險情勢，並協 助機關落實本法有關資產盤點","printedPageApprox":257},"day2:121":{"bookPage":259,"unit":6,"score":0.1151,"slideTitle":"資通安全弱點管理– VANS 資通安全弱點通報系統(Vulnerability Alert and Notification System, VANS)：結合資","printedPageApprox":257},"day2:122":{"bookPage":259,"unit":6,"score":0.0727,"slideTitle":"VANS-提供服務 VANS可協助機關落實資通安全管理法之資產盤點與風 險評估應辦事項，並提供以下服務 – 透過VANS持續維護資訊資產盤點資料 – 針對機關登","printedPageApprox":257},"day2:123":{"bookPage":260,"unit":6,"score":0.2889,"slideTitle":"VANS-資訊資產涵蓋範圍 作業系統 應用程式中介軟體 應用框架 程式語言 應用軟體資產 6-9 資通安全弱點管理(4/4)","printedPageApprox":258},"day2:124":{"bookPage":261,"unit":6,"score":0.151,"slideTitle":"6-10 EDR偵測及應變機制 A級及B級機關：應完成端點偵測及應變機制導入作業， 並持續維運及依主管機關指定之方式提交偵測資料 用途 – 偵測與阻擋威脅 – ","printedPageApprox":259},"day2:125":{"bookPage":262,"unit":6,"score":0.0147,"slideTitle":"第6單元-分組討論 1. 機關如何確保所有端點裝置(含個人電腦與伺服器)的防毒軟體都能定期自動 更新病毒碼，以及如何透過技術或管理手段，避免未安裝或未正常運作防","printedPageApprox":260},"day3:1":{"bookPage":264,"unit":0,"score":1.0,"slideTitle":"資安職能訓練- 資通安全概論 (第3天) 數位發展部資通安全署編製","printedPageApprox":262},"day3:2":{"bookPage":264,"unit":7,"score":0.6942,"slideTitle":"第7單元 資通安全技術面應辦事項- 安全性檢測及資通安全健診","printedPageApprox":262},"day3:3":{"bookPage":265,"unit":7,"score":0.087,"slideTitle":"第7單元學習目標 7-1 了解「安全性檢測」規定 7-2 了解「弱點掃描」規定 7-3 了解「滲透測試」規定 7-4 了解「應用程式安全」 7-5 了解「資通安","printedPageApprox":263},"day3:4":{"bookPage":266,"unit":7,"score":0.3235,"slideTitle":"7-1 安全性檢測規定 安全性檢測包含核心資通系統之弱點掃描與滲透測 試 不同資通安全責任等級之安全性檢測頻率如下 滲透測試 弱點掃描 機關級別 每年1次 每年","printedPageApprox":264},"day3:5":{"bookPage":267,"unit":7,"score":0.3587,"slideTitle":"何謂弱點掃描： 是⼀種資安評估⽅法，係透過特定的工具或程序，檢查系統或應 用程式是否存在已知的安全弱點。 目的： 評估資安防護能力：了解掃描目標目前的資安保護狀","printedPageApprox":265},"day3:6":{"bookPage":268,"unit":7,"score":0.3728,"slideTitle":"弱點掃描的類型： 根據掃描目標的性質，常見的弱點掃描通常分為以下主要類型： 主機系統-弱點掃描： – 針對作業系統、網路服務、系統設定、帳號密碼管理等進行掃 描","printedPageApprox":266},"day3:7":{"bookPage":268,"unit":7,"score":0.7362,"slideTitle":"Web 網頁-弱點掃描： 針對網站應用程式的安全弱點進行掃描。 檢查項目(符合OWASP TOP 10：2025等最新版本)： – A01 Broken Acc","printedPageApprox":266},"day3:8":{"bookPage":269,"unit":7,"score":0.1455,"slideTitle":"弱點掃描流程 7-2 弱點掃描(4/15) 6.生成複掃報告 1.確認掃描需求 5.執行複掃 2.執行初掃 4.確認並修復弱點 3.分析初掃報告","printedPageApprox":267},"day3:9":{"bookPage":270,"unit":7,"score":0.424,"slideTitle":"如何執行弱點掃描？弱點掃描服務通常包含以下步驟： 事前準備與了解： – 與目標組織溝通，了解其網路架構、系統環境（設備廠牌、系統版本等）。 工具準備： – 使用","printedPageApprox":268},"day3:10":{"bookPage":270,"unit":7,"score":0.5287,"slideTitle":"弱點掃描的報告： 弱點掃描的主要產出是詳細的掃描報告，通常包含以下內容 執行結果摘要：簡要說明掃描結果。 專案執行計畫：說明掃描期間、項目、範圍、執行人員、使用","printedPageApprox":268},"day3:11":{"bookPage":270,"unit":7,"score":0.2073,"slideTitle":"弱點掃描考慮因素 內部掃描VS 外部掃描 有登錄權限(Authenticated) VS 無登錄權限 (Unauthenticated) 侵入式VS 非侵入式 ","printedPageApprox":268},"day3:12":{"bookPage":271,"unit":7,"score":0.1018,"slideTitle":"內部掃描VS 外部掃描 7-2 弱點掃描(8/15) GSN政府 網際網路","printedPageApprox":269},"day3:13":{"bookPage":272,"unit":7,"score":0.1507,"slideTitle":"有登錄權限VS 無登錄權限 使用”有登錄權限”進行弱點掃描可以較”無登錄 權限”更為深入與澈底 – 無登錄權限僅能測試到登錄的功能而已 – 有登錄權限可以測到登","printedPageApprox":270},"day3:14":{"bookPage":273,"unit":7,"score":0.2699,"slideTitle":"7-2 弱點掃描(10/15) 侵入式VS 非侵入式 非侵入式： – 不會對目標系統造成影響，主要透過分析響應判 斷弱點。 – 安全性高，適合運作中環境 侵入式","printedPageApprox":271},"day3:15":{"bookPage":274,"unit":7,"score":0.2016,"slideTitle":"委外VS 機關資安部門自行執行 委外 – 委外通常須簽訂契約，按照契約進行較無彈性， 須事先考慮清楚 – 弱點掃描費用通常與主機數量、掃描次數正相關 機關資安部","printedPageApprox":272},"day3:16":{"bookPage":275,"unit":7,"score":0.2039,"slideTitle":"弱點掃描服務委外(1/4) 參考「政府機關弱點掃描服務委外服務案建議書徵求文 件」摘錄部分重要內容，包含： 壹、專案概述 ⼀. 專案名稱 二. 專案目標 三. ","printedPageApprox":273},"day3:17":{"bookPage":275,"unit":7,"score":0.08,"slideTitle":"弱點掃描服務委外(2/4) 壹、專案概述 針對整個專案整體性的描述 7-2 弱點掃描(13/15)","printedPageApprox":273},"day3:18":{"bookPage":277,"unit":7,"score":0.6847,"slideTitle":"弱點掃描服務委外(3/4) 貳、專案工作項目 – 針對機關主機系統與Web 網頁進行安全弱點掃描，評估掃描標的物是否存 在安全弱點，同時提供相關掃描結果，做為主","printedPageApprox":275},"day3:19":{"bookPage":277,"unit":7,"score":0.3045,"slideTitle":"弱點掃描服務委外(4/4) 參、管理需求 ⼀、廠商資格 二、服務水準協定(SLA)與罰責 三、品質需求與驗收標準 四、業務保密安全責任 肆、交付項目 ⼀. 工作","printedPageApprox":275},"day3:20":{"bookPage":278,"unit":7,"score":0.484,"slideTitle":"7-3 滲透測試(1/5) 何謂滲透測試： 是⼀種資安評估⽅法，係透過模擬有心人士之攻擊方式，對系統 或物聯網設備進行安全強度的測試。 目的： 評估防護能力：檢","printedPageApprox":276},"day3:21":{"bookPage":279,"unit":7,"score":0.3209,"slideTitle":"滲透測試的類型：滲透測試的範圍廣泛，主要針對作業系統、 應用程式、服務及物聯網設備： 測試類型及測試項目：測試項目考參國家資通安全研究院之資安服務需求建議書範本","printedPageApprox":277},"day3:22":{"bookPage":279,"unit":7,"score":0.1189,"slideTitle":"滲透測試流程 7-3 滲透測試(3/5)","printedPageApprox":277},"day3:23":{"bookPage":280,"unit":7,"score":0.639,"slideTitle":"滲透測試如何進行？滲透測試服務通常包含以下步驟： 事前準備與了解： • 對受測目標進行資料蒐集與資訊分析，作為執行測試的決策依據。 工具準備： • 使用取得合法","printedPageApprox":278},"day3:24":{"bookPage":281,"unit":7,"score":0.5316,"slideTitle":"滲透測試的報告：滲透測試的核心成果是詳細的測試報告 (初測及複測)，通常包含以下內容： 7-3 滲透測試(5/5) 執行結果摘要：包括受測目標風險等級與數量列表","printedPageApprox":279},"day3:25":{"bookPage":282,"unit":7,"score":0.1835,"slideTitle":"7-4 應用程式安全(1/15) 軟體安全工程探討軟體安全問題的解決方法 – 應用安全屬於軟體工程的問題，由設計來解決 – 架構安全屬於系統管理問題，由設定來解","printedPageApprox":280},"day3:26":{"bookPage":282,"unit":7,"score":0.5151,"slideTitle":"7-4 應用程式安全(2/15) 系統開發思維 傳統系統開發之特性 – 功能性導向，在最短的時間，完成系統的開發與上 線 – 缺乏安全性考量的設計，面對日新月異","printedPageApprox":280},"day3:27":{"bookPage":283,"unit":7,"score":0.1638,"slideTitle":"7-4 應用程式安全(3/15) 安全系統開發生命週期(1/3) 安全系統開發生命週期 (Secure Systems Development Life Cyc","printedPageApprox":281},"day3:28":{"bookPage":283,"unit":7,"score":0.3785,"slideTitle":"7-4 應用程式安全(4/15) 安全系統開發生命週期(2/3) 需求分析(Requirements) – 進行風險分析與確認應用程式的資安需求，以符合使 用者","printedPageApprox":281},"day3:29":{"bookPage":283,"unit":7,"score":0.3513,"slideTitle":"7-4 應用程式安全(5/15) 安全系統開發生命週期(3/3) 測試與驗收(Testing) – 依據資安需求擬訂測試計畫，並依測試計畫進行測 試與修正 – ","printedPageApprox":281},"day3:30":{"bookPage":283,"unit":7,"score":0.3128,"slideTitle":"7-4 應用程式安全(6/15) 安全控制-變更控制(1/2) 原因 – 應用程式上線後因需求的變更、新功能要求及發現瑕疵 等因素，需要變更應用系統程式或組態 ","printedPageApprox":281},"day3:31":{"bookPage":284,"unit":7,"score":0.512,"slideTitle":"7-4 應用程式安全(7/15) 安全控制-變更控制(2/2) 變更控制之步驟 – 變更需求管理: 填寫變更需求申請 分析變更需求 發展實作策略、方法或步","printedPageApprox":282},"day3:32":{"bookPage":285,"unit":7,"score":0.3452,"slideTitle":"7-4 應用程式安全(8/15) 安全控制-職責區隔 作業人員不應有權限存取線上的程式碼或程式 物件 程式設計人員不應存取線上運作中的軟體 品管部門應測試程式碼","printedPageApprox":283},"day3:33":{"bookPage":285,"unit":7,"score":0.5515,"slideTitle":"7-4 應用程式安全(9/15) 安全控制-程式庫維護(1/2) 應用程式應集中存放在程式庫中，並進行存取控管 程式庫進行版本控制，並保留所有版本程式碼 • 主","printedPageApprox":283},"day3:34":{"bookPage":285,"unit":7,"score":0.1537,"slideTitle":"7-4 應用程式安全(10/15) 安全控制-程式庫維護(2/2)","printedPageApprox":283},"day3:35":{"bookPage":287,"unit":7,"score":0.2687,"slideTitle":"7-4 應用程式安全(11/15) 行動應用程式安全 行動應用程式(App)也是應⽤程式的⼀環 駭客可循傳統的技術進行病毒的感染 駭客可運用反向工程的技術來變造","printedPageApprox":285},"day3:36":{"bookPage":287,"unit":7,"score":0.1036,"slideTitle":"7-4 應用程式安全(12/15) 安全威脅-輸入攻擊(1/2) 應用程式從使用者端取得輸入資料，進行資料 運算與處理，最後將運算處理結果輸出 如果使用者輸入惡","printedPageApprox":285},"day3:37":{"bookPage":287,"unit":7,"score":0.1222,"slideTitle":"7-4應用程式安全(13/15) 安全威脅-輸入攻擊(2/2) Web應用程式常見的攻擊大都屬於輸入攻擊 • SQL Injection • Cross-Sit","printedPageApprox":285},"day3:38":{"bookPage":289,"unit":7,"score":0.2084,"slideTitle":"7-4 應用程式安全(14/15) WEB應用程式-檢測(1/2) 定期針對核心資通系統執行弱點掃描(A級機關 每年2次，B級機關每年1次)與滲透測試(A級機 ","printedPageApprox":287},"day3:39":{"bookPage":290,"unit":7,"score":0.3188,"slideTitle":"7-4 應用程式安全(15/15) WEB應用程式-檢測(2/2) 白箱檢測法 黑箱檢測法 檢測方式 自動源碼掃描 人工源碼掃描 AP弱點掃描工具 人工滲透測試","printedPageApprox":288},"day3:40":{"bookPage":291,"unit":7,"score":0.4097,"slideTitle":"7-5 資通安全健診(1/10) 健診目的 整合各資通安全項目的檢視服務作業，提供機關資通 安全改善建議 藉由實施技術面與管理面的相關控制措施，提升機關 整體資","printedPageApprox":289},"day3:41":{"bookPage":292,"unit":7,"score":0.6065,"slideTitle":"健診項目(1/4) 網路架構檢視 – 針對網路架構圖進行安全性弱點檢視，詳列發現事項之風險等級、 風險說明與改善建議，以利機關後續修補與調整 網路惡意活動檢視 ","printedPageApprox":290},"day3:42":{"bookPage":292,"unit":7,"score":0.4448,"slideTitle":"健診項目(2/4) 使用者端電腦惡意活動檢視 – 檢視使用者電腦之作業系統更新情形 – 檢視使用者電腦之應用程式之安全性更新情形 – 檢視使用者電腦是否使用已經","printedPageApprox":290},"day3:43":{"bookPage":293,"unit":7,"score":0.4125,"slideTitle":"健診項目(3/4) 伺服器主機惡意活動檢視 – 檢視伺服器主機之作業系統更新情形 – 檢視伺服器主機應用程式之安全性更新情形 – 檢視伺服器主機是否使用已經停止","printedPageApprox":291},"day3:44":{"bookPage":293,"unit":7,"score":0.3935,"slideTitle":"健診項目(4/4) 目錄服務系統設定及防火牆連線設定檢視 – 目錄服務系統組態設定，以行政院國家資通安全研究 院所發展之「政府組態基準」內容為標準，確認目錄 服","printedPageApprox":291},"day3:45":{"bookPage":293,"unit":7,"score":0.3244,"slideTitle":"健診流程(1/5) 基本環境調查 – 使用者電腦與伺服器主機資訊 – 政府組態基準部署現況與例外管理清單 – 服務主機與防護設備資訊 – 網段劃分資訊 – 網路","printedPageApprox":291},"day3:46":{"bookPage":294,"unit":7,"score":0.3862,"slideTitle":"健診流程(2/5) 檢測配合事項(由受測單位提供資料給檢測單位) – 檢測環境 – 網路架構檢視 – 網路惡意活動檢視 – 使用者端電腦惡意活動檢視 – 伺服器","printedPageApprox":292},"day3:47":{"bookPage":294,"unit":7,"score":0.4797,"slideTitle":"健診流程(3/5) 啟始會議 – 執行檢測前，須辦理啟始會議，說明檢測項目與範圍，協調配合事 項並達成雙方共識 – 參與人員應包含機關主管與相關業務承辦人 執行","printedPageApprox":292},"day3:48":{"bookPage":294,"unit":7,"score":0.2861,"slideTitle":"健診流程(4/5) 撰寫檢測報告 – 執行結果摘要 – 執行計畫 – 執行情形 – 結果建議 – 結論 – 附件 提出改善建議 – 針對各檢測項目發現事項，須詳","printedPageApprox":292},"day3:49":{"bookPage":294,"unit":7,"score":0.4991,"slideTitle":"健診流程(5/5) 結束會議 – 檢測完成後，須辦理結束會議，說明各項目發現事項、 改善建議與結論 – 參與人員應包含機關管理階層與相關業務承辦人 修補規劃與追","printedPageApprox":292},"day3:50":{"bookPage":295,"unit":7,"score":0.1634,"slideTitle":"7-6 網路安全(1/21) 網路區域規劃目的 為了清楚界定規劃不同屬性的區域 作為存取控制與安全規劃的基準群組 避免來自內部與外部的攻擊 防範災害擴大","printedPageApprox":293},"day3:51":{"bookPage":295,"unit":7,"score":0.2084,"slideTitle":"網路區域規劃(1/6) 建議區域劃分項目 – 外部網路 – 內部網路 – 非軍事區 – 網路管理區域 – 網路記錄區域 – 實體隔離區域 7-6 網路安全(2/","printedPageApprox":293},"day3:52":{"bookPage":295,"unit":7,"score":0.2419,"slideTitle":"網路區域規劃(2/6) 外部網路 – 機關對外網路區域，連接外部廣域網路(WAN) – 此區域對內部需要經過防火牆的存取控制 – 非允許的服務與來源不能進入其他","printedPageApprox":293},"day3:53":{"bookPage":297,"unit":7,"score":0.2114,"slideTitle":"網路區域規劃(3/6) 非軍事區(DMZ) – DMZ主要是放置機關對外服務伺服器 • 網頁伺服器 • FTP伺服器 – 僅開放特定服務(特定TCP Port)","printedPageApprox":295},"day3:54":{"bookPage":298,"unit":7,"score":0.2676,"slideTitle":"網路區域規劃(4/6) 網路管理區域 – 放置機關網路管理設備 • 網路管理系統 • 認證系統 • 監控系統 – 應明確標示網路的路徑及維運方式 – 網路設備維","printedPageApprox":296},"day3:55":{"bookPage":299,"unit":7,"score":0.1826,"slideTitle":"網路區域規劃(5/6) 網路紀錄區域 – 放置 • 備份主機(Backup Server) • 紀錄主機(Log Server) – 存放的網段應特別規劃 – ","printedPageApprox":297},"day3:56":{"bookPage":299,"unit":7,"score":0.1785,"slideTitle":"網路區域規劃(6/6) 實體隔離區域 – 機關依據特定需求可將部分區域執行實體隔離 – 單向傳輸：僅可將資料傳出，不可傳入 – 可能危害途徑 • 破解門禁系統 ","printedPageApprox":297},"day3:57":{"bookPage":300,"unit":7,"score":0.2163,"slideTitle":"網路連線安全(1/3) 傳輸加密 – 保護資料在傳輸過程中的機密性 – 採用通道加密與傳輸層加密(如HTTPS) 資訊機密性 – 利用對稱式與非對稱式加密演算法","printedPageApprox":298},"day3:58":{"bookPage":301,"unit":7,"score":0.1615,"slideTitle":"網路連線安全(2/3) HTTP、FTP與TELNET – 連線採用明文傳輸，通訊內容有可能被監聽 HTTPS、FTPS與SSH – 是⼀種加密的網路傳輸協定，","printedPageApprox":299},"day3:59":{"bookPage":301,"unit":7,"score":0.2207,"slideTitle":"虛擬私有網路(1/3) 用途 – 在公開的網路上建立虛擬的私有通道 – 保護通訊資料的機密性與完整性 VPN類型 – 遠端使用者存取VPN：外勤人員透過網際網路","printedPageApprox":299},"day3:60":{"bookPage":302,"unit":7,"score":0.3716,"slideTitle":"虛擬私有網路(2/3) Site-to-Site VPN：總部與分點之內部網路透過網際網 路建立安全通道 Extranet VPN：與合作夥伴間透過網際網路建立","printedPageApprox":300},"day3:61":{"bookPage":304,"unit":7,"score":0.309,"slideTitle":"虛擬私有網路(3/3) 管理重點 – 虛擬私有網路的建立與使用者帳號的申請，應建立 管理程序(變更申請、核准及記錄) – 定期分析異常事件，例如：VPN使用者簽","printedPageApprox":302},"day3:62":{"bookPage":305,"unit":7,"score":0.2,"slideTitle":"雲端運算-特性 隨選自助(On-demand Self-service) 廣泛網路存取(Broad Network Access) 資源匯聚(Resource ","printedPageApprox":303},"day3:63":{"bookPage":306,"unit":7,"score":0.5488,"slideTitle":"雲端運算-服務模式 雲端服務供應商 管理層面 使用者 管理層面 雲端服務模型 硬體(伺服器、儲存、網 路) 的管理及維護 伺服器、儲存、網路、作業 系統、中介軟","printedPageApprox":304},"day3:64":{"bookPage":307,"unit":7,"score":0.3209,"slideTitle":"資通安全防護框架 CMMC 2.0 ：2024 7-6 網路安全(16/21) 網路安全成熟度模型驗證(Cybersecurity Maturity Model","printedPageApprox":305},"day3:65":{"bookPage":309,"unit":7,"score":0.1235,"slideTitle":"雲端安全管理 NIST SP 800-210 7-6 網路安全(17/21)","printedPageApprox":307},"day3:66":{"bookPage":309,"unit":7,"score":0.1234,"slideTitle":"雲端安全管理 NIST SP 800-210 7-6 網路安全(18/21)","printedPageApprox":307},"day3:67":{"bookPage":313,"unit":7,"score":0.2255,"slideTitle":"雲端安全管理 雲端環境下的角色共享與權責 雲端服務客戶資產的移除 虛擬運算環境的區隔 虛擬機器強化 管理者的操作安全 監控雲端服務 虛擬及實體網路安全管理的⼀致","printedPageApprox":311},"day3:68":{"bookPage":314,"unit":7,"score":0.2055,"slideTitle":"雲端運算-資安問題 客戶端 – 資料竊取 – 資料可用性 – 網路封包竊聽 – 資料內容加密保護 – 共用環境的系統安全防護 – 退租後資料完整刪除 雲端服務提","printedPageApprox":312},"day3:69":{"bookPage":315,"unit":7,"score":0.4165,"slideTitle":"雲端運算-服務協定 雲端提供者與客戶之間會訂定契約(Contract)與 服務水準協議(Service Level Agreement ， SLA)，來規範業者","printedPageApprox":313},"day3:70":{"bookPage":316,"unit":7,"score":0.263,"slideTitle":"威脅類型 天然環境災害 – 水災、颱風、地震、土石流、山崩及極端溫度等 供應系統中斷 – 電力、通訊、瓦斯及水等 人為的破壞 – 火災、非授權入侵、破壞、偷竊、","printedPageApprox":314},"day3:71":{"bookPage":316,"unit":7,"score":0.3687,"slideTitle":"防護措施規劃(1/3) 「嚇阻」犯罪發生 – 圍牆、警衛、警告標語及狗 – 夠大聲的警報器 – 加強警衛巡守頻率 – 布建全時攝影系統 – 公布違反實體控管要求","printedPageApprox":314},"day3:72":{"bookPage":316,"unit":7,"score":0.178,"slideTitle":"防護措施規劃(2/3) 「偵測」實體威脅 – 門窗開啟偵測 – 紅外線進出感應 – 動作感應器 – 煙霧偵測器 – 溫濕度偵測 「評估」事件狀態 – 警衛緊急處","printedPageApprox":314},"day3:73":{"bookPage":317,"unit":7,"score":0.1924,"slideTitle":"防護措施規劃(4/4) 縱深防禦的脆弱環節在哪裡？ 7-7 實體安全(4/17)","printedPageApprox":315},"day3:74":{"bookPage":318,"unit":7,"score":0.2814,"slideTitle":"進出控管(1/2) 進出口(需要控管的地方) – 主要與次要進出口(大門/側門) – 緊急疏散出口 – 車輛與貨物進出口 – 屋頂、維護孔及窗 進出識別 – 有","printedPageApprox":316},"day3:75":{"bookPage":319,"unit":7,"score":0.1544,"slideTitle":"進出控管(2/2) 尾隨進出 – 非授權⼈員跟隨授權⼈員⼀起進出 防範尾隨進出 – 警衛與人員的訓練與認知 – 旋轉門、驗票匣門 – Mantrap+警衛或內外","printedPageApprox":317},"day3:76":{"bookPage":319,"unit":7,"score":0.3222,"slideTitle":"安全區域規劃(1/2) 需要加強保護的區域 – 電腦資訊設備機房 – 儲存媒體存放室 – 電力與空調設備機房 – 電話與資料線路配接室 – 監控與錄影機房 – ","printedPageApprox":317},"day3:77":{"bookPage":320,"unit":7,"score":0.2391,"slideTitle":"安全區域規劃(2/2) 安全偵測與滅火器位置規劃 – 煙霧偵測器應置於天花 板下風處 – 滅火器應置於容易取得 的位置 – 門窗開啟感應器 – 動作感應器 安全","printedPageApprox":318},"day3:78":{"bookPage":322,"unit":7,"score":0.2712,"slideTitle":"監視錄影 監視錄影系統的類型 – 單純錄影 – 動作偵測功能 – 行為分辨 – 身分識別 選擇合適的錄影系統應考慮 – CCTV的目的(偵測/行為/識別) – ","printedPageApprox":320},"day3:79":{"bookPage":323,"unit":7,"score":0.0743,"slideTitle":"實體安全-空調規劃 空調系統的功能 – 溫度調節：機房區域與人員作業需求不同 – 濕度調節：濕度太高容易使設備生鏽，濕度太低容易產生靜電 (理想的相對濕度應控制","printedPageApprox":321},"day3:80":{"bookPage":324,"unit":7,"score":0.2065,"slideTitle":"實體安全-電力來源 主要電力來源 – 供應日常電力 – 必要時由變電所提供專屬電 力供應 次要電力來源 – 當主要電力來源中斷時使用 之電力(例如:發電機) –","printedPageApprox":322},"day3:81":{"bookPage":324,"unit":7,"score":0.2315,"slideTitle":"實體安全-電力備援 不斷電系統(UPS) – 在線式 • 不論市電是否正常，電力的供應會通過 UPS系統 • 當電力中斷時無需切換 • 電力的供應較為穩定 • ","printedPageApprox":322},"day3:82":{"bookPage":325,"unit":7,"score":0.2808,"slideTitle":"實體安全-電力干擾 電力供應常受到外部環境的干擾而導致電力供應不穩定 電力供應不穩定將導致 – 設備故障(突然的高電壓) – 設備運作不正常(突然的低電壓) –","printedPageApprox":323},"day3:83":{"bookPage":327,"unit":7,"score":0.1696,"slideTitle":"實體安全-靜電防範 防止靜電危害的方法 – 在機房使用抗靜電高架地板 – 使用抗靜電桌面 – 建築物、機房、電力設備及 電腦設備要正常的接地 – 空調維持在合適","printedPageApprox":325},"day3:84":{"bookPage":327,"unit":7,"score":0.116,"slideTitle":"實體安全-滅火方式(1/2) 火由下列四種因素所組成 – 可燃物：木材與油 – 溫度超出燃點 – 氧氣 – 化學反應 滅火的方式 – 降低溫度 – 去除可燃物 ","printedPageApprox":325},"day3:85":{"bookPage":328,"unit":7,"score":0.5121,"slideTitle":"實體安全-滅火方式(2/2) 不同的可燃物必須採用適合的滅火方式 滅火方式 可燃物 別名 火災 分類 水、ABC類乾粉、泡沫之滅 火器 木材、紙張、衣 服及塑膠","printedPageApprox":326},"day3:86":{"bookPage":329,"unit":7,"score":0.239,"slideTitle":"實體安全-漏水偵測 消防灑水系統可能會有漏水的問題 機房無法灑水時，需裝設特殊滅火裝置 水的偵測可避免損害 • 設備 • 鋪設地板 • 牆 • 電腦 • 建物基","printedPageApprox":327},"day3:87":{"bookPage":331,"unit":7,"score":0.0133,"slideTitle":"第7單元-分組討論 1. 目前機關是如何規劃及執行弱點掃描及滲透測試？在實際操 作中，您認為進行弱點掃描及滲透測試時，最常遇到的挑戰 是什麼？是否有任何實務上的","printedPageApprox":329},"day3:88":{"bookPage":332,"unit":8,"score":0.2046,"slideTitle":"第8單元 資訊委外安全管理","printedPageApprox":330},"day3:89":{"bookPage":333,"unit":8,"score":0.0805,"slideTitle":"第8單元學習目標 8-1 了解資訊委外之相關法規 8-2 了解資訊委外之類別及形態 8-3 了解資訊委外之風險 8-4 了解資訊委外之生命週期 8-5 了解資訊","printedPageApprox":331},"day3:90":{"bookPage":334,"unit":8,"score":0.306,"slideTitle":"8-1 資訊委外之相關法規(1/4) 資通安全管理法第10條： 公務機關或特定非公務機關，於本法適用範圍內，委外辦理資通系統 之建置、維運或資通服務之提供，應選","printedPageApprox":332},"day3:91":{"bookPage":335,"unit":8,"score":0.5176,"slideTitle":"資通安全管理法施行細則 各機關依本法第十條規定委外辦理資通系統之建置、維運或資通服務之提供（以下簡稱受託業務），選 任及監督受託者時，應注意下列事項： ⼀、受託","printedPageApprox":333},"day3:92":{"bookPage":335,"unit":8,"score":0.3782,"slideTitle":"第二方稽核：《資通安全管理法施行細則》第7條第1項第8款 委託機關應定期或於知悉受託者發生可能影響受託業務之資通安全事 件時，以稽核或其他適當方式確認受託業務之","printedPageApprox":333},"day3:93":{"bookPage":337,"unit":8,"score":0.5813,"slideTitle":"政府資訊作業委外資安參考指引 文件名稱 編號 文件名稱 編號 行政院公共工程委員會「投標廠 商聲明書範本」 5 ⾏政院公共工程委員會與數位發展 部研訂之「資訊服","printedPageApprox":335},"day3:94":{"bookPage":339,"unit":8,"score":0.1256,"slideTitle":"8-2 資訊委外之類別及形態(1/2) 委外定義 將機關之資通服務所有 相關活動，部分或全部 由機關外之資通服務提 供者完成。 資訊委外類別 • 系統發展類 •","printedPageApprox":337},"day3:95":{"bookPage":340,"unit":8,"score":0.1292,"slideTitle":"系統開發 顧問輔導 系統維護 稽核審查 系統整合 系統稽核 整體委外 軟體驗證 教育訓練 人力支援 設備操作 整體規劃 硬體維護 資訊委外之類別及形態 機房設施","printedPageApprox":338},"day3:96":{"bookPage":341,"unit":8,"score":0.3003,"slideTitle":"遠端維運 近期迭發生機關開放委外廠商自遠端進行資通系統維護 致存取機制遭駭客利用，間接攻擊機關資通系統事件， 為降低資安風險，各機關應加強遠端存取控制機制。 8","printedPageApprox":339},"day3:97":{"bookPage":343,"unit":8,"score":0.4224,"slideTitle":"8-4 資訊委外之生命週期(1/2) 決定需求 機關對資通系統明確定義需求，並識別出資通安全的需 求。此階段對應資訊委外資安要求之計畫階段 識別可行解決方案 在","printedPageApprox":341},"day3:98":{"bookPage":344,"unit":8,"score":0.478,"slideTitle":"選定解決方案 由決策者選出適當的解決方案。此階段對應資訊委外資 安要求之決標階段 完成建置 於完成決標後，成立專案組織，督導服務廠商遵循RFP 與契約，如期如質","printedPageApprox":342},"day3:99":{"bookPage":345,"unit":8,"score":0.1595,"slideTitle":"計畫階段 1 招標階段 2 決標階段 3 履約管理階 段 4 驗收階段 5 保固階段 6 8-5 資訊委外之資安要求(1/12) 依⼀般採購流程區分成以下階段，","printedPageApprox":343},"day3:100":{"bookPage":346,"unit":8,"score":0.1697,"slideTitle":"計畫階段(1/3) 計畫階段重點在評估個案之委外可行性與委外風險，以 確認是否進行委外 區分成「委外可行性分析」、「委外專案編成」及「委 外資安需求識別」三步驟","printedPageApprox":344},"day3:101":{"bookPage":346,"unit":8,"score":0.4941,"slideTitle":"計畫階段(2/3) 資訊委外可行性分析 – 篩選適合委託辦理之業務項目 – 進行成本效益分析 – 評估資訊委外資安風險與對策 • 本步驟屬於初期風險評估，在有限","printedPageApprox":344},"day3:102":{"bookPage":347,"unit":8,"score":0.518,"slideTitle":"計畫階段(3/3) 委外資安需求識別 – 建立資訊委外資安策略 • 視專案時程定期審查資安策略，或於發生重大營運、法律、法規、架構、政 策及契約變更時審查之，確","printedPageApprox":345},"day3:103":{"bookPage":348,"unit":8,"score":0.4383,"slideTitle":"招標階段 招標階段之重點在遴選適宜之委外廠商 招標階段作業包含定義委外廠商評估準則、備妥保密 協議書、招標文件、蒐集廠商投標文件及評選服務建 議書等作業 資安管","printedPageApprox":346},"day3:104":{"bookPage":349,"unit":8,"score":0.4267,"slideTitle":"決標階段 決標階段之重點為與廠商之簽約作業 – 機關與委外廠商雙方依據招標文件與廠商回應之服 務建議書進行最終協議，於雙方協議並確定契約內 容後，即進行簽約作業","printedPageApprox":347},"day3:105":{"bookPage":350,"unit":8,"score":0.381,"slideTitle":"履約管理階段(1/2) 資通安全組織 – 機關與委外廠商皆應指定專案管理人員，負責推動、協調及督導 資通安全管理事項 資訊委外風險持續識別 – 機關資訊委外過程","printedPageApprox":348},"day3:106":{"bookPage":351,"unit":8,"score":0.3794,"slideTitle":"履約管理階段(2/2) 資訊委外實體與環境安全 – 防止機關內資訊因資訊委外而遭未經授權的實體存取、損害及干擾，關鍵 或敏感的資訊處理設施宜置放於安全區域，並經","printedPageApprox":349},"day3:107":{"bookPage":352,"unit":8,"score":0.3518,"slideTitle":"驗收階段(1/3) ⼀般驗收程序 – 機關依據契約文件與「履約管理」階段執行成果辦理 – 勞務驗收，得以書面或召開審查會方式辦理，其書面驗收 文件或審查會紀錄，","printedPageApprox":350},"day3:108":{"bookPage":353,"unit":8,"score":0.2801,"slideTitle":"驗收階段(2/3) 資安驗收內容 – 顧問訓練類 • 主要提供管理與技術服務，在完成顧問服務時即可得知是否 符合機關要求 • 對於需使用軟體輔助才可完成專案之情","printedPageApprox":351},"day3:109":{"bookPage":355,"unit":8,"score":0.3287,"slideTitle":"驗收階段(3/3) – 維運管理類 • 維運管理類與顧問訓練類之服務類似 • 若維運過程有新發現程式漏洞，則需進行程式修補者或定期 進行程式弱點掃描 – 雲端服","printedPageApprox":353},"day3:110":{"bookPage":356,"unit":8,"score":0.4626,"slideTitle":"保固階段 保固服務 保固期間不論軟硬體資產，應以維持驗收完成時之 狀態為主要目的 異常管理 – 保固期間運作中之資訊處理設施與應用軟體系統， 均應受到嚴格之變更","printedPageApprox":354},"day3:111":{"bookPage":357,"unit":8,"score":0.0,"slideTitle":"第8單元-分組討論 1. 機關在辦理資訊委外時，如何依照資安法規要求來選任及監 督委外廠商？在落實這些規定時，曾遇到哪些具體挑戰？又 採取了哪些應對措施？ 2.","printedPageApprox":355},"day3:112":{"bookPage":358,"unit":9,"score":0.5024,"slideTitle":"第9單元 資通安全事件通報應變及演練","printedPageApprox":356},"day3:113":{"bookPage":359,"unit":9,"score":0.1801,"slideTitle":"第9單元學習目標 9-1 了解資通安全事件管理機制 9-2 了解資通安全事件通報及應變作業規範 9-3 了解資通安全事件等級評估 9-4 了解資通安全事件通報及","printedPageApprox":357},"day3:114":{"bookPage":360,"unit":9,"score":0.1111,"slideTitle":"9-1 資通安全事件管理機制 依資通安全管理法第10條第4項、第17條第4項及第24條 第4項訂定 目的：為強化各機關資安事件之因應作為 管理流程：訂定作業規範","printedPageApprox":358},"day3:115":{"bookPage":362,"unit":9,"score":0.5362,"slideTitle":"通報及應變作業規範 各機關應就資通安全事件之通報訂定作業規範，其內容應包括下列事項： (§4) – 判定事件等級之流程及權責 – 事件之影響範圍、損害程度及機關","printedPageApprox":360},"day3:116":{"bookPage":364,"unit":9,"score":0.269,"slideTitle":"資通安全事件分級由輕至重分「1」、「2」、「3」、 「4」四個級別 評定資通安全事件分級時，將以資訊或資通系統性質與其CIA衝 擊性，綜評該事件級別 綜評事件級","printedPageApprox":362},"day3:117":{"bookPage":364,"unit":9,"score":0.1927,"slideTitle":"9-3 資通安全事件等級評估(2/8) 資安事件影響等級評定須考量三面向衝擊性 「機密性」衝擊 「完整性」衝擊 「可用性」衝擊 綜合評估資安事件造成之「機密性」","printedPageApprox":362},"day3:118":{"bookPage":366,"unit":9,"score":0.4457,"slideTitle":"機密性係依據外洩的資訊性質與程度評估級別 說明 影響等級 非核心業務資訊遭輕微洩漏 第1級 輕 微 嚴 重 非核心業務資訊遭嚴重洩漏，或未涉及關鍵基礎設施維運之","printedPageApprox":364},"day3:119":{"bookPage":368,"unit":9,"score":0.4785,"slideTitle":"完整性係依據受影響資訊或資通系統性質與竄改程度評 估級別 說明 影響等級 非核心業務資訊或非核心資通系統遭輕微竄改 第1級 輕 微 嚴 重 非核心業務資訊或非核","printedPageApprox":366},"day3:120":{"bookPage":370,"unit":9,"score":0.5771,"slideTitle":"可用性係依據受影響資通系統性質與可否於可容忍中斷 時間回復評估級別 說明 影響等級 非核心資通系統之運作受影響或停頓，於可容忍中斷時間內回復正常運作， 造成機關","printedPageApprox":368},"day3:121":{"bookPage":372,"unit":9,"score":0.7199,"slideTitle":"可用性 資通系統運作受影響或停頓 完整性 業務資訊/資通系統遭竄改 機密性 業務資訊洩漏 影響 等級 可否於可容忍 中斷時間回復 資通系統 影響 程度 資訊/ ","printedPageApprox":370},"day3:122":{"bookPage":373,"unit":9,"score":0.51,"slideTitle":"情境 解析 綜合 評估 A機關⾃⾏發現內部⼀名員工電腦中的檔案被加密，此該員工負責處理機 關內核心資通系統相關行政作業，該系統未涉及關鍵基礎設施相關運作， 但可","printedPageApprox":371},"day3:123":{"bookPage":375,"unit":9,"score":0.7215,"slideTitle":"情境 解析 綜合 評估 B機關製程資料收集系統為負責關鍵基礎設施運作團隊存放執行紀錄系統，每 日進行備份，資料處理人員發現系統無法正常開啟，經查發現製程資料收集","printedPageApprox":373},"day3:124":{"bookPage":377,"unit":9,"score":0.3444,"slideTitle":"9-4 資通安全事件通報及應變作業流程(1/5) 資安事件處理之相關訊息 資安事件通報 基本項目 • 發生機關 • 發生或知悉時間 • 狀況之描述 • 等級之評","printedPageApprox":375},"day3:125":{"bookPage":378,"unit":9,"score":0.2778,"slideTitle":"通報及應變作業流程(1/2) 公務機關/特定非公務機關應於知悉資安事件後，1小時內向上(主管機 關/中央目的事業主管機關)通報相關事件相關資訊，並於限定時間內，","printedPageApprox":376},"day3:126":{"bookPage":380,"unit":9,"score":0.1997,"slideTitle":"通報及應變作業流程(2/2) ※ 通報機關於事件調查過程中，發現事件影響範圍擴大，應適時提出等級變更申請，並說明 等級變更原因與事件調查情況，以利審核機關/主管","printedPageApprox":378},"day3:127":{"bookPage":381,"unit":9,"score":0.2216,"slideTitle":"公務機關通報及應變作業流程 9-4 資通安全事件通報及應變作業流程(4/5)","printedPageApprox":379},"day3:128":{"bookPage":381,"unit":9,"score":0.2157,"slideTitle":"特定非公務機關通報及應變作業流程 9-4 資通安全事件通報及應變作業流程(5/5)","printedPageApprox":379},"day3:129":{"bookPage":386,"unit":9,"score":0.262,"slideTitle":"通報及應變演練作業 總統府、國家安全會議與五院之直屬機關對其自身、所屬或所監 督之公務機關，應規劃及辦理資通安全演練作業，並於完成後 ⼀個⽉內，將執⾏情形及成果","printedPageApprox":384},"day3:130":{"bookPage":388,"unit":9,"score":0.2225,"slideTitle":"資安事件-處理目的 9-6 資通安全事件處理(1/12) 確認資安事件是否發生 降低對業務與網路服務的中斷時間 提供精準與及時的資訊 於規定時間內完成損害控制或","printedPageApprox":386},"day3:131":{"bookPage":389,"unit":9,"score":0.1296,"slideTitle":"資安事件-處理計畫 定期重新審查計畫文件 – 更新人員、科技及業務處理流程 訓練 – 組織分工與權責、資通安全技能、危機處理、數位鑑 識與調查技能及溝通能力 財","printedPageApprox":387},"day3:132":{"bookPage":390,"unit":9,"score":0.1107,"slideTitle":"資安事件-處理程序 準備 識別 封鎖 根除 復原 經驗學習 識別 資安事件 處理程序 根除 復原 封鎖 準備 經驗學習 9-6 資通安全事件處理(3/12)","printedPageApprox":388},"day3:133":{"bookPage":392,"unit":9,"score":0.1859,"slideTitle":"資安事件-處理程序-準備(1/2) 資安事件成功處理的關鍵是事前的「準備」 – 組織資安事件處理小組 – 建立資安事件處理策略 – 設計資安事件處理程序 – 建","printedPageApprox":390},"day3:134":{"bookPage":392,"unit":9,"score":0.1085,"slideTitle":"資安事件-處理程序-準備(2/2) 資安事件處理小組 – 技術部門(IT、資通安全及系統管理者) – 管理人員 – 法務部門 – 數位鑑識專家 – 公共關係部門","printedPageApprox":390},"day3:135":{"bookPage":393,"unit":9,"score":0.0937,"slideTitle":"資安事件-處理程序-識別(1/2) 資安事件無法完全防制，但必須被偵測 – 識別意圖(故意或無意) – 確認範圍 • 識別哪些系統、人員及資訊資產被包含在處理的","printedPageApprox":391},"day3:136":{"bookPage":394,"unit":9,"score":0.1159,"slideTitle":"資安事件-處理程序-識別(2/2) 數位證據的取得 – 採用被接受的磁碟映像複製工具(所有磁區的複製，配合雜湊函數 以檢驗被複製出來的資料沒有被竄改) – 配合","printedPageApprox":392},"day3:137":{"bookPage":395,"unit":9,"score":0.2715,"slideTitle":"資安事件-處理程序-封鎖 當資安事件已被識別，且相關證物監管鏈已被建立後， 接下來就開始「封鎖」入侵來源，以避免災害擴大 – 識別可信任來源 • 不只是來源網路","printedPageApprox":393},"day3:138":{"bookPage":396,"unit":9,"score":0.2182,"slideTitle":"資安事件-處理程序-根除 ⼀旦資安事件已被控制，接下來要從系統或網路中 完全移除惡意程式 – 決定採用移除或回存方式 • 是否可以完全移除乾淨 • 備份資料中是","printedPageApprox":394},"day3:139":{"bookPage":397,"unit":9,"score":0.1736,"slideTitle":"資安事件-處理程序-復原 ⼀旦威脅被根除，接下來應開始將業務與服務回復至 正常運作狀態 加強監控以偵測攻擊是否再發生 – 客製化入侵偵測規則 – 在網路、主機及","printedPageApprox":395},"day3:140":{"bookPage":399,"unit":9,"score":0.1602,"slideTitle":"資安事件-處理程序-經驗學習 召開經驗學習會議 – 在相關處理人員記憶猶新的情況下 – 讓機關在資安事件中學習防護經驗 – 建議修改相關政策或程序，以利未來安全","printedPageApprox":397},"day3:141":{"bookPage":400,"unit":9,"score":0.2251,"slideTitle":"資安事件-處理個資外洩 在「識別」與「封鎖」階段 – 應確定個人資料外洩的範圍 在「復原」階段 – 依「個人資料保護法」要求，應主動通知個資被外 洩的對象 – ","printedPageApprox":398},"day3:142":{"bookPage":401,"unit":9,"score":0.241,"slideTitle":"數位證據(Digital Evidence) 9-7 數位證據及數位鑑識(1/3) 由電腦來儲存或是傳送的資料 該資料可以用來進行後續的偵查 偵查的目的是用來確","printedPageApprox":399},"day3:143":{"bookPage":402,"unit":9,"score":0.2257,"slideTitle":"數位鑑識(Digital Forensics) 數位鑑識是鑑識科學的領 域之⼀ 探討與電腦犯罪相關證物 的處理與調查 可運用在法庭上支持或是 否定犯罪的推論 也","printedPageApprox":400},"day3:144":{"bookPage":402,"unit":9,"score":0.1089,"slideTitle":"數位鑑識-原則 物證的監管鏈(Chain of Custody) – 從扣押、蒐集、保管到運送過程，要確保資料的⼀致性與 完整性 數位證據的完整性(Eviden","printedPageApprox":400},"day3:145":{"bookPage":403,"unit":9,"score":0.3668,"slideTitle":"9-8 社交工程(1/7) 利用人性弱點，應用簡單的溝通與欺騙伎倆，遂行其 非法的存取與破壞行為 攻擊者不需要具備頂尖的電腦專業技術，只要受害方 對於防範詐騙沒","printedPageApprox":401},"day3:146":{"bookPage":405,"unit":9,"score":0.1631,"slideTitle":"社交工程常見的攻擊手法，包括: – 網路釣魚(Phishing) – 釣魚簡訊(Smishing) – 電話詐騙(Vishing) – 即時通訊詐騙(Insta","printedPageApprox":403},"day3:147":{"bookPage":405,"unit":9,"score":0.2861,"slideTitle":"社交工程-常見攻擊手法(2/3) 網路釣魚(Phishing) – 攻擊者偽裝成可信賴的實體（如銀行、政府機關、知名企業或 公司內部同事），透過電子郵件或其他電","printedPageApprox":403},"day3:148":{"bookPage":406,"unit":9,"score":0.2227,"slideTitle":"社交工程-常見攻擊手法(3/3) 冒充(Pretexting) – 攻擊者事先編造⼀個虛假但看似合理的故事或情境（Pretext）， 以獲取目標信任，從而套取資","printedPageApprox":404},"day3:149":{"bookPage":407,"unit":9,"score":0.1523,"slideTitle":"社交工程演練作業-以電子郵件為例 確定目標 並設計攻擊 場景 分析結果 並識別薄弱 環節 改進安全策略 並定期演練 發送釣魚郵件 並記錄反應 提供回饋 並組織培","printedPageApprox":405},"day3:150":{"bookPage":408,"unit":9,"score":0.1083,"slideTitle":"社交工程-案例 發現近期駭客利用大學系所人員之電子郵件帳號，偽冒監察院名義， 寄送含惡意附檔之社交工程電子郵件給政府機關人員，企圖誘騙收件 人開啟惡意附檔以植入","printedPageApprox":406},"day3:151":{"bookPage":410,"unit":9,"score":0.2892,"slideTitle":"社交工程-正確防範觀念 隨時提高警覺，在沒有適當的認證情況下，不應輕信他 人，只要出現社交工程攻擊警訊，都應保持小心求證的 戒心 – 不未經確認即提供資料 – ","printedPageApprox":408},"day3:152":{"bookPage":410,"unit":9,"score":0.0172,"slideTitle":"第9單元-分組討論 分享資通安全事件處理經驗 1. 機關遭遇過哪些資通安全事件 2. 機關是否有無法處理之資通安全事件 3. 機關辦理哪些演練及處理資通安全事件","printedPageApprox":408}};
+  const TOTAL_REF_PAGES=418;
+  let refCurrentPage=1;
+  let matchedBookPage=1;
+  const rg=id=>document.getElementById(id);
+  const rpad=n=>String(n).padStart(3,"0");
+  const refImageUrl=p=>`reference_pages/${rpad(p)}.webp`;
+
+  function sourceState(){
+    const active=document.querySelector(".sourceItem.active");
+    const sourceId=active?.dataset?.sourceId||"day1";
+    const page=parseInt(rg("sourcePageInput")?.value||"1",10)||1;
+    return {sourceId,page};
+  }
+
+  function currentMap(){
+    const {sourceId,page}=sourceState();
+    return PPT_REFERENCE_MAP[`${sourceId}:${page}`]||null;
+  }
+
+  function updateReferenceBar(){
+    const bar=rg("sourceReferenceBar");
+    const txt=rg("sourceReferenceText");
+    const open=rg("sourceReferenceOpenBtn");
+    const pdf=rg("sourceReferencePdfBtn");
+    if(!bar||!txt||!open)return;
+
+    const {sourceId,page}=sourceState();
+    const m=PPT_REFERENCE_MAP[`${sourceId}:${page}`]||null;
+
+    if(!m){
+      bar.classList.add("noReference");
+      txt.textContent="附表一～十為獨立法規附表；逐頁對應功能目前套用第1～3天主要PPT。";
+      open.disabled=true;
+      if(pdf)pdf.href="original/reference_11508.pdf";
+      return;
+    }
+
+    bar.classList.remove("noReference");
+    matchedBookPage=m.bookPage;
+    const score=Number(m.score||0);
+    const type=score<0.06 && m.unit>0 ? "（本頁為討論／活動頁，連至所在單元相鄰資料）" : "";
+    txt.textContent=`目前PPT第 ${page} 頁 → 新版教材 PDF 第 ${m.bookPage} 頁 ${type}`;
+    open.disabled=false;
+    if(pdf)pdf.href=`original/reference_11508.pdf#page=${m.bookPage}`;
+  }
+
+  function loadReferencePage(page){
+    refCurrentPage=Math.max(1,Math.min(TOTAL_REF_PAGES,parseInt(page,10)||1));
+    const img=rg("referencePageImage");
+    const stage=img?.closest(".referenceImageStage");
+    if(rg("referencePageInput"))rg("referencePageInput").value=refCurrentPage;
+    if(rg("referencePrevBtn"))rg("referencePrevBtn").disabled=refCurrentPage<=1;
+    if(rg("referenceNextBtn"))rg("referenceNextBtn").disabled=refCurrentPage>=TOTAL_REF_PAGES;
+    if(rg("referenceOpenPdfBtn"))rg("referenceOpenPdfBtn").href=`original/reference_11508.pdf#page=${refCurrentPage}`;
+
+    if(img){
+      stage?.classList.add("loading");
+      img.alt=`新版教材第${refCurrentPage}頁`;
+      img.onload=()=>{
+        stage?.classList.remove("loading");
+        if(stage){stage.scrollTop=0;stage.scrollLeft=0;}
+      };
+      img.onerror=()=>stage?.classList.remove("loading");
+      img.src=refImageUrl(refCurrentPage);
+    }
+  }
+
+  function openReference(){
+    const m=currentMap();
+    if(!m)return;
+    const modal=rg("referenceViewerModal");
+    const {sourceId,page}=sourceState();
+    const day=sourceId==="day1"?"第1天":sourceId==="day2"?"第2天":sourceId==="day3"?"第3天":sourceId;
+    if(rg("referenceViewerMatch")){
+      rg("referenceViewerMatch").textContent=`${day} PPT 第 ${page} 頁 ↔ 新版教材 PDF 第 ${m.bookPage} 頁`;
+    }
+    modal?.classList.remove("hidden");
+    modal?.setAttribute("aria-hidden","false");
+    document.body.classList.add("referenceModalOpen");
+    loadReferencePage(m.bookPage);
+  }
+
+  function closeReference(){
+    const modal=rg("referenceViewerModal");
+    modal?.classList.add("hidden");
+    modal?.setAttribute("aria-hidden","true");
+    document.body.classList.remove("referenceModalOpen");
+  }
+
+  window.addEventListener("DOMContentLoaded",()=>{
+    // 頁面初始
+    setTimeout(updateReferenceBar,80);
+
+    // 原始教材換頁、來源切換後更新
+    [
+      "sourceFirstBtn","sourcePrevBtn","sourceGoPageBtn","sourceNextBtn","sourceLastBtn",
+      "sourceFooterPrev","sourceFooterNext"
+    ].forEach(id=>rg(id)?.addEventListener("click",()=>setTimeout(updateReferenceBar,80)));
+
+    rg("sourcePageInput")?.addEventListener("keydown",e=>{
+      if(e.key==="Enter")setTimeout(updateReferenceBar,80);
+    });
+    document.querySelectorAll(".sourceItem").forEach(el=>{
+      el.addEventListener("click",()=>setTimeout(updateReferenceBar,100));
+    });
+
+    // 圖片 load 最可靠：涵蓋 swipe / 鍵盤 / 單元跳頁
+    rg("sourcePageImage")?.addEventListener("load",()=>setTimeout(updateReferenceBar,20));
+
+    rg("sourceReferenceOpenBtn")?.addEventListener("click",openReference);
+    rg("referenceViewerCloseBtn")?.addEventListener("click",closeReference);
+    document.querySelectorAll("[data-ref-close='1']").forEach(el=>el.addEventListener("click",closeReference));
+
+    rg("referencePrevBtn")?.addEventListener("click",()=>loadReferencePage(refCurrentPage-1));
+    rg("referenceNextBtn")?.addEventListener("click",()=>loadReferencePage(refCurrentPage+1));
+    rg("referenceGoBtn")?.addEventListener("click",()=>loadReferencePage(rg("referencePageInput")?.value));
+    rg("referencePageInput")?.addEventListener("keydown",e=>{
+      if(e.key==="Enter")loadReferencePage(e.currentTarget.value);
+    });
+
+    document.addEventListener("keydown",e=>{
+      const modal=rg("referenceViewerModal");
+      if(!modal||modal.classList.contains("hidden"))return;
+      if(e.key==="Escape"){e.preventDefault();closeReference();}
+      else if(e.key==="ArrowLeft"){e.preventDefault();loadReferencePage(refCurrentPage-1);}
+      else if(e.key==="ArrowRight"){e.preventDefault();loadReferencePage(refCurrentPage+1);}
+    });
+  });
+
+  // 給其他模組需要時呼叫
+  window.updatePptReferenceBar=updateReferenceBar;
+  window.openPptReference=openReference;
 })();
 </script>
 
