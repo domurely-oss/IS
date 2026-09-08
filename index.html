@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11508｜V38 iPad單元選單修正版</title>
+<title>資安職能訓練｜資通安全概論 11508｜V38 附表一～八統整分析版</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -3603,6 +3603,66 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump{
   }
 }
 
+
+/* ===== V38.4 完整整理：附表一～八統整分析＋左側索引 ===== */
+.annex18NavBtn{margin-bottom:2px}
+.annex18NavBtn>span{
+  font-size:9px!important;
+  letter-spacing:-.3px
+}
+.annexSubNav{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4px;
+  margin:3px 6px 8px 38px
+}
+.annexSubNav button{
+  border:1px solid var(--line);
+  border-radius:7px;
+  background:#fff;
+  color:var(--muted);
+  min-height:27px;
+  padding:3px 4px;
+  font-size:8px;
+  font-weight:800;
+  cursor:pointer;
+  line-height:1.15
+}
+.annexSubNav button:hover,
+.annexSubNav button:focus{
+  color:var(--primary);
+  border-color:#a9b9ef;
+  background:#f5f7ff;
+  outline:none
+}
+.annex18StudyUnit .goal{
+  border-left:4px solid #3156d3
+}
+.annex18StudyUnit table td:first-child,
+.annex18StudyUnit table th:first-child{
+  white-space:nowrap
+}
+.annex18StudyUnit .tableWrap{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch
+}
+.annex18ExamList{
+  margin:8px 0 0 22px;
+  padding:0
+}
+.annex18ExamList li{
+  margin:6px 0;
+  line-height:1.55
+}
+@media(max-width:680px){
+  .annexSubNav{
+    margin-left:34px;
+    grid-template-columns:1fr 1fr
+  }
+  .annexSubNav button{font-size:8px;min-height:29px}
+  .annex18StudyUnit .tableWrap table{min-width:650px}
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -3683,6 +3743,18 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump{
 <div id="unitNavList"><button class="unitNav" data-unit="1"><span>1</span><div><b>第1單元</b><small>資通安全基本觀念</small></div></button><button class="unitNav" data-unit="2"><span>2</span><div><b>第2單元</b><small>資通安全相關法規</small></div></button><button class="unitNav" data-unit="3"><span>3</span><div><b>第3單元</b><small>資通安全風險管理</small></div></button><button class="unitNav" data-unit="4"><span>4</span><div><b>第4單元</b><small>資通安全管理面暨認知與訓練</small></div></button><button class="unitNav" data-unit="5"><span>5</span><div><b>第5單元</b><small>資通系統防護控制措施</small></div></button><button class="unitNav" data-unit="6"><span>6</span><div><b>第6單元</b><small>資通安全之防護及偵測</small></div></button><button class="unitNav" data-unit="7"><span>7</span><div><b>第7單元</b><small>安全性檢測及資通安全健診</small></div></button><button class="unitNav" data-unit="8"><span>8</span><div><b>第8單元</b><small>資訊委外安全管理</small></div></button><button class="unitNav" data-unit="9"><span>9</span><div><b>第9單元</b><small>資通安全事件通報應變及演練</small></div></button></div>
 <div class="annexNavSection">
   <div class="annexNavLabel">附表補充</div>
+  <button class="annexNavBtn annex18NavBtn" id="annex18StudyNav" type="button" onclick="document.getElementById('study-annex1-8').scrollIntoView({behavior:'smooth',block:'start'})">
+    <span>1–8</span>
+    <div><b>附表一～八</b><small>A～E責任等級｜統整分析</small></div>
+  </button>
+  <div class="annexSubNav" aria-label="附表一至八索引">
+    <button type="button" onclick="document.getElementById('annex18-map').scrollIntoView({behavior:'smooth',block:'start'})">對照總覽</button>
+    <button type="button" onclick="document.getElementById('annex18-abc').scrollIntoView({behavior:'smooth',block:'start'})">A/B/C差異</button>
+    <button type="button" onclick="document.getElementById('annex18-public-private').scrollIntoView({behavior:'smooth',block:'start'})">公私差異</button>
+    <button type="button" onclick="document.getElementById('annex18-de').scrollIntoView({behavior:'smooth',block:'start'})">D/E級</button>
+    <button type="button" onclick="document.getElementById('annex18-deadline').scrollIntoView({behavior:'smooth',block:'start'})">辦理期限</button>
+    <button type="button" onclick="document.getElementById('annex18-exam').scrollIntoView({behavior:'smooth',block:'start'})">考前速查</button>
+  </div>
   <button class="annexNavBtn" id="annex10StudyNav" type="button" onclick="document.getElementById('study-annex10').scrollIntoView({behavior:'smooth',block:'start'})">
     <span>10</span>
     <div><b>附表十</b><small>資通系統防護基準｜完整整理</small></div>
@@ -4421,6 +4493,178 @@ body.sourcePseudoFullscreen #sourceViewerCard .sourceUnitQuickJump{
 <div class="subSrc">教材定位：第3天 3-125～3-126</div>
 </div>
 </details>
+</div>
+</article>
+
+
+<article class="studyUnit annex18StudyUnit" data-search="附表一 附表二 附表三 附表四 附表五 附表六 附表七 附表八 A級 B級 C級 D級 E級 公務機關 特定非公務機關 資通安全責任等級 應辦事項 專職人員 稽核 弱點掃描 滲透測試 健診 資安治理成熟度 政府組態基準 端點偵測 應變 教育訓練 證照 職能訓練 辦理期限" id="study-annex1-8">
+<div class="unitHead">
+<div><span class="dayTag">附表一～八</span><h2>資通安全責任等級 A～E｜應辦事項統整分析</h2></div>
+<div class="unitActions">
+<button class="miniBtn" onclick="document.querySelectorAll('#study-annex1-8 details').forEach(d=>d.open=true)">展開附表一～八</button>
+<button class="miniBtn" onclick="document.querySelectorAll('#study-annex1-8 details').forEach(d=>d.open=false)">收合附表一～八</button>
+</div>
+</div>
+<div class="studyBody">
+<div class="goal"><b>統整方式：</b>依原始教材「附表一～八」逐表整理，先建立 A～E 等級與公務／特定非公務機關對照，再比較管理面、技術面、認知與訓練、辦理期限及容易混淆差異。以下內容以附表原文為依據。</div>
+
+<details class="studyDetail" id="annex18-map" open>
+<summary>附表一～八-1｜八張附表與 A～E 等級對照總覽</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex18-1">
+<div class="tableWrap"><table>
+<thead><tr><th>附表</th><th>責任等級</th><th>適用對象</th><th>核心定位</th></tr></thead>
+<tbody>
+<tr><td>附表一</td><td><b>A級</b></td><td>公務機關</td><td>最高強度：4名以上專職、每年2次稽核／弱掃、每年滲測與健診，並有監控、GCB、弱點管理、EDR、APT防禦</td></tr>
+<tr><td>附表二</td><td><b>A級</b></td><td>特定非公務機關</td><td>整體強度與A級相近；部分項目改以「關鍵基礎設施提供者」為適用條件，且不列政府組態基準</td></tr>
+<tr><td>附表三</td><td><b>B級</b></td><td>公務機關</td><td>中高強度：2名以上專職、每年稽核／弱掃、每2年滲測與健診，仍有監控、GCB、弱點管理、EDR</td></tr>
+<tr><td>附表四</td><td><b>B級</b></td><td>特定非公務機關</td><td>與B級公務機關大致同層級；成熟度與指定弱點管理聚焦關鍵基礎設施提供者，不列GCB</td></tr>
+<tr><td>附表五</td><td><b>C級</b></td><td>公務機關</td><td>基礎管理＋定期檢測：1名以上專職、每2年稽核／弱掃／滲測／健診；核心系統導入ISMS但不要求第三方驗證</td></tr>
+<tr><td>附表六</td><td><b>C級</b></td><td>特定非公務機關</td><td>與C級公務機關相近；指定弱點管理限關鍵基礎設施提供者，證照／證書採「或」</td></tr>
+<tr><td>附表七</td><td><b>D級</b></td><td>各機關</td><td>不再列A～C的完整管理／檢測要求；重點縮為防毒、防火牆與教育訓練</td></tr>
+<tr><td>附表八</td><td><b>E級</b></td><td>各機關</td><td>最低要求：一般使用者及主管每年3小時以上資通安全通識教育訓練</td></tr>
+</tbody></table></div>
+<div class="examTip"><b>先記架構：</b>附表一／二＝A公／A非公；三／四＝B公／B非公；五／六＝C公／C非公；七＝D各機關；八＝E各機關。</div>
+<div class="subSrc">來源：附表一至附表八之表名與應辦事項。</div>
+</div>
+</details>
+
+<details class="studyDetail" id="annex18-abc" open>
+<summary>附表一～八-2｜A／B／C 等級「數字型」差異總表</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex18-2">
+<div class="tableWrap"><table>
+<thead><tr><th>比較項目</th><th>A級</th><th>B級</th><th>C級</th><th>記憶重點</th></tr></thead>
+<tbody>
+<tr><td>資通安全專職人員</td><td><b>4人以上</b></td><td><b>2人以上</b></td><td><b>1人以上</b></td><td><b>4－2－1</b></td></tr>
+<tr><td>內部資通安全稽核</td><td><b>每年2次</b></td><td><b>每年1次</b></td><td><b>每2年1次</b></td><td>A最密集，B每年，C隔年</td></tr>
+<tr><td>營運持續計畫演練</td><td>全部核心系統<b>每年1次</b></td><td>全部核心系統<b>每2年1次</b></td><td>全部核心系統<b>每2年1次</b></td><td>A一年；B/C兩年</td></tr>
+<tr><td>弱點掃描</td><td>全部核心系統<b>每年2次</b></td><td>全部核心系統<b>每年1次</b></td><td>全部核心系統<b>每2年1次</b></td><td><b>2/年 → 1/年 → 1/2年</b></td></tr>
+<tr><td>滲透測試</td><td>全部核心系統<b>每年1次</b></td><td>全部核心系統<b>每2年1次</b></td><td>全部核心系統<b>每2年1次</b></td><td>A一年；B/C兩年</td></tr>
+<tr><td>資通安全健診</td><td><b>每年1次</b></td><td><b>每2年1次</b></td><td><b>每2年1次</b></td><td>A一年；B/C兩年</td></tr>
+<tr><td>ISMS</td><td>全部核心系統導入＋<b>第三方驗證</b></td><td>全部核心系統導入＋<b>第三方驗證</b></td><td>全部核心系統<b>導入</b>，不列第三方驗證</td><td>A/B要驗證，C只要求導入</td></tr>
+</tbody></table></div>
+<div class="examTip"><b>超高頻口訣：</b>人數「A4、B2、C1」；弱掃「A二、B一、C兩年一」；滲測／健診／BCP「A一年，B/C兩年」。</div>
+<div class="subSrc">來源：附表一～六之管理面與安全性檢測欄位。</div>
+</div>
+</details>
+
+<details class="studyDetail" open>
+<summary>附表一～八-3｜A／B／C 技術措施由強到弱</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex18-3">
+<div class="tableWrap"><table>
+<thead><tr><th>技術／防護項目</th><th>A級</th><th>B級</th><th>C級</th></tr></thead>
+<tbody>
+<tr><td>資通安全監控管理機制</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>端點偵測及應變機制（EDR）</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>政府組態基準（GCB）</td><td>公務機關✓</td><td>公務機關✓</td><td>—</td></tr>
+<tr><td>資通安全弱點管理</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>防毒軟體／網路防火牆／郵件過濾</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>入侵偵測及防禦機制</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>對外核心系統應用程式防火牆</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>進階持續性威脅（APT）攻擊防禦措施</td><td><b>✓</b></td><td>—</td><td>—</td></tr>
+</tbody></table></div>
+<ul>
+<li><b>A級最明顯的加強：</b>在B級既有監控、EDR、IDS/IPS、WAF等要求上，再多出進階持續性威脅攻擊防禦措施。</li>
+<li><b>B級仍屬高強度：</b>仍要求監控管理機制、端點偵測及應變、IDS/IPS，以及對外服務核心資通系統的應用程式防火牆。</li>
+<li><b>C級明顯收斂：</b>保留弱點管理、弱掃／滲測／健診及基本防毒、防火牆、郵件過濾，但不列監控管理、EDR、IDS/IPS、WAF與APT防禦。</li>
+</ul>
+<div class="examTip"><b>技術層級記法：</b>A＝B＋APT；B＝監控＋EDR＋IDS/IPS＋WAF；C＝弱點管理＋基本防護。</div>
+<div class="subSrc">來源：附表一～六技術面「資通安全監控管理機制、政府組態基準、資通安全弱點管理、端點偵測及應變機制、資通安全防護」。</div>
+</div>
+</details>
+
+<details class="studyDetail" id="annex18-public-private" open>
+<summary>附表一～八-4｜公務機關 vs 特定非公務機關：最容易混淆的差異</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex18-4">
+<div class="tableWrap"><table>
+<thead><tr><th>比較點</th><th>公務機關（附表1/3/5）</th><th>特定非公務機關（附表2/4/6）</th></tr></thead>
+<tbody>
+<tr><td>資安治理成熟度評估</td><td>A、B級：<b>每年辦理1次</b></td><td>A、B級：<b>關鍵基礎設施提供者</b>每年辦理1次</td></tr>
+<tr><td>政府組態基準（GCB）</td><td><b>A、B級列有要求</b></td><td>附表二、四未列此項</td></tr>
+<tr><td>指定方式導入弱點管理</td><td>A、B、C級：依主管機關指定方式導入並持續維運</td><td>A、B、C級：以<b>關鍵基礎設施提供者</b>依主管機關指定方式導入為條件</td></tr>
+<tr><td>專職人員證照／職能訓練證書</td><td>A/B：各自持有<b>證照及證書各1張以上</b>；C：分別持有<b>證照及證書各1張以上</b></td><td>A/B/C：持有<b>證照或證書1張以上</b></td></tr>
+<tr><td>健診替代措施認可</td><td>得採主管機關認可之同等或以上效用措施</td><td>得採中央目的事業主管機關認可之同等或以上效用措施</td></tr>
+</tbody></table></div>
+<div class="examTip"><b>「及／或」是考點：</b>公務機關專職人員偏向「證照<b>及</b>證書」；特定非公務機關為「證照<b>或</b>證書」。另 GCB 只出現在 A/B 級公務機關附表。</div>
+<div class="subSrc">來源：附表一～六之資安治理成熟度、政府組態基準、資通安全弱點管理、證照與職能訓練證書及備註。</div>
+</div>
+</details>
+
+<details class="studyDetail" open>
+<summary>附表一～八-5｜認知與訓練：A～E 怎麼一路降階</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex18-5">
+<div class="tableWrap"><table>
+<thead><tr><th>人員類型</th><th>A／B／C</th><th>D</th><th>E</th></tr></thead>
+<tbody>
+<tr><td>資通安全專職人員</td><td><b>每人每年12小時以上</b>資安專業課程或職能訓練</td><td>不列專職人員要求</td><td>不列</td></tr>
+<tr><td>專職人員以外之資訊人員</td><td><b>每2年3小時以上</b>專業／職能訓練，且<b>每年3小時以上</b>通識訓練</td><td>同樣要求：每2年3小時專業／職能＋每年3小時通識</td><td>不列</td></tr>
+<tr><td>一般使用者及主管</td><td><b>每年3小時以上</b>通識教育訓練</td><td><b>每年3小時以上</b>通識教育訓練</td><td><b>每年3小時以上</b>通識教育訓練</td></tr>
+<tr><td>專業證照／職能訓練證書</td><td>A/B/C專職人員另有持證要求，公務與特定非公務的「及／或」不同</td><td>不列</td><td>不列</td></tr>
+</tbody></table></div>
+<div class="examTip"><b>訓練口訣：</b>專職「12／年」；其他資訊人員「3／2年＋3／年」；一般人與主管「3／年」。D拿掉專職與持證，E只剩一般人與主管3／年。</div>
+<div class="subSrc">來源：附表一～八「認知與訓練」欄位。</div>
+</div>
+</details>
+
+<details class="studyDetail" id="annex18-de" open>
+<summary>附表一～八-6｜D級、E級：最低限度要求怎麼分</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex18-6">
+<h3>D級（附表七）</h3>
+<ul>
+<li><b>技術面：</b>啟用並持續使用防毒軟體、網路防火牆，並適時進行軟硬體必要更新或升級。</li>
+<li><b>資訊人員：</b>專職人員以外之資訊人員，每2年接受3小時以上專業課程／職能訓練，且每年接受3小時以上通識訓練。</li>
+<li><b>一般使用者及主管：</b>每年3小時以上資通安全通識教育訓練。</li>
+<li><b>期限：</b>資通安全防護及教育訓練，初次受核定或等級變更後1年內完成；防護措施完成後持續使用。</li>
+</ul>
+<h3>E級（附表八）</h3>
+<ul>
+<li>只列「認知與訓練」：<b>一般使用者及主管每人每年3小時以上</b>資通安全通識教育訓練。</li>
+<li>附表八本身未列D級的防毒、防火牆，也未列資訊人員專業／職能訓練。</li>
+</ul>
+<div class="examTip"><b>D/E 一刀切：</b>D＝「基本防護＋資訊人員訓練＋一般人訓練」；E＝「只剩一般人／主管每年3小時通識」。</div>
+<div class="subSrc">來源：附表七、附表八。</div>
+</div>
+</details>
+
+<details class="studyDetail" id="annex18-deadline" open>
+<summary>附表一～八-7｜辦理期限統整：1年、2年、3年怎麼背</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex18-7">
+<div class="tableWrap"><table>
+<thead><tr><th>事項</th><th>A／B</th><th>C</th><th>重點</th></tr></thead>
+<tbody>
+<tr><td>資通系統分級及防護基準</td><td>初次核定或等級變更後<b>1年內完成</b></td><td><b>1年內</b>依附表九完成分級，<b>2年內</b>完成附表十控制措施</td><td><b>C級有「1＋2」特殊節奏</b></td></tr>
+<tr><td>ISMS</td><td><b>2年內</b>全部核心系統導入；<b>3年內</b>完成第三方驗證</td><td><b>2年內</b>全部核心系統導入；不列第三方驗證</td><td>A/B＝2導入、3驗證；C＝2導入</td></tr>
+<tr><td>監控／GCB／弱點管理／EDR</td><td>附表所列適用項目原則上<b>1年內</b>完成導入</td><td>資通安全弱點管理<b>2年內</b>完成導入</td><td>C級弱點管理較晚</td></tr>
+<tr><td>資通安全防護</td><td><b>1年內</b>完成啟用並持續使用</td><td><b>1年內</b>完成啟用並持續使用</td><td>共同1年</td></tr>
+<tr><td>專職人員／教育訓練／證照或證書</td><td><b>1年內</b>完成；人員異動時亦同</td><td><b>1年內</b>完成；人員異動時亦同</td><td>共同1年</td></tr>
+<tr><td>其餘依表週期辦理事項</td><td>初次核定、等級變更或核心系統異動後之<b>次年度起</b>依表辦理</td><td>同左</td><td>不是一律在核定當年完成</td></tr>
+</tbody></table></div>
+<div class="examTip"><b>期限口訣：</b>A/B「1分級、2導入、3驗證」；C「1分級、2控制、2 ISMS、2弱點管理」。資安防護、人員／訓練多為1年。</div>
+<div class="subSrc">來源：附表一～六備註之「應辦事項辦理期限」；D級期限另見附表七。</div>
+</div>
+</details>
+
+<details class="studyDetail" id="annex18-exam" open>
+<summary>附表一～八-8｜考前速查：最值得背的 12 個差異</summary>
+<div class="detailBody annotatable" data-ann-id="study-annex18-8">
+<ol class="annex18ExamList">
+<li><b>附表1/2=A、3/4=B、5/6=C、7=D、8=E。</b></li>
+<li><b>專職人數：A4、B2、C1。</b></li>
+<li><b>內稽：A每年2次、B每年1次、C每2年1次。</b></li>
+<li><b>弱掃：A每年2次、B每年1次、C每2年1次。</b></li>
+<li><b>滲測：A每年1次，B/C每2年1次。</b></li>
+<li><b>健診：A每年1次，B/C每2年1次。</b></li>
+<li><b>BCP演練：A每年1次，B/C每2年1次。</b></li>
+<li><b>ISMS：A/B要導入＋第三方驗證；C只列導入。</b></li>
+<li><b>GCB：A/B級公務機關才列；特定非公務機關附表不列。</b></li>
+<li><b>APT防禦：A級有，B/C不列。</b></li>
+<li><b>證照：公務偏「證照及證書」；特定非公務為「證照或證書」。</b></li>
+<li><b>D＝基本防護＋資訊人員／一般人訓練；E＝一般使用者及主管每年3小時通識。</b></li>
+</ol>
+<div class="examTip"><b>最後總口訣：</b>「A最密、B減半、C兩年；D留防護、E留通識」。數字題先抓 4-2-1、2-1-兩年一，再判斷公務／非公務的 GCB 與「及／或」。</div>
+<div class="subSrc">來源：附表一～八之管理面、技術面、認知與訓練及備註。</div>
+</div>
+</details>
+
 </div>
 </article>
 
