@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11508｜V38 PPT對應新版教材版</title>
+<title>資安職能訓練｜資通安全概論 11508｜V38.8 手寫筆記高靈敏度版</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -4293,6 +4293,69 @@ body.sourcePseudoFullscreen #sourceViewerCard .referenceViewerModal.hidden{
   }
 }
 
+
+/* ===== V38.8 手寫筆記高靈敏度修正版 ===== */
+.sourceHandSensitivityLabel{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  min-height:36px;
+  padding:4px 7px;
+  border:1px solid #cfd5df;
+  border-radius:8px;
+  background:#fff;
+  color:#475467;
+  font-size:9px;
+  font-weight:800;
+  white-space:nowrap;
+  box-sizing:border-box
+}
+.sourceHandSensitivityLabel select{
+  height:28px;
+  min-width:72px;
+  padding:2px 5px;
+  border:1px solid #cfd5df;
+  border-radius:7px;
+  background:#fff;
+  color:#182230;
+  font-size:9px;
+  font-weight:800;
+  box-sizing:border-box
+}
+#sourceHandCanvas{
+  touch-action:none!important;
+  -ms-touch-action:none!important;
+  overscroll-behavior:contain!important;
+  -webkit-user-select:none!important;
+  user-select:none!important;
+  -webkit-touch-callout:none!important
+}
+#sourceHandPaper{
+  touch-action:none!important;
+  overscroll-behavior:contain!important
+}
+@media(min-width:681px) and (max-width:1180px){
+  .sourceHandSensitivityLabel{
+    min-height:38px
+  }
+  .sourceHandSensitivityLabel select{
+    min-width:86px;
+    height:30px
+  }
+}
+@media(max-width:680px){
+  .sourceHandSensitivityLabel{
+    width:100%!important;
+    min-width:0!important;
+    min-height:38px!important;
+    justify-content:center!important
+  }
+  .sourceHandSensitivityLabel select{
+    min-width:92px;
+    height:30px
+  }
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -5869,6 +5932,14 @@ body.sourcePseudoFullscreen #sourceViewerCard .referenceViewerModal.hidden{
               <span>筆色</span>
               <input id="sourceHandColorInput" type="color" value="#1f2937" aria-label="選擇手寫筆顏色">
             </label>
+            <label class="sourceHandSensitivityLabel" title="調整手寫筆輸入靈敏度">
+              <span>靈敏度</span>
+              <select id="sourceHandSensitivity" aria-label="手寫筆靈敏度">
+                <option value="ultra">最高</option>
+                <option value="high" selected>高</option>
+                <option value="normal">標準</option>
+              </select>
+            </label>
             <button id="sourceHandUndoBtn" class="miniBtn" type="button">↶ 撤銷</button>
             <button id="sourceHandClearBtn" class="miniBtn" type="button">🧹 清空筆記</button>
           </div>
@@ -5877,7 +5948,7 @@ body.sourcePseudoFullscreen #sourceViewerCard .referenceViewerModal.hidden{
           <canvas id="sourceHandCanvas" class="sourceHandCanvas" aria-label="本頁手寫筆記畫布"></canvas>
         </div>
         <div class="sourceHandNoteFoot">
-          <span id="sourceHandNoteStatus">可直接使用滑鼠、手指或 Apple Pencil 書寫；筆記會自動儲存。</span>
+          <span id="sourceHandNoteStatus">已啟用高靈敏度筆觸；可直接使用滑鼠、手指或 Apple Pencil 書寫，筆記會自動儲存。</span>
         </div>
       </section>
 
@@ -8378,13 +8449,16 @@ window.addEventListener("DOMContentLoaded",()=>{
 (function(){
   const PREFIX="sec11504_sourcehandnote_v1_";
   const COLOR_KEY=PREFIX+"color";
+  const SENSITIVITY_KEY=PREFIX+"sensitivity";
   const g=id=>document.getElementById(id);
 
   let mode="pen"; // pen | eraser
   let drawing=false;
+  let activePointerId=null;
   let currentStroke=null;
   let strokes=[];
   let penColor="#1f2937";
+  let sensitivity="high"; // ultra | high | normal
   let dpr=Math.max(1,window.devicePixelRatio||1);
   let saveFlashTimer=null;
 
@@ -8414,7 +8488,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     clearTimeout(saveFlashTimer);
     setStatus("✓ 已自動儲存本頁手寫筆記","saved");
     saveFlashTimer=setTimeout(()=>{
-      setStatus("可直接使用滑鼠、手指或 Apple Pencil 書寫；筆記會自動儲存。");
+      setStatus(`已啟用${sensitivityText()}靈敏度筆觸；可使用滑鼠、手指或 Apple Pencil 書寫。`);
     },1400);
   }
 
@@ -8451,12 +8525,34 @@ window.addEventListener("DOMContentLoaded",()=>{
     setMode("pen");
   }
 
+  function sensitivityText(){
+    return sensitivity==="ultra"?"最高":sensitivity==="normal"?"標準":"高";
+  }
+  function loadSensitivity(){
+    try{
+      const s=localStorage.getItem(SENSITIVITY_KEY);
+      if(["ultra","high","normal"].includes(s))sensitivity=s;
+    }catch(e){}
+    if(g("sourceHandSensitivity"))g("sourceHandSensitivity").value=sensitivity;
+  }
+  function saveSensitivity(s){
+    if(!["ultra","high","normal"].includes(s))return;
+    sensitivity=s;
+    try{localStorage.setItem(SENSITIVITY_KEY,s);}catch(e){}
+    setStatus(`已切換為「${sensitivityText()}」靈敏度；可立即使用 Apple Pencil、手指或滑鼠書寫。`,"saved");
+  }
+  function minMovePixels(){
+    if(sensitivity==="ultra")return 0.06;
+    if(sensitivity==="normal")return 0.55;
+    return 0.18;
+  }
+
   function setMode(next){
     mode=next;
     g("sourceHandPenBtn")?.classList.toggle("active",mode==="pen");
     g("sourceHandEraserBtn")?.classList.toggle("active",mode==="eraser");
     g("sourceHandPaper")?.classList.toggle("eraserMode",mode==="eraser");
-    if(mode==="pen")setStatus(`手寫筆模式｜目前筆色 ${penColor.toUpperCase()}｜筆記會自動儲存。`);
+    if(mode==="pen")setStatus(`手寫筆模式｜${sensitivityText()}靈敏度｜目前筆色 ${penColor.toUpperCase()}｜筆記會自動儲存。`);
     else setStatus("橡皮擦模式｜碰到筆跡即可刪除該完整筆畫。");
   }
 
@@ -8487,7 +8583,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     ctx.save();
     ctx.globalCompositeOperation="source-over";
     ctx.strokeStyle=/^#[0-9a-f]{6}$/i.test(s.color||"")?s.color:"#1f2937";
-    ctx.lineWidth=Math.max(2.2,Math.min(4.4,w*0.0034));
+    ctx.lineWidth=basePenWidth(w);
     ctx.lineCap="round";
     ctx.lineJoin="round";
     ctx.beginPath();
@@ -8518,11 +8614,76 @@ window.addEventListener("DOMContentLoaded",()=>{
   }
 
   function point(ev){
-    const r=g("sourceHandCanvas").getBoundingClientRect();
+    const canvas=g("sourceHandCanvas");
+    const r=canvas.getBoundingClientRect();
     return {
       x:Math.max(0,Math.min(1,(ev.clientX-r.left)/Math.max(1,r.width))),
-      y:Math.max(0,Math.min(1,(ev.clientY-r.top)/Math.max(1,r.height)))
+      y:Math.max(0,Math.min(1,(ev.clientY-r.top)/Math.max(1,r.height))),
+      p:(typeof ev.pressure==="number" && ev.pressure>0)?Math.min(1,ev.pressure):0.5
     };
+  }
+
+  function basePenWidth(w){
+    return Math.max(2.2,Math.min(4.4,w*0.0034));
+  }
+
+  function drawLiveDot(pt,color){
+    const canvas=g("sourceHandCanvas");
+    if(!canvas)return;
+    const r=canvas.getBoundingClientRect();
+    const ctx=canvas.getContext("2d");
+    ctx.save();
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.globalCompositeOperation="source-over";
+    ctx.fillStyle=/^#[0-9a-f]{6}$/i.test(color||"")?color:"#1f2937";
+    const radius=basePenWidth(r.width)/2;
+    ctx.beginPath();
+    ctx.arc(pt.x*r.width,pt.y*r.height,radius,0,Math.PI*2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawLiveSegment(a,b,color){
+    const canvas=g("sourceHandCanvas");
+    if(!canvas)return;
+    const r=canvas.getBoundingClientRect();
+    const ctx=canvas.getContext("2d");
+    ctx.save();
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.globalCompositeOperation="source-over";
+    ctx.strokeStyle=/^#[0-9a-f]{6}$/i.test(color||"")?color:"#1f2937";
+    ctx.lineWidth=basePenWidth(r.width);
+    ctx.lineCap="round";
+    ctx.lineJoin="round";
+    ctx.beginPath();
+    ctx.moveTo(a.x*r.width,a.y*r.height);
+    ctx.lineTo(b.x*r.width,b.y*r.height);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function coalescedEvents(ev){
+    try{
+      if(typeof ev.getCoalescedEvents==="function"){
+        const list=ev.getCoalescedEvents();
+        if(list && list.length)return list;
+      }
+    }catch(e){}
+    return [ev];
+  }
+
+  function appendPenSample(ev){
+    if(!currentStroke)return false;
+    const p=point(ev);
+    const last=currentStroke.points[currentStroke.points.length-1];
+    const canvas=g("sourceHandCanvas");
+    const r=canvas.getBoundingClientRect();
+    const dx=(p.x-last.x)*r.width;
+    const dy=(p.y-last.y)*r.height;
+    if(Math.hypot(dx,dy)<minMovePixels())return false;
+    currentStroke.points.push(p);
+    drawLiveSegment(last,p,currentStroke.color);
+    return true;
   }
 
   function segDist(px,py,ax,ay,bx,by){
@@ -8557,48 +8718,67 @@ window.addEventListener("DOMContentLoaded",()=>{
   }
 
   function pointerDown(ev){
+    // 同一時間只接受一支筆/一根手指，避免 Apple Pencil 書寫時被掌心觸控干擾
+    if(drawing && activePointerId!==null && ev.pointerId!==activePointerId)return;
     ev.preventDefault();
     ev.stopPropagation();
     drawing=true;
+    activePointerId=ev.pointerId;
     try{g("sourceHandCanvas")?.setPointerCapture(ev.pointerId);}catch(e){}
+
     if(mode==="eraser"){
       eraseAt(ev);
       return;
     }
+
+    const first=point(ev);
     currentStroke={
       color:penColor,
-      points:[point(ev)]
+      pointerType:ev.pointerType||"unknown",
+      points:[first]
     };
+    // 落筆當下立即顯示，降低「筆尖碰到但畫面慢半拍」的感覺
+    drawLiveDot(first,penColor);
   }
+
   function pointerMove(ev){
-    if(!drawing)return;
+    if(!drawing || (activePointerId!==null && ev.pointerId!==activePointerId))return;
     ev.preventDefault();
     ev.stopPropagation();
+
+    const samples=coalescedEvents(ev);
+
     if(mode==="eraser"){
-      eraseAt(ev);
+      samples.forEach(eraseAt);
       return;
     }
+
     if(!currentStroke)return;
-    const p=point(ev);
-    const last=currentStroke.points[currentStroke.points.length-1];
-    const dx=p.x-last.x,dy=p.y-last.y;
-    if(dx*dx+dy*dy<0.0000015)return;
-    currentStroke.points.push(p);
-    renderWithCurrent();
+    // iPad / Apple Pencil 可從 coalesced events 取得瀏覽器在兩次 pointermove
+    // 之間收集到的細部軌跡，避免快寫時斷線或筆畫跟不上。
+    samples.forEach(appendPenSample);
   }
+
   function pointerEnd(ev){
-    if(!drawing)return;
+    if(!drawing || (activePointerId!==null && ev?.pointerId!==undefined && ev.pointerId!==activePointerId))return;
     ev?.preventDefault?.();
     ev?.stopPropagation?.();
+
     if(mode==="pen" && currentStroke){
+      // pointerup 的最後座標也納入，避免短筆畫尾端遺失
+      if(ev && typeof ev.clientX==="number")appendPenSample(ev);
       if(currentStroke.points.length===1)currentStroke.points.push({...currentStroke.points[0]});
       strokes.push(currentStroke);
       currentStroke=null;
       save();
+      // 完整重畫一次，確保縮放/高DPI畫布與儲存資料一致
       render();
     }
+
     drawing=false;
-    try{g("sourceHandCanvas")?.releasePointerCapture(ev.pointerId);}catch(e){}
+    const pid=activePointerId;
+    activePointerId=null;
+    try{g("sourceHandCanvas")?.releasePointerCapture(pid ?? ev?.pointerId);}catch(e){}
   }
 
   function undo(){
@@ -8638,16 +8818,22 @@ window.addEventListener("DOMContentLoaded",()=>{
     }
 
     loadColor();
+    loadSensitivity();
     g("sourceHandPenBtn")?.addEventListener("click",()=>setMode("pen"));
     g("sourceHandEraserBtn")?.addEventListener("click",()=>setMode("eraser"));
     g("sourceHandColorInput")?.addEventListener("input",e=>saveColor(e.target.value));
+    g("sourceHandSensitivity")?.addEventListener("change",e=>saveSensitivity(e.target.value));
     g("sourceHandUndoBtn")?.addEventListener("click",undo);
     g("sourceHandClearBtn")?.addEventListener("click",clearAll);
 
-    canvas.addEventListener("pointerdown",pointerDown);
-    canvas.addEventListener("pointermove",pointerMove);
-    canvas.addEventListener("pointerup",pointerEnd);
-    canvas.addEventListener("pointercancel",pointerEnd);
+    // passive:false 確保 iPadOS 不把 Apple Pencil / 手指筆畫誤判成頁面捲動手勢
+    canvas.addEventListener("pointerdown",pointerDown,{passive:false});
+    canvas.addEventListener("pointermove",pointerMove,{passive:false});
+    canvas.addEventListener("pointerup",pointerEnd,{passive:false});
+    canvas.addEventListener("pointercancel",pointerEnd,{passive:false});
+    canvas.addEventListener("lostpointercapture",ev=>{
+      if(drawing && activePointerId===ev.pointerId)pointerEnd(ev);
+    },{passive:false});
     canvas.addEventListener("contextmenu",e=>e.preventDefault());
 
     // 每次教材頁面切換時，載入該教材/頁碼專屬筆記
