@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>資安職能訓練｜資通安全概論 11508｜V38.8 手寫筆記高靈敏度版</title>
+<title>資安職能訓練｜資通安全概論 11508｜V38.9 完整整理返回頂端版</title>
 <style>
 :root{
  --bg:#f4f6fa;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;
@@ -4356,6 +4356,26 @@ body.sourcePseudoFullscreen #sourceViewerCard .referenceViewerModal.hidden{
   }
 }
 
+
+/* ===== V38.9 完整整理註記工具：返回最上面 ===== */
+.annTopBtn{
+  border-color:#9fb0e8!important;
+  color:#2947a3!important;
+  background:#f5f7ff!important;
+}
+.annTopBtn:hover{
+  background:#eaf0ff!important;
+  border-color:#6684d6!important;
+}
+.annTopBtn.hidden{
+  display:none!important;
+}
+@media(max-width:680px){
+  .annTopBtn{
+    min-height:40px!important;
+  }
+}
+
 </style>
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -4404,6 +4424,7 @@ body.sourcePseudoFullscreen #sourceViewerCard .referenceViewerModal.hidden{
     <button id="annEraserBtn" class="annBtn eraser" type="button" title="點一下紅色筆跡即可刪除">⌫ 紅筆橡皮擦</button>
     <button id="annUndoBtn" class="annBtn" type="button" title="撤銷目前區塊最後一筆紅筆">↶ 撤銷</button>
     <button id="annClearBtn" class="annBtn danger" type="button" title="清除目前區塊所有螢光筆與紅筆">🧹 清除區塊</button>
+    <button id="annTopBtn" class="annBtn annTopBtn" type="button" title="返回完整整理頁面最上方">⬆ 返回最上面</button>
     <span id="annStatus" class="annStatus">螢光筆：先選取文字後按「螢光筆」。紅筆：按「紅筆」後可直接書寫。</span>
   </div>
 </div>
@@ -7592,9 +7613,19 @@ function toggleUnitDetails(u, openState){
       const sourceActive=g("view-source")?.classList.contains("active");
       const quizActive=g("view-quiz")?.classList.contains("active");
       const selfTestActive=g("view-selftest")?.classList.contains("active");
+      const studyActive=g("view-study")?.classList.contains("active");
       const ann=g("annotationBar");if(ann)ann.classList.toggle("hidden",!!(sourceActive||quizActive||selfTestActive));
+      const topBtn=g("annTopBtn");if(topBtn)topBtn.classList.toggle("hidden",!studyActive);
     };
     document.querySelectorAll(".topNav button[data-view],#mobileBottomNav button[data-view]").forEach(btn=>btn.addEventListener("click",()=>setTimeout(syncAuxBars,0)));
+
+    g("annTopBtn")?.addEventListener("click",()=>{
+      try{
+        window.scrollTo({top:0,left:0,behavior:"smooth"});
+      }catch(e){
+        window.scrollTo(0,0);
+      }
+    });
 
     updateViewer(true,true);syncAuxBars();
   });
